@@ -8,7 +8,22 @@ import { setStorageItem, getStorageItem } from '@/utils/storage';
 
 export default function HomePage() {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
+  const [allPokemonData, setAllPokemonData] = useState<Pokemon[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
+
+  const loadAllPokemonData = useCallback(async () => {
+    if (allPokemonData.length > 0) return;
+    
+    const generations = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const allData = await Promise.all(
+      generations.map(gen => fetchPokemonData(gen))
+    );
+    setAllPokemonData(allData.flat());
+  }, [allPokemonData.length]);
+
+  useEffect(() => {
+    loadAllPokemonData();
+  }, [loadAllPokemonData]);
   const [generation, setGeneration] = useState(() => 
     parseInt(getStorageItem('pokedex-generation', '1'))
   );
@@ -38,14 +53,15 @@ export default function HomePage() {
   const [searchVisible, setSearchVisible] = useState(false);
 
   const filteredPokemonData = useMemo(() => {
-    if (!searchTerm) return pokemonData;
+    const sourceData = searchVisible ? allPokemonData : pokemonData;
+    if (!searchTerm) return sourceData;
     const term = searchTerm.toLowerCase();
-    return pokemonData.filter((pokemon: Pokemon) => 
+    return sourceData.filter((pokemon: Pokemon) => 
       pokemon.name.toLowerCase().includes(term) || 
       pokemon.japaneseName.toLowerCase().includes(term) ||
       pokemon.id.toString().includes(term)
     );
-  }, [pokemonData, searchTerm]);
+  }, [pokemonData, allPokemonData, searchTerm, searchVisible]);
 
   const loadSprite = useCallback(async () => {
     if (!selectedPokemon) return;
@@ -123,14 +139,6 @@ export default function HomePage() {
     }
   };
 
-  // 初期ロード時にカラー設定を適用
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      document.documentElement.style.setProperty('--pokedex-color', skinColor);
-      document.documentElement.style.setProperty('--bg-screen', screenColor);
-    }
-  }, []);
-
   const handleSkinColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const color = e.target.value;
     setSkinColor(color);
@@ -176,16 +184,16 @@ export default function HomePage() {
               </button>
               <div className="search-container">
                 <button 
-                  className="control-button search-button"
+                  className={`control-button search-button ${searchVisible ? 'active' : ''}`}
                   onClick={() => {
                     if (searchVisible) {
                       setSearchTerm('');
                     }
                     setSearchVisible(!searchVisible);
                   }}
-                  title="Search"
+                  title={searchVisible ? "Clear search" : "Search"}
                 >
-                  {searchVisible ? '✕' : '🔍'}
+                  {searchVisible && <span className="close-icon">✕</span>}
                 </button>
                 {searchVisible && (
                   <input
@@ -307,10 +315,39 @@ export default function HomePage() {
               {filteredPokemonData.map(pokemon => (
                 <li
                   key={pokemon.id}
-                  className={`pokemon-list-item ${
-                    selectedPokemon?.id === pokemon.id ? 'selected' : ''
-                  }`}
-                  onClick={() => setSelectedPokemon(pokemon)}
+  className={`pokemon-list-item ${
+    selectedPokemon?.id === pokemon.id ? 'selected' : ''
+  }`}
+  onClick={() => {
+    setSelectedPokemon(pokemon);
+    if (searchVisible) {
+      // 検索結果から選択した場合、該当するポケモンの世代に切り替える
+      const pokemonRanges: Record<number, [number, number]> = {
+        1: [1, 151],
+        2: [152, 251],
+        3: [252, 386],
+        4: [387, 493],
+        5: [494, 649],
+        6: [650, 721],
+        7: [722, 809],
+        8: [810, 905],
+        9: [906, 1025],
+      };
+
+      const newGeneration = parseInt(
+        Object.entries(pokemonRanges).find(([_, [start, end]]) => 
+          pokemon.id >= start && pokemon.id <= end
+        )?.[0] || '1'
+      );
+      setGeneration(newGeneration);
+      const defaultStyle = getDefaultStyleForGeneration(newGeneration);
+      setSpriteStyle(defaultStyle);
+      setStorageItem('pokedex-generation', newGeneration);
+      setStorageItem('pokedex-sprite-style', defaultStyle);
+      setSearchVisible(false);
+      setSearchTerm('');
+    }
+  }}
                 >
                   <img
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${pokemon.id}.png`}
