@@ -19,6 +19,10 @@ export const metadata: Metadata = {
   description: 'A retro-styled Pokedex application',
   manifest: '/manifest.json',
   themeColor: '#8b0000',
+  icons: {
+    icon: '/icons/poke-doll.png',
+    apple: '/icons/poke-doll.png',
+  },
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -33,6 +37,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={dotGothic.className}>
+      <head>
+        <link rel="icon" href="/icons/poke-doll.png" />
+        <link rel="apple-touch-icon" href="/icons/poke-doll.png" />
+      </head>
       <body>
         <div className="pokedex-container">
           {children}
