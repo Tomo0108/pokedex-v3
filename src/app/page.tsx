@@ -163,28 +163,13 @@ export default function HomePage() {
 
   if (isLoading) {
     return (
-      <main>
-      <div className="pokedex">
-          <div className="pokedex-left">
-            <div className="screen-container">
-              <div className="screen loading">
-                <div className="loading-wrapper">
-                  <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
-                  <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
-                  <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="pokedex-right">
-            <div className="pokemon-list">
-              <div className="loading-item">
-                <div className="loading-text" />
-              </div>
-            </div>
-          </div>
+      <div className="loading-screen">
+        <div className="loading-wrapper">
+          <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
+          <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
+          <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
         </div>
-      </main>
+      </div>
     );
   }
 
@@ -211,17 +196,13 @@ export default function HomePage() {
                   }}
                   title={searchVisible ? "Clear search" : "Search"}
                 >
-                  {searchVisible ? (
-                    <span className="close-icon">✕</span>
-                  ) : (
-                    <img 
-                      src="/icons/poke-ball.png" 
-                      alt="Search"
-                      className="poke-ball-icon"
-                      width={24}
-                      height={24}
-                    />
-                  )}
+                  <img 
+                    src="/icons/poke-ball.png" 
+                    alt="Search"
+                    className="poke-ball-icon"
+                    width={24}
+                    height={24}
+                  />
                 </button>
                 {searchVisible && (
                   <>
