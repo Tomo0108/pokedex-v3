@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useMemo } from 'react';
 import { Pokemon } from '@/types/pokemon';
 import { fetchPokemonData, spriteStyles, createSpriteUrl, getDefaultStyleForGeneration } from '@/utils/pokemon';
 import { prefetchAllGenerations } from '@/utils/cache';
@@ -34,6 +34,18 @@ export default function HomePage() {
   );
   const [isLoading, setIsLoading] = useState(true);
   const [spriteUrl, setSpriteUrl] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchVisible, setSearchVisible] = useState(false);
+
+  const filteredPokemonData = useMemo(() => {
+    if (!searchTerm) return pokemonData;
+    const term = searchTerm.toLowerCase();
+    return pokemonData.filter((pokemon: Pokemon) => 
+      pokemon.name.toLowerCase().includes(term) || 
+      pokemon.japaneseName.toLowerCase().includes(term) ||
+      pokemon.id.toString().includes(term)
+    );
+  }, [pokemonData, searchTerm]);
 
   const loadSprite = useCallback(async () => {
     if (!selectedPokemon) return;
@@ -162,26 +174,41 @@ export default function HomePage() {
               >
                 {isJapanese ? 'JPN' : 'ENG'}
               </button>
-              <button 
-                className="control-button" 
-                onClick={async () => {
-                  setIsLoading(true);
-                  try {
-                    const data = await fetchPokemonData(generation);
-                    setPokemonData(data);
-                    if (data.length > 0) {
-                      setSelectedPokemon(data[0]);
+              <div className="search-container">
+                <button 
+                  className="control-button search-button"
+                  onClick={() => {
+                    if (searchVisible) {
+                      setSearchTerm('');
                     }
-                  } catch (error) {
-                    console.error('Failed to reload data:', error);
-                  } finally {
-                    setIsLoading(false);
-                  }
-                }}
-                title="Reload cache"
-              >
-                ↻
-              </button>
+                    setSearchVisible(!searchVisible);
+                  }}
+                  title="Search"
+                >
+                  {searchVisible ? '✕' : '🔍'}
+                </button>
+                {searchVisible && (
+                  <input
+                    type="text"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Escape') {
+                        setSearchTerm('');
+                        setSearchVisible(false);
+                      }
+                    }}
+                    onBlur={() => {
+                      if (!searchTerm) {
+                        setSearchVisible(false);
+                      }
+                    }}
+                    placeholder="Search..."
+                    className="search-input"
+                    autoFocus
+                  />
+                )}
+              </div>
             </div>
             <button 
               className="control-button" 
@@ -277,7 +304,7 @@ export default function HomePage() {
           </div>
           <div className="pokemon-list">
             <ul className="pokemon-list-ul">
-              {pokemonData.map(pokemon => (
+              {filteredPokemonData.map(pokemon => (
                 <li
                   key={pokemon.id}
                   className={`pokemon-list-item ${
