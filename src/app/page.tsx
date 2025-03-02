@@ -6,6 +6,7 @@ import { fetchPokemonData, spriteStyles, createSpriteUrl, getDefaultStyleForGene
 import { prefetchAllGenerations } from '@/utils/cache';
 import { setStorageItem, getStorageItem } from '@/utils/storage';
 import { isPartialMatch } from '@/utils/kana';
+import { createLoadingGif } from '@/utils/createLoadingGif';
 
 export default function HomePage() {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
@@ -164,11 +165,15 @@ export default function HomePage() {
   const [loadingGif, setLoadingGif] = useState('');
 
   useEffect(() => {
-    import('./utils/createLoadingGif').then(({ createLoadingGif }) => {
-      createLoadingGif().then(url => {
-        setLoadingGif(url);
-      });
-    });
+    const loadGif = async () => {
+      try {
+        const gif = await createLoadingGif();
+        setLoadingGif(gif);
+      } catch (error) {
+        console.error('Failed to create loading GIF:', error);
+      }
+    };
+    loadGif();
   }, []);
 
   if (isLoading) {

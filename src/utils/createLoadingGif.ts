@@ -1,19 +1,23 @@
 import GIF from 'gif.js';
 
 export async function createLoadingGif(): Promise<string> {
+  if (typeof window === 'undefined') {
+    throw new Error('This function must be run in browser environment');
+  }
+
   // GIFエンコーダーの設定
   const gif = new GIF({
-    workers: 2,
-    quality: 10,
-    width: 256,  // GIFの幅
-    height: 256, // GIFの高さ
-    background: '#9bbc0f' // 薄い黄緑色の背景
+    workers: 4,          // ワーカー数を増やして処理を高速化
+    quality: 0,          // 品質を最高に（0が最高品質）
+    width: 320,
+    height: 320,
+    background: '#9bbc0f'
   });
 
   // Canvas要素の作成
   const canvas = document.createElement('canvas');
-  canvas.width = 256;
-  canvas.height = 256;
+  canvas.width = 320;
+  canvas.height = 320;
   const ctx = canvas.getContext('2d');
   if (!ctx) throw new Error('Failed to get canvas context');
 
@@ -21,50 +25,36 @@ export async function createLoadingGif(): Promise<string> {
   const substituteImage = new Image();
   substituteImage.src = '/icons/substitute.png';
 
-  await new Promise((resolve) => {
-    substituteImage.onload = resolve;
+  await new Promise<void>((resolve) => {
+    substituteImage.onload = () => resolve();
   });
 
-  // 3つのカービンの位置を定義
+  // サイズと間隔の計算（96は320の約1/3）
+  const size = 96;  // カービンのサイズ
+  const spacing = 16;  // 固定間隔
+  const yPos = 148;  // 垂直位置（上寄り）
+  const leftX = Math.round((320 - (size * 3 + spacing * 2)) / 2);  // 左端開始位置
+
+  // 3つの位置を計算（等間隔配置）
   const positions = [
-    { x: 96, y: 96 },   // 左
-    { x: 128, y: 96 },  // 中央
-    { x: 160, y: 96 }   // 右
+    { x: leftX, y: yPos },                          // 左
+    { x: leftX + size + spacing, y: yPos },         // 中央
+    { x: leftX + (size + spacing) * 2, y: yPos }    // 右
   ];
 
-  // フレームの生成（30FPS × 3秒 = 90フレーム）
-  for (let frame = 0; frame < 90; frame++) {
+  // フレーム生成
+  for (let position = 0; position < 3; position++) {
     // 背景を描画
     ctx.fillStyle = '#9bbc0f';
-    ctx.fillRect(0, 0, 256, 256);
+    ctx.fillRect(0, 0, 320, 320);
 
-    // 現在の時間（0-3秒）
-    const time = (frame / 30) % 3;
+    // カービンを描画
+    const pos = positions[position];
+    ctx.drawImage(substituteImage, pos.x, pos.y, size, size);
 
-    // 各カービンの不透明度を計算
-    positions.forEach((pos, index) => {
-      let opacity = 0;
-      
-      // 各カービンの表示タイミングを設定
-      if (index === 0) {
-        opacity = time < 1 ? 1 : 0;
-      } else if (index === 1) {
-        opacity = time >= 1 && time < 2 ? 1 : 0;
-      } else {
-        opacity = time >= 2 ? 1 : 0;
-      }
-
-      // カービンを描画
-      if (opacity > 0) {
-        ctx.globalAlpha = opacity;
-        ctx.drawImage(substituteImage, pos.x, pos.y, 64, 64);
-      }
-    });
-
-    ctx.globalAlpha = 1;
-    
-    // フレームをGIFに追加
-    gif.addFrame(canvas, { delay: 1000 / 30 }); // 30FPS
+    // メインフレーム（950ms）とつなぎフレーム（50ms）を追加
+    gif.addFrame(canvas, { delay: 950 });  // メインフレーム
+    gif.addFrame(canvas, { delay: 50 });   // つなぎフレーム
   }
 
   // GIFの生成
