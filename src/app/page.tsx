@@ -205,17 +205,13 @@ export default function HomePage() {
                   }}
                   title={searchVisible ? "Clear search" : "Search"}
                 >
-                  {searchVisible ? (
-                    <span className="close-icon">✕</span>
-                  ) : (
-                    <img 
-                      src="/icons/poke-ball.png" 
-                      alt="Search"
-                      className="poke-ball-icon"
-                      width={24}
-                      height={24}
-                    />
-                  )}
+                  <img 
+                    src="/icons/search.svg" 
+                    alt="Search"
+                    className="search-icon"
+                    width={20}
+                    height={20}
+                  />
                 </button>
                 {searchVisible && (
                   <>
