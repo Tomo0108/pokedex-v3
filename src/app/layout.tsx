@@ -26,7 +26,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={dotGothic.className}>
-      <body>{children}</body>
+      <body>
+        <div className="pokedex-container">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

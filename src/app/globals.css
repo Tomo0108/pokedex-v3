@@ -16,9 +16,13 @@
 
 @layer base {
   body {
-    @apply m-0 p-5 min-h-screen flex justify-center items-center bg-[#181818] text-white;
+    @apply m-0 min-h-screen text-white;
     @apply [image-rendering:pixelated] [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
   }
+}
+
+.pokedex-container {
+  @apply min-h-screen p-5 flex justify-center items-center;
 }
 
 .pokedex {
@@ -115,7 +119,8 @@
 }
 
 .description-box {
-  @apply p-2.5 rounded min-h-[60px] text-xs leading-normal bg-[var(--bg-screen)];
+  @apply p-2.5 rounded min-h-[60px] text-xs leading-normal;
+  @apply bg-[var(--bg-screen)] transition-colors duration-300;
 }
 
 .pokemon-description {
@@ -128,7 +133,33 @@
   @apply [box-shadow:var(--shadow-inset)];
 }
 
-.color-controls label,
+.color-controls {
+  @apply flex flex-col;
+}
+
+.color-controls > label {
+  @apply text-[10px] font-bold mb-2 font-mono;
+}
+
+.color-control-items {
+  @apply flex justify-start gap-2;
+  width: fit-content;
+}
+
+.color-control-item {
+  @apply flex items-center gap-1;
+  min-width: max-content;
+}
+
+.color-control-item span {
+  @apply text-[10px] font-mono;
+}
+
+.color-controls input[type="color"] {
+  @apply w-10 h-6 cursor-pointer p-0.5;
+  @apply [background:none] [border:2px_solid_var(--border-dark)] rounded;
+}
+
 .generation-select label {
   @apply block text-[10px] font-bold mb-1 font-mono;
 }
@@ -136,11 +167,6 @@
 .generation-select select {
   @apply w-24 p-1 text-[10px] rounded bg-[var(--bg-dark)] text-white border-2 border-[var(--border-dark)];
   @apply appearance-none cursor-pointer font-mono;
-}
-
-.color-controls input[type="color"] {
-  @apply w-16 h-8 cursor-pointer p-0.5;
-  @apply [background:none] [border:2px_solid_var(--border-dark)] rounded;
 }
 
 .generation-select select option {
