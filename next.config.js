@@ -1,5 +1,15 @@
 /** @type {import('next').NextConfig} */
-const withPWA = require('next-pwa')({
+const path = require('path');
+
+const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
+  images: {
+    domains: ['raw.githubusercontent.com'],
+  }
+};
+
+const withPWAConfig = {
   dest: 'public',
   disable: process.env.NODE_ENV === 'development',
   register: true,
@@ -17,14 +27,7 @@ const withPWA = require('next-pwa')({
       }
     }
   ]
-});
-
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  images: {
-    domains: ['raw.githubusercontent.com'],
-  }
 };
 
-module.exports = withPWA(nextConfig);
+const withPWA = require('next-pwa');
+module.exports = withPWA(withPWAConfig)(nextConfig);
