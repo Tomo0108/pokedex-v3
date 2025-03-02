@@ -40,6 +40,17 @@
   @apply flex-1 p-4 rounded bg-[var(--pokedex-color)] [box-shadow:var(--shadow-inset)];
 }
 
+.pokedex-right {
+  @apply flex flex-col;
+}
+
+@media (max-width: 767px) {
+  .pokedex-right {
+    height: calc(100dvh - 520px);
+    min-height: 400px;
+  }
+}
+
 .loading-item {
   @apply flex items-center gap-2 p-2 rounded bg-[var(--loading-color)];
 }
@@ -97,7 +108,7 @@
 
 .pokemon-list {
   @apply rounded p-4 overflow-y-auto bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
-  height: calc(100dvh - 300px);
+  @apply w-full max-w-full flex-1;
   @apply md:h-[400px];
 }
 
@@ -105,6 +116,8 @@
   @apply p-3 flex items-center gap-3 text-sm cursor-pointer;
   @apply border-b-2 border-[var(--border-dark)];
   min-height: 44px;
+  position: relative;
+  width: 100%;
 }
 
 .pokemon-list-item:last-child {
@@ -121,6 +134,13 @@
 
 .pokemon-icon {
   @apply w-8 h-8 [image-rendering:pixelated];
+  flex-shrink: 0;
+}
+
+.pokemon-list-item span {
+  @apply truncate;
+  flex: 1;
+  min-width: 0;
 }
 
 .description-container {
