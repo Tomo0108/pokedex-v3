@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pokedex-color: #8b0000;
+  --loading-color: #303030;
+  --border-dark: #404040;
+  --bg-dark: #202020;
+  --bg-darker: #181818;
+  --bg-screen: #9bbc0f;
+  --text-dark: #0f380f;
+  --shadow-inset: inset -2px -2px 0 0 #000, inset 2px 2px 0 0 #404040;
+  --shadow-inset-reverse: inset 2px 2px 0 0 #000, inset -2px -2px 0 0 #404040;
+}
+
+@layer base {
+  body {
+    @apply m-0 p-5 min-h-screen flex justify-center items-center bg-[#181818] text-white;
+    @apply [image-rendering:pixelated] [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
+  }
+}
+
+.pokedex {
+  @apply flex flex-col md:flex-row gap-2.5 max-w-[1000px] w-full p-4 rounded-lg;
+  @apply bg-[var(--pokedex-color)] [image-rendering:pixelated];
+  @apply [box-shadow:var(--shadow-inset)];
+}
+
+.pokedex-left,
+.pokedex-right {
+  @apply flex-1 p-4 rounded bg-[var(--pokedex-color)] [box-shadow:var(--shadow-inset)];
+}
+
+.loading-item {
+  @apply flex items-center gap-2 p-2 rounded bg-[var(--loading-color)];
+}
+
+.loading-text {
+  @apply flex-1 h-3 rounded bg-[var(--bg-dark)] opacity-50;
+}
+
+.top-controls {
+  @apply flex justify-between mb-4;
+}
+
+.control-group {
+  @apply flex gap-2;
+}
+
+.control-button,
+.sprite-button {
+  @apply py-2 px-4 text-xs cursor-pointer text-white border-0;
+  @apply bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+}
+
+.control-button:is(:active, .active),
+.sprite-button:is(:active, .active) {
+  @apply bg-[var(--border-dark)] [box-shadow:var(--shadow-inset-reverse)];
+}
+
+.screen-container {
+  @apply rounded p-4 mb-4 border-8 border-[var(--border-dark)] bg-[var(--bg-darker)];
+  @apply [box-shadow:var(--shadow-inset)];
+}
+
+.screen {
+  @apply w-full max-w-[300px] aspect-square mx-auto;
+  @apply flex justify-center items-center rounded overflow-hidden;
+  @apply transition-colors duration-300 sm:w-full sm:max-w-none;
+  @apply bg-[var(--bg-screen)] [box-shadow:inset_0_0_10px_rgba(0,0,0,0.3)];
+}
+
+.screen.loading {
+  @apply bg-[var(--bg-darker)];
+}
+
+.pokemon-sprite {
+  @apply max-w-full max-h-full scale-[2];
+  @apply [image-rendering:pixelated];
+}
+
+.sprite-controls {
+  @apply grid gap-2 p-2.5 rounded bg-[var(--bg-dark)];
+  @apply grid-cols-[repeat(auto-fill,minmax(60px,1fr))] [box-shadow:var(--shadow-inset)];
+}
+
+.pokemon-list {
+  @apply rounded p-4 max-h-[400px] overflow-y-auto bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+}
+
+.pokemon-list-item {
+  @apply p-2 flex items-center gap-2 text-xs cursor-pointer;
+  @apply border-b-2 border-[var(--border-dark)];
+}
+
+.pokemon-list-item:last-child {
+  @apply border-b-0;
+}
+
+.pokemon-list-item.selected {
+  @apply text-white bg-[var(--border-dark)];
+}
+
+.pokemon-list-item:hover:not(.selected) {
+  @apply bg-[#303030];
+}
+
+.pokemon-icon {
+  @apply w-8 h-8 [image-rendering:pixelated];
+}
+
+.description-container {
+  @apply mt-4 p-2.5 rounded bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+}
+
+.description-box {
+  @apply p-2.5 rounded min-h-[60px] text-xs leading-normal bg-[var(--bg-screen)];
+}
+
+.pokemon-description {
+  @apply m-0 text-[var(--text-dark)];
+}
+
+.color-controls,
+.generation-select {
+  @apply mb-4 p-2 rounded bg-[var(--bg-dark)];
+  @apply [box-shadow:var(--shadow-inset)];
+}
+
+.color-controls label,
+.generation-select label {
+  @apply block text-[10px] font-bold mb-1 font-mono;
+}
+
+.generation-select select {
+  @apply w-24 p-1 text-[10px] rounded bg-[var(--bg-dark)] text-white border-2 border-[var(--border-dark)];
+  @apply appearance-none cursor-pointer font-mono;
+}
+
+.color-controls input[type="color"] {
+  @apply w-16 h-8 cursor-pointer p-0.5;
+  @apply [background:none] [border:2px_solid_var(--border-dark)] rounded;
+}
+
+.generation-select select option {
+  @apply bg-[var(--bg-dark)] text-white;
+}
+
+.pokemon-list-ul {
+  @apply list-none m-0 p-0;
+}
+
+@layer utilities {
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-[var(--bg-darker)];
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[var(--border-dark)] border-2 border-[var(--bg-darker)];
+  }
+}
