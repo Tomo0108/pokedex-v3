@@ -2,6 +2,8 @@ import { SpriteStyles } from '@/types/pokemon';
 
 const SPRITES_BASE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon';
 const POKEAPI_URL = process.env.NEXT_PUBLIC_POKEAPI_URL;
+// 画像が存在しない場合のフォールバック用のグレー画像URL
+const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
 export const spriteStyles: SpriteStyles = {
   gb: { 
@@ -40,33 +42,73 @@ export function getDefaultStyleForGeneration(generation: number): keyof typeof s
   return 'bw';
 }
 
+async function checkImageExists(url: string): Promise<boolean> {
+  try {
+    const response = await fetch(url, { method: 'HEAD' });
+    return response.ok;
+  } catch (error) {
+    return false;
+  }
+}
+
 export async function createSpriteUrl(id: number, style: keyof typeof spriteStyles | '', shiny: boolean): Promise<string> {
   const baseUrl = SPRITES_BASE_URL;
   const spriteStyle = spriteStyles[style as keyof typeof spriteStyles];
 
+  // デフォルトのスプライトURL
+  const defaultUrl = shiny ? 
+    `${baseUrl}/shiny/${id}.png` :
+    `${baseUrl}/${id}.png`;
+
   if (!spriteStyle || !style) {
-    return shiny ? 
-      `${baseUrl}/shiny/${id}.png` :
-      `${baseUrl}/${id}.png`;
+    // デフォルトスプライトが存在するか確認
+    if (await checkImageExists(defaultUrl)) {
+      return defaultUrl;
+    }
+    return FALLBACK_IMAGE_URL;
   }
 
   // アニメーション対応のBWスプライト
   if (style === 'bw') {
     const animatedUrl = `${baseUrl}${spriteStyle.path}/${shiny ? 'shiny/' : ''}${id}.gif`;
-    try {
-      const response = await fetch(animatedUrl);
-      if (response.ok) {
-        return animatedUrl;
-      }
-    } catch (error) {
-      console.warn(`Animated sprite not found for Pokemon #${id}, falling back to static`);
+    const staticUrl = `${baseUrl}/versions/generation-v/black-white/${shiny ? 'shiny/' : ''}${id}.png`;
+
+    // まずアニメーションGIFをチェック
+    if (await checkImageExists(animatedUrl)) {
+      return animatedUrl;
     }
-    // 静的なBWスプライトにフォールバック
-    return `${baseUrl}/versions/generation-v/black-white/${shiny ? 'shiny/' : ''}${id}.png`;
+
+    // 次に静的なBWスプライトをチェック
+    if (await checkImageExists(staticUrl)) {
+      return staticUrl;
+    }
+
+    // 最後にデフォルトスプライトをチェック
+    if (await checkImageExists(defaultUrl)) {
+      return defaultUrl;
+    }
+
+    // どの画像も存在しない場合はフォールバック画像を返す
+    console.warn(`No sprite found for Pokemon #${id}, using fallback image`);
+    return FALLBACK_IMAGE_URL;
   }
 
   // その他の世代のスプライト
-  return `${baseUrl}${spriteStyle.path}/${shiny ? 'shiny/' : ''}${id}.png`;
+  const generationUrl = `${baseUrl}${spriteStyle.path}/${shiny ? 'shiny/' : ''}${id}.png`;
+  
+  // まず世代別スプライトをチェック
+  if (await checkImageExists(generationUrl)) {
+    return generationUrl;
+  }
+  
+  // 次にデフォルトスプライトをチェック
+  if (await checkImageExists(defaultUrl)) {
+    return defaultUrl;
+  }
+
+  // どの画像も存在しない場合はフォールバック画像を返す
+  console.warn(`No sprite found for Pokemon #${id}, using fallback image`);
+  return FALLBACK_IMAGE_URL;
 }
 
 async function getLatestDescription(entries: any[], language: string) {
@@ -91,7 +133,7 @@ export async function fetchPokemonData(generation: number) {
     6: [650, 721],
     7: [722, 809],
     8: [810, 905],
-    9: [906, 1010],
+    9: [906, 1025],
   };
 
   const [start, end] = ranges[generation as keyof typeof ranges] || [1, 151];
@@ -104,41 +146,51 @@ export async function fetchPokemonData(generation: number) {
   const cacheKey = `/api/pokemon?gen=${generation}`;
 
   const pokemonData = await Promise.all(ids.map(async id => {
-    const [pokemonRes, speciesRes] = await Promise.all([
-      fetch(`${POKEAPI_URL}/pokemon/${id}`),
-      fetch(`${POKEAPI_URL}/pokemon-species/${id}`)
-    ]);
+    try {
+      const [pokemonRes, speciesRes] = await Promise.all([
+        fetch(`${POKEAPI_URL}/pokemon/${id}`),
+        fetch(`${POKEAPI_URL}/pokemon-species/${id}`)
+      ]);
 
-    const [pokemon, species] = await Promise.all([
-      pokemonRes.json(),
-      speciesRes.json()
-    ]);
-
-    const enDescription = await getLatestDescription(species.flavor_text_entries, 'en');
-    const jaDescription = await getLatestDescription(species.flavor_text_entries, 'ja');
-    const jaName = species.names.find((name: any) => name.language.name === 'ja')?.name || pokemon.name;
-
-    const style = getDefaultStyleForGeneration(generation);
-    const [spriteUrl, shinyUrl] = await Promise.all([
-      createSpriteUrl(pokemon.id, style, false),
-      createSpriteUrl(pokemon.id, style, true)
-    ]);
-
-    return {
-      id: pokemon.id,
-      name: pokemon.name,
-      japaneseName: jaName,
-      sprites: {
-        front_default: spriteUrl,
-        front_shiny: shinyUrl,
-      },
-      description: {
-        en: enDescription,
-        ja: jaDescription
+      if (!pokemonRes.ok || !speciesRes.ok) {
+        throw new Error(`Failed to fetch Pokemon data for #${id}`);
       }
-    };
+
+      const [pokemon, species] = await Promise.all([
+        pokemonRes.json(),
+        speciesRes.json()
+      ]);
+
+      const enDescription = await getLatestDescription(species.flavor_text_entries, 'en');
+      const jaDescription = await getLatestDescription(species.flavor_text_entries, 'ja');
+      const jaName = species.names.find((name: any) => name.language.name === 'ja')?.name || pokemon.name;
+
+      const style = getDefaultStyleForGeneration(generation);
+      const [spriteUrl, shinyUrl] = await Promise.all([
+        createSpriteUrl(pokemon.id, style, false),
+        createSpriteUrl(pokemon.id, style, true)
+      ]);
+
+      return {
+        id: pokemon.id,
+        name: pokemon.name,
+        japaneseName: jaName,
+        sprites: {
+          front_default: spriteUrl,
+          front_shiny: shinyUrl,
+        },
+        description: {
+          en: enDescription,
+          ja: jaDescription
+        }
+      };
+    } catch (error) {
+      console.error(`Error fetching Pokemon #${id}:`, error);
+      return null;
+    }
   }));
 
-  cache.put(cacheKey, new Response(JSON.stringify(pokemonData)));
-  return pokemonData;
+  const filteredPokemonData = pokemonData.filter(data => data !== null);
+  cache.put(cacheKey, new Response(JSON.stringify(filteredPokemonData)));
+  return filteredPokemonData;
 }
