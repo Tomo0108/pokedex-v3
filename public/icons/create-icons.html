@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Retro Pokedex Icon</title>
+</head>
+<body>
+    <canvas id="icon192" width="192" height="192"></canvas>
+    <canvas id="icon512" width="512" height="512"></canvas>
+    <script>
+        function createIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // 背景
+            ctx.fillStyle = '#8b0000';
+            ctx.fillRect(0, 0, size, size);
+            
+            // 上部の丸
+            ctx.beginPath();
+            ctx.fillStyle = '#9bbc0f';
+            ctx.arc(size/2, size/2, size/3, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // 枠線
+            ctx.strokeStyle = '#404040';
+            ctx.lineWidth = size/20;
+            ctx.stroke();
+            
+            // 中央の小さな丸
+            ctx.beginPath();
+            ctx.fillStyle = '#0f380f';
+            ctx.arc(size/2, size/2, size/8, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        createIcon(document.getElementById('icon192'), 192);
+        createIcon(document.getElementById('icon512'), 512);
+    </script>
+</body>
+</html>

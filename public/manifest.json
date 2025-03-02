@@ -1,0 +1,17 @@
+{
+  "name": "Retro Pokedex",
+  "short_name": "Pokedex",
+  "description": "A retro-styled Pokedex application",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#202020",
+  "theme_color": "#8b0000",
+  "icons": [
+    {
+      "src": "/icons/poke-doll.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
