@@ -164,10 +164,16 @@ export default function HomePage() {
   if (isLoading) {
     return (
       <main>
-        <div className="pokedex">
+      <div className="pokedex">
           <div className="pokedex-left">
             <div className="screen-container">
-              <div className="screen loading" />
+              <div className="screen loading">
+                <div className="loading-wrapper">
+                  <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
+                  <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
+                  <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
+                </div>
+              </div>
             </div>
           </div>
           <div className="pokedex-right">
