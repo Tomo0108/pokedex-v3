@@ -75,17 +75,17 @@
 
 .search-input {
   @apply h-[44px] px-3 py-2 text-sm bg-[var(--bg-dark)] text-white;
-  @apply border-2 border-[var(--border-dark)] rounded;
-  @apply absolute left-[-260px] top-[-1px] w-[250px];
+  @apply border-2 border-[var(--border-dark)] rounded-t;
+  @apply absolute left-full ml-2 min-w-[300px];
   @apply focus:outline-none focus:border-[var(--bg-screen)];
   @apply [box-shadow:var(--shadow-inset)];
   transition: all 0.2s ease-in-out;
 }
 
 .search-suggestions {
-  @apply absolute left-[-260px] w-[250px];
+  @apply absolute left-full ml-2 w-[300px];
   @apply top-[44px] max-h-[300px] overflow-y-auto;
-  @apply bg-[var(--bg-dark)] rounded;
+  @apply bg-[var(--bg-dark)] rounded-b;
   @apply border-2 border-t-0 border-[var(--border-dark)];
   z-index: 19;
 }
@@ -106,15 +106,13 @@
 }
 
 @media (max-width: 767px) {
-  .search-input {
+  .search-input,
+  .search-suggestions {
     @apply absolute top-full left-0 mt-2;
-    @apply w-[calc(100vw-2rem)] min-w-0;
-    @apply left-auto right-0;
+    @apply w-[calc(100vw-2rem)];
   }
   .search-suggestions {
-    @apply absolute top-[calc(100%+46px)] left-0;
-    @apply w-[calc(100vw-2rem)] min-w-0;
-    @apply left-auto right-0;
+    @apply mt-[calc(0.5rem+44px)];
   }
 }
 
@@ -127,11 +125,28 @@
   justify-content: center;
 }
 
-.search-icon {
-  @apply opacity-80;
-  filter: invert(1);
-  width: 20px;
-  height: 20px;
+.search-button .poke-ball-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.control-button.search-button.active .poke-ball-icon {
+  display: none;
+}
+
+.close-icon {
+  display: block;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  opacity: 0.9;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12'%3E%3Cpath fill='white' d='M2 2h2v2H2zM4 4h4v4H4zM8 8h2v2H8zM2 8h2v2H2zM8 2h2v2H8z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  image-rendering: pixelated;
+  margin: 0 auto;
 }
 
 .control-button,
