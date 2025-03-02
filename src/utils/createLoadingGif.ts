@@ -1,8 +1,14 @@
 import GIF from 'gif.js';
 
+let cachedGifUrl: string | null = null;
+
 export async function createLoadingGif(): Promise<string> {
   if (typeof window === 'undefined') {
     throw new Error('This function must be run in browser environment');
+  }
+
+  if (cachedGifUrl) {
+    return cachedGifUrl;
   }
 
   // GIFエンコーダーの設定
@@ -60,7 +66,8 @@ export async function createLoadingGif(): Promise<string> {
   // GIFの生成
   return new Promise<string>((resolve) => {
     gif.on('finished', blob => {
-      resolve(URL.createObjectURL(blob));
+      cachedGifUrl = URL.createObjectURL(blob);
+      resolve(cachedGifUrl);
     });
     gif.render();
   });

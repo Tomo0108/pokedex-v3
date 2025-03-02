@@ -162,24 +162,46 @@ export default function HomePage() {
     setScreenColor(color);
   };
 
-  const [loadingGif, setLoadingGif] = useState('');
+  const [loadingGif, setLoadingGif] = useState<string | null>(null);
+  const [loadingGifError, setLoadingGifError] = useState(false);
 
   useEffect(() => {
     const loadGif = async () => {
+      if (typeof window === 'undefined') return;
+
       try {
+        // 静的な代替画像を使用
+        const loadingImage = new Image();
+        loadingImage.src = '/icons/substitute.png';
+        await new Promise<void>((resolve) => {
+          loadingImage.onload = () => resolve();
+        });
+        
+        // GIF生成を試みる
         const gif = await createLoadingGif();
         setLoadingGif(gif);
       } catch (error) {
         console.error('Failed to create loading GIF:', error);
+        setLoadingGifError(true);
       }
     };
+
     loadGif();
   }, []);
 
   if (isLoading) {
     return (
       <div className="loading-screen">
-        <img src={loadingGif} alt="Loading" className="loading-gif" />
+        {loadingGif ? (
+          <img src={loadingGif} alt="Loading..." className="loading-gif" />
+        ) : (
+          <img 
+            src="/icons/substitute.png" 
+            alt="Loading..." 
+            className="loading-gif"
+            style={{ transform: loadingGifError ? 'none' : 'scale(0.5)' }}
+          />
+        )}
       </div>
     );
   }

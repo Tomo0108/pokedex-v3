@@ -195,7 +195,9 @@
 .loading-screen {
   @apply fixed inset-0 flex items-center justify-center;
   @apply bg-[var(--bg-screen)];
-  image-rendering: pixelated;
+  @apply [image-rendering:pixelated];
+  @apply [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
+  z-index: 9999;
 }
 
 .loading-screen::before {
@@ -215,6 +217,16 @@
   pointer-events: none;
   display: block;
   object-fit: contain;
+  @apply [image-rendering:pixelated];
+}
+
+@keyframes loading-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.loading-gif:not([src*="data:"]) {
+  animation: loading-bounce 1s ease-in-out infinite;
 }
 
 .pokemon-sprite {
