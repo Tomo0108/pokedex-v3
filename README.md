@@ -5,7 +5,7 @@
 
 ## 💡 インストール方法
 
-**アプリURL**
+**アプリのURL**
 https://pokedex-v3-dukt97iag-tomo0108s-projects.vercel.app/
 
 ### 📱 スマートフォンの場合
