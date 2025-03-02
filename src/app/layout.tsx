@@ -11,7 +11,11 @@ const dotGothic = DotGothic16({
 
 export const viewport = {
   width: 'device-width',
-  initialScale: 1
+  initialScale: 1,
+  viewportFit: 'cover',
+  userScalable: false,
+  minimumScale: 1,
+  maximumScale: 1
 };
 
 export const metadata: Metadata = {
@@ -26,6 +30,9 @@ export const metadata: Metadata = {
   viewport: {
     width: 'device-width',
     initialScale: 1,
+    viewportFit: 'cover',
+    userScalable: false,
+    minimumScale: 1,
     maximumScale: 1
   }
 };

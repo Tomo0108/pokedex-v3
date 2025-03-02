@@ -16,19 +16,21 @@
 
 @layer base {
   body {
-    @apply m-0 min-h-screen text-white;
+    @apply m-0 min-h-screen text-white overflow-hidden;
     @apply [image-rendering:pixelated] [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
   }
 }
 
 .pokedex-container {
-  @apply min-h-screen p-5 flex justify-center items-center;
+  @apply min-h-[100dvh] p-0 sm:p-5 flex justify-center items-stretch sm:items-center;
+  @apply fixed inset-0;
 }
 
 .pokedex {
-  @apply flex flex-col md:flex-row gap-2.5 max-w-[1000px] w-full p-4 rounded-lg;
+  @apply flex flex-col md:flex-row gap-2.5 w-full p-4 rounded-none sm:rounded-lg;
   @apply bg-[var(--pokedex-color)] [image-rendering:pixelated];
   @apply [box-shadow:var(--shadow-inset)];
+  @apply sm:max-w-[1000px];
 }
 
 .pokedex-left,
@@ -49,13 +51,15 @@
 }
 
 .control-group {
-  @apply flex gap-2;
+  @apply flex gap-3;
 }
 
 .control-button,
 .sprite-button {
-  @apply py-2 px-4 text-xs cursor-pointer text-white border-0;
+  @apply py-3 px-6 text-sm cursor-pointer text-white border-0;
   @apply bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+  @apply touch-manipulation select-none;
+  min-height: 44px;
 }
 
 .control-button:is(:active, .active),
@@ -85,17 +89,20 @@
 }
 
 .sprite-controls {
-  @apply grid gap-2 p-2.5 rounded bg-[var(--bg-dark)];
-  @apply grid-cols-[repeat(auto-fill,minmax(60px,1fr))] [box-shadow:var(--shadow-inset)];
+  @apply grid gap-3 p-3 rounded bg-[var(--bg-dark)];
+  @apply grid-cols-[repeat(auto-fill,minmax(80px,1fr))] [box-shadow:var(--shadow-inset)];
 }
 
 .pokemon-list {
-  @apply rounded p-4 max-h-[400px] overflow-y-auto bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+  @apply rounded p-4 overflow-y-auto bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+  height: calc(100dvh - 220px);
+  @apply md:max-h-[400px];
 }
 
 .pokemon-list-item {
-  @apply p-2 flex items-center gap-2 text-xs cursor-pointer;
+  @apply p-3 flex items-center gap-3 text-sm cursor-pointer;
   @apply border-b-2 border-[var(--border-dark)];
+  min-height: 44px;
 }
 
 .pokemon-list-item:last-child {
@@ -119,7 +126,7 @@
 }
 
 .description-box {
-  @apply p-2.5 rounded min-h-[60px] text-xs leading-normal;
+  @apply p-4 rounded min-h-[80px] text-sm leading-normal;
   @apply bg-[var(--bg-screen)] transition-colors duration-300;
 }
 
@@ -165,8 +172,9 @@
 }
 
 .generation-select select {
-  @apply w-24 p-1 text-[10px] rounded bg-[var(--bg-dark)] text-white border-2 border-[var(--border-dark)];
+  @apply w-32 p-2 text-sm rounded bg-[var(--bg-dark)] text-white border-2 border-[var(--border-dark)];
   @apply appearance-none cursor-pointer font-mono;
+  min-height: 44px;
 }
 
 .generation-select select option {
