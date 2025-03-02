@@ -5,6 +5,7 @@ import { Pokemon } from '@/types/pokemon';
 import { fetchPokemonData, spriteStyles, createSpriteUrl, getDefaultStyleForGeneration } from '@/utils/pokemon';
 import { prefetchAllGenerations } from '@/utils/cache';
 import { setStorageItem, getStorageItem } from '@/utils/storage';
+import { isPartialMatch } from '@/utils/kana';
 
 export default function HomePage() {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
@@ -52,14 +53,25 @@ export default function HomePage() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchVisible, setSearchVisible] = useState(false);
 
+  // 検索候補を生成
+  const searchResults = useMemo(() => {
+    if (!searchTerm || searchTerm.length < 3) return [];
+    
+    return allPokemonData.filter(pokemon => 
+      isPartialMatch(searchTerm, pokemon.name) || 
+      isPartialMatch(searchTerm, pokemon.japaneseName) ||
+      pokemon.id.toString().includes(searchTerm)
+    ).slice(0, 10);
+  }, [allPokemonData, searchTerm]);
+
+  // メインリストのフィルタリング
   const filteredPokemonData = useMemo(() => {
     const sourceData = searchVisible ? allPokemonData : pokemonData;
     if (!searchTerm) return sourceData;
-    const term = searchTerm.toLowerCase();
-    return sourceData.filter((pokemon: Pokemon) => 
-      pokemon.name.toLowerCase().includes(term) || 
-      pokemon.japaneseName.toLowerCase().includes(term) ||
-      pokemon.id.toString().includes(term)
+    return sourceData.filter(pokemon => 
+      isPartialMatch(searchTerm, pokemon.name) || 
+      isPartialMatch(searchTerm, pokemon.japaneseName) ||
+      pokemon.id.toString().includes(searchTerm)
     );
   }, [pokemonData, allPokemonData, searchTerm, searchVisible]);
 
@@ -193,28 +205,74 @@ export default function HomePage() {
                   }}
                   title={searchVisible ? "Clear search" : "Search"}
                 >
-                  {searchVisible && <span className="close-icon">✕</span>}
+                  {searchVisible ? (
+                    <span className="close-icon">✕</span>
+                  ) : (
+                    <img 
+                      src="/icons/poke-ball.png" 
+                      alt="Search"
+                      className="poke-ball-icon"
+                      width={24}
+                      height={24}
+                    />
+                  )}
                 </button>
                 {searchVisible && (
-                  <input
-                    type="text"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    onKeyDown={(e) => {
-                      if (e.key === 'Escape') {
-                        setSearchTerm('');
-                        setSearchVisible(false);
-                      }
-                    }}
-                    onBlur={() => {
-                      if (!searchTerm) {
-                        setSearchVisible(false);
-                      }
-                    }}
-                    placeholder="Search..."
-                    className="search-input"
-                    autoFocus
-                  />
+                  <>
+                    <input
+                      type="text"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Escape') {
+                          setSearchTerm('');
+                          setSearchVisible(false);
+                        }
+                      }}
+                      onBlur={() => {
+                        if (!searchTerm) {
+                          setSearchVisible(false);
+                        }
+                      }}
+                      placeholder="Search..."
+                      className="search-input"
+                      autoFocus
+                    />
+                    {searchResults.length > 0 && (
+                      <div className="search-suggestions">
+                        {searchResults.map(pokemon => (
+                          <div
+                            key={pokemon.id}
+                            className="search-suggestion-item"
+                            onClick={() => {
+                              setSelectedPokemon(pokemon);
+                              const newGeneration = Math.ceil(pokemon.id / 151);
+                              setGeneration(newGeneration);
+                              const defaultStyle = getDefaultStyleForGeneration(newGeneration);
+                              setSpriteStyle(defaultStyle);
+                              setStorageItem('pokedex-generation', newGeneration);
+                              setStorageItem('pokedex-sprite-style', defaultStyle);
+                              setSearchVisible(false);
+                              setSearchTerm('');
+                            }}
+                          >
+                            <img
+                              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${pokemon.id}.png`}
+                              alt={pokemon.name}
+                              className="pokemon-icon"
+                              onError={(e) => {
+                                e.currentTarget.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+                              }}
+                            />
+                            <span>
+                              #{pokemon.id.toString().padStart(4, '0')}{' '}
+                              {isJapanese ? pokemon.japaneseName : pokemon.name}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </>
                 )}
               </div>
             </div>

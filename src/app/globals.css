@@ -70,31 +70,70 @@
 .search-container {
   @apply relative flex items-center;
   position: relative;
-  z-index: 10;
+  z-index: 20;
 }
 
 .search-input {
   @apply h-[44px] px-3 py-2 text-sm bg-[var(--bg-dark)] text-white;
-  @apply border-2 border-[var(--border-dark)] rounded;
-  @apply absolute left-full ml-2 min-w-[200px];
+  @apply border-2 border-[var(--border-dark)] rounded-t;
+  @apply absolute left-full ml-2 min-w-[300px];
   @apply focus:outline-none focus:border-[var(--bg-screen)];
   @apply [box-shadow:var(--shadow-inset)];
   transition: all 0.2s ease-in-out;
 }
 
-.control-button.search-button {
-  @apply text-lg font-bold px-4;
-  min-width: 44px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Cpath fill='white' d='M3 2h4v1H3zM7 3h1v1H7zM2 3h1v4H2zM3 7h4v1H3zM7 6h1v1H7zM8 3h1v3H8zM12 8h1v1h-1zM13 9h1v1h-1zM11 7h1v1h-1zM10 6h1v1h-1zM9 7v4h1V7z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 24px;
-  image-rendering: pixelated;
-  opacity: 0.9;
+.search-suggestions {
+  @apply absolute left-full ml-2 w-[300px];
+  @apply top-[44px] max-h-[300px] overflow-y-auto;
+  @apply bg-[var(--bg-dark)] rounded-b;
+  @apply border-2 border-t-0 border-[var(--border-dark)];
+  z-index: 19;
 }
 
-.control-button.search-button.active {
-  background-image: none;
+.search-suggestion-item {
+  @apply flex items-center gap-2 px-3 py-2 cursor-pointer;
+  @apply text-sm text-white hover:bg-[var(--border-dark)];
+  @apply border-b border-[var(--border-dark)];
+  min-height: 44px;
+}
+
+.search-suggestion-item:last-child {
+  @apply border-b-0;
+}
+
+.search-suggestion-item.selected {
+  @apply bg-[var(--border-dark)];
+}
+
+@media (max-width: 767px) {
+  .search-input,
+  .search-suggestions {
+    @apply absolute top-full left-0 mt-2;
+    @apply w-[calc(100vw-2rem)];
+  }
+  .search-suggestions {
+    @apply mt-[calc(0.5rem+44px)];
+  }
+}
+
+.control-button.search-button {
+  @apply text-lg font-bold px-2;
+  min-width: 44px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-button .poke-ball-icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  image-rendering: pixelated;
+}
+
+.control-button.search-button.active .poke-ball-icon {
+  display: none;
 }
 
 .close-icon {
@@ -108,13 +147,6 @@
   background-position: center;
   image-rendering: pixelated;
   margin: 0 auto;
-}
-
-@media (max-width: 767px) {
-  .search-input {
-    @apply absolute top-full left-0 mt-2;
-    @apply w-[calc(100vw-2rem)];
-  }
 }
 
 .control-button,
