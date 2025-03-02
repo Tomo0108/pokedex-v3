@@ -161,14 +161,20 @@ export default function HomePage() {
     setScreenColor(color);
   };
 
+  const [loadingGif, setLoadingGif] = useState('');
+
+  useEffect(() => {
+    import('./utils/createLoadingGif').then(({ createLoadingGif }) => {
+      createLoadingGif().then(url => {
+        setLoadingGif(url);
+      });
+    });
+  }, []);
+
   if (isLoading) {
     return (
       <div className="loading-screen">
-        <div className="loading-wrapper">
-          <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
-          <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
-          <img src="/icons/substitute.png" alt="Loading" className="loading-substitute" />
-        </div>
+        <img src={loadingGif} alt="Loading" className="loading-gif" />
       </div>
     );
   }

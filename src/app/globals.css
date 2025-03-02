@@ -207,46 +207,11 @@
   background: rgba(0, 0, 0, 0.1);
 }
 
-@keyframes loadingAnimation {
-  0%, 100% { opacity: 1; }
-  33.33% { opacity: 0; }
-  66.66% { opacity: 0; }
-}
-
-@keyframes loadingAnimation2 {
-  0% { opacity: 0; }
-  33.33% { opacity: 1; }
-  66.66% { opacity: 0; }
-  100% { opacity: 0; }
-}
-
-@keyframes loadingAnimation3 {
-  0% { opacity: 0; }
-  33.33% { opacity: 0; }
-  66.66% { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-.loading-substitute {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 64px;
-  height: 64px;
+.loading-gif {
+  width: 256px;
+  height: 256px;
   image-rendering: pixelated;
-}
-
-.loading-substitute:nth-child(1) {
-  animation: loadingAnimation 3s infinite;
-}
-
-.loading-substitute:nth-child(2) {
-  animation: loadingAnimation2 3s infinite;
-}
-
-.loading-substitute:nth-child(3) {
-  animation: loadingAnimation3 3s infinite;
+  pointer-events: none;
 }
 
 .pokemon-sprite {
