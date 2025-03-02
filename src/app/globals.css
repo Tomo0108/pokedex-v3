@@ -54,8 +54,9 @@
 
 @media (min-width: 768px) {
   .pokedex-right {
-    height: calc(100dvh - 10rem);
-    max-height: 800px;
+    height: auto;
+    min-height: 600px;
+    max-height: 700px;
   }
 }
 
@@ -147,13 +148,20 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none;
+  box-shadow: none;
 }
 
 .search-button .poke-ball-icon {
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   display: block;
   image-rendering: pixelated;
+}
+
+.control-button.search-button.active {
+  background: none;
+  box-shadow: none;
 }
 
 .control-button.search-button.active .poke-ball-icon {
