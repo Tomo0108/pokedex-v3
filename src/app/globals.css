@@ -16,14 +16,15 @@
 
 @layer base {
   body {
-    @apply m-0 min-h-screen text-white overflow-hidden;
+    @apply m-0 min-h-screen text-white;
     @apply [image-rendering:pixelated] [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
   }
 }
 
 .pokedex-container {
-  @apply min-h-[100dvh] p-0 sm:p-5 flex justify-center items-stretch sm:items-center;
-  @apply fixed inset-0;
+  @apply min-h-[100dvh] w-full p-0 sm:p-5;
+  @apply flex justify-center items-start sm:items-center;
+  @apply overflow-y-auto overflow-x-hidden;
 }
 
 .pokedex {
@@ -31,6 +32,7 @@
   @apply bg-[var(--pokedex-color)] [image-rendering:pixelated];
   @apply [box-shadow:var(--shadow-inset)];
   @apply sm:max-w-[1000px];
+  @apply my-auto;
 }
 
 .pokedex-left,
@@ -95,8 +97,8 @@
 
 .pokemon-list {
   @apply rounded p-4 overflow-y-auto bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
-  height: calc(100dvh - 220px);
-  @apply md:max-h-[400px];
+  height: calc(100dvh - 300px);
+  @apply md:h-[400px];
 }
 
 .pokemon-list-item {
