@@ -75,6 +75,10 @@
   min-height: 44px;
 }
 
+.control-button.reload {
+  @apply text-lg font-bold px-4;
+}
+
 .control-button:is(:active, .active),
 .sprite-button:is(:active, .active) {
   @apply bg-[var(--border-dark)] [box-shadow:var(--shadow-inset-reverse)];

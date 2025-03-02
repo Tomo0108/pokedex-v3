@@ -163,10 +163,21 @@ export default function HomePage() {
                 {isJapanese ? 'JPN' : 'ENG'}
               </button>
               <button 
-                className="control-button" 
+                className="control-button reload" 
                 onClick={async () => {
                   setIsLoading(true);
                   try {
+                    // キャッシュをクリア
+                    const cache = await caches.open('pokemon-data');
+                    await cache.delete(`/api/pokemon?gen=${generation}`);
+
+                    // PWAのキャッシュも更新
+                    if ('serviceWorker' in navigator) {
+                      const registration = await navigator.serviceWorker.ready;
+                      await registration.update();
+                    }
+
+                    // データを再取得
                     const data = await fetchPokemonData(generation);
                     setPokemonData(data);
                     if (data.length > 0) {
@@ -178,7 +189,7 @@ export default function HomePage() {
                     setIsLoading(false);
                   }
                 }}
-                title="Reload cache"
+                title="Reload data and update cache"
               >
                 ↻
               </button>

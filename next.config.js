@@ -25,6 +25,18 @@ const withPWAConfig = {
           maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
         }
       }
+    },
+    {
+      urlPattern: /^https:\/\/pokeapi\.co\/api\/v2\/.*/i,
+      handler: 'NetworkFirst',
+      options: {
+        cacheName: 'pokemon-api',
+        networkTimeoutSeconds: 10,
+        expiration: {
+          maxEntries: 100,
+          maxAgeSeconds: 24 * 60 * 60 // 1 day
+        }
+      }
     }
   ]
 };
