@@ -15,25 +15,17 @@ export const viewport = {
   viewportFit: 'cover',
   userScalable: false,
   minimumScale: 1,
-  maximumScale: 1
+  maximumScale: 1,
+  themeColor: '#8b0000'
 };
 
 export const metadata: Metadata = {
   title: 'Retro Pokedex',
   description: 'A retro-styled Pokedex application',
   manifest: '/manifest.json',
-  themeColor: '#8b0000',
   icons: {
     icon: '/icons/poke-doll.png',
     apple: '/icons/poke-doll.png',
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    viewportFit: 'cover',
-    userScalable: false,
-    minimumScale: 1,
-    maximumScale: 1
   }
 };
 
