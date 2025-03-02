@@ -4,16 +4,34 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Pokemon } from '@/types/pokemon';
 import { fetchPokemonData, spriteStyles, createSpriteUrl, getDefaultStyleForGeneration } from '@/utils/pokemon';
 import { prefetchAllGenerations } from '@/utils/cache';
+import { setStorageItem, getStorageItem } from '@/utils/storage';
 
 export default function HomePage() {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
-  const [generation, setGeneration] = useState(1);
-  const [isJapanese, setIsJapanese] = useState(false);
-  const [isShiny, setIsShiny] = useState(false);
-  const [spriteStyle, setSpriteStyle] = useState<keyof typeof spriteStyles>('gb');
-  const [skinColor, setSkinColor] = useState('#8b0000');
-  const [screenColor, setScreenColor] = useState('#9bbc0f');
+  const [generation, setGeneration] = useState(() => 
+    parseInt(getStorageItem('pokedex-generation', '1'))
+  );
+  
+  const [isJapanese, setIsJapanese] = useState(() => 
+    getStorageItem('pokedex-language', 'false') === 'true'
+  );
+  
+  const [isShiny, setIsShiny] = useState(() => 
+    getStorageItem('pokedex-shiny', 'false') === 'true'
+  );
+  
+  const [spriteStyle, setSpriteStyle] = useState<keyof typeof spriteStyles>(() => 
+    getStorageItem('pokedex-sprite-style', 'gb') as keyof typeof spriteStyles
+  );
+  
+  const [skinColor, setSkinColor] = useState(() => 
+    getStorageItem('pokedex-skin-color', '#8b0000')
+  );
+  
+  const [screenColor, setScreenColor] = useState(() => 
+    getStorageItem('pokedex-screen-color', '#9bbc0f')
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [spriteUrl, setSpriteUrl] = useState<string | null>(null);
 
@@ -53,10 +71,31 @@ export default function HomePage() {
     initializeApp();
   }, []);
 
+  const updateLocalStorage = useCallback(() => {
+    setStorageItem('pokedex-generation', generation);
+    setStorageItem('pokedex-language', isJapanese);
+    setStorageItem('pokedex-shiny', isShiny);
+    setStorageItem('pokedex-sprite-style', spriteStyle);
+    setStorageItem('pokedex-skin-color', skinColor);
+    setStorageItem('pokedex-screen-color', screenColor);
+
+    // カスタムCSS変数も永続化
+    if (typeof window !== 'undefined') {
+      document.documentElement.style.setProperty('--pokedex-color', skinColor);
+      document.documentElement.style.setProperty('--bg-screen', screenColor);
+    }
+  }, [generation, isJapanese, isShiny, spriteStyle, skinColor, screenColor]);
+
+  useEffect(() => {
+    updateLocalStorage();
+  }, [updateLocalStorage]);
+
   const handleGenerationChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
     const gen = parseInt(e.target.value);
     setGeneration(gen);
-    setSpriteStyle(getDefaultStyleForGeneration(gen));
+    const defaultStyle = getDefaultStyleForGeneration(gen);
+    setSpriteStyle(defaultStyle);
+    setStorageItem('pokedex-sprite-style', defaultStyle);
     
     setIsLoading(true);
     try {
@@ -72,16 +111,22 @@ export default function HomePage() {
     }
   };
 
+  // 初期ロード時にカラー設定を適用
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      document.documentElement.style.setProperty('--pokedex-color', skinColor);
+      document.documentElement.style.setProperty('--bg-screen', screenColor);
+    }
+  }, []);
+
   const handleSkinColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const color = e.target.value;
     setSkinColor(color);
-    document.documentElement.style.setProperty('--pokedex-color', color);
   };
 
   const handleScreenColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const color = e.target.value;
     setScreenColor(color);
-    document.documentElement.style.setProperty('--bg-screen', color);
   };
 
   if (isLoading) {
@@ -119,7 +164,20 @@ export default function HomePage() {
               </button>
               <button 
                 className="control-button" 
-                onClick={() => fetchPokemonData(generation)}
+                onClick={async () => {
+                  setIsLoading(true);
+                  try {
+                    const data = await fetchPokemonData(generation);
+                    setPokemonData(data);
+                    if (data.length > 0) {
+                      setSelectedPokemon(data[0]);
+                    }
+                  } catch (error) {
+                    console.error('Failed to reload data:', error);
+                  } finally {
+                    setIsLoading(false);
+                  }
+                }}
                 title="Reload cache"
               >
                 ↻

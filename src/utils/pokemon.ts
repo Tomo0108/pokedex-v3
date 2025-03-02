@@ -111,16 +111,46 @@ export async function createSpriteUrl(id: number, style: keyof typeof spriteStyl
   return FALLBACK_IMAGE_URL;
 }
 
-async function getLatestDescription(entries: any[], language: string) {
-  const validEntries = entries
-    .filter(entry => entry.language.name === language && entry.version)
-    .sort((a, b) => {
-      const versionA = parseInt(a.version.url.split('/')[6]);
-      const versionB = parseInt(b.version.url.split('/')[6]);
-      return versionB - versionA;
+async function getLatestDescription(entries: any[], language: string, generation: number) {
+  // 9世代のバージョンID
+  const gen9VersionIds = [33, 34]; // scarlet: 33, violet: 34
+
+  const filterAndSortEntries = (entries: any[], lang: string) => 
+    entries
+      .filter(entry => entry.language.name === lang && entry.version)
+      .sort((a, b) => {
+        const versionA = parseInt(a.version.url.split('/')[6]);
+        const versionB = parseInt(b.version.url.split('/')[6]);
+        return versionB - versionA;
+      });
+
+  const validEntries = filterAndSortEntries(entries, language);
+  const englishEntries = filterAndSortEntries(entries, 'en');
+
+  // 9世代の場合は特別な処理
+  if (generation === 9) {
+    const gen9Entry = validEntries.find(entry => {
+      const versionId = parseInt(entry.version.url.split('/')[6]);
+      return gen9VersionIds.includes(versionId);
     });
 
-  return validEntries[0]?.flavor_text.replace(/[\n\f]/g, ' ') || '';
+    // 日本語の説明がない場合は英語の説明を使用
+    if (language === 'ja' && !gen9Entry) {
+      const englishGen9Entry = englishEntries.find(entry => {
+        const versionId = parseInt(entry.version.url.split('/')[6]);
+        return gen9VersionIds.includes(versionId);
+      });
+      if (englishGen9Entry) {
+        return englishGen9Entry.flavor_text.replace(/[\n\f]/g, ' ');
+      }
+    }
+
+    if (gen9Entry) {
+      return gen9Entry.flavor_text.replace(/[\n\f]/g, ' ');
+    }
+  }
+
+  return validEntries[0]?.flavor_text.replace(/[\n\f]/g, ' ') || englishEntries[0]?.flavor_text.replace(/[\n\f]/g, ' ') || '';
 }
 
 export async function fetchPokemonData(generation: number) {
@@ -161,8 +191,8 @@ export async function fetchPokemonData(generation: number) {
         speciesRes.json()
       ]);
 
-      const enDescription = await getLatestDescription(species.flavor_text_entries, 'en');
-      const jaDescription = await getLatestDescription(species.flavor_text_entries, 'ja');
+      const enDescription = await getLatestDescription(species.flavor_text_entries, 'en', generation);
+      const jaDescription = await getLatestDescription(species.flavor_text_entries, 'ja', generation);
       const jaName = species.names.find((name: any) => name.language.name === 'ja')?.name || pokemon.name;
 
       const style = getDefaultStyleForGeneration(generation);
