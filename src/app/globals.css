@@ -321,8 +321,30 @@
 }
 
 .sprite-controls {
-  @apply grid gap-3 p-3 rounded bg-[var(--bg-dark)];
-  @apply grid-cols-[repeat(auto-fill,minmax(80px,1fr))] [box-shadow:var(--shadow-inset)];
+  @apply flex gap-3 p-3 rounded bg-[var(--bg-dark)];
+  @apply overflow-x-auto overflow-y-hidden whitespace-nowrap;
+  @apply [box-shadow:var(--shadow-inset)];
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  padding-bottom: 12px;
+}
+
+.sprite-controls::-webkit-scrollbar {
+  height: 4px;
+}
+
+.sprite-controls::-webkit-scrollbar-track {
+  @apply bg-[var(--bg-darker)];
+}
+
+.sprite-controls::-webkit-scrollbar-thumb {
+  @apply bg-[var(--border-dark)] rounded;
+}
+
+.sprite-button {
+  @apply flex-none;
+  min-width: max-content;
+  padding: 0.75rem 1rem;
 }
 
 .pokemon-list {

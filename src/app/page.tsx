@@ -370,9 +370,9 @@ export default function HomePage() {
                   <button
                     key={style}
                     className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
-                    onClick={() => setSpriteStyle(style)}
+                    onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
                   >
-                    {style.toUpperCase()}
+                    {spriteStyles[style].displayName}
                   </button>
                 );
               })}

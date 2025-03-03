@@ -6,40 +6,87 @@ const POKEAPI_URL = process.env.NEXT_PUBLIC_POKEAPI_URL;
 const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
 export const spriteStyles: SpriteStyles = {
-  gb: { 
+  'red-blue': { 
     path: '/versions/generation-i/red-blue/transparent',
     gens: [1],
-    animated: false
+    animated: false,
+    displayName: '赤・青'
   },
-  crystal: { 
+  'yellow': {
+    path: '/versions/generation-i/yellow/transparent',
+    gens: [1],
+    animated: false,
+    displayName: 'ピカチュウ'
+  },
+  'gold': {
+    path: '/versions/generation-ii/gold/transparent',
+    gens: [2],
+    animated: false,
+    displayName: '金'
+  },
+  'silver': {
+    path: '/versions/generation-ii/silver/transparent',
+    gens: [2],
+    animated: false,
+    displayName: '銀'
+  },
+  'crystal': { 
     path: '/versions/generation-ii/crystal/transparent',
-    gens: [1, 2],
-    animated: false
+    gens: [2],
+    animated: false,
+    displayName: 'クリスタル'
   },
-  emerald: { 
+  'ruby-sapphire': {
+    path: '/versions/generation-iii/ruby-sapphire',
+    gens: [3],
+    animated: false,
+    displayName: 'ルビー・サファイア'
+  },
+  'emerald': { 
     path: '/versions/generation-iii/emerald',
-    gens: [1, 2, 3],
-    animated: false
+    gens: [3],
+    animated: false,
+    displayName: 'エメラルド'
   },
-  dp: { 
+  'firered-leafgreen': {
+    path: '/versions/generation-iii/firered-leafgreen',
+    gens: [3],
+    animated: false,
+    displayName: 'FR・LG'
+  },
+  'diamond-pearl': { 
     path: '/versions/generation-iv/diamond-pearl',
-    gens: [1, 2, 3, 4],
-    animated: false
+    gens: [4],
+    animated: false,
+    displayName: 'ダイヤモンド・パール'
   },
-  bw: { 
+  'platinum': {
+    path: '/versions/generation-iv/platinum',
+    gens: [4],
+    animated: false,
+    displayName: 'プラチナ'
+  },
+  'heartgold-soulsilver': {
+    path: '/versions/generation-iv/heartgold-soulsilver',
+    gens: [4],
+    animated: false,
+    displayName: 'HG・SS'
+  },
+  'black-white': {
     path: '/versions/generation-v/black-white/animated',
-    gens: [1, 2, 3, 4, 5],
-    animated: true
+    gens: [5],
+    animated: true,
+    displayName: 'ブラック・ホワイト'
   }
 };
 
 export function getDefaultStyleForGeneration(generation: number): keyof typeof spriteStyles {
-  if (generation <= 1) return 'gb';
+  if (generation === 1) return 'red-blue';
   if (generation === 2) return 'crystal';
   if (generation === 3) return 'emerald';
-  if (generation === 4) return 'dp';
-  if (generation <= 5) return 'bw';
-  return 'bw';
+  if (generation === 4) return 'diamond-pearl';
+  if (generation === 5) return 'black-white';
+  return 'black-white';
 }
 
 async function checkImageExists(url: string): Promise<boolean> {
