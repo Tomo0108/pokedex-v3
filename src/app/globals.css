@@ -327,27 +327,50 @@
 
 /* モバイル表示 */
 @media (max-width: 767px) {
+  /* スプライトコントロールのラッパー */
+  .sprite-controls-wrap {
+    @apply relative overflow-hidden;
+    @apply -mx-4;
+  }
+
+  /* スプライトコントロールのレイアウト */
   .sprite-controls {
     @apply flex overflow-x-auto overflow-y-hidden;
-    @apply relative;
+    @apply relative px-4 pb-6;
     scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scroll-padding: 0 1rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding-bottom: 24px;
   }
 
   .sprite-controls::-webkit-scrollbar {
     display: none;
   }
 
+  /* スプライトボタンのスタイル */
   .sprite-button {
     @apply flex-none justify-center items-center;
-    width: 100%;
-    min-width: 100%;
+    width: calc(100vw - 2rem);
+    min-width: calc(100vw - 2rem);
+    margin: 0 auto;
     scroll-snap-align: center;
+    scroll-snap-stop: always;
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .sprite-button.active {
+    @apply bg-[var(--border-dark)];
+    transform: scale(1.05);
   }
 
+  .sprite-button:active {
+    transform: scale(0.95);
+  }
+
+  /* スプライトコントロールのインジケーター */
   .sprite-dots {
     @apply absolute bottom-2 left-0 right-0;
     @apply flex justify-center items-center gap-2;
@@ -355,17 +378,16 @@
 
   .sprite-dot {
     @apply w-2 h-2 rounded-full bg-[var(--border-dark)];
-    transition: all 0.3s ease;
+    @apply transition-all duration-300 ease-in-out;
+    transform-origin: center;
   }
 
   .sprite-dot.active {
     @apply w-3 h-3 bg-[var(--bg-screen)];
+    transform: scale(1.25);
   }
 
-  .sprite-controls-wrap {
-    @apply relative;
-  }
-
+  /* スプライトコントロールのグラデーション */
   .sprite-controls-gradient {
     @apply absolute top-0 bottom-0 w-8 z-10 pointer-events-none;
     background: linear-gradient(90deg, var(--bg-dark) 0%, transparent 100%);

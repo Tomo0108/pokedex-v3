@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useCallback, useMemo } from 'react';
+import React, { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { Pokemon } from '@/types/pokemon';
 import { fetchPokemonData, spriteStyles, createSpriteUrl, getDefaultStyleForGeneration } from '@/utils/pokemon';
 import { prefetchAllGenerations } from '@/utils/cache';
@@ -43,6 +43,41 @@ export default function HomePage() {
   const [spriteStyle, setSpriteStyle] = useState<keyof typeof spriteStyles>(() => 
     getStorageItem('pokedex-sprite-style', 'red-blue') as keyof typeof spriteStyles
   );
+
+  const availableStyles = useMemo(() => 
+    Object.entries(spriteStyles)
+      .filter(([_, { gens }]) => gens.includes(generation))
+      .map(([style]) => style),
+    [generation]
+  );
+
+  const spriteControlsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!spriteControlsRef.current || window.innerWidth >= 768) return;
+
+    const container = spriteControlsRef.current;
+    let timeoutId: NodeJS.Timeout;
+
+    const handleScroll = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        const scrollLeft = container.scrollLeft;
+        const width = container.clientWidth;
+        const index = Math.round(scrollLeft / width);
+
+        if (availableStyles[index]) {
+          setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
+        }
+      }, 100);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => {
+      container.removeEventListener('scroll', handleScroll);
+      clearTimeout(timeoutId);
+    };
+  }, [availableStyles, setSpriteStyle]);
   
   const [skinColor, setSkinColor] = useState(() => 
     getStorageItem('pokedex-skin-color', '#8b0000')
@@ -366,7 +401,7 @@ export default function HomePage() {
             <div className="sprite-controls-wrap">
               <div className="sprite-controls-gradient" />
               <div className="sprite-controls-gradient right" />
-              <div className="sprite-controls">
+              <div className="sprite-controls" ref={spriteControlsRef}>
                 {Object.entries(spriteStyles).map(([style, { gens }]) => {
                   if (!gens.includes(generation)) return null;
                   return (
