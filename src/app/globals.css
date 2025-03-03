@@ -328,27 +328,52 @@
 /* モバイル表示 */
 @media (max-width: 767px) {
   .sprite-controls {
-    @apply flex overflow-x-auto overflow-y-hidden whitespace-nowrap;
+    @apply flex overflow-x-auto overflow-y-hidden;
+    @apply relative;
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
-    scroll-behavior: smooth;
-    padding-bottom: 12px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding-bottom: 24px;
   }
 
   .sprite-controls::-webkit-scrollbar {
-    height: 4px;
-  }
-
-  .sprite-controls::-webkit-scrollbar-track {
-    @apply bg-[var(--bg-darker)];
-  }
-
-  .sprite-controls::-webkit-scrollbar-thumb {
-    @apply bg-[var(--border-dark)] rounded;
+    display: none;
   }
 
   .sprite-button {
-    @apply flex-none;
-    min-width: max-content;
+    @apply flex-none justify-center items-center;
+    width: 100%;
+    min-width: 100%;
+    scroll-snap-align: center;
+  }
+
+  .sprite-dots {
+    @apply absolute bottom-2 left-0 right-0;
+    @apply flex justify-center items-center gap-2;
+  }
+
+  .sprite-dot {
+    @apply w-2 h-2 rounded-full bg-[var(--border-dark)];
+    transition: all 0.3s ease;
+  }
+
+  .sprite-dot.active {
+    @apply w-3 h-3 bg-[var(--bg-screen)];
+  }
+
+  .sprite-controls-wrap {
+    @apply relative;
+  }
+
+  .sprite-controls-gradient {
+    @apply absolute top-0 bottom-0 w-8 z-10 pointer-events-none;
+    background: linear-gradient(90deg, var(--bg-dark) 0%, transparent 100%);
+  }
+
+  .sprite-controls-gradient.right {
+    @apply right-0;
+    transform: rotate(180deg);
   }
 }
 

@@ -363,19 +363,34 @@ export default function HomePage() {
             </div>
           </div>
           {generation < 6 && (
-            <div className="sprite-controls">
-              {Object.entries(spriteStyles).map(([style, { gens }]) => {
-                if (!gens.includes(generation)) return null;
-                return (
-                  <button
-                    key={style}
-                    className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
-                    onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
-                  >
-                    {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
-                  </button>
-                );
-              })}
+            <div className="sprite-controls-wrap">
+              <div className="sprite-controls-gradient" />
+              <div className="sprite-controls-gradient right" />
+              <div className="sprite-controls">
+                {Object.entries(spriteStyles).map(([style, { gens }]) => {
+                  if (!gens.includes(generation)) return null;
+                  return (
+                    <button
+                      key={style}
+                      className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
+                      onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
+                    >
+                      {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
+                    </button>
+                  );
+                })}
+              </div>
+              <div className="sprite-dots">
+                {Object.entries(spriteStyles).map(([style, { gens }]) => {
+                  if (!gens.includes(generation)) return null;
+                  return (
+                    <div 
+                      key={style}
+                      className={`sprite-dot ${spriteStyle === style ? 'active' : ''}`}
+                    />
+                  );
+                })}
+              </div>
             </div>
           )}
           <div className="description-container">
