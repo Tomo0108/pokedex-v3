@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { DotGothic16 } from 'next/font/google';
+import { DotGothic16, Press_Start_2P } from 'next/font/google';
 import './globals.css';
 
 const dotGothic = DotGothic16({ 
@@ -7,6 +7,14 @@ const dotGothic = DotGothic16({
   subsets: ['latin'],
   preload: true,
   display: 'swap',
+});
+
+const pressStart2P = Press_Start_2P({ 
+  weight: '400',
+  subsets: ['latin'],
+  preload: true,
+  display: 'swap',
+  variable: '--font-press-start',
 });
 
 export const viewport = {
@@ -35,12 +43,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={dotGothic.className}>
+    <html lang="en" className={pressStart2P.variable}>
       <head>
         <link rel="icon" href="/icons/poke-doll.png" />
         <link rel="apple-touch-icon" href="/icons/poke-doll.png" />
       </head>
-      <body>
+      <body className={dotGothic.className}>
         <div className="pokedex-container">
           {children}
         </div>

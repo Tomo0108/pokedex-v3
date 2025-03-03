@@ -7,6 +7,7 @@ import { prefetchAllGenerations } from '@/utils/cache';
 import { setStorageItem, getStorageItem } from '@/utils/storage';
 import { isPartialMatch } from '@/utils/kana';
 import { createLoadingGif } from '@/utils/createLoadingGif';
+import styles from './press-start.module.css';
 
 export default function HomePage() {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
@@ -26,6 +27,7 @@ export default function HomePage() {
   useEffect(() => {
     loadAllPokemonData();
   }, [loadAllPokemonData]);
+  
   const [generation, setGeneration] = useState(() => 
     parseInt(getStorageItem('pokedex-generation', '1'))
   );
@@ -49,10 +51,11 @@ export default function HomePage() {
   const [screenColor, setScreenColor] = useState(() => 
     getStorageItem('pokedex-screen-color', '#9bbc0f')
   );
+  
   const [isLoading, setIsLoading] = useState(true);
   const [spriteUrl, setSpriteUrl] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
-  const [searchVisible, setSearchVisible] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
 
   // 検索候補を生成
   const searchResults = useMemo(() => {
@@ -67,14 +70,13 @@ export default function HomePage() {
 
   // メインリストのフィルタリング
   const filteredPokemonData = useMemo(() => {
-    const sourceData = searchVisible ? allPokemonData : pokemonData;
-    if (!searchTerm) return sourceData;
-    return sourceData.filter(pokemon => 
+    if (!searchTerm) return pokemonData;
+    return pokemonData.filter(pokemon => 
       isPartialMatch(searchTerm, pokemon.name) || 
       isPartialMatch(searchTerm, pokemon.japaneseName) ||
       pokemon.id.toString().includes(searchTerm)
     );
-  }, [pokemonData, allPokemonData, searchTerm, searchVisible]);
+  }, [pokemonData, searchTerm]);
 
   const loadSprite = useCallback(async () => {
     if (!selectedPokemon) return;
@@ -110,7 +112,7 @@ export default function HomePage() {
     };
 
     initializeApp();
-  }, []);
+  }, [generation]);
 
   const updateLocalStorage = useCallback(() => {
     setStorageItem('pokedex-generation', generation);
@@ -137,19 +139,6 @@ export default function HomePage() {
     const defaultStyle = getDefaultStyleForGeneration(gen);
     setSpriteStyle(defaultStyle);
     setStorageItem('pokedex-sprite-style', defaultStyle);
-    
-    setIsLoading(true);
-    try {
-      const data = await fetchPokemonData(gen);
-      setPokemonData(data);
-      if (data.length > 0) {
-        setSelectedPokemon(data[0]);
-      }
-    } catch (error) {
-      console.error('Failed to load generation:', error);
-    } finally {
-      setIsLoading(false);
-    }
   };
 
   const handleSkinColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -211,97 +200,156 @@ export default function HomePage() {
       <div className="pokedex">
         <div className="pokedex-left">
           <div className="top-controls">
-            <div className="control-group">
+            <div className="search-box">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search..."
+                className="search-input"
+              />
+              {searchTerm.length > 0 && searchResults.length > 0 && (
+                <div className="search-suggestions">
+                  {searchResults.map(pokemon => (
+                    <div
+                      key={pokemon.id}
+                      className="search-suggestion-item"
+                      onClick={() => {
+                        setSelectedPokemon(pokemon);
+                        setSearchTerm('');
+                      }}
+                    >
+                      <img
+                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${pokemon.id}.png`}
+                        alt={pokemon.name}
+                        className="pokemon-icon"
+                        onError={(e) => {
+                          e.currentTarget.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+                        }}
+                      />
+                      <span>
+                        #{pokemon.id.toString().padStart(4, '0')}{' '}
+                        {isJapanese ? pokemon.japaneseName : pokemon.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="menu-container">
               <button 
-                className="control-button" 
-                onClick={() => setIsJapanese(!isJapanese)}
+                className="menu-button-plain"
+                onClick={() => setMenuVisible(!menuVisible)}
               >
-                {isJapanese ? 'JPN' : 'ENG'}
+                <img 
+                  src="/icons/poke-ball.png" 
+                  alt="Menu"
+                  className="poke-ball-icon"
+                  width={32}
+                  height={32}
+                />
               </button>
-              <div className="search-container">
-                <button 
-                  className={`control-button search-button ${searchVisible ? 'active' : ''}`}
-                  onClick={() => {
-                    if (searchVisible) {
-                      setSearchTerm('');
-                    }
-                    setSearchVisible(!searchVisible);
-                  }}
-                  title={searchVisible ? "Clear search" : "Search"}
-                >
-                  <img 
-                    src="/icons/poke-ball.png" 
-                    alt="Search"
-                    className="poke-ball-icon"
-                    width={24}
-                    height={24}
-                  />
-                </button>
-                {searchVisible && (
-                  <>
-                    <input
-                      type="text"
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Escape') {
-                          setSearchTerm('');
-                          setSearchVisible(false);
-                        }
-                      }}
-                      onBlur={() => {
-                        if (!searchTerm) {
-                          setSearchVisible(false);
-                        }
-                      }}
-                      placeholder="Search..."
-                      className="search-input"
-                      autoFocus
-                    />
-                    {searchResults.length > 0 && (
-                      <div className="search-suggestions">
-                        {searchResults.map(pokemon => (
-                          <div
-                            key={pokemon.id}
-                            className="search-suggestion-item"
+              {menuVisible && (
+                <div className="retro-menu">
+                  <div className="retro-menu-section">
+                    <button 
+                      className="retro-menu-item" 
+                      onClick={() => setIsJapanese(!isJapanese)}
+                    >
+                      <span>LANGUAGE</span>
+                      <span>{isJapanese ? 'JPN' : 'ENG'}</span>
+                    </button>
+                    <button 
+                      className="retro-menu-item" 
+                      onClick={() => setIsShiny(!isShiny)}
+                    >
+                      <span>SPRITE</span>
+                      <span>{isShiny ? 'SHINY' : 'NORMAL'}</span>
+                    </button>
+                  </div>
+                  <div className="retro-menu-section">
+                    <div className="retro-menu-header">COLOR</div>
+                    <div className="retro-menu-content">
+                      <div className="color-control-items">
+                        <div className="color-control-item">
+                          <span>SKIN</span>
+                          <input
+                            type="color"
+                            id="skin-color"
+                            value={skinColor}
+                            onChange={handleSkinColorChange}
+                          />
+                        </div>
+                        <div className="color-control-item">
+                          <span>SCREEN</span>
+                          <input
+                            type="color"
+                            id="screen-color"
+                            value={screenColor}
+                            onChange={handleScreenColorChange}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="retro-menu-section">
+                    <div className="retro-menu-header">GENERATION</div>
+                    <div className="retro-menu-content">
+                      <div className="generation-grid">
+                        {[
+                          { gen: 1, starters: [1, 4, 7] },
+                          { gen: 2, starters: [152, 155, 158] },
+                          { gen: 3, starters: [252, 255, 258] },
+                          { gen: 4, starters: [387, 390, 393] },
+                          { gen: 5, starters: [495, 498, 501] },
+                          { gen: 6, starters: [650, 653, 656] },
+                          { gen: 7, starters: [722, 725, 728] },
+                          { gen: 8, starters: [810, 813, 816] },
+                          { gen: 9, starters: [906, 909, 912] },
+                        ].map(({ gen, starters }) => (
+                          <button
+                            key={gen}
+                            className={`generation-button ${generation === gen ? 'active' : ''}`}
                             onClick={() => {
-                              setSelectedPokemon(pokemon);
-                              const newGeneration = Math.ceil(pokemon.id / 151);
-                              setGeneration(newGeneration);
-                              const defaultStyle = getDefaultStyleForGeneration(newGeneration);
+                              const defaultStyle = getDefaultStyleForGeneration(gen);
+                              setGeneration(gen);
                               setSpriteStyle(defaultStyle);
-                              setStorageItem('pokedex-generation', newGeneration);
+                              setStorageItem('pokedex-generation', gen);
                               setStorageItem('pokedex-sprite-style', defaultStyle);
-                              setSearchVisible(false);
-                              setSearchTerm('');
+                              setMenuVisible(false);
                             }}
                           >
-                            <img
-                              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${pokemon.id}.png`}
-                              alt={pokemon.name}
-                              className="pokemon-icon"
-                              onError={(e) => {
-                                e.currentTarget.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
-                              }}
-                            />
-                            <span>
-                              #{pokemon.id.toString().padStart(4, '0')}{' '}
-                              {isJapanese ? pokemon.japaneseName : pokemon.name}
-                            </span>
-                          </div>
+                            <span className={`generation-number ${styles.pressStart}`}>{
+                              gen === 1 ? 'Ⅰ' :
+                              gen === 2 ? 'Ⅱ' :
+                              gen === 3 ? 'Ⅲ' :
+                              gen === 4 ? 'Ⅳ' :
+                              gen === 5 ? 'Ⅴ' :
+                              gen === 6 ? 'Ⅵ' :
+                              gen === 7 ? 'Ⅶ' :
+                              gen === 8 ? 'Ⅷ' : 'Ⅸ'
+                            }</span>
+                            <div className="starter-icons">
+                              {starters.map(id => (
+                                <img
+                                  key={id}
+                                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${id}.png`}
+                                  alt={`Starter ${id}`}
+                                  className="starter-icon"
+                                  onError={(e) => {
+                                    e.currentTarget.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+                                  }}
+                                />
+                              ))}
+                            </div>
+                          </button>
                         ))}
                       </div>
-                    )}
-                  </>
-                )}
-              </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
-            <button 
-              className="control-button" 
-              onClick={() => setIsShiny(!isShiny)}
-            >
-              {isShiny ? 'SHINY' : 'NORMAL'}
-            </button>
           </div>
           <div className="screen-container">
             <div className="screen">
@@ -347,85 +395,15 @@ export default function HomePage() {
           </div>
         </div>
         <div className="pokedex-right">
-          <div className="color-controls">
-            <label>COLOR</label>
-            <div className="color-control-items">
-              <div className="color-control-item">
-                <span>SKIN</span>
-                <input
-                  type="color"
-                  id="skin-color"
-                  value={skinColor}
-                  onChange={handleSkinColorChange}
-                />
-              </div>
-              <div className="color-control-item">
-                <span>SCREEN</span>
-                <input
-                  type="color"
-                  id="screen-color"
-                  value={screenColor}
-                  onChange={handleScreenColorChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="generation-select">
-            <label htmlFor="generation">GENERATION</label>
-            <select
-              id="generation"
-              value={generation}
-              onChange={handleGenerationChange}
-            >
-              <option value="1">Ⅰ</option>
-              <option value="2">Ⅱ</option>
-              <option value="3">Ⅲ</option>
-              <option value="4">Ⅳ</option>
-              <option value="5">Ⅴ</option>
-              <option value="6">Ⅵ</option>
-              <option value="7">Ⅶ</option>
-              <option value="8">Ⅷ</option>
-              <option value="9">Ⅸ</option>
-            </select>
-          </div>
           <div className="pokemon-list">
             <ul className="pokemon-list-ul">
               {filteredPokemonData.map(pokemon => (
                 <li
                   key={pokemon.id}
-  className={`pokemon-list-item ${
-    selectedPokemon?.id === pokemon.id ? 'selected' : ''
-  }`}
-  onClick={() => {
-    setSelectedPokemon(pokemon);
-    if (searchVisible) {
-      // 検索結果から選択した場合、該当するポケモンの世代に切り替える
-      const pokemonRanges: Record<number, [number, number]> = {
-        1: [1, 151],
-        2: [152, 251],
-        3: [252, 386],
-        4: [387, 493],
-        5: [494, 649],
-        6: [650, 721],
-        7: [722, 809],
-        8: [810, 905],
-        9: [906, 1025],
-      };
-
-      const newGeneration = parseInt(
-        Object.entries(pokemonRanges).find(([_, [start, end]]) => 
-          pokemon.id >= start && pokemon.id <= end
-        )?.[0] || '1'
-      );
-      setGeneration(newGeneration);
-      const defaultStyle = getDefaultStyleForGeneration(newGeneration);
-      setSpriteStyle(defaultStyle);
-      setStorageItem('pokedex-generation', newGeneration);
-      setStorageItem('pokedex-sprite-style', defaultStyle);
-      setSearchVisible(false);
-      setSearchTerm('');
-    }
-  }}
+                  className={`pokemon-list-item ${
+                    selectedPokemon?.id === pokemon.id ? 'selected' : ''
+                  }`}
+                  onClick={() => setSelectedPokemon(pokemon)}
                 >
                   <img
                     src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${pokemon.id}.png`}

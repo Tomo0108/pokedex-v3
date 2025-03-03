@@ -1,0 +1,7 @@
+.pressStart {
+  font-family: var(--font-press-start);
+  font-weight: normal;
+  font-size: 0.875em;
+  letter-spacing: 0;
+  transform: translateY(1px);
+}
