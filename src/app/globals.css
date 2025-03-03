@@ -331,18 +331,26 @@
   .sprite-controls-wrap {
     @apply relative overflow-hidden;
     @apply -mx-4;
+    background: var(--bg-dark);
+  }
+
+  /* スプライトコントロールのコンテナ */
+  .sprite-controls-inner {
+    @apply relative overflow-hidden px-4;
   }
 
   /* スプライトコントロールのレイアウト */
   .sprite-controls {
     @apply flex overflow-x-auto overflow-y-hidden;
-    @apply relative px-4 pb-6;
+    @apply relative pb-6;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
-    scroll-padding: 0 1rem;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    width: 100vw;
+    margin: 0 -1rem;
+    padding: 0 1rem;
   }
 
   .sprite-controls::-webkit-scrollbar {
@@ -353,12 +361,14 @@
   .sprite-button {
     @apply flex-none justify-center items-center;
     width: calc(100vw - 2rem);
-    min-width: calc(100vw - 2rem);
-    margin: 0 auto;
+    flex: 0 0 calc(100vw - 2rem);
+    height: auto;
+    margin: 0;
+    padding: 0.75rem;
     scroll-snap-align: center;
-    scroll-snap-stop: always;
+    scroll-snap-stop: normal;
     transform-origin: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
   
   .sprite-button.active {

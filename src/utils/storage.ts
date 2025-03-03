@@ -9,5 +9,6 @@ export const setStorageItem = (key: string, value: string | number | boolean): v
 
 export const getStorageItem = (key: string, defaultValue: string): string => {
   if (typeof window === 'undefined') return defaultValue;
-  return localStorage.getItem(key) || defaultValue;
+  const value = localStorage.getItem(key);
+  return value !== null ? value : defaultValue;
 };

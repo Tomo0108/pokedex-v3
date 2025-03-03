@@ -28,15 +28,21 @@ export default function HomePage() {
     loadAllPokemonData();
   }, [loadAllPokemonData]);
   
-  const [generation, setGeneration] = useState(() => 
-    parseInt(getStorageItem('pokedex-generation', '1'))
-  );
+  const getStringFromStorage = (key: string, defaultValue: string): string => {
+    const stored = getStorageItem(key, defaultValue);
+    return stored !== null && stored !== undefined ? String(stored) : defaultValue;
+  };
+
+  const [generation, setGeneration] = useState<number>(() => {
+    const stored = getStringFromStorage('pokedex-generation', '1');
+    return parseInt(stored, 10) || 1;
+  });
   
-  const [isJapanese, setIsJapanese] = useState(() => 
+  const [isJapanese, setIsJapanese] = useState<boolean>(() => 
     getStorageItem('pokedex-language', 'false') === 'true'
   );
   
-  const [isShiny, setIsShiny] = useState(() => 
+  const [isShiny, setIsShiny] = useState<boolean>(() => 
     getStorageItem('pokedex-shiny', 'false') === 'true'
   );
   
@@ -57,27 +63,44 @@ export default function HomePage() {
     if (!spriteControlsRef.current || window.innerWidth >= 768) return;
 
     const container = spriteControlsRef.current;
-    let timeoutId: NodeJS.Timeout;
+    let rafId: number;
+    let lastScrollLeft = container.scrollLeft;
 
     const handleScroll = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        const scrollLeft = container.scrollLeft;
-        const width = container.clientWidth;
-        const index = Math.round(scrollLeft / width);
+      if (rafId) return;
 
-        if (availableStyles[index]) {
-          setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
+      rafId = requestAnimationFrame(() => {
+        const currentScrollLeft = container.scrollLeft;
+        if (Math.abs(currentScrollLeft - lastScrollLeft) > 10) {
+          const width = container.clientWidth;
+          const index = Math.round(currentScrollLeft / width);
+
+          if (availableStyles[index]) {
+            setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
+            lastScrollLeft = currentScrollLeft;
+          }
         }
-      }, 100);
+        rafId = 0;
+      });
     };
 
-    container.addEventListener('scroll', handleScroll);
+    container.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       container.removeEventListener('scroll', handleScroll);
-      clearTimeout(timeoutId);
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+      }
     };
   }, [availableStyles, setSpriteStyle]);
+
+  // 世代変更時にスプライトスタイルを初期位置にスクロール
+  useEffect(() => {
+    if (!spriteControlsRef.current || window.innerWidth >= 768) return;
+    const index = availableStyles.indexOf(spriteStyle);
+    if (index >= 0) {
+      spriteControlsRef.current.scrollLeft = index * spriteControlsRef.current.clientWidth;
+    }
+  }, [generation, spriteStyle, availableStyles]);
   
   const [skinColor, setSkinColor] = useState(() => 
     getStorageItem('pokedex-skin-color', '#8b0000')
@@ -149,13 +172,17 @@ export default function HomePage() {
     initializeApp();
   }, [generation]);
 
+  const safeSetStorageItem = useCallback((key: string, value: string | number | boolean) => {
+    setStorageItem(key, value.toString());
+  }, []);
+
   const updateLocalStorage = useCallback(() => {
-    setStorageItem('pokedex-generation', generation);
-    setStorageItem('pokedex-language', isJapanese);
-    setStorageItem('pokedex-shiny', isShiny);
-    setStorageItem('pokedex-sprite-style', spriteStyle);
-    setStorageItem('pokedex-skin-color', skinColor);
-    setStorageItem('pokedex-screen-color', screenColor);
+    safeSetStorageItem('pokedex-generation', generation);
+    safeSetStorageItem('pokedex-language', isJapanese);
+    safeSetStorageItem('pokedex-shiny', isShiny);
+    safeSetStorageItem('pokedex-sprite-style', spriteStyle);
+    safeSetStorageItem('pokedex-skin-color', skinColor);
+    safeSetStorageItem('pokedex-screen-color', screenColor);
 
     // カスタムCSS変数も永続化
     if (typeof window !== 'undefined') {
@@ -169,11 +196,11 @@ export default function HomePage() {
   }, [updateLocalStorage]);
 
   const handleGenerationChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const gen = parseInt(e.target.value);
+    const gen = parseInt(e.target.value, 10);
     setGeneration(gen);
     const defaultStyle = getDefaultStyleForGeneration(gen);
     setSpriteStyle(defaultStyle);
-    setStorageItem('pokedex-sprite-style', defaultStyle);
+    safeSetStorageItem('pokedex-sprite-style', defaultStyle);
   };
 
   const handleSkinColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -349,8 +376,8 @@ export default function HomePage() {
                               const defaultStyle = getDefaultStyleForGeneration(gen);
                               setGeneration(gen);
                               setSpriteStyle(defaultStyle);
-                              setStorageItem('pokedex-generation', gen);
-                              setStorageItem('pokedex-sprite-style', defaultStyle);
+                              safeSetStorageItem('pokedex-generation', gen);
+                              safeSetStorageItem('pokedex-sprite-style', defaultStyle);
                               setMenuVisible(false);
                             }}
                           >
@@ -399,32 +426,34 @@ export default function HomePage() {
           </div>
           {generation < 6 && (
             <div className="sprite-controls-wrap">
-              <div className="sprite-controls-gradient" />
-              <div className="sprite-controls-gradient right" />
-              <div className="sprite-controls" ref={spriteControlsRef}>
-                {Object.entries(spriteStyles).map(([style, { gens }]) => {
-                  if (!gens.includes(generation)) return null;
-                  return (
-                    <button
-                      key={style}
-                      className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
-                      onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
-                    >
-                      {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
-                    </button>
-                  );
-                })}
-              </div>
-              <div className="sprite-dots">
-                {Object.entries(spriteStyles).map(([style, { gens }]) => {
-                  if (!gens.includes(generation)) return null;
-                  return (
-                    <div 
-                      key={style}
-                      className={`sprite-dot ${spriteStyle === style ? 'active' : ''}`}
-                    />
-                  );
-                })}
+              <div className="sprite-controls-inner">
+                <div className="sprite-controls-gradient" />
+                <div className="sprite-controls-gradient right" />
+                <div className="sprite-controls" ref={spriteControlsRef}>
+                  {Object.entries(spriteStyles).map(([style, { gens }]) => {
+                    if (!gens.includes(generation)) return null;
+                    return (
+                      <button
+                        key={style}
+                        className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
+                        onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
+                      >
+                        {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
+                      </button>
+                    );
+                  })}
+                </div>
+                <div className="sprite-dots">
+                  {Object.entries(spriteStyles).map(([style, { gens }]) => {
+                    if (!gens.includes(generation)) return null;
+                    return (
+                      <div 
+                        key={style}
+                        className={`sprite-dot ${spriteStyle === style ? 'active' : ''}`}
+                      />
+                    );
+                  })}
+                </div>
               </div>
             </div>
           )}
