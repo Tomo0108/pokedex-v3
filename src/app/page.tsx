@@ -41,7 +41,7 @@ export default function HomePage() {
   );
   
   const [spriteStyle, setSpriteStyle] = useState<keyof typeof spriteStyles>(() => 
-    getStorageItem('pokedex-sprite-style', 'gb') as keyof typeof spriteStyles
+    getStorageItem('pokedex-sprite-style', 'red-blue') as keyof typeof spriteStyles
   );
   
   const [skinColor, setSkinColor] = useState(() => 

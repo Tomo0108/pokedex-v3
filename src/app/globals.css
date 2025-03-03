@@ -321,30 +321,52 @@
 }
 
 .sprite-controls {
-  @apply flex gap-3 p-3 rounded bg-[var(--bg-dark)];
-  @apply overflow-x-auto overflow-y-hidden whitespace-nowrap;
+  @apply gap-3 p-3 rounded bg-[var(--bg-dark)];
   @apply [box-shadow:var(--shadow-inset)];
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-  padding-bottom: 12px;
 }
 
-.sprite-controls::-webkit-scrollbar {
-  height: 4px;
+/* モバイル表示 */
+@media (max-width: 767px) {
+  .sprite-controls {
+    @apply flex overflow-x-auto overflow-y-hidden whitespace-nowrap;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    padding-bottom: 12px;
+  }
+
+  .sprite-controls::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .sprite-controls::-webkit-scrollbar-track {
+    @apply bg-[var(--bg-darker)];
+  }
+
+  .sprite-controls::-webkit-scrollbar-thumb {
+    @apply bg-[var(--border-dark)] rounded;
+  }
+
+  .sprite-button {
+    @apply flex-none;
+    min-width: max-content;
+  }
 }
 
-.sprite-controls::-webkit-scrollbar-track {
-  @apply bg-[var(--bg-darker)];
-}
+/* デスクトップ表示 */
+@media (min-width: 768px) {
+  .sprite-controls {
+    @apply grid gap-3;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
 
-.sprite-controls::-webkit-scrollbar-thumb {
-  @apply bg-[var(--border-dark)] rounded;
+  .sprite-button {
+    @apply w-full;
+    min-width: 0;
+  }
 }
 
 .sprite-button {
-  @apply flex-none;
-  min-width: max-content;
-  padding: 0.75rem 1rem;
+  @apply px-3 py-2 text-sm;
 }
 
 .pokemon-list {

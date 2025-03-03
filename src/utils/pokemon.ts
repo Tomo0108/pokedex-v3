@@ -73,7 +73,7 @@ export const spriteStyles: SpriteStyles = {
     displayName: { ja: 'HG・SS', en: 'HG-SS' }
   },
   'black-white': {
-    path: '/versions/generation-v/black-white/animated',
+    path: '/versions/generation-v/black-white/animated/',
     gens: [1, 2, 3, 4, 5],
     animated: true,
     displayName: { ja: 'ブラック・ホワイト', en: 'Black-White' }
@@ -115,8 +115,8 @@ export async function createSpriteUrl(id: number, style: keyof typeof spriteStyl
     return FALLBACK_IMAGE_URL;
   }
 
-  // アニメーション対応のBWスプライト
-  if (style === 'bw') {
+  // アニメーション対応のブラック・ホワイトスプライト
+  if (style === 'black-white') {
     const animatedUrl = `${baseUrl}${spriteStyle.path}/${shiny ? 'shiny/' : ''}${id}.gif`;
     const staticUrl = `${baseUrl}/versions/generation-v/black-white/${shiny ? 'shiny/' : ''}${id}.png`;
 
