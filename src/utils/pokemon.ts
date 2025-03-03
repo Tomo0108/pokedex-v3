@@ -10,73 +10,73 @@ export const spriteStyles: SpriteStyles = {
     path: '/versions/generation-i/red-blue/transparent',
     gens: [1],
     animated: false,
-    displayName: '赤・青'
+    displayName: { ja: '赤・青', en: 'Red-Blue' }
   },
   'yellow': {
     path: '/versions/generation-i/yellow/transparent',
     gens: [1],
     animated: false,
-    displayName: 'ピカチュウ'
+    displayName: { ja: 'ピカチュウ', en: 'Yellow' }
   },
   'gold': {
     path: '/versions/generation-ii/gold/transparent',
-    gens: [2],
+    gens: [1, 2],
     animated: false,
-    displayName: '金'
+    displayName: { ja: '金', en: 'Gold' }
   },
   'silver': {
     path: '/versions/generation-ii/silver/transparent',
-    gens: [2],
+    gens: [1, 2],
     animated: false,
-    displayName: '銀'
+    displayName: { ja: '銀', en: 'Silver' }
   },
   'crystal': { 
     path: '/versions/generation-ii/crystal/transparent',
-    gens: [2],
+    gens: [1, 2],
     animated: false,
-    displayName: 'クリスタル'
+    displayName: { ja: 'クリスタル', en: 'Crystal' }
   },
   'ruby-sapphire': {
     path: '/versions/generation-iii/ruby-sapphire',
-    gens: [3],
+    gens: [1, 2, 3],
     animated: false,
-    displayName: 'ルビー・サファイア'
+    displayName: { ja: 'ルビー・サファイア', en: 'Ruby-Sapphire' }
   },
   'emerald': { 
     path: '/versions/generation-iii/emerald',
-    gens: [3],
+    gens: [1, 2, 3],
     animated: false,
-    displayName: 'エメラルド'
+    displayName: { ja: 'エメラルド', en: 'Emerald' }
   },
   'firered-leafgreen': {
     path: '/versions/generation-iii/firered-leafgreen',
-    gens: [3],
+    gens: [1, 2, 3],
     animated: false,
-    displayName: 'FR・LG'
+    displayName: { ja: 'FR・LG', en: 'FR-LG' }
   },
   'diamond-pearl': { 
     path: '/versions/generation-iv/diamond-pearl',
-    gens: [4],
+    gens: [1, 2, 3, 4],
     animated: false,
-    displayName: 'ダイヤモンド・パール'
+    displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
   },
   'platinum': {
     path: '/versions/generation-iv/platinum',
-    gens: [4],
+    gens: [1, 2, 3, 4],
     animated: false,
-    displayName: 'プラチナ'
+    displayName: { ja: 'プラチナ', en: 'Platinum' }
   },
   'heartgold-soulsilver': {
     path: '/versions/generation-iv/heartgold-soulsilver',
-    gens: [4],
+    gens: [1, 2, 3, 4],
     animated: false,
-    displayName: 'HG・SS'
+    displayName: { ja: 'HG・SS', en: 'HG-SS' }
   },
   'black-white': {
     path: '/versions/generation-v/black-white/animated',
-    gens: [5],
+    gens: [1, 2, 3, 4, 5],
     animated: true,
-    displayName: 'ブラック・ホワイト'
+    displayName: { ja: 'ブラック・ホワイト', en: 'Black-White' }
   }
 };
 

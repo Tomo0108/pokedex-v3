@@ -17,7 +17,10 @@ export interface SpriteStyle {
   gens: number[];
   shiny?: boolean;
   animated?: boolean;
-  displayName: string;
+  displayName: {
+    ja: string;
+    en: string;
+  };
 }
 
 export interface SpriteStyles {

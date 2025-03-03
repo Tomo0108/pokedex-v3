@@ -372,7 +372,7 @@ export default function HomePage() {
                     className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
                     onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
                   >
-                    {spriteStyles[style].displayName}
+                    {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
                   </button>
                 );
               })}
