@@ -39,6 +39,17 @@ export default function HomePage() {
   const [showSwipeHint, setShowSwipeHint] = useState(true);
 
   useEffect(() => {
+    // モバイルブラウザでの100vhの問題を解決するための関数
+    const setAppHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+    };
+
+    // 初期設定と画面回転やリサイズ時に高さを更新
+    setAppHeight();
+    window.addEventListener('resize', setAppHeight);
+    window.addEventListener('orientationchange', setAppHeight);
+
     const checkIfMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -48,6 +59,8 @@ export default function HomePage() {
     
     return () => {
       window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener('resize', setAppHeight);
+      window.removeEventListener('orientationchange', setAppHeight);
     };
   }, []);
 
@@ -141,6 +154,14 @@ export default function HomePage() {
       const x = e.touches[0].pageX;
       const walk = (x - startX) * 1.5;
       container.scrollLeft = startScrollLeft - walk;
+      
+      // スクロール位置に基づいてスプライトスタイルを更新
+      const width = container.clientWidth;
+      const index = Math.round(container.scrollLeft / width);
+      if (availableStyles[index] && availableStyles[index] !== spriteStyle) {
+        setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
+      }
+      
       // タッチ移動中はデフォルトのスクロール動作を防止
       e.preventDefault();
     };
@@ -329,6 +350,36 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     };
   }, [menuVisible, closeMenu]);
 
+  // 9世代のアイコンを通常のドットイラストと同じものを使用
+  const getGenerationStarters = (gen: number) => {
+    if (gen === 9) {
+      // 9世代は通常のドットイラストを使用
+      return [
+        { id: 906, name: 'Sprigatito' },
+        { id: 909, name: 'Fuecoco' },
+        { id: 912, name: 'Quaxly' }
+      ].map(starter => (
+        <img 
+          key={starter.id}
+          src={`/sprites/pokemon/versions/generation-viii/icons/${starter.id}.png`}
+          alt={starter.name}
+          className="starter-icon"
+        />
+      ));
+    }
+    
+    // 他の世代は既存のコード
+    const starters = generationStarters[gen];
+    return starters.map(starter => (
+      <img 
+        key={starter.id}
+        src={`/sprites/pokemon/versions/generation-viii/icons/${starter.id}.png`}
+        alt={starter.name}
+        className="starter-icon"
+      />
+    ));
+  };
+
   if (isLoading) {
     return (
       <div className="loading-screen">
@@ -493,17 +544,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                               gen === 8 ? 'Ⅷ' : 'Ⅸ'
                             }</span>
                             <div className="starter-icons">
-                              {starters.map(id => (
-                                <img
-                                  key={id}
-                                  src={`/images/pokemon_icons/${id}.png`}
-                                  alt={`Starter ${id}`}
-                                  className="starter-icon"
-                                  onError={(e) => {
-                                    e.currentTarget.src = `/images/no-sprite.png`;
-                                  }}
-                                />
-                              ))}
+                              {getGenerationStarters(gen)}
                             </div>
                           </button>
                         ))}

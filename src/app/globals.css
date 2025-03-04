@@ -12,19 +12,57 @@
   --text-dark: #0f380f;
   --shadow-inset: inset -2px -2px 0 0 #000, inset 2px 2px 0 0 #404040;
   --shadow-inset-reverse: inset 2px 2px 0 0 #000, inset -2px -2px 0 0 #404040;
+  --app-height: 100vh;
 }
 
 @layer base {
+  html {
+    @apply h-[var(--app-height)] overflow-hidden;
+    position: fixed;
+    width: 100%;
+    overscroll-behavior: none;
+  }
+  
   body {
-    @apply m-0 min-h-screen text-white;
+    @apply m-0 h-[var(--app-height)] text-white;
     @apply [image-rendering:pixelated] [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
+    @apply overflow-hidden;
+    overscroll-behavior: none;
+    -webkit-overflow-scrolling: touch;
+    background-color: var(--bg-darker);
+  }
+  
+  /* スクロールバーのスタイル */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+  }
+  
+  /* モバイルでのスクロールバーを非表示 */
+  @media (max-width: 767px) {
+    ::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+    }
   }
 }
 
 .pokedex-container {
-  @apply min-h-[100dvh] w-full p-0 sm:p-5;
+  @apply h-[var(--app-height)] w-full p-0 sm:p-5;
   @apply flex justify-center items-start sm:items-center;
   @apply overflow-y-auto overflow-x-hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .pokedex {
@@ -222,13 +260,12 @@
 }
 
 .starter-icon {
-  @apply w-8 h-8;
+  @apply w-12 h-12;
   @apply [image-rendering:pixelated];
-  transition: transform 0.2s ease;
 }
 
 .generation-button:hover .starter-icon {
-  transform: scale(1.1);
+  transform: none;
 }
 
 .color-control-items {
@@ -321,8 +358,38 @@
 }
 
 .sprite-controls {
-  @apply gap-3 p-3 rounded bg-[var(--bg-dark)];
-  @apply [box-shadow:var(--shadow-inset)];
+  @apply flex items-center gap-2 py-2 px-0 overflow-x-auto;
+  @apply touch-manipulation select-none;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  cursor: grab;
+}
+
+.sprite-controls.grabbing {
+  cursor: grabbing;
+}
+
+.sprite-controls::-webkit-scrollbar {
+  display: none;
+}
+
+.sprite-button {
+  @apply py-3 px-4 text-sm text-white border-0;
+  @apply bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+  @apply touch-manipulation select-none;
+  min-height: 44px;
+  min-width: 84px;
+  scroll-snap-align: center;
+  transition: none;
+}
+
+.sprite-button.active {
+  @apply bg-[var(--border-dark)] [box-shadow:var(--shadow-inset-reverse)];
+}
+
+.sprite-button:active {
+  @apply bg-[var(--border-dark)] [box-shadow:var(--shadow-inset-reverse)];
 }
 
 /* モバイル表示 */
@@ -395,28 +462,6 @@
     transform: scale(0.95);
   }
 
-  /* スプライトボタンのリップル効果 */
-  .sprite-button::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: inherit;
-    transform: scale(0);
-    opacity: 0;
-    transition: transform 0.3s, opacity 0.3s;
-    pointer-events: none;
-  }
-
-  .sprite-button:active::after {
-    transform: scale(1);
-    opacity: 1;
-    transition: 0s;
-  }
-
   /* スプライトコントロールのグラデーション */
   .sprite-controls-gradient {
     @apply absolute top-0 bottom-0 w-8 z-10 pointer-events-none;
@@ -430,32 +475,7 @@
 
   /* スワイプヒント表示 */
   .swipe-hint {
-    position: absolute;
-    bottom: 1.5rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
-    opacity: 0.7;
-    pointer-events: none;
-    animation: swipeHint 2s infinite;
-    z-index: 5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .swipe-hint svg {
-    width: 24px;
-    height: 24px;
-    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
-  }
-
-  @keyframes swipeHint {
-    0% { transform: translateX(-80%); opacity: 0; }
-    20% { opacity: 0.7; }
-    80% { opacity: 0.7; }
-    100% { transform: translateX(-20%); opacity: 0; }
+    display: none;
   }
 }
 
@@ -503,8 +523,8 @@
 }
 
 .pokemon-icon {
-  @apply w-12 h-12 [image-rendering:pixelated];
-  flex-shrink: 0;
+  @apply w-12 h-12 mr-2;
+  @apply [image-rendering:pixelated];
 }
 
 .pokemon-list-item span {
@@ -616,4 +636,18 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-[var(--border-dark)] border-2 border-[var(--bg-darker)];
   }
+}
+
+/* スプライトボタンのホバーエフェクト無効化 */
+.sprite-button:hover {
+  background-color: var(--bg-dark);
+  transform: none;
+}
+
+.sprite-button::after {
+  display: none;
+}
+
+.sprite-button:active::after {
+  display: none;
 }
