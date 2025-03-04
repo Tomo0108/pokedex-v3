@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback, useMemo, useRef } from 'react'
 import { Pokemon } from '@/types/pokemon';
 import { fetchPokemonData, spriteStyles, createSpriteUrl, getDefaultStyleForGeneration } from '@/utils/pokemon';
 import { prefetchAllGenerations } from '@/utils/cache';
-import { setStorageItem, getStorageItem } from '@/utils/storage';
+import { storage, StorageValue } from '@/utils/storage';
 import { isPartialMatch } from '@/utils/kana';
 import { createLoadingGif } from '@/utils/createLoadingGif';
 import styles from './press-start.module.css';
@@ -27,27 +27,30 @@ export default function HomePage() {
   useEffect(() => {
     loadAllPokemonData();
   }, [loadAllPokemonData]);
-  
-  const getStringFromStorage = (key: string, defaultValue: string): string => {
-    const stored = getStorageItem(key, defaultValue);
-    return stored !== null && stored !== undefined ? String(stored) : defaultValue;
-  };
 
-  const [generation, setGeneration] = useState<number>(() => {
-    const stored = getStringFromStorage('pokedex-generation', '1');
-    return parseInt(stored, 10) || 1;
-  });
+  const [generation, setGeneration] = useState<number>(() => 
+    storage.getNumber('pokedex-generation', 1)
+  );
   
   const [isJapanese, setIsJapanese] = useState<boolean>(() => 
-    getStorageItem('pokedex-language', 'false') === 'true'
+    storage.getBoolean('pokedex-language', false)
   );
   
   const [isShiny, setIsShiny] = useState<boolean>(() => 
-    getStorageItem('pokedex-shiny', 'false') === 'true'
+    storage.getBoolean('pokedex-shiny', false)
   );
   
-  const [spriteStyle, setSpriteStyle] = useState<keyof typeof spriteStyles>(() => 
-    getStorageItem('pokedex-sprite-style', 'red-blue') as keyof typeof spriteStyles
+  const [spriteStyle, setSpriteStyle] = useState<keyof typeof spriteStyles>(() => {
+    const style = storage.getString('pokedex-sprite-style', 'red-blue');
+    return style as keyof typeof spriteStyles;
+  });
+
+  const [skinColor, setSkinColor] = useState(() => 
+    storage.getString('pokedex-skin-color', '#8b0000')
+  );
+  
+  const [screenColor, setScreenColor] = useState(() => 
+    storage.getString('pokedex-screen-color', '#9bbc0f')
   );
 
   const availableStyles = useMemo(() => 
@@ -93,29 +96,19 @@ export default function HomePage() {
     };
   }, [availableStyles, setSpriteStyle]);
 
-  // 世代変更時にスプライトスタイルを初期位置にスクロール
   useEffect(() => {
     if (!spriteControlsRef.current || window.innerWidth >= 768) return;
-    const index = availableStyles.indexOf(spriteStyle);
+    const index = availableStyles.indexOf(spriteStyle as string);
     if (index >= 0) {
       spriteControlsRef.current.scrollLeft = index * spriteControlsRef.current.clientWidth;
     }
   }, [generation, spriteStyle, availableStyles]);
-  
-  const [skinColor, setSkinColor] = useState(() => 
-    getStorageItem('pokedex-skin-color', '#8b0000')
-  );
-  
-  const [screenColor, setScreenColor] = useState(() => 
-    getStorageItem('pokedex-screen-color', '#9bbc0f')
-  );
   
   const [isLoading, setIsLoading] = useState(true);
   const [spriteUrl, setSpriteUrl] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [menuVisible, setMenuVisible] = useState(false);
 
-  // 検索候補を生成
   const searchResults = useMemo(() => {
     if (!searchTerm || searchTerm.length < 3) return [];
     
@@ -126,7 +119,6 @@ export default function HomePage() {
     ).slice(0, 10);
   }, [allPokemonData, searchTerm]);
 
-  // メインリストのフィルタリング
   const filteredPokemonData = useMemo(() => {
     if (!searchTerm) return pokemonData;
     return pokemonData.filter(pokemon => 
@@ -172,19 +164,14 @@ export default function HomePage() {
     initializeApp();
   }, [generation]);
 
-  const safeSetStorageItem = useCallback((key: string, value: string | number | boolean) => {
-    setStorageItem(key, value.toString());
-  }, []);
-
   const updateLocalStorage = useCallback(() => {
-    safeSetStorageItem('pokedex-generation', generation);
-    safeSetStorageItem('pokedex-language', isJapanese);
-    safeSetStorageItem('pokedex-shiny', isShiny);
-    safeSetStorageItem('pokedex-sprite-style', spriteStyle);
-    safeSetStorageItem('pokedex-skin-color', skinColor);
-    safeSetStorageItem('pokedex-screen-color', screenColor);
+    storage.setItem('pokedex-generation', generation);
+    storage.setItem('pokedex-language', isJapanese);
+    storage.setItem('pokedex-shiny', isShiny);
+    storage.setItem('pokedex-sprite-style', spriteStyle);
+    storage.setItem('pokedex-skin-color', skinColor);
+    storage.setItem('pokedex-screen-color', screenColor);
 
-    // カスタムCSS変数も永続化
     if (typeof window !== 'undefined') {
       document.documentElement.style.setProperty('--pokedex-color', skinColor);
       document.documentElement.style.setProperty('--bg-screen', screenColor);
@@ -195,12 +182,12 @@ export default function HomePage() {
     updateLocalStorage();
   }, [updateLocalStorage]);
 
-  const handleGenerationChange = async (e: React.ChangeEvent<HTMLSelectElement>) => {
+const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const gen = parseInt(e.target.value, 10);
-    setGeneration(gen);
     const defaultStyle = getDefaultStyleForGeneration(gen);
+    setGeneration(gen);
     setSpriteStyle(defaultStyle);
-    safeSetStorageItem('pokedex-sprite-style', defaultStyle);
+    storage.setItem('pokedex-sprite-style', defaultStyle);
   };
 
   const handleSkinColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -221,14 +208,12 @@ export default function HomePage() {
       if (typeof window === 'undefined') return;
 
       try {
-        // 静的な代替画像を使用
         const loadingImage = new Image();
         loadingImage.src = '/icons/substitute.png';
         await new Promise<void>((resolve) => {
           loadingImage.onload = () => resolve();
         });
         
-        // GIF生成を試みる
         const gif = await createLoadingGif();
         setLoadingGif(gif);
       } catch (error) {
@@ -373,11 +358,14 @@ export default function HomePage() {
                             key={gen}
                             className={`generation-button ${generation === gen ? 'active' : ''}`}
                             onClick={() => {
-                              const defaultStyle = getDefaultStyleForGeneration(gen);
+                              let defaultStyle = getDefaultStyleForGeneration(gen);
+                              if (!defaultStyle) {
+                                defaultStyle = 'red-blue';
+                              }
                               setGeneration(gen);
                               setSpriteStyle(defaultStyle);
-                              safeSetStorageItem('pokedex-generation', gen);
-                              safeSetStorageItem('pokedex-sprite-style', defaultStyle);
+                              storage.setItem('pokedex-generation', gen);
+                              storage.setItem('pokedex-sprite-style', defaultStyle);
                               setMenuVisible(false);
                             }}
                           >
