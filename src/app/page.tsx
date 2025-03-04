@@ -119,6 +119,8 @@ export default function HomePage() {
       const x = e.touches[0].pageX;
       const walk = (x - startX) * 1.5;
       container.scrollLeft = startScrollLeft - walk;
+      // タッチ移動中はデフォルトのスクロール動作を防止
+      e.preventDefault();
     };
 
     const handleTouchEnd = () => {
@@ -140,7 +142,7 @@ export default function HomePage() {
 
     container.addEventListener('scroll', handleScroll, { passive: true });
     container.addEventListener('touchstart', handleTouchStart, { passive: true });
-    container.addEventListener('touchmove', handleTouchMove, { passive: true });
+    container.addEventListener('touchmove', handleTouchMove, { passive: false });
     container.addEventListener('touchend', handleTouchEnd);
     
     return () => {
@@ -283,6 +285,28 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     loadGif();
   }, []);
 
+  // メニューを閉じる関数
+  const closeMenu = useCallback(() => {
+    setMenuVisible(false);
+  }, []);
+
+  // メニュー外クリックで閉じる
+  useEffect(() => {
+    if (!menuVisible) return;
+    
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.retro-menu') && !target.closest('.menu-button-plain')) {
+        closeMenu();
+      }
+    };
+    
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [menuVisible, closeMenu]);
+
   if (isLoading) {
     return (
       <div className="loading-screen">
@@ -325,7 +349,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                       }}
                     >
                       <img
-                        src={`/images/generation-vii/icons/${pokemon.id}.png`}
+                        src={`/images/pokemon_icons/${pokemon.id}.png`}
                         alt={pokemon.name}
                         className="pokemon-icon"
                         onError={(e) => {
@@ -345,6 +369,8 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
               <button 
                 className="menu-button-plain"
                 onClick={() => setMenuVisible(!menuVisible)}
+                aria-expanded={menuVisible}
+                aria-label="Menu"
               >
                 <img 
                   src="/icons/poke-ball.png" 
@@ -352,6 +378,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   className="poke-ball-icon"
                   width={32}
                   height={32}
+                  style={{ transform: menuVisible ? 'rotate(-15deg) scale(0.9)' : 'none' }}
                 />
               </button>
               {menuVisible && (
@@ -359,14 +386,20 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   <div className="retro-menu-section">
                     <button 
                       className="retro-menu-item" 
-                      onClick={() => setIsJapanese(!isJapanese)}
+                      onClick={() => {
+                        setIsJapanese(!isJapanese);
+                        // メニュー項目クリック時にメニューを閉じない
+                      }}
                     >
                       <span>LANGUAGE</span>
                       <span>{isJapanese ? 'JPN' : 'ENG'}</span>
                     </button>
                     <button 
                       className="retro-menu-item" 
-                      onClick={() => setIsShiny(!isShiny)}
+                      onClick={() => {
+                        setIsShiny(!isShiny);
+                        // メニュー項目クリック時にメニューを閉じない
+                      }}
                     >
                       <span>SPRITE</span>
                       <span>{isShiny ? 'SHINY' : 'NORMAL'}</span>
@@ -441,7 +474,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                               {starters.map(id => (
                                 <img
                                   key={id}
-                                  src={`/images/generation-vii/icons/${id}.png`}
+                                  src={`/images/pokemon_icons/${id}.png`}
                                   alt={`Starter ${id}`}
                                   className="starter-icon"
                                   onError={(e) => {
@@ -531,8 +564,8 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   lang={isJapanese ? 'ja' : 'en'}
                 >
                   {isJapanese 
-                    ? selectedPokemon.description.ja 
-                    : selectedPokemon.description.en
+                    ? (selectedPokemon.description.ja || 'データがありません。')
+                    : (selectedPokemon.description.en || 'No description available.')
                   }
                 </p>
               )}
@@ -551,7 +584,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   onClick={() => setSelectedPokemon(pokemon)}
                 >
                   <img
-                    src={`/images/generation-vii/icons/${pokemon.id}.png`}
+                    src={`/images/pokemon_icons/${pokemon.id}.png`}
                     alt={pokemon.name}
                     className="pokemon-icon"
                     onError={(e) => {

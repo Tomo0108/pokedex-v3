@@ -354,9 +354,11 @@
     /* タッチ操作のフィードバックを改善 */
     touch-action: pan-x;
     cursor: grab;
+    /* スクロールイベントの競合を防止 */
+    overscroll-behavior-x: contain;
   }
 
-  .sprite-controls:active {
+  .sprite-controls.grabbing {
     cursor: grabbing;
   }
 
@@ -379,6 +381,8 @@
     position: relative;
     overflow: hidden;
     border-radius: 0.5rem;
+    /* タッチ操作の競合を防止 */
+    touch-action: manipulation;
   }
   
   .sprite-button.active {

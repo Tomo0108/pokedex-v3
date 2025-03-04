@@ -179,13 +179,37 @@ export async function fetchPokemonData(generation: number) {
     // スプライトURLを追加
     return pokemonData.map((pokemon: any) => {
       const style = getDefaultStyleForGeneration(generation);
+      
+      // 最新の説明文を取得
+      const getLatestDescription = (descriptions: any) => {
+        if (!descriptions) return { en: '', ja: '' };
+        
+        // 世代番号の降順でソートされた配列を作成
+        const genNumbers = Object.keys(descriptions)
+          .map(Number)
+          .filter(gen => gen <= generation) // 現在の世代以下のみ
+          .sort((a, b) => b - a); // 降順ソート
+        
+        // 最新の世代の説明を取得
+        if (genNumbers.length > 0) {
+          const latestGen = genNumbers[0];
+          return descriptions[latestGen] || { en: '', ja: '' };
+        }
+        
+        return { en: '', ja: '' };
+      };
+      
       return {
         ...pokemon,
         sprites: {
-          front_default: createSpriteUrl(pokemon.id, style, false),
-          front_shiny: createSpriteUrl(pokemon.id, style, true),
+          front_default: generation >= 6 
+            ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`
+            : createSpriteUrl(pokemon.id, style, false),
+          front_shiny: generation >= 6
+            ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`
+            : createSpriteUrl(pokemon.id, style, true),
         },
-        description: pokemon.descriptions[generation] || { en: '', ja: '' }
+        description: getLatestDescription(pokemon.descriptions)
       };
     });
   } catch (error) {
