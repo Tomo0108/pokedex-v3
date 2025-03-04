@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useCallback, useMemo, useRef } from 'react';
 import { Pokemon } from '@/types/pokemon';
-import { fetchPokemonData, spriteStyles, createSpriteUrl, getDefaultStyleForGeneration } from '@/utils/pokemon';
+import { fetchLocalPokemonData, spriteStyles, createSpriteUrl, getDefaultStyleForGeneration } from '@/utils/pokemon';
 import { prefetchAllGenerations } from '@/utils/cache';
 import { storage, StorageValue } from '@/utils/storage';
 import { isPartialMatch } from '@/utils/kana';
@@ -19,7 +19,7 @@ export default function HomePage() {
     
     const generations = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     const allData = await Promise.all(
-      generations.map(gen => fetchPokemonData(gen))
+      generations.map(gen => fetchLocalPokemonData(gen))
     );
     setAllPokemonData(allData.flat());
   }, [allPokemonData.length]);
@@ -150,12 +150,12 @@ export default function HomePage() {
     const initializeApp = async () => {
       setIsLoading(true);
       try {
-        const data = await fetchPokemonData(generation);
+        const data = await fetchLocalPokemonData(generation);
         setPokemonData(data);
         if (data.length > 0) {
           setSelectedPokemon(data[0]);
         }
-        prefetchAllGenerations(fetchPokemonData);
+        prefetchAllGenerations(fetchLocalPokemonData);
       } catch (error) {
         console.error('Failed to load data:', error);
       } finally {

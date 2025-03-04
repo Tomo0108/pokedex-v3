@@ -190,3 +190,22 @@ export async function fetchPokemonData(generation: number) {
     return [];
   }
 }
+
+/**
+ * ローカルJSONファイルからポケモンデータを取得する関数
+ * @param generation 世代番号（1-9）
+ * @returns その世代のポケモンデータ配列
+ */
+export async function fetchLocalPokemonData(generation: number): Promise<Pokemon[]> {
+  try {
+    const response = await fetch(`/data/generation-${generation}.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch generation ${generation} data`);
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error(`Error fetching local pokemon data for generation ${generation}:`, error);
+    return [];
+  }
+}

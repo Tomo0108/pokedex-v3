@@ -41,7 +41,8 @@ async function fetchPokemonDetails(id: number): Promise<Pokemon> {
     description: {
       en: enDescription,
       ja: jaDescription
-    }
+    },
+    types: pokemon.types.map((t: any) => t.type.name)
   };
 }
 
