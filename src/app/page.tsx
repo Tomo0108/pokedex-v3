@@ -357,10 +357,10 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     };
   }, [menuVisible, closeMenu]);
 
-  // 9世代のアイコンを通常のドットイラストと同じものを使用
+  // 9世代のアイコンを9世代のドットイラストに変更
   const getGenerationStarters = (gen: number) => {
     if (gen === 9) {
-      // 9世代は通常のドットイラストを使用
+      // 9世代は9世代のドットイラストを使用
       return [
         { id: 906, name: 'Sprigatito' },
         { id: 909, name: 'Fuecoco' },
@@ -368,7 +368,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       ].map(starter => (
         <img 
           key={starter.id}
-          src={`/images/pokemon_icons/${starter.id}.png`}
+          src={`/sprites/pokemon/versions/generation-ix/${starter.id}.png`}
           alt={starter.name}
           className="starter-icon"
           onError={(e) => {
@@ -403,6 +403,25 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         }}
       />
     ));
+  };
+
+  // スプライトコントロール関連のステートを追加
+  const [spriteModalOpen, setSpriteModalOpen] = useState(false);
+
+  // スプライトモーダルを開く関数
+  const openSpriteModal = () => {
+    setSpriteModalOpen(true);
+  };
+
+  // スプライトモーダルを閉じる関数
+  const closeSpriteModal = () => {
+    setSpriteModalOpen(false);
+  };
+
+  // スプライトスタイルを選択する関数
+  const selectSpriteStyle = (style: keyof typeof spriteStyles) => {
+    setSpriteStyle(style);
+    closeSpriteModal();
   };
 
   if (isLoading) {
@@ -590,27 +609,39 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 />
               )}
             </div>
-          </div>
-          {generation < 6 && (
-            <div className="sprite-controls-wrap">
-              <div className="sprite-controls-inner">
-                <div className="sprite-controls" ref={spriteControlsRef}>
-                  {Object.entries(spriteStyles).map(([style, { gens }]) => {
-                    if (!gens.includes(generation)) return null;
-                    return (
-                      <button
-                        key={style}
-                        className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
-                        onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
-                      >
-                        {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
-                      </button>
-                    );
-                  })}
+            <div className="sprite-controls-container">
+              <button 
+                className="sprite-select-button"
+                onClick={openSpriteModal}
+                aria-label="ポケモンの見た目を変更"
+              >
+                {spriteStyle} <span className="arrow-down">▼</span>
+              </button>
+              
+              {/* スプライトスタイル選択モーダル */}
+              {spriteModalOpen && (
+                <div className="sprite-modal-overlay" onClick={closeSpriteModal}>
+                  <div className="sprite-modal" onClick={(e) => e.stopPropagation()}>
+                    <div className="sprite-modal-header">
+                      <h3>ポケモンの見た目を選択</h3>
+                      <button className="close-button" onClick={closeSpriteModal}>×</button>
+                    </div>
+                    <div className="sprite-modal-content">
+                      {availableStyles.map((style) => (
+                        <button
+                          key={style}
+                          className={`sprite-modal-button ${style === spriteStyle ? 'active' : ''}`}
+                          onClick={() => selectSpriteStyle(style as keyof typeof spriteStyles)}
+                        >
+                          {spriteStyles[style as keyof typeof spriteStyles].displayName[isJapanese ? 'ja' : 'en']}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
-          )}
+          </div>
           <div className="pokemon-info">
             <h2 className="pokemon-name">
               {selectedPokemon ? (
