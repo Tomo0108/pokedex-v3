@@ -215,7 +215,7 @@ export default function HomePage() {
   }, [generation, spriteStyle, availableStyles, isMobile]);
   
   const [isLoading, setIsLoading] = useState(true);
-  const [spriteUrl, setSpriteUrl] = useState<string | null>(null);
+  const [spriteUrl, setSpriteUrl] = useState<string>('');
   const [searchTerm, setSearchTerm] = useState('');
   const [menuVisible, setMenuVisible] = useState(false);
 
@@ -238,21 +238,37 @@ export default function HomePage() {
     );
   }, [pokemonData, searchTerm]);
 
-  const loadSprite = useCallback(async () => {
-    if (!selectedPokemon) return;
-
-    if (generation >= 6) {
-      setSpriteUrl(isShiny ? selectedPokemon.sprites.front_shiny : selectedPokemon.sprites.front_default);
-      return;
+  useEffect(() => {
+    if (selectedPokemon) {
+      const loadSpriteUrl = async () => {
+        try {
+          const url = await createSpriteUrl(selectedPokemon.id, spriteStyle, isShiny);
+          setSpriteUrl(url);
+        } catch (error) {
+          console.error('Failed to load sprite URL:', error);
+          setSpriteUrl('/icons/substitute.png');
+        }
+      };
+      
+      loadSpriteUrl();
     }
-
-    const url = await createSpriteUrl(selectedPokemon.id, spriteStyle, isShiny);
-    setSpriteUrl(url);
-  }, [selectedPokemon, generation, spriteStyle, isShiny]);
+  }, [selectedPokemon, spriteStyle, isShiny]);
 
   useEffect(() => {
-    loadSprite();
-  }, [loadSprite]);
+    if (selectedPokemon) {
+      const updateSpriteUrl = async () => {
+        try {
+          const url = await createSpriteUrl(selectedPokemon.id, spriteStyle, isShiny);
+          setSpriteUrl(url);
+        } catch (error) {
+          console.error('Failed to update sprite URL:', error);
+          setSpriteUrl('/icons/substitute.png');
+        }
+      };
+      
+      updateSpriteUrl();
+    }
+  }, [spriteStyle, isShiny]);
 
   useEffect(() => {
     const initializeApp = async () => {
@@ -373,27 +389,32 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       9: [907, 910, 913]  // モウカ、グワッス、クワッス
     };
     
-    // 該当世代の御三家初期進化からランダムに1匹ずつ選択
+    // 該当世代の御三家初期進化からランダムに1匹選択
     const starters = starterEvolutions[gen as keyof typeof starterEvolutions];
     
     // 配列をシャッフル
     const shuffled = [...starters].sort(() => 0.5 - Math.random());
     
-    // 最初の3つを取得（または配列の長さが3未満の場合は全て）
-    const selectedStarters = shuffled.slice(0, 3);
+    // 最初の1つを取得
+    const selectedStarter = shuffled[0];
     
-    return selectedStarters.map(id => (
+    // 9世代の場合は特別なパスを使用
+    const imagePath = gen === 9 
+      ? `/sprites/pokemon/versions/generation-ix/${selectedStarter}.png`
+      : `/images/pokemon_icons/${selectedStarter}.png`;
+    
+    return (
       <img 
-        key={id}
-        src={`/images/pokemon_icons/${id}.png`}
-        alt={`Starter ${id}`}
+        key={selectedStarter}
+        src={imagePath}
+        alt={`Starter ${selectedStarter}`}
         className="starter-icon"
         style={{ width: '40px', height: '40px', objectFit: 'contain' }}
         onError={(e) => {
-          e.currentTarget.src = `/images/no-sprite.png`;
+          e.currentTarget.src = `/icons/substitute.png`;
         }}
       />
-    ));
+    );
   };
 
   // スプライトコントロール関連のステートを追加
@@ -472,10 +493,10 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                     >
                       <img
                         src={`/images/pokemon_icons/${pokemon.id}.png`}
-                        alt={pokemon.name}
+                        alt={isJapanese ? pokemon.japaneseName : pokemon.name}
                         className="pokemon-icon"
                         onError={(e) => {
-                          e.currentTarget.src = `/images/no-sprite.png`;
+                          e.currentTarget.src = `/icons/substitute.png`;
                         }}
                       />
                       <span>
@@ -606,12 +627,22 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
           </div>
           <div className="screen-container">
             <div className="screen">
-              {selectedPokemon && spriteUrl && (
-                <img 
-                  src={spriteUrl}
-                  alt={selectedPokemon.name}
-                  className="pokemon-sprite"
-                />
+              {selectedPokemon && (
+                <div className="pokemon-sprite">
+                  <img
+                    src={spriteUrl || '/icons/substitute.png'}
+                    alt={isJapanese ? selectedPokemon.japaneseName : selectedPokemon.name}
+                    style={{ 
+                      maxWidth: '100%', 
+                      maxHeight: '100%',
+                      imageRendering: 'pixelated'
+                    }}
+                    onError={(e) => {
+                      // 画像が見つからない場合は代替画像を表示
+                      e.currentTarget.src = `/icons/substitute.png`;
+                    }}
+                  />
+                </div>
               )}
             </div>
             <div className="sprite-controls-container">
@@ -699,15 +730,14 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   onClick={() => {
                     vibrate(20); // 中程度の振動
                     setSelectedPokemon(pokemon);
-                    loadSprite();
                   }}
                 >
                   <img
                     src={`/images/pokemon_icons/${pokemon.id}.png`}
-                    alt={pokemon.name}
+                    alt={isJapanese ? pokemon.japaneseName : pokemon.name}
                     className="pokemon-icon"
                     onError={(e) => {
-                      e.currentTarget.src = `/images/no-sprite.png`;
+                      e.currentTarget.src = `/icons/substitute.png`;
                     }}
                   />
                   <span>

@@ -217,20 +217,24 @@
 
 .retro-menu-item {
   @apply w-full px-4 py-2 mb-2 last:mb-0;
-  @apply text-sm bg-[var(--bg-screen)];
-  color: var(--text-dark);
-  border: var(--gameboy-border);
-  box-shadow: var(--gameboy-shadow);
+  @apply text-sm bg-[var(--bg-dark)];
+  color: white;
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   @apply flex items-center justify-between;
   @apply cursor-pointer;
   transition: transform 0.1s, box-shadow 0.1s;
   transform: translateY(0);
-  border-radius: 0;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .retro-menu-item:active {
-  background-color: var(--bg-screen);
-  box-shadow: 0 2px 0 #306230;
+  background-color: var(--bg-darker);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   transform: translateY(2px);
 }
 
@@ -246,6 +250,10 @@
 
 .color-control-item span {
   @apply text-xs text-white;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .color-control-item input[type="color"] {
@@ -314,18 +322,19 @@
   @apply cursor-pointer;
   transition: all 0.2s ease;
   border-radius: 4px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
   min-height: 80px;
 }
 
 .generation-button:hover {
   background-color: #303030;
+  border-color: #505050;
 }
 
 .generation-button.active {
-  background-color: #303030;
+  background-color: var(--bg-darker);
   border-color: #505050;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
@@ -335,10 +344,11 @@
   min-width: 1.5em;
   text-align: center;
   font-weight: normal;
-  font-size: 0.875em;
+  font-size: 1em;
   letter-spacing: 0;
   transform: translateY(1px);
   flex-shrink: 0;
+  margin-bottom: 8px;
 }
 
 .screen-container {
@@ -700,16 +710,17 @@
   transition: all 0.2s ease;
   transform: translateY(0);
   border-radius: 4px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
   min-height: 44px;
 }
 
 .sprite-select-button:active {
-  background-color: #303030;
+  background-color: var(--bg-darker);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  transform: translateY(1px);
+  transform: translateY(2px);
 }
 
 .arrow-down {
@@ -781,29 +792,32 @@
 
 /* スプライトモーダルボタン */
 .sprite-modal-button {
-  @apply py-3 px-4 text-sm;
-  @apply bg-[var(--bg-dark)] text-white;
-  @apply border border-[var(--border-dark)];
-  @apply flex items-center justify-center;
+  @apply w-full py-3 px-4 text-sm mb-2;
+  background-color: var(--bg-dark);
+  color: white;
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  @apply flex items-center justify-between;
   @apply cursor-pointer;
   transition: all 0.2s ease;
   transform: translateY(0);
   border-radius: 4px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  min-height: 44px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .sprite-modal-button.active {
-  background-color: #303030;
+  background-color: var(--bg-darker);
   border-color: #505050;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .sprite-modal-button:active {
-  background-color: #303030;
-  transform: translateY(1px);
+  background-color: var(--bg-darker);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transform: translateY(2px);
 }
 
 /* 世代ボタングリッド */
@@ -819,19 +833,20 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   @apply cursor-pointer;
   transition: all 0.2s ease;
-  border-radius: 8px;
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
   min-height: 80px;
 }
 
 .generation-button:hover {
-  @apply bg-gray-50;
+  background-color: #303030;
+  border-color: #505050;
 }
 
 .generation-button.active {
-  background-color: #f0f9ff;
-  border-color: #3b82f6;
-  color: #2563eb;
+  background-color: var(--bg-darker);
+  border-color: #505050;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
