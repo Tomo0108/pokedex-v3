@@ -9,6 +9,28 @@ import { isPartialMatch } from '@/utils/kana';
 import { createLoadingGif } from '@/utils/createLoadingGif';
 import styles from './press-start.module.css';
 
+// ポケモンタイプの日本語訳
+const typeTranslations = {
+  Normal: 'ノーマル',
+  Fire: 'ほのお',
+  Water: 'みず',
+  Electric: 'でんき',
+  Grass: 'くさ',
+  Ice: 'こおり',
+  Fighting: 'かくとう',
+  Poison: 'どく',
+  Ground: 'じめん',
+  Flying: 'ひこう',
+  Psychic: 'エスパー',
+  Bug: 'むし',
+  Rock: 'いわ',
+  Ghost: 'ゴースト',
+  Dragon: 'ドラゴン',
+  Dark: 'あく',
+  Steel: 'はがね',
+  Fairy: 'フェアリー'
+};
+
 export default function HomePage() {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
   const [allPokemonData, setAllPokemonData] = useState<Pokemon[]>([]);
