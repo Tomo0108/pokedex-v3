@@ -13,6 +13,21 @@ export default function HomePage() {
   const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
   const [allPokemonData, setAllPokemonData] = useState<Pokemon[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
+
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+    };
+  }, []);
 
   const loadAllPokemonData = useCallback(async () => {
     if (allPokemonData.length > 0) return;
@@ -63,10 +78,13 @@ export default function HomePage() {
   const spriteControlsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!spriteControlsRef.current || window.innerWidth >= 768) return;
+    if (!spriteControlsRef.current || !isMobile) return;
 
     const container = spriteControlsRef.current;
     let rafId: number;
+    let startX: number;
+    let startScrollLeft: number;
+    let isDragging = false;
     let lastScrollLeft = container.scrollLeft;
 
     const handleScroll = () => {
@@ -74,35 +92,75 @@ export default function HomePage() {
 
       rafId = requestAnimationFrame(() => {
         const currentScrollLeft = container.scrollLeft;
-        if (Math.abs(currentScrollLeft - lastScrollLeft) > 10) {
+        if (Math.abs(currentScrollLeft - lastScrollLeft) > 5) {
+          setShowSwipeHint(false);
           const width = container.clientWidth;
           const index = Math.round(currentScrollLeft / width);
 
-          if (availableStyles[index]) {
+          if (availableStyles[index] && availableStyles[index] !== spriteStyle) {
             setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
-            lastScrollLeft = currentScrollLeft;
           }
+          lastScrollLeft = currentScrollLeft;
         }
         rafId = 0;
       });
     };
 
+    const handleTouchStart = (e: TouchEvent) => {
+      isDragging = true;
+      startX = e.touches[0].pageX;
+      startScrollLeft = container.scrollLeft;
+      container.classList.add('grabbing');
+      setShowSwipeHint(false);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isDragging) return;
+      const x = e.touches[0].pageX;
+      const walk = (x - startX) * 1.5;
+      container.scrollLeft = startScrollLeft - walk;
+    };
+
+    const handleTouchEnd = () => {
+      isDragging = false;
+      container.classList.remove('grabbing');
+      
+      // スナップ位置に合わせる
+      const width = container.clientWidth;
+      const index = Math.round(container.scrollLeft / width);
+      container.scrollTo({
+        left: index * width,
+        behavior: 'smooth'
+      });
+      
+      if (availableStyles[index]) {
+        setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
+      }
+    };
+
     container.addEventListener('scroll', handleScroll, { passive: true });
+    container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    container.addEventListener('touchmove', handleTouchMove, { passive: true });
+    container.addEventListener('touchend', handleTouchEnd);
+    
     return () => {
       container.removeEventListener('scroll', handleScroll);
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchmove', handleTouchMove);
+      container.removeEventListener('touchend', handleTouchEnd);
       if (rafId) {
         cancelAnimationFrame(rafId);
       }
     };
-  }, [availableStyles, setSpriteStyle]);
+  }, [availableStyles, setSpriteStyle, spriteStyle, isMobile]);
 
   useEffect(() => {
-    if (!spriteControlsRef.current || window.innerWidth >= 768) return;
+    if (!spriteControlsRef.current || !isMobile) return;
     const index = availableStyles.indexOf(spriteStyle as string);
     if (index >= 0) {
       spriteControlsRef.current.scrollLeft = index * spriteControlsRef.current.clientWidth;
     }
-  }, [generation, spriteStyle, availableStyles]);
+  }, [generation, spriteStyle, availableStyles, isMobile]);
   
   const [isLoading, setIsLoading] = useState(true);
   const [spriteUrl, setSpriteUrl] = useState<string | null>(null);
@@ -267,11 +325,11 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                       }}
                     >
                       <img
-                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${pokemon.id}.png`}
+                        src={`/images/generation-vii/icons/${pokemon.id}.png`}
                         alt={pokemon.name}
                         className="pokemon-icon"
                         onError={(e) => {
-                          e.currentTarget.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+                          e.currentTarget.src = `/images/no-sprite.png`;
                         }}
                       />
                       <span>
@@ -383,11 +441,11 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                               {starters.map(id => (
                                 <img
                                   key={id}
-                                  src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${id}.png`}
+                                  src={`/images/generation-vii/icons/${id}.png`}
                                   alt={`Starter ${id}`}
                                   className="starter-icon"
                                   onError={(e) => {
-                                    e.currentTarget.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+                                    e.currentTarget.src = `/images/no-sprite.png`;
                                   }}
                                 />
                               ))}
@@ -438,10 +496,30 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                       <div 
                         key={style}
                         className={`sprite-dot ${spriteStyle === style ? 'active' : ''}`}
+                        onClick={() => {
+                          setSpriteStyle(style as keyof typeof spriteStyles);
+                          if (spriteControlsRef.current && isMobile) {
+                            const index = availableStyles.indexOf(style);
+                            if (index >= 0) {
+                              spriteControlsRef.current.scrollTo({
+                                left: index * spriteControlsRef.current.clientWidth,
+                                behavior: 'smooth'
+                              });
+                            }
+                          }
+                        }}
                       />
                     );
                   })}
                 </div>
+                {isMobile && showSwipeHint && (
+                  <div className="swipe-hint">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+                      <path d="M14 5l-5 5 5 5V5z"/>
+                      <path d="M10 5l-5 5 5 5V5z"/>
+                    </svg>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -473,11 +551,11 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   onClick={() => setSelectedPokemon(pokemon)}
                 >
                   <img
-                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-vii/icons/${pokemon.id}.png`}
+                    src={`/images/generation-vii/icons/${pokemon.id}.png`}
                     alt={pokemon.name}
                     className="pokemon-icon"
                     onError={(e) => {
-                      e.currentTarget.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+                      e.currentTarget.src = `/images/no-sprite.png`;
                     }}
                   />
                   <span>

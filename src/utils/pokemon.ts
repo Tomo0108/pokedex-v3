@@ -1,79 +1,79 @@
 import { SpriteStyles } from '@/types/pokemon';
 
 // ローカルの画像パス
-const LOCAL_SPRITES_BASE_URL = '/images/pokemon_sprites';
+const LOCAL_SPRITES_BASE_URL = '/images';
 // 画像が存在しない場合のフォールバック用のグレー画像URL
 const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
 export const spriteStyles: SpriteStyles = {
   'red-blue': { 
-    path: '/versions/generation-i/red-blue/transparent',
+    path: '/generation-i/red-blue',
     gens: [1],
     animated: false,
     displayName: { ja: '赤・青', en: 'Red-Blue' }
   },
   'yellow': {
-    path: '/versions/generation-i/yellow/transparent',
+    path: '/generation-i/yellow',
     gens: [1],
     animated: false,
     displayName: { ja: 'ピカチュウ', en: 'Yellow' }
   },
   'gold': {
-    path: '/versions/generation-ii/gold/transparent',
+    path: '/generation-ii/gold',
     gens: [1, 2],
     animated: false,
     displayName: { ja: '金', en: 'Gold' }
   },
   'silver': {
-    path: '/versions/generation-ii/silver/transparent',
+    path: '/generation-ii/silver',
     gens: [1, 2],
     animated: false,
     displayName: { ja: '銀', en: 'Silver' }
   },
   'crystal': { 
-    path: '/versions/generation-ii/crystal/transparent',
+    path: '/generation-ii/crystal',
     gens: [1, 2],
     animated: false,
     displayName: { ja: 'クリスタル', en: 'Crystal' }
   },
   'ruby-sapphire': {
-    path: '/versions/generation-iii/ruby-sapphire',
+    path: '/generation-iii/ruby-sapphire',
     gens: [1, 2, 3],
     animated: false,
     displayName: { ja: 'ルビー・サファイア', en: 'Ruby-Sapphire' }
   },
   'emerald': { 
-    path: '/versions/generation-iii/emerald',
+    path: '/generation-iii/emerald',
     gens: [1, 2, 3],
     animated: false,
     displayName: { ja: 'エメラルド', en: 'Emerald' }
   },
   'firered-leafgreen': {
-    path: '/versions/generation-iii/firered-leafgreen',
+    path: '/generation-iii/firered-leafgreen',
     gens: [1, 2, 3],
     animated: false,
     displayName: { ja: 'FR・LG', en: 'FR-LG' }
   },
   'diamond-pearl': { 
-    path: '/versions/generation-iv/diamond-pearl',
+    path: '/generation-iv/diamond-pearl',
     gens: [1, 2, 3, 4],
     animated: false,
     displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
   },
   'platinum': {
-    path: '/versions/generation-iv/platinum',
+    path: '/generation-iv/platinum',
     gens: [1, 2, 3, 4],
     animated: false,
     displayName: { ja: 'プラチナ', en: 'Platinum' }
   },
   'heartgold-soulsilver': {
-    path: '/versions/generation-iv/heartgold-soulsilver',
+    path: '/generation-iv/heartgold-soulsilver',
     gens: [1, 2, 3, 4],
     animated: false,
     displayName: { ja: 'HG・SS', en: 'HG-SS' }
   },
   'black-white': {
-    path: '/versions/generation-v/black-white/animated/',
+    path: '/generation-v/black-white',
     gens: [1, 2, 3, 4, 5],
     animated: true,
     displayName: { ja: 'ブラック・ホワイト', en: 'Black-White' }
@@ -102,8 +102,11 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
   const styleInfo = spriteStyles[style];
   const shinyPath = shiny ? '/shiny' : '';
   
+  // black-whiteスタイルの場合はGIF拡張子を使用
+  const extension = style === 'black-white' ? '.gif' : '.png';
+  
   // ローカルの画像パスを使用
-  const spriteUrl = `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}${shinyPath}/${pokemonId}.png`;
+  const spriteUrl = `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}${shinyPath}/${pokemonId}${extension}`;
   
   // 画像の存在チェックは省略（ローカルファイルなので常に存在すると仮定）
   return spriteUrl;
