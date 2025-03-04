@@ -133,7 +133,7 @@
   @apply shadow-[var(--card-shadow)];
   @apply overflow-hidden;
   @apply transition-transform duration-[var(--transition-speed)];
-  @apply transform scale-100 active:scale-98;
+  @apply transform scale-100 active:scale-[.98];
   @apply mx-4 my-3;
 }
 
