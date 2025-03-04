@@ -13,7 +13,7 @@
   --shadow-inset: inset -2px -2px 0 0 #000, inset 2px 2px 0 0 #404040;
   --shadow-inset-reverse: inset 2px 2px 0 0 #000, inset -2px -2px 0 0 #404040;
   
-  /* モダンUIのための新しい変数 */
+  /* モダンUIのための変数 */
   --primary-color: #e53935;
   --secondary-color: #2196f3;
   --accent-color: #ffc107;
