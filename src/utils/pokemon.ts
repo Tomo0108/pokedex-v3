@@ -1,4 +1,4 @@
-import { SpriteStyles } from '@/types/pokemon';
+import { SpriteStyles, Pokemon } from '@/types/pokemon';
 
 // ローカルの画像パス
 const LOCAL_SPRITES_BASE_URL = '/images/pokemon_sprites';
