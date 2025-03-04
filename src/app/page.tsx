@@ -293,6 +293,7 @@ export default function HomePage() {
   }, [updateLocalStorage]);
 
 const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    vibrate(15); // 短い振動
     const gen = parseInt(e.target.value, 10);
     const defaultStyle = getDefaultStyleForGeneration(gen);
     setGeneration(gen);
@@ -301,13 +302,13 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
   };
 
   const handleSkinColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const color = e.target.value;
-    setSkinColor(color);
+    vibrate(15); // 短い振動
+    setSkinColor(e.target.value);
   };
 
   const handleScreenColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const color = e.target.value;
-    setScreenColor(color);
+    vibrate(15); // 短い振動
+    setScreenColor(e.target.value);
   };
 
   const [loadingGif, setLoadingGif] = useState<string | null>(null);
@@ -371,6 +372,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
           src={`/sprites/pokemon/versions/generation-ix/${starter.id}.png`}
           alt={starter.name}
           className="starter-icon"
+          style={{ width: '32px', height: '32px', objectFit: 'contain' }}
           onError={(e) => {
             e.currentTarget.src = `/images/no-sprite.png`;
           }}
@@ -408,18 +410,32 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
   // スプライトコントロール関連のステートを追加
   const [spriteModalOpen, setSpriteModalOpen] = useState(false);
 
+  // バイブレーション機能
+  const vibrate = (pattern: number | number[]) => {
+    if ('vibrate' in navigator) {
+      try {
+        navigator.vibrate(pattern);
+      } catch (e) {
+        console.error('バイブレーション機能が利用できません:', e);
+      }
+    }
+  };
+
   // スプライトモーダルを開く関数
   const openSpriteModal = () => {
+    vibrate(10); // 短い振動
     setSpriteModalOpen(true);
   };
 
   // スプライトモーダルを閉じる関数
   const closeSpriteModal = () => {
+    vibrate(10); // 短い振動
     setSpriteModalOpen(false);
   };
 
   // スプライトスタイルを選択する関数
   const selectSpriteStyle = (style: keyof typeof spriteStyles) => {
+    vibrate([10, 30, 10]); // パターン振動（短い-長い-短い）
     setSpriteStyle(style);
     closeSpriteModal();
   };
@@ -613,9 +629,9 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
               <button 
                 className="sprite-select-button"
                 onClick={openSpriteModal}
-                aria-label="ポケモンの見た目を変更"
+                aria-label={isJapanese ? "ポケモンの見た目を変更" : "Change Pokémon Style"}
               >
-                {spriteStyle} <span className="arrow-down">▼</span>
+                {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
               </button>
               
               {/* スプライトスタイル選択モーダル */}
@@ -623,7 +639,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                 <div className="sprite-modal-overlay" onClick={closeSpriteModal}>
                   <div className="sprite-modal" onClick={(e) => e.stopPropagation()}>
                     <div className="sprite-modal-header">
-                      <h3>ポケモンの見た目を選択</h3>
+                      <h3>{isJapanese ? "ポケモンの見た目を選択" : "Select Pokémon Style"}</h3>
                       <button className="close-button" onClick={closeSpriteModal}>×</button>
                     </div>
                     <div className="sprite-modal-content">
@@ -685,13 +701,15 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         <div className="pokedex-right">
           <div className="pokemon-list">
             <ul className="pokemon-list-ul">
-              {filteredPokemonData.map(pokemon => (
+              {filteredPokemonData.map((pokemon) => (
                 <li
                   key={pokemon.id}
-                  className={`pokemon-list-item ${
-                    selectedPokemon?.id === pokemon.id ? 'selected' : ''
-                  }`}
-                  onClick={() => setSelectedPokemon(pokemon)}
+                  className={`pokemon-list-item ${selectedPokemon?.id === pokemon.id ? 'selected' : ''}`}
+                  onClick={() => {
+                    vibrate(20); // 中程度の振動
+                    setSelectedPokemon(pokemon);
+                    loadSprite();
+                  }}
                 >
                   <img
                     src={`/images/pokemon_icons/${pokemon.id}.png`}

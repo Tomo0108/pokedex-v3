@@ -144,51 +144,51 @@
   @apply border-b-0;
 }
 
+/* メニューコンテナ */
 .menu-container {
   @apply relative;
-  z-index: 20;
+  z-index: 10;
 }
 
+/* メニューボタン */
 .menu-button-plain {
-  @apply p-2 cursor-pointer border-0 bg-transparent;
-  @apply touch-manipulation select-none;
-  min-height: 44px;
-  min-width: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center;
+  @apply w-10 h-10 p-0;
+  @apply bg-transparent border-0;
+  @apply cursor-pointer;
+  transition: all 0.2s ease;
+  border-radius: 50%;
 }
 
 .menu-button-plain:hover .poke-ball-icon {
-  transform: rotate(15deg) scale(1.1);
+  transform: rotate(15deg);
 }
 
 .menu-button-plain:active .poke-ball-icon {
-  transform: rotate(-15deg) scale(0.9);
+  transform: rotate(30deg);
 }
 
 .poke-ball-icon {
-  width: 32px;
-  height: 32px;
-  display: block;
-  image-rendering: pixelated;
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply w-7 h-7;
+  transition: transform 0.3s ease;
 }
 
+/* レトロメニュー */
 .retro-menu {
-  @apply absolute right-0 top-full mt-2;
-  @apply w-[300px] bg-[var(--bg-dark)];
-  @apply border-2 border-[var(--border-dark)] rounded;
+  @apply absolute top-full right-0 mt-2;
+  @apply bg-white rounded-lg;
+  @apply shadow-lg;
   @apply overflow-hidden;
-  @apply [box-shadow:0_4px_8px_rgba(0,0,0,0.3)];
-  @apply backdrop-blur-sm;
-  animation: menuAppear 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply w-64;
+  @apply border border-gray-200;
+  animation: menuAppear 0.2s ease-out;
+  z-index: 20;
 }
 
 @keyframes menuAppear {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
@@ -197,7 +197,8 @@
 }
 
 .retro-menu-section {
-  @apply p-2 border-b border-[var(--border-dark)];
+  @apply p-3;
+  @apply border-b border-gray-100;
 }
 
 .retro-menu-section:last-child {
@@ -205,30 +206,50 @@
 }
 
 .retro-menu-header {
-  @apply px-2 py-1 text-xs font-bold text-[var(--bg-screen)] uppercase tracking-wider;
+  @apply text-sm font-medium text-gray-500;
+  @apply mb-2;
 }
 
 .retro-menu-content {
-  @apply p-2;
+  @apply flex flex-col gap-1;
 }
 
 .retro-menu-item {
-  @apply w-full px-4 py-2 mb-2 last:mb-0;
-  @apply text-sm bg-[var(--bg-screen)];
-  color: var(--text-dark);
-  border: var(--gameboy-border);
-  box-shadow: var(--gameboy-shadow);
-  @apply flex items-center justify-between;
+  @apply flex items-center;
+  @apply px-3 py-2;
+  @apply text-sm text-gray-700;
+  @apply rounded-md;
   @apply cursor-pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
-  transform: translateY(0);
-  border-radius: 0;
+  transition: all 0.15s ease;
+}
+
+.retro-menu-item:hover {
+  @apply bg-gray-50;
 }
 
 .retro-menu-item:active {
-  background-color: var(--bg-screen);
-  box-shadow: 0 2px 0 #306230;
-  transform: translateY(2px);
+  @apply bg-gray-100;
+}
+
+/* カラーコントロール */
+.color-control-items {
+  @apply flex flex-col gap-2;
+}
+
+.color-control-item {
+  @apply flex items-center justify-between;
+  @apply w-full;
+}
+
+.color-control-item span {
+  @apply text-sm text-gray-700;
+}
+
+.color-control-item input[type="color"] {
+  @apply w-8 h-8;
+  @apply border border-gray-200 rounded;
+  @apply cursor-pointer;
+  @apply p-0;
 }
 
 .generation-grid {
@@ -294,52 +315,6 @@
 
 .generation-button:hover .starter-icon {
   transform: none;
-}
-
-.color-control-items {
-  @apply flex flex-wrap gap-2;
-}
-
-.color-control-item {
-  @apply flex items-center gap-2 p-2;
-  @apply bg-[var(--bg-darker)] rounded;
-  @apply border-2 border-[var(--border-dark)];
-}
-
-.color-control-item span {
-  @apply text-xs text-white;
-}
-
-.color-control-item input[type="color"] {
-  @apply w-12 h-8 cursor-pointer p-0;
-  @apply border-2 border-[var(--border-dark)] rounded;
-  @apply bg-[var(--bg-darker)];
-}
-
-/* ゲームボーイスタイルのボタン */
-.control-button,
-.sprite-button {
-  @apply py-3 px-4 text-sm cursor-pointer border-0;
-  background-color: var(--bg-screen);
-  color: var(--text-dark);
-  border: var(--gameboy-border);
-  box-shadow: var(--gameboy-shadow);
-  border-radius: 0;
-  font-family: 'Press Start 2P', monospace;
-  text-transform: uppercase;
-  @apply touch-manipulation select-none;
-  min-height: 44px;
-  min-width: 84px;
-  position: relative;
-  transition: transform 0.1s, box-shadow 0.1s;
-  transform: translateY(0);
-}
-
-.control-button:is(:active, .active),
-.sprite-button:is(:active, .active) {
-  background-color: var(--bg-screen);
-  box-shadow: 0 2px 0 #306230;
-  transform: translateY(2px);
 }
 
 .screen-container {
@@ -694,35 +669,36 @@
   @apply w-full py-3 px-4 text-sm;
   background-color: var(--bg-screen);
   color: var(--text-dark);
-  border: var(--gameboy-border);
-  box-shadow: var(--gameboy-shadow);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   @apply flex items-center justify-between;
   @apply cursor-pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
+  transition: all 0.2s ease;
   transform: translateY(0);
-  border-radius: 0;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
   min-height: 44px;
 }
 
 .sprite-select-button:active {
-  background-color: var(--bg-screen);
-  box-shadow: 0 2px 0 #306230;
-  transform: translateY(2px);
+  background-color: rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transform: translateY(1px);
 }
 
 .arrow-down {
-  font-size: 8px;
+  font-size: 12px;
   margin-left: 8px;
+  opacity: 0.6;
 }
 
 /* スプライトモーダルオーバーレイ */
 .sprite-modal-overlay {
   @apply fixed inset-0 z-50;
   background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -736,12 +712,12 @@
 
 /* スプライトモーダル */
 .sprite-modal {
-  @apply bg-[var(--bg-darker)] rounded-lg;
+  @apply bg-white rounded-xl;
   @apply w-[90%] max-w-md max-h-[80vh];
   @apply flex flex-col;
   @apply overflow-hidden;
-  border: var(--gameboy-border);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   animation: slideUp 0.3s ease-out;
 }
 
@@ -753,28 +729,28 @@
 /* スプライトモーダルヘッダー */
 .sprite-modal-header {
   @apply flex items-center justify-between p-4;
-  @apply bg-[var(--bg-screen)];
-  @apply border-b border-[var(--border-color)];
+  @apply bg-white;
+  @apply border-b border-gray-100;
 }
 
 .sprite-modal-header h3 {
-  @apply text-sm font-bold m-0;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
+  @apply text-base font-medium m-0;
+  font-family: 'Inter', sans-serif;
+  color: #333;
 }
 
 .close-button {
-  @apply bg-transparent border-0 text-[var(--text-dark)];
+  @apply bg-transparent border-0 text-gray-500;
   @apply w-8 h-8 flex items-center justify-center;
-  @apply cursor-pointer;
-  font-size: 16px;
+  @apply cursor-pointer rounded-full;
+  @apply hover:bg-gray-100;
+  font-size: 18px;
+  transition: all 0.2s ease;
 }
 
 /* スプライトモーダルコンテンツ */
 .sprite-modal-content {
-  @apply p-4 overflow-y-auto;
+  @apply p-3 overflow-y-auto;
   @apply flex flex-col gap-2;
   max-height: 60vh;
 }
@@ -782,67 +758,59 @@
 /* スプライトモーダルボタン */
 .sprite-modal-button {
   @apply py-3 px-4 text-sm;
-  @apply bg-[var(--bg-screen)] text-[var(--text-dark)];
-  @apply border-0;
-  border: var(--gameboy-border);
-  box-shadow: var(--gameboy-shadow);
+  @apply bg-white text-gray-800;
+  @apply border border-gray-200;
   @apply flex items-center justify-center;
   @apply cursor-pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
+  transition: all 0.2s ease;
   transform: translateY(0);
-  border-radius: 0;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: -0.5px;
-  min-height: 44px;
+  border-radius: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  min-height: 48px;
 }
 
 .sprite-modal-button.active {
-  background-color: var(--bg-screen);
-  box-shadow: 0 2px 0 #306230;
-  transform: translateY(2px);
+  background-color: #f0f9ff;
+  border-color: #3b82f6;
+  color: #2563eb;
+  font-weight: 500;
 }
 
 .sprite-modal-button:active {
-  background-color: var(--bg-screen);
-  box-shadow: 0 2px 0 #306230;
-  transform: translateY(2px);
+  background-color: #f0f9ff;
+  transform: translateY(1px);
 }
 
-/* スターターアイコンのスタイル */
+/* スターターアイコン */
 .starter-icons {
-  @apply flex items-center gap-1;
-  @apply ml-auto;
-  position: relative;
-  z-index: 2;
+  @apply flex justify-center gap-1;
 }
 
 .starter-icon {
-  @apply w-12 h-12;
-  @apply [image-rendering:pixelated];
-  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
 }
 
-.generation-button:hover .starter-icon {
-  transform: none;
-}
-
-/* 世代ボタンのスタイル */
+/* 世代ボタングリッド */
 .generation-grid {
-  @apply grid gap-2 grid-cols-1;
+  @apply grid grid-cols-3 gap-2 mt-2;
 }
 
 .generation-button {
-  @apply w-full p-2;
-  @apply bg-[var(--bg-screen)] text-[var(--text-dark)];
-  border: var(--gameboy-border);
-  box-shadow: var(--gameboy-shadow);
-  @apply flex items-center gap-2;
+  @apply flex flex-col items-center justify-center p-2;
+  @apply bg-white border border-gray-200 rounded-lg;
   @apply cursor-pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
-  transform: translateY(0);
-  border-radius: 0;
-  position: relative;
-  z-index: 1;
+  transition: all 0.2s ease;
+  min-height: 80px;
+}
+
+.generation-button:hover {
+  @apply bg-gray-50;
+}
+
+.generation-button.active {
+  @apply bg-blue-50 border-blue-300;
 }
