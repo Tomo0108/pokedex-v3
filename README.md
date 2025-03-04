@@ -197,7 +197,6 @@ const nextConfig = {
 ## 📝 環境変数
 
 ```env
-NEXT_PUBLIC_POKEAPI_URL=https://pokeapi.co/api/v2
 NEXT_PUBLIC_API_CACHE_TIME=3600
 NEXT_PUBLIC_MAX_REQUESTS_PER_MINUTE=100
 ```
