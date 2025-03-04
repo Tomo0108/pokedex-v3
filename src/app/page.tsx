@@ -369,13 +369,28 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     }
     
     // 他の世代は既存のコード
-    const starters = generationStarters[gen];
-    return starters.map(starter => (
+    const starters = [
+      [], // 0番目は使用しない
+      [1, 4, 7], // 第1世代
+      [152, 155, 158], // 第2世代
+      [252, 255, 258], // 第3世代
+      [387, 390, 393], // 第4世代
+      [495, 498, 501], // 第5世代
+      [650, 653, 656], // 第6世代
+      [722, 725, 728], // 第7世代
+      [810, 813, 816], // 第8世代
+      [906, 909, 912], // 第9世代
+    ][gen];
+    
+    return starters.map(id => (
       <img 
-        key={starter.id}
-        src={`/sprites/pokemon/versions/generation-viii/icons/${starter.id}.png`}
-        alt={starter.name}
+        key={id}
+        src={`/sprites/pokemon/versions/generation-viii/icons/${id}.png`}
+        alt={`Starter ${id}`}
         className="starter-icon"
+        onError={(e) => {
+          e.currentTarget.src = `/images/no-sprite.png`;
+        }}
       />
     ));
   };
