@@ -2,6 +2,7 @@ export interface Pokemon {
   id: number;
   name: string;
   japaneseName: string;
+  types: string[];
   sprites: {
     front_default: string;
     front_shiny: string;
@@ -9,6 +10,12 @@ export interface Pokemon {
   description: {
     en: string;
     ja: string;
+  };
+  descriptions?: {
+    [key: number]: {
+      en: string;
+      ja: string;
+    }
   };
 }
 

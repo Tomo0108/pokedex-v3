@@ -1,0 +1,4977 @@
+[
+  {
+    "id": 387,
+    "name": "turtwig",
+    "japaneseName": "ナエトル",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Made from soil, the shell on its back hardens when it drinks water. It lives along lakes.",
+        "ja": ""
+      },
+      "5": {
+        "en": "The shell on its back is made of soil. On a very healthy Turtwig, the shell should feel moist.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Photosynthesis occurs across its body under the sun. The shell on its back is actually hardened soil.",
+        "ja": "太陽の　光を　浴びて 全身で　光合成を　する。 甲羅は　土が　硬くなったもの。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "This Pokémon becomes more energetic the more sunlight there is. The part resembling a shell is similar to silt and is slightly damp and warm to the touch.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 388,
+    "name": "grotle",
+    "japaneseName": "ハヤシガメ",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "A GROTLE that lives in the forest is said to have its own secret springwater.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It knows where pure water wells up. It carries fellow Pokémon there on its back.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It lives along water in forests. In the daytime, it leaves the forest to sunbathe its treed shell.",
+        "ja": "森の　中の　水辺で　暮らす。 昼間は　森の　外に　出て 甲羅の　木に　光を　当てる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Appears where there is clean spring water. The fruit that grows on the shrubs on its shell is sweet, nutritious, and truly delicious.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 389,
+    "name": "torterra",
+    "japaneseName": "ドダイトス",
+    "types": [
+      "grass",
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Small Pokémon occasionally gather on its unmoving back to begin building their nests.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Some Pokémon are born on a Torterra’s back and spend their entire life there.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Ancient people imagined that beneath the ground, a gigantic Torterra dwelled.",
+        "ja": "大昔の　人々は　大地の　下には 巨大な　ドダイトスが　いると 空想していた。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "This remarkable, large-bodied Pokémon would serve beautifully as borrowed scenery for a garden, and its strength is peerless. Torterra roams the wilderness in search of clean water.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 390,
+    "name": "chimchar",
+    "japaneseName": "ヒコザル",
+    "types": [
+      "fire"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It agilely scales sheer cliffs to live atop craggy mountains. Its fire is put out when it sleeps.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It is very agile. Before going to sleep, it extinguishes the flame on its tail to prevent fires.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Its fiery rear end is fueled by gas made in its belly. Even rain can’t extinguish the fire.",
+        "ja": "お尻の　炎は お腹で　作られた　ガスが　燃料。 雨に　ぬれても　消えない。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Full of vigor and always in high spirits. It was once known by the name ”Lantern-Tail” and feared as some kind of apparition.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 391,
+    "name": "monferno",
+    "japaneseName": "モウカザル",
+    "types": [
+      "fire",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "To intimidate attackers, it stretches the fire on its tail to make itself appear bigger.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It skillfully controls the intensity of the fire on its tail to keep its foes at an ideal distance.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It skillfully controls the intensity of the fire on its tail to keep its foes at an ideal distance.",
+        "ja": "尻尾の　炎の　勢いを うまく　コントロールして 自分の　得意な　間合いで　戦うのだ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "The deeper the blue on its face, the more powerful it will grow to become. It leaps about every which way and lands powerful blows against its opponents with the flame on its tail.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 392,
+    "name": "infernape",
+    "japaneseName": "ゴウカザル",
+    "types": [
+      "fire",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It uses a special kind of martial arts involving all its limbs. Its fire never goes out.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It uses unique fighting moves with fire on its hands and feet. It will take on any opponent.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Its crown of fire is indicative of its fiery nature. It is beaten by none in terms of quickness.",
+        "ja": "頭で　燃える　炎の　ように 激しい　性格の　ポケモン。 素早さでは　だれにも　負けない。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "A tall, hardy Pokémon with a dazzling appearance. It shrouds itself in flame and battles as if engaged in dance—truly a sight to behold.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 393,
+    "name": "piplup",
+    "japaneseName": "ポッチャマ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Because it is very proud, it hates accepting food from people. Its thick down guards it from cold.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A poor walker, it often falls down. However, its strong pride makes it puff up its chest without a care.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It doesn’t like to be taken care of. It’s difficult to bond with since it won’t listen to its Trainer.",
+        "ja": "世話を　焼かれる　ことが　大嫌い。 トレーナーの　指示を　聞かないので 仲良く　なるのが　難しい。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Prefers cold climes and appears along coasts. It's an adorable little thing—as cute as any child—but it's also prideful, unwilling to accept handouts from people.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 394,
+    "name": "prinplup",
+    "japaneseName": "ポッタイシ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It lives alone, away from others. Apparently, every one of them believes it is the most important.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Because every Prinplup considers itself to be the most important, they can never form a group.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It lives alone, away from others. Apparently, every one of them believes it is the most important.",
+        "ja": "群れを　作らずに　１匹で　いる。 自分が　一番　偉いと　どの ポッタイシも　考えているようだ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It swims gracefully through the frigid sea and sings with a voice like the roaring tide. It has powerful, sturdy wings and dignity to match.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 395,
+    "name": "empoleon",
+    "japaneseName": "エンペルト",
+    "types": [
+      "water",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "The three horns that extend from its beak attest to its power. The leader has the biggest horns.",
+        "ja": ""
+      },
+      "5": {
+        "en": "If anyone were to hurt its pride, it would slash them with wings that can cleave through an ice floe.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It swims as fast as a jet boat. The edges of its wings are sharp and can slice apart drifting ice.",
+        "ja": "ジェットスキーに　負けない　速度で 泳ぐ。翼の　縁は　鋭く 流氷を　切断する。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Since ancient times, it has been revered by the people of Hisui, who call it the Master of the Waves. Its wings are a match for even master-crafted blades.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 396,
+    "name": "starly",
+    "japaneseName": "ムックル",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "They flock in great numbers. Though small, they flap their wings with great power.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Because they are weak individually, they form groups. However, they bicker if the group grows too big.",
+        "ja": ""
+      },
+      "6": {
+        "en": "They flock in great numbers. Though small, they flap their wings with great power.",
+        "ja": "たくさんの　群れで　行動する。 体は　小さいが 羽ばたく　力は　非常に　強い。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "They live in the fields and mountains, gathering in large flocks. Their cries are quite obnoxious. Though small, their wings are strong—a strike from them leaves pain that persists for a week.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 397,
+    "name": "staravia",
+    "japaneseName": "ムクバード",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It flies around forests and fields in search of bug Pokémon. It stays within a huge flock.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Recognizing their own weakness, they always live in a group. When alone, a Staravia cries noisily.",
+        "ja": ""
+      },
+      "6": {
+        "en": "They maintain huge flocks, although fierce scuffles break out between various flocks.",
+        "ja": "大きな　グループを　作って 行動する　習性。 グループ同士の　争いは　激しい。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "They form remarkably large flocks and are constantly fighting amongst themselves. I suspect that those with magnificent plumes on their heads are the strong ones.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 398,
+    "name": "staraptor",
+    "japaneseName": "ムクホーク",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It has a savage nature. It will courageously challenge foes that are much larger.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It never stops attacking even if it is injured. It fusses over the shape of its comb.",
+        "ja": ""
+      },
+      "6": {
+        "en": "The muscles in its wings and legs are strong. It can easily fly while gripping a small Pokémon.",
+        "ja": "翼と　脚の　筋肉が　強く 小さな　ポケモンを　つかんだまま らくらくと　飛ぶことが　できる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It has left the flock, having gained strength enough to survive on its own. The astounding force with which Staraptor flies through the air allows it to carry away large, burly targets.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 399,
+    "name": "bidoof",
+    "japaneseName": "ビッパ",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "With nerves of steel, nothing can perturb it. It is more agile and active than it appears.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A comparison revealed that Bidoof’s front teeth grow at the same rate as Rattata’s.",
+        "ja": ""
+      },
+      "6": {
+        "en": "With nerves of steel, nothing can perturb it. It is more agile and active than it appears.",
+        "ja": "なにごとにも　動じない 図太い　神経の　持ち主。 見かけの　割には　機敏に　活動する。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Bidoof has an unsophisticated face and is rarely flustered by anything. There have been incidents involving Bidoof sauntering into villages and gnawing on the houses without a single care.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 400,
+    "name": "bibarel",
+    "japaneseName": "ビーダル",
+    "types": [
+      "normal",
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It makes its nest by damming streams with bark and mud. It is known as an industrious worker.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A river dammed by Bibarel will never overflow its banks, which is appreciated by people nearby.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It busily makes its nest with stacks of branches and roots it has cut up with its sharp incisors.",
+        "ja": "鋭い　前歯で　削り取った 木の枝や　根っこを　積み上げて 水辺に　せっせと　巣を　作る。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Bibarel fur repels water and is also a fantastic material for heat retention. These Pokémon create dams on rivers to live in.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 401,
+    "name": "kricketot",
+    "japaneseName": "コロボーシ",
+    "types": [
+      "bug"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It shakes its head back to front, causing its antennae to hit each other and sound like a xylophone.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its legs are short. Whenever it stumbles, its stiff antennae clack with a xylophone-like sound.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It chats with others using the sounds of its colliding antennae. These sounds are fall hallmarks.",
+        "ja": "触覚を　ぶつけ合って　鳴らす　音で 仲間と　会話をする。 音色は　秋の　夜の　風物詩。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "When the trees take on new hues, more of these Pokémon appear. The tone they create by striking their antennae together resembles that of the marimba, an instrument of foreign lands.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 402,
+    "name": "kricketune",
+    "japaneseName": "コロトック",
+    "types": [
+      "bug"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It crosses its knifelike arms in front of its chest when it cries. It can compose melodies ad lib.",
+        "ja": ""
+      },
+      "5": {
+        "en": "There is a village that hosts a contest based on the amazingly variable cries of this Pokémon.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It crosses its knifelike arms in front of its chest when it cries. It can compose melodies ad lib.",
+        "ja": "鳴くときは　ナイフのような　腕を 胸の　前で　交差させる。 即興で　メロディを　作る。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It uses its cutlass-like arms to produce sound, the melody of which varies from individual to individual. It is a worthwhile endeavor to seek out one's favorite tunes.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 403,
+    "name": "shinx",
+    "japaneseName": "コリンク",
+    "types": [
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "All of its fur dazzles if danger is sensed. It flees while the foe is momentarily blinded.",
+        "ja": ""
+      },
+      "5": {
+        "en": "The extension and contraction of its muscles generates electricity. It glows when in trouble.",
+        "ja": ""
+      },
+      "6": {
+        "en": "The extension and contraction of its muscles generates electricity. It glows when in trouble.",
+        "ja": "体を　動かすたびに　筋肉が 伸び縮みして　電気が　生まれる。 ピンチになると　体が　輝く。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "This Pokémon generates electricity by contracting its muscles. Excited trembling is a sign that Shinx is generating a tremendous amount of electricity.",
+        "ja": "筋肉の　収縮で　電気を　つくる。 武者震いは　激しく 発電している　証拠。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 404,
+    "name": "luxio",
+    "japaneseName": "ルクシオ",
+    "types": [
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Its claws loose electricity with enough amperage to cause fainting. They live in small groups.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Strong electricity courses through the tips of its sharp claws. A light scratch causes fainting in foes.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Its claws loose electricity with enough amperage to cause fainting. They live in small groups.",
+        "ja": "１発で　気絶させるほどの　電流を ツメから　流す。 数匹の　グループで　暮らす。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "By joining its tail with that of another Luxio, this Pokémon can receive some of the other Luxio’s electricity and power up its own electric blasts.",
+        "ja": "しっぽを　つなげて��仲間から 電気エネルギーを　分けてもらうと より　強い　電撃を　放てる。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 405,
+    "name": "luxray",
+    "japaneseName": "レントラー",
+    "types": [
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It has eyes that can see through anything. It spots and captures prey hiding behind objects.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It can see clearly through walls to track down its prey and seek its lost young.",
+        "ja": ""
+      },
+      "6": {
+        "en": "When its eyes gleam gold, it can spot hiding prey--even those taking shelter behind a wall.",
+        "ja": "瞳が　金色に　光るとき 壁の　向こうに　隠れている 獲物を　見つけることが　できる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Luxray can see through solid objects. It will instantly spot prey trying to hide behind walls, even if the walls are thick.",
+        "ja": "透視能力を　もつ　ポケモン。 厚い　壁の　向こうに　隠れる 獲物を　たちまち　見つけだす。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 406,
+    "name": "budew",
+    "japaneseName": "スボミー",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Over the winter, it closes its bud and endures the cold. In spring, the bud opens and releases pollen.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Sensitive to changing temperature, the bud is said to bloom when it feels the sun’s warm touch.",
+        "ja": ""
+      },
+      "6": {
+        "en": "When it feels the sun’s warm touch, it opens its bud to release pollen. It lives alongside clear pools.",
+        "ja": "暖かい　日差しを　浴びると つぼみが　開き　花粉を　飛ばす。 きれいな　水の　近くが　住処。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "The pollen it releases contains poison. If this Pokémon is raised on clean water, the poison’s toxicity is increased.",
+        "ja": "毒を　含んだ　花粉を　まく。 きれいな　水で　育てるほど 毒の　成分は　高まる。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 407,
+    "name": "roserade",
+    "japaneseName": "ロズレイド",
+    "types": [
+      "grass",
+      "poison"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It attracts prey with a sweet aroma, then downs it with thorny whips hidden in its arms.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Each of its hands contains different toxins, but both hands can jab with near-fatal power.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Luring prey with a sweet scent, it uses poison whips on its arms to poison, bind, and finish off the prey.",
+        "ja": "甘い　香りで　獲物を　誘い 両腕の　毒のムチを　使って 刺したり　締めたりして　しとめる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "After captivating opponents with its sweet scent, it lashes them with its thorny whips.",
+        "ja": "かぐわしい　花の　香りで 相手を　惑わせ　いばらの ムチで　激しく　打ちつける。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 408,
+    "name": "cranidos",
+    "japaneseName": "ズガイドス",
+    "types": [
+      "rock"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It lived in jungles around 100 million years ago. Its skull is as hard as iron.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A lifelong jungle dweller from 100 million years ago, it would snap obstructing trees with head butts.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It was resurrected from an iron ball-like fossil. It downs prey with its headbutts.",
+        "ja": "鉄球の　ような　化石から 復活した　古代の　ポケモン。 頭突きで　獲物を　しとめた。"
+      },
+      "7": {
+        "en": "It lived in jungles around a hundred million years ago. It used its skillful headbutts to combat Aerodactyl.",
+        "ja": "１億年ほど　前の　密林で 暮らしていた。　得意の　頭突きで プテラに　対抗　していた。"
+      },
+      "8": {
+        "en": "An incredibly rare sight. They duel each other by ramming their heads together, and the resulting sound echoes throughout the area like the pealing of a bell.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 409,
+    "name": "rampardos",
+    "japaneseName": "ラムパルド",
+    "types": [
+      "rock"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Its powerful head butt has enough power to shatter even the most durable things upon impact.",
+        "ja": ""
+      },
+      "5": {
+        "en": "If two were to smash their heads together, their foot-thick skulls would keep them from fainting.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Its skull withstands impacts of any magnitude. As a result, its brain never gets the chance to grow.",
+        "ja": "どんな　衝撃にも　耐えられる 分厚い　頭蓋骨に　押さえられて 脳みそは　大きく　ならなかった。"
+      },
+      "7": {
+        "en": "The result of repeated headbutts is a skull grown thick and hard. However, its brain has shrunk in size compared with Cranidos’s.",
+        "ja": "頭突きを　繰り返し　頭がい骨は 硬く　厚くなったが　脳味噌は ズガイドスより　縮んでいる。"
+      },
+      "8": {
+        "en": "Very little is known about its biology. Can knock down massive trees by smashing its beautiful, pearl-like crown against them.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 410,
+    "name": "shieldon",
+    "japaneseName": "タテトプス",
+    "types": [
+      "rock",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "A Pokémon that lived in jungles around 100 million years ago. Its facial hide is extremely hard.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It is outstandingly armored. As a result, it can eat grass and berries without having to fight.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It habitually polishes its face by rubbing it against tree trunks. It is weak to attacks from behind.",
+        "ja": "大木の　幹に　こすりつけて 硬い　顔を　磨く　習性。 後ろからの　攻撃に　弱い。"
+      },
+      "7": {
+        "en": "Many fossils of this Pokémon have been found, but almost none have shown signs of damage to the face.",
+        "ja": "多くの　化石が　みつかっているが 顔の　部分が　傷ついていたり 欠けているものは　ほぼ　ない。"
+      },
+      "8": {
+        "en": "Much remains unknown about this Pokémon, as few have ever seen it. However, we know that it is calm and dislikes conflict, and it enjoys polishing its face against trees and rocks.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 411,
+    "name": "bastiodon",
+    "japaneseName": "トリデプス",
+    "types": [
+      "rock",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Any frontal attack is repulsed. It is a docile Pokémon that feeds on grass and berries.",
+        "ja": ""
+      },
+      "5": {
+        "en": "When they lined up side by side, no foe could break through. They shielded their young in that way.",
+        "ja": ""
+      },
+      "6": {
+        "en": "When they lined up side by side, no foe could break through. They shielded their young in that way.",
+        "ja": "横一列に　並ぶと　どんな ポケモンでも　突破　できない。 そうやって　子供を　守っていた。"
+      },
+      "7": {
+        "en": "While it can guard against any sort of attack from the front, it is left without recourse when attacked from behind.",
+        "ja": "正面からで　あれば　あらゆる 攻撃を　ガードできるが 後ろを　取られると　なす術なし。"
+      },
+      "8": {
+        "en": "Its face is sturdy—as strong as diamond—and this hardness offers a very stable defense. Much about this species is still unknown, such as its natural habitat.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 412,
+    "name": "burmy",
+    "japaneseName": "ミノムッチ",
+    "types": [
+      "bug"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "To shelter itself from cold, wintry winds, it covers itself with a cloak made of twigs and leaves.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Even if it is born where there are no cocooning materials, it somehow always ends up with a cloak.",
+        "ja": ""
+      },
+      "6": {
+        "en": "To shelter itself from cold, wintry winds, it covers itself with a cloak made of twigs and leaves.",
+        "ja": "冷たい　木枯らしを　防ぐため 小枝や　落ち葉を　材料に ミノを　作り　体を　覆う。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "If its cloak is even slightly damaged, Burmy will immediately repair it with whatever is close at hand. The Pokémon within the cloak is scrawny and vulnerable to the cold.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 413,
+    "name": "wormadam-plant",
+    "japaneseName": "ミノマダム",
+    "types": [
+      "bug",
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "When BURMY evolved, its cloak became a part of this Pokémon’s body. The cloak is never shed.",
+        "ja": ""
+      },
+      "5": {
+        "en": "When evolving, its body takes in surrounding materials. As a result, there are many body variations.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Its appearance changes depending on where it evolved. The materials on hand become a part of its body.",
+        "ja": "進化した　場所によって 姿が　変わる。身近にある　材料が 体の　一部に　なるのだ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 414,
+    "name": "mothim",
+    "japaneseName": "ガーメイル",
+    "types": [
+      "bug",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It loves the honey of flowers and steals honey collected by COMBEE.",
+        "ja": ""
+      },
+      "5": {
+        "en": "While it loves floral honey, it won’t gather any itself. Instead, it plots to steal some from Combee.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It loves the honey of flowers and steals honey collected by Combee.",
+        "ja": "花の　ミツが　大好き。 ミツハニーの　集めた　ミツを 横取りして　食べてしまう。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Scatters steel-colored scales as it flaps its wings. Despite being observed feeding primarily on the nectar of flowers, Mothim is not often seen around flower gardens.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 415,
+    "name": "combee",
+    "japaneseName": "ミツハニー",
+    "types": [
+      "bug",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "A Pokémon formed by three others. It busily carries sweet floral honey to VESPIQUEN.",
+        "ja": ""
+      },
+      "5": {
+        "en": "The trio is together from birth. It constantly gathers honey from flowers to please Vespiquen.",
+        "ja": ""
+      },
+      "6": {
+        "en": "The trio is together from birth. It constantly gathers honey from flowers to please Vespiquen.",
+        "ja": "生まれたときから　３匹　一緒。 ビークインに　喜んでもらうため いつも　花のミツを　集めている。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "The members of the trio spend all their time together. Each one has a slightly different taste in nectar.",
+        "ja": "いつも　一緒の　３匹だけど それぞれの　花の　蜜の 好みは　微妙に　違う。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 416,
+    "name": "vespiquen",
+    "japaneseName": "ビークイン",
+    "types": [
+      "bug",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Its abdomen is a honeycomb for grubs. It raises its grubs on honey collected by COMBEE.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It releases various pheromones to make the grubs in its body do its bidding while fighting foes.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It houses its colony in cells in its body and releases various pheromones to make those grubs do its bidding.",
+        "ja": "胴体は　子供たちの　巣穴。 いろんな　フェロモンを　だして 子供たちを　自由に　操る。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It skillfully commands its grubs in battles with its enemies. The grubs are willing to risk their lives to defend Vespiquen.",
+        "ja": "子どもたちを　自在に　操り 敵と　戦う。　子どもたちは ビークインのため　命を　かける。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 417,
+    "name": "pachirisu",
+    "japaneseName": "パチリス",
+    "types": [
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It makes fur balls that crackle with static electricity. It stores them with berries in tree holes.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A pair may be seen rubbing their cheek pouches together in an effort to share stored electricity.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It makes fur balls that crackle with static electricity. It stores them with berries in tree holes.",
+        "ja": "静電気が　たまって　パチパチする 毛玉を　大好物の　木の実と　一緒に 幹の　穴に　隠す。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "A species related to the Pikachu line. Though Pachirisu is a calm Pokémon, it still presents a danger should one touch its electrified tail or cheeks.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 418,
+    "name": "buizel",
+    "japaneseName": "ブイゼル",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It has a flotation sac that is like an inflatable collar. It floats on water with its head out.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It spins its two tails like a screw to propel itself through water. The tails also slice clinging seaweed.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It swims by rotating its two tails like a screw. When it dives, its flotation sac collapses.",
+        "ja": "２本の　尻尾を スクリューの　ように　回して　泳ぐ。 潜る　ときは　浮き袋が　しぼむ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It moves freely in the water by spinning its forked tail for propulsion. The resemblance to the screw of a steamboat is coincidental.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 419,
+    "name": "floatzel",
+    "japaneseName": "フローゼル",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It floats using its well-developed flotation sac. It assists in the rescues of drowning people.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It is a common sight around fishing ports. It is known to rescue people and carry off prey.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It floats using its well-developed flotation sac. It assists in the rescues of drowning people.",
+        "ja": "発達した　浮き袋で　浮かぶ。 おぼれた　人を　救助する 手伝いを　している　ポケモンだ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Has a long, rather splendid flotation sac, which prevents Floatzel from drowning even in stormy seas. One might glimpse this species around fishing hamlets from time to time.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 420,
+    "name": "cherubi",
+    "japaneseName": "チェリンボ",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "The small ball holds the nutrients needed for evolution. Apparently, it is very sweet and tasty.",
+        "ja": ""
+      },
+      "5": {
+        "en": "The small ball is not only filled with nutrients, it is also tasty. Starly try to peck it off.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Sunlight colors it red. When the small ball is drained of nutrients, it shrivels to herald evolution.",
+        "ja": "日の光で　赤く　色づく。 栄養分が　吸われて　小さい　玉が しぼむと　進化が　近い。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It nimbly dashes about to avoid getting pecked by bird Pokémon that would love to make off with its small, nutrient-rich storage ball.",
+        "ja": "栄養の　詰まった　玉は 鳥ポケモンの　大好物。 ついばまれないよう　逃げまわる。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 421,
+    "name": "cherrim",
+    "japaneseName": "チェリム",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It blooms during times of strong sunlight. It tries to make up for everything it endured as a bud.",
+        "ja": ""
+      },
+      "5": {
+        "en": "If it senses strong sunlight, it opens its folded petals to absorb the sun’s rays with its whole body.",
+        "ja": ""
+      },
+      "6": {
+        "en": "During times of strong sunlight, its bud blooms, its petals open fully, and it becomes very active.",
+        "ja": "つぼみが　太陽の　光を　浴びて 花びらを　広げると 活発に　動くように　なる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "As a bud, it barely moves. It sits still, placidly waiting for sunlight to appear.",
+        "ja": "つぼみの　あいだは　おとなしく ほぼ　動かない。　日の光が 出るのを　じっと　待っている。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 422,
+    "name": "shellos",
+    "japaneseName": "カラナクシ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Its colors and shapes differ from region to region. In the Sinnoh region, two types are confirmed.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Beware of pushing strongly on its squishy body, as it makes a mysterious purple fluid ooze out.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Beware of pushing strongly on its squishy body, as it makes a mysterious purple fluid ooze out.",
+        "ja": "やわらかい　体を　強く押すと 紫色の　ナゾの　液体が にじみ出るので　要注意。"
+      },
+      "7": {
+        "en": "For the most part, it makes its home along the seashore. Its color and form differ according to its habitat and the quality of its food.",
+        "ja": "磯が　主な　棲みか。 生息地の　環境や　餌の 質で　色や　姿が　異なる。"
+      },
+      "8": {
+        "en": "This Pokémon’s habitat shapes its physique. According to some theories, life in warm ocean waters causes this variation to develop.",
+        "ja": "環境で　姿が　変わる。 水温が　温かい　海では この姿に　なるという　説も。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 423,
+    "name": "gastrodon",
+    "japaneseName": "トリトドン",
+    "types": [
+      "water",
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It has a pliable body without any bones. If any part of its body is torn off, it grows right back.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Long ago, its entire back was shielded with a sturdy shell. There are traces of it left in its cells.",
+        "ja": ""
+      },
+      "6": {
+        "en": "When its natural enemy attacks, it oozes purple fluid and escapes.",
+        "ja": "天敵に　襲われたときは 紫色の　液体を 体から　出して　逃げる。"
+      },
+      "7": {
+        "en": "It has strong regenerative capabilities. Even if parts of it are bitten off by fish Pokémon, it will return to normal within a few hours.",
+        "ja": "再生能力が　高い。 さかなポケモンに　喰い千切られても 数時間で　元通りに　なるよ。"
+      },
+      "8": {
+        "en": "Its search for food sometimes leads it onto land, where it leaves behind a sticky trail of slime as it passes through.",
+        "ja": "エサを　求めて　陸にも　上がる。 トリトドンが　這った跡には ネバネバの　粘液が　残る。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 424,
+    "name": "ambipom",
+    "japaneseName": "エテボース",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "To eat, it deftly shucks nuts with its two tails. It rarely uses its arms now.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Split into two, the tails are so adept at handling and doing things, Ambipom rarely uses its hands.",
+        "ja": ""
+      },
+      "6": {
+        "en": "They work in large colonies and make rings by linking their tails, apparently in friendship.",
+        "ja": "大勢の　群れで　行動する。 尻尾を　つなぎ合わせて　輪っかを 作る。友情の　印らしい。"
+      },
+      "7": {
+        "en": "In their search for comfortable trees, they get into territorial disputes with groups of Passimian. They win about half the time.",
+        "ja": "居心地の良い　木を　巡って ナゲツケサルのグループと　縄張りを 争っている。　結果は　５分だ。"
+      },
+      "8": {
+        "en": "To affirm their kinship, members of this species will form a ring by linking their newly doubled tails together. On rare occasions, humans have been accepted into such rings.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 425,
+    "name": "drifloon",
+    "japaneseName": "フワンテ",
+    "types": [
+      "ghost",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "A Pokémon formed by the spirits of people and Pokémon. It loves damp, humid seasons.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Because of the way it floats aimlessly, an old folktale calls it a “Signpost for Wandering Spirits.”",
+        "ja": ""
+      },
+      "6": {
+        "en": "A Pokémon formed by the spirits of people and Pokémon. It loves damp, humid seasons.",
+        "ja": "人や　ポケモンの　魂が 固まって　生まれた　ポケモン。 ジメジメした　季節が　大好き。"
+      },
+      "7": {
+        "en": "Stories go that it grabs the hands of small children and drags them away to the afterlife. It dislikes heavy children.",
+        "ja": "幼い子どもの　手を　握り あの世へと　連れ去る　という。 重たい　子どもは　キライ。"
+      },
+      "8": {
+        "en": "Perhaps seeking company, it approaches children. However, it often quickly runs away again when the children play too roughly with it.",
+        "ja": "仲間が　欲しいのか　子どもに 近づくが　いいように　遊ばれ 逃げていくことも　少なくない。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 426,
+    "name": "drifblim",
+    "japaneseName": "フワライド",
+    "types": [
+      "ghost",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It’s drowzy in daytime, but flies off in the evening in big groups. No one knows where they go.",
+        "ja": ""
+      },
+      "5": {
+        "en": "At dusk, swarms of them are carried aloft on winds. When noticed, they suddenly vanish.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It carries people and Pokémon when it flies. But since it only drifts, it can end up anywhere.",
+        "ja": "人や　ポケモンを　乗せて　飛ぶが 風に　流されているだけなので どこへ　飛んでいくか　わからない。"
+      },
+      "7": {
+        "en": "There was once an incident in which a man took a trip riding a Drifblim, only to go missing.",
+        "ja": "フワライドに　乗って　旅に出た 男が　そのまま　行方不明に なったという　事件が　ある。"
+      },
+      "8": {
+        "en": "Some say this Pokémon is a collection of souls burdened with regrets, silently drifting through the dusk.",
+        "ja": "無念の　死を　とげた　魂が 集まった　姿とも　いわれる。 宵闇を　音も　なく　漂う。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 427,
+    "name": "buneary",
+    "japaneseName": "ミミロル",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It slams foes by sharply uncoiling its rolled ears. It stings enough to make a grown-up cry in pain.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its ears are always rolled up. They can be forcefully extended to shatter even a large boulder.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Its ears are always rolled up. They can be forcefully extended to shatter even a large boulder.",
+        "ja": "いつも　まるめている　耳を 勢いよく　伸ばすと　大きな 岩も　簡単に　壊せる。"
+      },
+      "7": {
+        "en": "Its arms and legs are weak, but when it rolls its ears up tight and then unleashes them with its full force, it can smash boulders to dust.",
+        "ja": "手足の力は　弱いが　ぎゅっと 丸めた耳を　おもいきり　のばすと 大きな岩も　粉々に　砕く。"
+      },
+      "8": {
+        "en": "If both of Buneary’s ears are rolled up, something is wrong with its body or mind. It’s a sure sign the Pokémon is in need of care.",
+        "ja": "左右の　耳を　丸めているときは 体や　心の　不調が 原因なので　ケアが　必要。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 428,
+    "name": "lopunny",
+    "japaneseName": "ミミロップ",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "An extremely cautious Pokémon. It cloaks its body with its fluffy ear fur when it senses danger.",
+        "ja": ""
+      },
+      "5": {
+        "en": "The ears appear to be delicate. If they are touched roughly, it kicks with its graceful legs.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Extremely cautious, it quickly bounds off when it senses danger.",
+        "ja": "警戒心が　とても　強い。 危険を　感じると　軽やかに 飛び跳ねて　走り去ってしまう。"
+      },
+      "7": {
+        "en": "Lopunny regrows its coat twice a year. Mufflers and hats made from its fur are really warm.",
+        "ja": "年に　２回　毛が　生えかわる。 その毛を　使った　マフラーや 帽子は　とっても　あたたかいぞ。"
+      },
+      "8": {
+        "en": "Lopunny is constantly monitoring its surroundings. If danger approaches, this Pokémon responds with superdestructive kicks.",
+        "ja": "まわりの　様子を　つねに　気にして 危険が　およぶと　破壊力　抜群の キックを　おみまいする。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 429,
+    "name": "mismagius",
+    "japaneseName": "ムウマージ",
+    "types": [
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Its cries sound like incantations. Those hearing it are tormented by headaches and hallucinations.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its cry sounds like an incantation. It is said the cry may rarely be imbued with happiness-giving power.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It chants incantations. While they usually torment targets, some chants bring happiness.",
+        "ja": "じゅもんを　唱える　ポケモン。 相手を　苦しめるもの　だけでなく 幸せにする　じゅもんも　ある。"
+      },
+      "7": {
+        "en": "It appears as if from nowhere—muttering incantations, placing curses, and giving people terrifying visions.",
+        "ja": "どこからともなく　現れ　呪文を つぶやき　呪いを　かけたり 恐ろしい　幻を　みせる。"
+      },
+      "8": {
+        "en": "The incantations Mismagius chants can ward against misfortune, so a custom exists of inviting it into one's home. Incur the Pokémon's displeasure, however, and disaster will surely ensue.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 430,
+    "name": "honchkrow",
+    "japaneseName": "ドンカラス",
+    "types": [
+      "dark",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Becoming active at night, it is known to swarm with numerous MURKROW in tow.",
+        "ja": ""
+      },
+      "5": {
+        "en": "If one utters a deep cry, many Murkrow gather quickly. For this, it is called “Summoner of Night.”",
+        "ja": ""
+      },
+      "6": {
+        "en": "If one utters a deep cry, many Murkrow gather quickly. For this, it is called “Summoner of Night.”",
+        "ja": "ドンカラスが　低い声で　鳴くと すぐさま　ヤミカラスが　集まるため 夜を招くもの　とも　言われる。"
+      },
+      "7": {
+        "en": "A single cry from this nocturnal Pokémon, and more than a hundred of its Murkrow cronies will assemble.",
+        "ja": "夜行性。　一声　鳴けば １００匹を　超える　子分の ヤミカラスが　集結する。"
+      },
+      "8": {
+        "en": "One cry from this Pokémon, and a murder of Murkrow come flying. At such times, one would think the curtain of night had fallen, plunging the world into jet-black darkness.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 431,
+    "name": "glameow",
+    "japaneseName": "ニャルマー",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It claws if displeased and purrs when affectionate. Its fickleness is very popular among some.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It hides its spiteful tendency of hooking its claws into the nose of its Trainer if it isn’t fed.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It claws if displeased and purrs when affectionate. Its fickleness is very popular among some.",
+        "ja": "気に入らないと　ツメを　立てるが たまに　のどを　鳴らして 甘える　性格が　一部に　大人気だ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Bewitches humans with its helical tail and piercing gaze. Its hidden claws are quite sharp as well, making this Pokémon an exceedingly tricky opponent if antagonized.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 432,
+    "name": "purugly",
+    "japaneseName": "ブニャット",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It is a brazen brute that barges its way into another Pokémon’s nest and claims it as its own.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It binds its body with its tails to make itself look bigger. If it locks eyes, it will glare ceaselessly.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It would claim another Pokémon’s nest as its own if it finds a nest sufficiently comfortable.",
+        "ja": "ほかの　ポケモンの　住処でも 居心地が　良ければ　居座って 自分の　住処に　してしまう。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Though impudent and difficult to tame, Purugly enjoys great popularity due to its fur, the beauty of which surpasses even velveteen.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 433,
+    "name": "chingling",
+    "japaneseName": "リーシャン",
+    "types": [
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It emits cries by agitating an orb at the back of its throat. It moves with flouncing hops.",
+        "ja": ""
+      },
+      "5": {
+        "en": "There is an orb inside its mouth. When it hops, the orb bounces all over and makes a ringing sound.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Each time it hops, it makes a ringing sound. It deafens foes by emitting high-frequency cries.",
+        "ja": "跳ねるたびに　リリンと　音を　出す。 高い　周波数の　鳴き声で 相手の　耳を　聞こえなくする。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "This Pokémon gave me an excruciating headache when it seemingly cried out without making a sound. Perhaps there are some sounds that the human ear is simply incapable of hearing.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 434,
+    "name": "stunky",
+    "japaneseName": "スカンプー",
+    "types": [
+      "poison",
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It protects itself by spraying a noxious fluid from its rear. The stench lingers for 24 hours.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It sprays a foul fluid from its rear. Its stench spreads over a mile radius, driving Pokémon away.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It sprays a foul fluid from its rear. Its stench spreads over a mile radius, driving Pokémon away.",
+        "ja": "お尻から飛ばす　くさい　汁の においは　半径２キロに　広がり まわりの　ポケモンは　いなくなる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "From its rear, it sprays a foul-smelling liquid at opponents. It aims for their faces, and it can hit them from over 16 feet away.",
+        "ja": "おしりから　相手の　顔を　めがけて ものすごく　臭い　汁を　飛ばす。 汁は　５メートル先まで　とどく。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 435,
+    "name": "skuntank",
+    "japaneseName": "スカタンク",
+    "types": [
+      "poison",
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It sprays a vile-smelling fluid from the tip of its tail to attack. Its range is over 160 feet.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It attacks by spraying a horribly smelly fluid from the tip of its tail. Attacks from above confound it.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It sprays a vile-smelling fluid from the tip of its tail to attack. Its range is over 160 feet.",
+        "ja": "尻尾の　先から　ひどい　においの 液体を　飛ばして　攻撃する。 飛距離は　５０メートル以上。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "In its belly, it reserves stinky fluid that it shoots from its tail during battle. As this Pokémon’s diet varies, so does the stench of its fluid.",
+        "ja": "お腹に　溜めこんだ　臭い　汁を 尻尾から　飛ばして　戦う。 においは　食べ物で　変わるのだ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 436,
+    "name": "bronzor",
+    "japaneseName": "ドーミラー",
+    "types": [
+      "steel",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Implements shaped like it were discovered in ancient tombs. It is unknown if they are related.",
+        "ja": ""
+      },
+      "5": {
+        "en": "There are researchers who believe this Pokémon reflected like a mirror in the distant past.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Ancient people believed that the pattern on Bronzor’s back contained a mysterious power.",
+        "ja": "ドーミラーの　背中の　模様には 神秘的な　力が　宿ると 昔の　人たちは　信じていた。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It appears in ancient ruins. The pattern on its body doesn’t come from any culture in the Galar region, so it remains shrouded in mystery.",
+        "ja": "古い　遺跡に　現れる。 体の　模様は　ガラルには ない　文化の　もので　謎。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 437,
+    "name": "bronzong",
+    "japaneseName": "ドータクン",
+    "types": [
+      "steel",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "One caused a news sensation when it was dug up at a construction site after a 2,000-year sleep.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It brought rains by opening portals to another world. It was revered as a bringer of plentiful harvests.",
+        "ja": ""
+      },
+      "6": {
+        "en": "In ages past, this Pokémon was revered as a bringer of rain. It was found buried in the ground.",
+        "ja": "雨雲を　呼べる　ポケモンとして 大昔から　まつられていた。 ときどき　地面に　埋められている。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Some believe it to be a deity that summons rain clouds. When angered, it lets out a warning cry that rings out like the tolling of a bell.",
+        "ja": "雨雲を呼ぶ　神と　いわれる。 怒らせると　鐘の音の　ような 不気味な　声で　威嚇する。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 438,
+    "name": "bonsly",
+    "japaneseName": "ウソハチ",
+    "types": [
+      "rock"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It looks as if it is always crying. It is actually adjusting its body’s fluid levels by eliminating excess.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It prefers an arid atmosphere. It leaks water that looks like tears when adjusting its moisture level.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It prefers arid environments. It leaks water from its eyes to adjust its body’s fluid levels.",
+        "ja": "乾燥した　場所を　好む。 目から　水を　出して 体の　水分を　調節する。"
+      },
+      "7": {
+        "en": "It does not deal well with water, so it lives in dry locales. Since its surroundings tend to lack greenery, it stands out noticeably.",
+        "ja": "水が　苦手で　乾いた　場所に 棲んでいる。　周りに　緑が 少ないので　よく　目立つ。"
+      },
+      "8": {
+        "en": "It expels both sweat and tears from its eyes. The sweat is a little salty, while the tears have a slight bitterness.",
+        "ja": "汗と　涙を　目から　流す。 汗は　ちょっぴり　しょっぱくて 涙は　ほんのり　苦い　味だ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 439,
+    "name": "mime-jr",
+    "japaneseName": "マネネ",
+    "types": [
+      "psychic",
+      "fairy"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It habitually mimics foes. Once mimicked, the foe cannot take its eyes off this Pokémon.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It mimics the expressions and motions of those it sees to understand the feelings of others.",
+        "ja": ""
+      },
+      "6": {
+        "en": "In an attempt to confuse its enemy, it mimics the enemy’s movements. Then it wastes no time in making itself scarce!",
+        "ja": "相手の　動きを　そっくりに 真似を　して　戸惑わせている あいだに　さっさと　逃げるのだ。"
+      },
+      "7": {
+        "en": "It does its absolute best to mimic the movements and expressions of its opponents, but it’s still not very good at it.",
+        "ja": "相手の　動きや　表情を 一生懸命に　真似る。 まだまだ　うまいとは　いえない。"
+      },
+      "8": {
+        "en": "It mimics everyone it sees, but it puts extra effort into copying the graceful dance steps of Mr. Rime as practice.",
+        "ja": "見るもの　すべての　真似を　する。 バリコオルの　華麗な　ステップを ひたすら　真似して　練習する。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 440,
+    "name": "happiny",
+    "japaneseName": "ピンプク",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It loves round white things. It carries an egg-shaped rock in imitation of CHANSEY.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It likes to carry around a small rock. It may wander around others’ feet and cause them to stumble.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It carries a round, egg-shaped rock in its belly pouch and gives the rock to its friends.",
+        "ja": "タマゴに　似た　真んまるい　石を お腹の　袋に　入れている。 好きな　相手に　石を　渡す。"
+      },
+      "7": {
+        "en": "It carries a round white rock in its belly pouch. If it gets along well with someone, it will sometimes give that person the rock.",
+        "ja": "お腹の　袋に　白くて　丸い 石を　入れている。　仲良くなると わけて　くれることも　あるよ。"
+      },
+      "8": {
+        "en": "Mimicking Chansey, Happiny will place an egg- shaped stone in its belly pouch. Happiny will treasure this stone.",
+        "ja": "ラッキーの　真似をして　タマゴに そっくりな　まるい　石を　お腹の 袋に　入れて　大事にしている。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 441,
+    "name": "chatot",
+    "japaneseName": "ペラップ",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It can learn and speak human words. If they gather, they all learn the same saying.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its tongue is just like a human’s. As a result, it can cleverly mimic human speech.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It mimics the cries of other Pokémon to trick them into thinking it’s one of them. This way they won’t attack it.",
+        "ja": "相手と　同じ　鳴き声を　出す　ことで 仲間と　思いこませて 襲われないように　しているのだ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "A versatile performer skilled in the imitation of human speech. It is said that older, more experienced Chatot can even understand the meaning of the words they mimic.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 442,
+    "name": "spiritomb",
+    "japaneseName": "ミカルゲ",
+    "types": [
+      "ghost",
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "A Pokémon that was formed by 108 spirits. It is bound to a fissure in an odd keystone.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its constant mischief and misdeeds resulted in it being bound to an Odd Keystone by a mysterious spell.",
+        "ja": ""
+      },
+      "6": {
+        "en": "A Pokémon that was formed by 108 spirits. It is bound to a fissure in an odd keystone.",
+        "ja": "１０８個の　魂が　集まって 生まれた　ポケモン。 要石の　ひび割れに　つながれている。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Exactly 108 spirits gathered to become this Pokémon. Apparently there are some ill-natured spirits in the mix.",
+        "ja": "１０８個の　魂が　集まり ポケモンになったが　性悪の 魂が　混じってしまったらしい。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 443,
+    "name": "gible",
+    "japaneseName": "フカマル",
+    "types": [
+      "dragon",
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It nests in small, horizontal holes in cave walls. It pounces to catch prey that stray too close.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It attacks using its huge mouth. While its attacks are powerful, it hurts itself out of clumsiness, too.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It nests in horizontal holes warmed by geothermal heat. Foes who get too close can expect to be pounced on and bitten.",
+        "ja": "地熱で　温められた　横穴で　暮らす。 敵が　近づくと　穴から　飛び出して 大口で　かみつく。"
+      },
+      "7": {
+        "en": "It lives in caves warmed by geothermal heat. Even so, when the weather gets cold, it will huddle close with others of its kind.",
+        "ja": "地熱で　温かい　洞窟に 暮らしている。　それでも　寒くなると 仲間と　身を　寄せ合って　かたまる。"
+      },
+      "8": {
+        "en": "Gible prefers to stay in narrow holes in the sides of caves heated by geothermal energy. This way, Gible can stay warm even during a blizzard.",
+        "ja": "地熱で　暖められた　洞窟の 狭い　横穴を　好む。　外が 吹雪いていても　凍えずにすむのだ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 444,
+    "name": "gabite",
+    "japaneseName": "ガバイト",
+    "types": [
+      "dragon",
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "There is a long-held belief that medicine made from its scales will heal even incurable illnesses.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It loves sparkly things. It seeks treasures in caves and hoards the loot in its nest.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It loves sparkly things. It seeks treasures in caves and hoards the loot in its nest.",
+        "ja": "光り輝く　ものが　大好きで 洞窟の　中で　見つけた 宝を　自分の巣に　ためこむ。"
+      },
+      "7": {
+        "en": "In rare cases, it molts and sheds its scales. Medicine containing its scales as an ingredient will make a weary body feel invigorated.",
+        "ja": "稀に　脱皮し　ウロコが　剥げる。 その成分が　含まれる　薬は 疲れた　体を　ギンギンにする。"
+      },
+      "8": {
+        "en": "This Pokémon emits ultrasonic waves from a protrusion on either side of its head to probe pitch-dark caves.",
+        "ja": "頭の　左右の　突起から 超音波を　出して　真っ暗な 洞穴の　様子を　調べるのだ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 445,
+    "name": "garchomp",
+    "japaneseName": "ガブリアス",
+    "types": [
+      "dragon",
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "When it folds up its body and extends its wings, it looks like a jet plane. It flies at sonic speed.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It is said that when one runs at high speed, its wings create blades of wind that can fell nearby trees.",
+        "ja": ""
+      },
+      "6": {
+        "en": "When it folds up its body and extends its wings, it looks like a jet plane. It flies at sonic speed.",
+        "ja": "体を　折り畳み　翼を　伸ばすと まるで　ジェット機。 音速で　飛ぶことが　できる。"
+      },
+      "7": {
+        "en": "It can fly at speeds rivaling jet planes. It dives into flocks of bird Pokémon and gulps the entire flock down whole.",
+        "ja": "ジェット機　並の　高速で　飛ぶ。 とりポケモンの　群れに　突っ込むと そのまま　群れごと　丸呑みだ。"
+      },
+      "8": {
+        "en": "Garchomp makes its home in volcanic mountains. It flies through the sky as fast as a jet airplane, hunting down as much prey as it can.",
+        "ja": "火山性の　山に　すみつく。 ジェット機に　負けない　速さで 空を　飛び　獲物を　狩りまくる。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 446,
+    "name": "munchlax",
+    "japaneseName": "ゴンベ",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It wolfs down its weight in food once a day, swallowing food whole with almost no chewing.",
+        "ja": ""
+      },
+      "5": {
+        "en": "In its desperation to gulp down food, it forgets about the food it has hidden under its fur.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It hides food under its long body hair. However, it forgets it has hidden the food.",
+        "ja": "長い　体の　毛の　下に 食べ物を　隠す　習性。 隠したことを　忘れてしまう。"
+      },
+      "7": {
+        "en": "It needs to consume its own weight in food every day. As far as flavor is concerned, it’s indifferent.",
+        "ja": "毎日　自分の　体重と 同じ　量の　餌が　必要。 味に　ついては　気に　しない。"
+      },
+      "8": {
+        "en": "Stuffing itself with vast amounts of food is its only concern. Whether the food is rotten or fresh, yummy or tasteless—it does not care.",
+        "ja": "とにかく　たくさん　食べることに 夢中。　味も　気にしないし 腐っていても　平気　なのだ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 447,
+    "name": "riolu",
+    "japaneseName": "リオル",
+    "types": [
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "The aura that emanates from its body intensifies to alert others if it is afraid or sad.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It has the peculiar power of being able to see emotions such as joy and rage in the form of waves.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It uses the shapes of auras, which change according to emotion, to communicate with others.",
+        "ja": "感情で　形が　変わる 波動を　だしあって　仲間同士 コミュニケーションを　とっている。"
+      },
+      "7": {
+        "en": "It can discern the physical and emotional states of people, Pokémon, and other natural things from the shape of their aura waves.",
+        "ja": "人や　ポケモンの　感情や 自然の　様子を　波動　という 波の　形で　みているのだ。"
+      },
+      "8": {
+        "en": "It’s exceedingly energetic, with enough stamina to keep running all through the night. Taking it for walks can be a challenging experience.",
+        "ja": "一晩中　走っていられる スタミナを　もつ。　活発で 散歩の　相手は　たいへん。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 448,
+    "name": "lucario",
+    "japaneseName": "ルカリオ",
+    "types": [
+      "fighting",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It has the ability to sense the auras of all things. It understands human speech.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A well-trained one can sense auras to identify and take in the feelings of creatures over half a mile away.",
+        "ja": ""
+      },
+      "6": {
+        "en": "By catching the aura emanating from others, it can read their thoughts and movements.",
+        "ja": "相手の　発する　波動を キャッチすることで　考えや　動きを 読み取ることが　できる。"
+      },
+      "7": {
+        "en": "Not only does it perceive auras, but it has also gained the power to control them. It employs them in battle.",
+        "ja": "読み取るだけ　ではなく　波動を 操る　力を　手に　入れた。 戦いにも　利用　するぞ。"
+      },
+      "8": {
+        "en": "It controls waves known as auras, which are powerful enough to pulverize huge rocks. It uses these waves to take down its prey.",
+        "ja": "大岩も　粉々に　砕く 波動と　呼ばれる　力を 操って　獲物を　狩る。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 449,
+    "name": "hippopotas",
+    "japaneseName": "ヒポポタス",
+    "types": [
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It lives in arid places. Instead of perspiration, it expels grainy sand from its body.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It shuts its nostrils tight then travels through sand as if walking. They form colonies of around ten.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It lives in arid places. Instead of perspiration, it expels grainy sand from its body.",
+        "ja": "乾燥した　土地で　暮らす。 汗の　かわりに　砂粒を 体から　分泌する　ポケモン。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It moves through the sands with its mouth open, swallowing sand along with its prey. It gets rid of the sand by spouting it from its nose.",
+        "ja": "口を　開けて　移動しながら 砂ごと　獲物を　丸飲み。 砂は　鼻から　噴き出し　捨てる。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 450,
+    "name": "hippowdon",
+    "japaneseName": "カバルドン",
+    "types": [
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It blasts internally stored sand from ports on its body to create a towering twister for attack.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It is surprisingly quick to anger. It holds its mouth agape as a display of its strength.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It brandishes its gaping mouth in a display of fearsome strength. It raises vast quantities of sand while attacking.",
+        "ja": "大きく　口を　開けて 自分の　強さを　アピール。 大量の　砂を　巻き上げて　攻撃する。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Stones can get stuck in the ports on their bodies. Dwebble help dislodge such stones, so Hippowdon look after these Pokémon.",
+        "ja": "体の　穴には　たまに　石が 詰まる。　石を　取ってくれるので イシズマイを　大切に　守る。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 451,
+    "name": "skorupi",
+    "japaneseName": "スコルピ",
+    "types": [
+      "poison",
+      "bug"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It grips prey with its tail claws and injects poison. It tenaciously hangs on until the poison takes.",
+        "ja": ""
+      },
+      "5": {
+        "en": "As soon as the tail claws close, its needle tips secrete poison. It can survive a year without food.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It grips prey with its tail claws and injects poison. It tenaciously hangs on until the poison takes.",
+        "ja": "尻尾の　ツメで　獲物を　挟み 毒を　送りこむ。毒が　効くまで 絶対に　放さない　執念。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "After burrowing into the sand, it waits patiently for prey to come near. This Pokémon and Sizzlipede share common descent.",
+        "ja": "砂に　体を　埋め　じっと 獲物を　待ち続けている。 ヤクデと　祖先が　近い。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 452,
+    "name": "drapion",
+    "japaneseName": "ドラピオン",
+    "types": [
+      "poison",
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It has the power in its clawed arms to make scrap of a car. The tips of its claws release poison.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Possessing a sturdy build, it takes pride in its strength, taking down foes without using toxins.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It takes pride in its strength. Even though it can tear foes apart, it finishes them off with powerful poison.",
+        "ja": "自慢の　パワーで　相手を ばらばらに　できるのに　さらに 猛毒で　とどめを　刺すのだ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Its poison is potent, but it rarely sees use. This Pokémon prefers to use physical force instead, going on rampages with its car-crushing strength.",
+        "ja": "猛毒を　もつが　使うことは まれ。　車も　叩きつぶす 怪力で　暴れまわる。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 453,
+    "name": "croagunk",
+    "japaneseName": "グレッグル",
+    "types": [
+      "poison",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Its cheeks hold poison sacs. It tries to catch foes off guard to jab them with toxic fingers.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It rarely fights fairly, but that is strictly to ensure survival. It is popular as a mascot.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Its cheeks hold poison sacs. It tries to catch foes off guard to jab them with toxic fingers.",
+        "ja": "ほっぺたに　毒袋を　持つ。 相手の　すきを　ついて　猛毒を にじませている　指を　突き刺す。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It makes frightening noises with its poison-filled cheek sacs. When opponents flinch, Croagunk hits them with a poison jab.",
+        "ja": "頬の　毒袋を　鳴らして 敵を　威嚇。　ひるんだ　隙に 毒突きを　おみまいする。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 454,
+    "name": "toxicroak",
+    "japaneseName": "ドクロッグ",
+    "types": [
+      "poison",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Its knuckle claws secrete a toxin so vile that even a scratch could prove fatal.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It has a poison sac at its throat. When it croaks, the stored poison is churned for greater potency.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It has a poison sac at its throat. When it croaks, the stored poison is churned for greater potency.",
+        "ja": "のど元に　毒袋を　持つ。 のどを　鳴らすと　たまった　毒は 練りこまれ　強力になる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It bounces toward opponents and gouges them with poisonous claws. No more than a scratch is needed to knock out its adversaries.",
+        "ja": "跳ねるように　敵に　近づくと 毒のツメで　えぐるように　打つ！ かすり傷でも　相手は　ＫＯだ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 455,
+    "name": "carnivine",
+    "japaneseName": "マスキッパ",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It attracts prey with its sweet- smelling saliva, then chomps down. It takes a whole day to eat prey.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It binds itself to trees in marshes. It attracts prey with its sweet- smelling drool and gulps them down.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It attracts prey with its sweet-smelling saliva, then chomps down. It takes a whole day to eat prey.",
+        "ja": "甘い　においの　だえきで　獲物を おびき寄せ　おおあごで　がぶり。 １日　かけて　獲物を　食べる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Though this is a plant Pokémon, it has a gluttonous and unruly temperament. Carnivine attacks its prey with its cavernous maw wide open.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 456,
+    "name": "finneon",
+    "japaneseName": "ケイコウオ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "After long exposure to sunlight, the patterns on its tail fins shine vividly when darkness arrives.",
+        "ja": ""
+      },
+      "5": {
+        "en": "The line running down its side can store sunlight. It shines vividly at night.",
+        "ja": ""
+      },
+      "6": {
+        "en": "The line running down its side can store sunlight. It shines vividly at night.",
+        "ja": "体の　横側にある　ラインは 太陽の光を　ためておける。 夜になると　鮮やかに　輝く。"
+      },
+      "7": {
+        "en": "It absorbs sunlight with the pink areas of its skin, which then shine. This appears to be a form of camouflage.",
+        "ja": "ピンク色の　皮の　部分は 太陽光を　溜めて　光る。 カモフラージュの　ためと　いわれる。"
+      },
+      "8": {
+        "en": "What a gorgeous sight this Pokémon is as it swims with its long, pink-painted caudal fins fluttering behind it. Finneon's beautiful appearance has led to its nickname: ”finery fish.”",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 457,
+    "name": "lumineon",
+    "japaneseName": "ネオラント",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It lives on the deep-sea floor. It attracts prey by flashing the patterns on its four tail fins.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It crawls along the seafloor using its long front fins like legs. It competes for food with Lanturn.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It lives on the deep-sea floor. It attracts prey by flashing the patterns on its four tail fins.",
+        "ja": "深い　海の　底で　暮らす。 ４枚の　ヒレの　模様を　光らせて 獲物を　おびき寄せる。"
+      },
+      "7": {
+        "en": "With its shining light, it lures its prey close. However, the light also happens to attract ferocious fish Pokémon—its natural predators.",
+        "ja": "光で　獲物を　おびき寄せるが 天敵である　獰猛な さかなポケモンまで　寄ってくるのだ。"
+      },
+      "8": {
+        "en": "Uses its gleaming fins to hunt its prey. The view of Lumineon schooling near the surface of the sea at night is breathtaking— it's as though there were shining stars right there.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 458,
+    "name": "mantyke",
+    "japaneseName": "タマンタ",
+    "types": [
+      "water",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "A friendly Pokémon that captures the subtle flows of seawater using its two antennae.",
+        "ja": ""
+      },
+      "5": {
+        "en": "People organize tours to see this Pokémon frolic and skim the tops of waves with Remoraid.",
+        "ja": ""
+      },
+      "6": {
+        "en": "The pattern on its back varies by region. It often swims in a school of Remoraid.",
+        "ja": "背中の　模様は　地域によって 異なっている。テッポウオの　群れに 混ざって　泳ぐことが　多い。"
+      },
+      "7": {
+        "en": "It’s highly friendly and easily tamed. Tours that take people swimming with Mantyke are a super-popular beach activity.",
+        "ja": "とても　人懐っこく　よく懐く。 タマンタとの　ふれあい　ツアーは 大人気の　ビーチアクティビティ。"
+      },
+      "8": {
+        "en": "Mantyke living in Galar seem to be somewhat sluggish. The colder waters of the seas in this region may be the cause.",
+        "ja": "海の　水温が　低いためか ガラル地方に　棲む　タマンタは やや　動きが　鈍いらしい。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 459,
+    "name": "snover",
+    "japaneseName": "ユキカブリ",
+    "types": [
+      "grass",
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It lives on snowy mountains. Having had little contact with humans, it is boldly inquisitive.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Seemingly curious about people, they gather around footsteps they find on snowy mountains.",
+        "ja": ""
+      },
+      "6": {
+        "en": "During cold seasons, it migrates to the mountain’s lower reaches. It returns to the snow-covered summit in the spring.",
+        "ja": "寒い　季節は　山の　ふもとまで 降りてくるが　春に　なると 雪が　残る　山頂に　戻っていく。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It lives on snowy mountains. It sinks its legs into the snow to absorb water and keep its own temperature down.",
+        "ja": "雪深い　山に暮らす。　雪に 脚を　突き刺して　水分と 冷気を　吸収　するぞ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 460,
+    "name": "abomasnow",
+    "japaneseName": "ユキノオー",
+    "types": [
+      "grass",
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It whips up blizzards in mountains that are always buried in snow. It is the abominable snowman.",
+        "ja": ""
+      },
+      "5": {
+        "en": "They appear when the snow flowers bloom. When the petals fall, they retreat to places unknown again.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It blankets wide areas in snow by whipping up blizzards. It is also known as “The Ice Monster.”",
+        "ja": "ブリザードを　発生させて　あたり 一面を　真っ白に　してしまう。 別名　アイスモンスター。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "If it sees any packs of Darumaka going after Snover, it chases them off, swinging its sizable arms like hammers.",
+        "ja": "大きな　腕を　ハンマーの　ように 振り下ろし　ユキカブリを　狙う ダルマッカの　群れを　追い払う。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 461,
+    "name": "weavile",
+    "japaneseName": "マニューラ",
+    "types": [
+      "dark",
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "They live in cold regions, forming groups of four or five that hunt prey with impressive coordination.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Evolution made it even more devious. It communicates by clawing signs in boulders.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It lives in snowy regions. It carves patterns in trees with its claws as a signal to others.",
+        "ja": "雪の　多い　地方に　生息。 樹木に　ツメで　サインを　描き 仲間に　合図を　送る。"
+      },
+      "7": {
+        "en": "They travel in groups of four or five, leaving signs for one another on trees and rocks. They bring down their prey with coordinated attacks.",
+        "ja": "４～５匹の　グループで　行動。 岩や　樹木に　サインを　残し 連係プレイで　獲物を　仕留める。"
+      },
+      "8": {
+        "en": "They attack their quarry in packs. Prey as large as Mamoswine easily fall to the teamwork of a group of Weavile.",
+        "ja": "群れを　成し　獲物を　襲う。 チームプレーで　マンムーなどの 大物も　たやすく　しとめる。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 462,
+    "name": "magnezone",
+    "japaneseName": "ジバコイル",
+    "types": [
+      "electric",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It evolved from exposure to a special magnetic field. Three units generate magnetism.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A group tried to use scientific means to make Magnezone evolve, but their efforts ended in failure.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Sometimes the magnetism emitted by Magnezone is too strong, making them attract each other so they cannot move.",
+        "ja": "強すぎる　磁力を　だして ジバコイル同士　引き寄せあって まったく　動けなくなったりする。"
+      },
+      "7": {
+        "en": "Three units generate magnetism. There have been many mistaken reports of UFO sightings when Magnezone flies through the night sky.",
+        "ja": "３つの　ユニットから　磁力を　だす。 夜空を　飛ぶ　ジバコイルを　ＵＦＯと 間違える　報告が　多発。"
+      },
+      "8": {
+        "en": "Some say that Magnezone receives signals from space via the antenna on its head and that it’s being controlled by some mysterious being.",
+        "ja": "頭の　アンテナで　宇宙からの 電波を　受信して　何者かに コントロールされていると　いわれる。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 463,
+    "name": "lickilicky",
+    "japaneseName": "ベロベルト",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It wraps things with its extensible tongue. Getting too close to it will leave you soaked with drool.",
+        "ja": ""
+      },
+      "5": {
+        "en": "The long tongue is always soggy with slobber. The saliva contains a solvent that causes numbness.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It wraps things with its extensible tongue. Getting too close to it will leave you soaked with drool.",
+        "ja": "ぐんぐん　伸びる　ベロを　なんにでも 巻きつける。うかつに　近寄ると だえきで　べとべとに　されてしまう。"
+      },
+      "7": {
+        "en": "A contest is under way to determine which one can stick its tongue out the farthest. The current record is...more than 82 feet.",
+        "ja": "舌が　どこまで　伸びるのかの コンテストが　開催　されている。 現在の　最高記録は２５ｍ。"
+      },
+      "8": {
+        "en": "Lickilicky’s strange tongue can stretch to many times the length of its body. No one has figured out how Lickilicky’s tongue can stretch so far.",
+        "ja": "体の　何倍もの　長さまで 伸びる　不思議な　ベロを　もつ。 その　不思議は　未解明のまま。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 464,
+    "name": "rhyperior",
+    "japaneseName": "ドサイドン",
+    "types": [
+      "ground",
+      "rock"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It puts rocks in holes in its palms and uses its muscles to shoot them. GEODUDE are shot at rare times.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It can launch a rock held in its hand like a missile by tightening then expanding muscles instantly.",
+        "ja": ""
+      },
+      "6": {
+        "en": "From holes in its palms, it fires out Geodude. Its carapace can withstand volcanic eruptions.",
+        "ja": "手のひらの　穴から　イシツブテを 発射。全身の　プロテクターは 火山の　噴火にも　耐えられる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It can load up to three projectiles per arm into the holes in its hands. What launches out of those holes could be either rocks or Roggenrola.",
+        "ja": "手の　穴に　岩や　ダンゴロを 詰めて　発射。　装填できる 数は　片腕に　つき　３つ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 465,
+    "name": "tangrowth",
+    "japaneseName": "モジャンボ",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It ensnares prey by extending arms made of vines. Losing arms to predators does not trouble it.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its arms are made of plants that bind themselves to things. They grow back right away if cut.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It ensnares prey by extending arms made of vines. Losing arms to predators does not trouble it.",
+        "ja": "植物の　ツルで　できた　腕を 伸ばして　獲物を　絡め取る。 腕を　食べられても　へっちゃら。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Tangrowth has two arms that it can extend as it pleases. Recent research has shown that these arms are, in fact, bundles of vines.",
+        "ja": "自在に　伸びる　２本の　腕は じつは　ツルが　束になったものと 最近の　研究で　わかった。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 466,
+    "name": "electivire",
+    "japaneseName": "エレキブル",
+    "types": [
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "As its electric charge amplifies, blue sparks begin to crackle between its horns.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Heedless of enemy attacks, it closes in, shoves its tails onto the foe, then looses high voltage.",
+        "ja": ""
+      },
+      "6": {
+        "en": "As its electric charge amplifies, blue sparks begin to crackle between its horns.",
+        "ja": "電気を　いっぱいに　ためると ２本の　ツノの　あいだで　激しく 青白い　火花を　散らす。"
+      },
+      "7": {
+        "en": "It pushes the tips of its tails against its foes and then lets loose a high-voltage current. Its foes are burned to a crisp in an instant.",
+        "ja": "尻尾の　先を　敵に　押しつけ 高圧電流を　流し込む。 一瞬で　敵は　黒コゲ。"
+      },
+      "8": {
+        "en": "The amount of electrical energy this Pokémon produces is proportional to the rate of its pulse. The voltage jumps while Electivire is battling.",
+        "ja": "発電量は　心拍数と　比例する。 戦いになると　一気に ボルテージが　上がるのだ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 467,
+    "name": "magmortar",
+    "japaneseName": "ブーバーン",
+    "types": [
+      "fire"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It blasts fireballs of over 3,600 degrees F from the ends of its arms. It lives in volcanic craters.",
+        "ja": ""
+      },
+      "5": {
+        "en": "When launching 3,600 degrees F fireballs, its body takes on a whitish hue from the intense heat.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It blasts fireballs of over 3,600 degrees Fahrenheit from the ends of its arms. It lives in volcanic craters.",
+        "ja": "腕の　先から　摂氏２０００度の 火の玉を　発射する。 火山の　火口を　住処にする。"
+      },
+      "7": {
+        "en": "They dwell in volcanic craters. According to what is known, a single pair of male and female Magmortar lives in one volcano.",
+        "ja": "火山の　火口に　棲む。 １つの　火山には　ひとつがいの ブーバーンしかいないと　いわれる。"
+      },
+      "8": {
+        "en": "When Magmortar inhales deeply, the fire burning in its belly intensifies, rising in temperature to over 3,600 degrees Fahrenheit.",
+        "ja": "大きく　息を　吸いこむと　腹の 中の　炎が　勢いを　増して 摂氏２０００度に　達する。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 468,
+    "name": "togekiss",
+    "japaneseName": "トゲキッス",
+    "types": [
+      "fairy",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It will never appear where there is strife. Its sightings have become rare recently.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It shares many blessings with people who respect one another’s rights and avoid needless strife.",
+        "ja": ""
+      },
+      "6": {
+        "en": "As everyone knows, it visits peaceful regions, bringing them gifts of kindness and sweet blessings.",
+        "ja": "争いのない　平和な　土地に トゲキッスは　訪れ　さまざまな　恵みを 分け与えると　言われる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "These Pokémon are never seen anywhere near conflict or turmoil. In recent times, they’ve hardly been seen at all.",
+        "ja": "争い事や　もめ事が　起こる 場所には　姿を　見せない。 近ごろは　ほとんど　見かけない。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 469,
+    "name": "yanmega",
+    "japaneseName": "メガヤンマ",
+    "types": [
+      "bug",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "By churning its wings, it creates shock waves that inflict critical internal injuries to foes.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its jaw power is incredible. It is adept at biting apart foes while flying by at high speed.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It prefers to battle by biting apart foes’ heads instantly while flying by at high speed.",
+        "ja": "高速で　飛んで　すれ違った 相手の　首を　一瞬で かみちぎる　戦い方を　好む。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Extremely violent. When hunting, it wastes none of its energy, aiming only for prey's most vulnerable spots. Any who manage to tame this Pokémon must be of incredible bravery.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 470,
+    "name": "leafeon",
+    "japaneseName": "リーフィア",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Just like a plant, it uses photosynthesis. As a result, it is always enveloped in clear air.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It basically does not fight. With cells similar to those of plants, it can perform photosynthesis.",
+        "ja": ""
+      },
+      "6": {
+        "en": "When you see Leafeon asleep in a patch of sunshine, you’ll know it is using photosynthesis to produce clean air.",
+        "ja": "晴れた　日に　寝ている　リーフィアは 光合成を　して　きれいな　空気を 作り出しているのだ。"
+      },
+      "7": {
+        "en": "Its cellular composition is closer to that of a plant than an animal. It uses photosynthesis to produce its energy supply without eating food.",
+        "ja": "細胞構成は　動物　より 植物に　近い。　光合成で 喰わずとも　エネルギーを　得られる。"
+      },
+      "8": {
+        "en": "Galarians favor the distinctive aroma that drifts from this Pokémon’s leaves. There’s a popular perfume made using that scent.",
+        "ja": "葉っぱから　漂う　クセのある 香りは　ガラル人の　好み。 香水に　加工され　人気。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 471,
+    "name": "glaceon",
+    "japaneseName": "グレイシア",
+    "types": [
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "As a protective technique, it can completely freeze its fur to make its hairs stand like needles.",
+        "ja": ""
+      },
+      "5": {
+        "en": "By controlling its body heat, it can freeze the atmosphere around it to make a diamond-dust flurry.",
+        "ja": ""
+      },
+      "6": {
+        "en": "By controlling its body heat, it can freeze the atmosphere around it to make a diamond-dust flurry.",
+        "ja": "体温を　コントロールすることで 周囲の　空気を　凍らせて ダイヤモンドダストを　降らせる。"
+      },
+      "7": {
+        "en": "It can control its body temperature at will. This enables it to freeze the moisture in the atmosphere, creating flurries of diamond dust.",
+        "ja": "体温を　自在に　コントロールし 大気の　水分を　凍らせて ダイヤモンドダストを　巻き起こす。"
+      },
+      "8": {
+        "en": "Any who become captivated by the beauty of the snowfall that Glaceon creates will be frozen before they know it.",
+        "ja": "ダイヤモンドダストを　降らせる。 美しさに　見惚れた　獲物は 気づかぬうちに　凍りついている。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 472,
+    "name": "gliscor",
+    "japaneseName": "グライオン",
+    "types": [
+      "ground",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It observes prey while hanging inverted from branches. When the chance presents itself, it swoops!",
+        "ja": ""
+      },
+      "5": {
+        "en": "If it succeeds in catching even a faint breeze properly, it can circle the globe without flapping once.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It observes prey while hanging inverted from branches. When the chance presents itself, it swoops!",
+        "ja": "尻尾で　木の枝に　ぶら下がり 獲物を　観察する。すきを　見て 上空から　襲いかかる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It glides soundlessly on pitch-black wings and sinks sharp fangs into the throat of its prey. It takes on a look of satisfaction once it has entirely drained its prey of blood.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 473,
+    "name": "mamoswine",
+    "japaneseName": "マンムー",
+    "types": [
+      "ice",
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Its impressive tusks are made of ice. The population thinned when it turned warm after the ice age.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A frozen one was dug up from soil dating back 10,000 years. It woke up to much amazement.",
+        "ja": ""
+      },
+      "6": {
+        "en": "A frozen Mamoswine was dug from ice dating back 10,000 years. This Pokémon has been around a long, long, long time.",
+        "ja": "１万年前の　氷の　下から 発見された　ことも　あるほど 大昔から　いた　ポケモン。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "This Pokémon can be spotted in wall paintings from as far back as 10,000 years ago. For a while, it was thought to have gone extinct.",
+        "ja": "１万年前の　壁画にも 描かれている。　絶滅したと 考えられていた　時期もある。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 474,
+    "name": "porygon-z",
+    "japaneseName": "ポリゴンＺ",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Additional software was installed to make it a better Pokémon. It began acting oddly, however.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its programming was modified to enable work in alien dimensions. It did not work as planned.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Additional software was installed to make it a better Pokémon. It began acting oddly, however.",
+        "ja": "より　優れた　ポケモンに　するため プログラムを　追加したが　なぜか おかしな　行動を　はじめた。"
+      },
+      "7": {
+        "en": "In order to create a more advanced Pokémon, an additional program was installed, but apparently it contained a defect that makes it move oddly.",
+        "ja": "さらに　優れた　ポケモンを　目指し 追加した　プログラムに　不具合が あったらしく　動きが　おかしい。"
+      },
+      "8": {
+        "en": "Porygon-Z had a program installed to allow it to move between dimensions, but the program also caused instability in Porygon-Z’s behavior.",
+        "ja": "異次元　空間に　出入りできる プログラムを　追加したところ 挙動が　不安定になった。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 475,
+    "name": "gallade",
+    "japaneseName": "エルレイド",
+    "types": [
+      "psychic",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "A master of courtesy and swordsmanship, it fights using extending swords on its elbows.",
+        "ja": ""
+      },
+      "5": {
+        "en": "When trying to protect someone, it extends its elbows as if they were swords and fights savagely.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Because it can sense what its foe is thinking, its attacks burst out first, fast, and fierce.",
+        "ja": "相手の　考えを　敏感に キャッチする　能力を　持つため 先に　攻撃が　できるのだ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "True to its honorable-warrior image, it uses the blades on its elbows only in defense of something or someone.",
+        "ja": "武人と　呼ばれる　ポケモン。 なにかを　守るためで　なければ 肘の　刀は　使わない。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 476,
+    "name": "probopass",
+    "japaneseName": "ダイノーズ",
+    "types": [
+      "rock",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It freely controls three small units called Mini-Noses using magnetic force.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It freely controls three small units called Mini-Noses using magnetic force.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It exudes strong magnetism from all over. It controls three small units called Mini-Noses.",
+        "ja": "全身から　強い　磁力を　出している。 ３個の　チビノーズと　呼ばれる ユニットを　操る。"
+      },
+      "7": {
+        "en": "It radiates such a powerful magnetic field that nearby electrical appliances become unusable.",
+        "ja": "強い　磁力を　放っているので 近くにある　電化製品は 使いものに　ならなくなってしまう。"
+      },
+      "8": {
+        "en": "It is able to emit powerful magnetism, allowing it control over the iron sand that forms its luscious mustache. Using this iron sand, Probopass forms hard stones with which it smites its prey.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 477,
+    "name": "dusknoir",
+    "japaneseName": "ヨノワール",
+    "types": [
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "The antenna on its head captures radio waves from the world of spirits that command it to take people there.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It is said to take lost spirits into its pliant body and guide them home.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It is said to take lost spirits into its pliant body and guide them home.",
+        "ja": "弾力のある　体の　中に 行き場のない　魂を　取りこんで あの世に　連れていくと　言われる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "At the bidding of transmissions from the spirit world, it steals people and Pokémon away. No one knows whether it has a will of its own.",
+        "ja": "意思が　あるのか　わかっていない。 霊界からの　電波に　従い 人や　ポケモンを　連れ去るのだ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 478,
+    "name": "froslass",
+    "japaneseName": "ユキメノコ",
+    "types": [
+      "ice",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It freezes foes with an icy breath nearly -60 degrees F. What seems to be its body is actually hollow.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It freezes prey by blowing its -58 degrees F breath. It is said to then secretly display its prey.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It freezes foes with an icy breath nearly -60 degrees Fahrenheit. What seems to be its body is actually hollow.",
+        "ja": "マイナス５０度の　冷気を　吐いて 相手を　凍らせる。胴体に　見える 部分は　じつは　空洞。"
+      },
+      "7": {
+        "en": "When it finds humans or Pokémon it likes, it freezes them and takes them to its chilly den, where they become decorations.",
+        "ja": "気に入った　人間や　ポケモンを 冷気で　凍らせる。　巣穴に 持って帰って　飾るのだ。"
+      },
+      "8": {
+        "en": "After a woman met her end on a snowy mountain, her regrets lingered on. From them, this Pokémon was born. Its favorite food is frozen souls.",
+        "ja": "雪山で　亡くなった　女の 無念から　生まれた　ポケモン。 凍らせた　魂が　好物。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 479,
+    "name": "rotom",
+    "japaneseName": "ロトム",
+    "types": [
+      "electric",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Its body is composed of plasma. It is known to infiltrate electronic devices and wreak havoc.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its electric-like body can enter some kinds of machines and take control in order to make mischief.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Research continues on this Pokémon, which could be the power source of a unique motor.",
+        "ja": "特殊な　モーターを　動かす 動力源として　長い　あいだ 研究されていた　ポケモン。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "One boy’s invention led to the development of many different machines that take advantage of Rotom’s unique capabilities.",
+        "ja": "ある　少年の　発明から ロトムを　活かした　いろいろな 機械が　作られ始めたのだ。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 480,
+    "name": "uxie",
+    "japaneseName": "ユクシー",
+    "types": [
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Known as “The Being of Knowledge.” It is said that it can wipe out the memory of those who see its eyes.",
+        "ja": ""
+      },
+      "5": {
+        "en": "When Uxie flew, people gained the ability to solve problems. It was the birth of knowledge.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Known as “The Being of Knowledge.” It is said that it can wipe out the memory of those who see its eyes.",
+        "ja": "知識の神と　呼ばれている。 目を　合わせた　者の　記憶を 消してしまう　力を　持つという。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "A Pokémon feared but also respected for stealing away the memories of evildoers. I have found records that suggest Uxie holds dominion over knowledge.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 481,
+    "name": "mesprit",
+    "japaneseName": "エムリット",
+    "types": [
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Known as “The Being of Emotion.” It taught humans the nobility of sorrow, pain, and joy.",
+        "ja": ""
+      },
+      "5": {
+        "en": "When Mesprit flew, people learned the joy and sadness of living. It was the birth of emotions.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Known as “The Being of Emotion.” It taught humans the nobility of sorrow, pain, and joy.",
+        "ja": "悲しみの　苦しさと　喜びの　尊さを 人々に　教えた。 感情の神と　呼ばれている。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Known as the Being of Emotion. In legend, this Pokémon was feared, as any who showed disrespect would have their emotions thrown into disarray.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 482,
+    "name": "azelf",
+    "japaneseName": "アグノム",
+    "types": [
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Known as “The Being of Willpower.” It sleeps at the bottom of a lake to keep the world in balance.",
+        "ja": ""
+      },
+      "5": {
+        "en": "When Azelf flew, people gained the determination to do things. It was the birth of willpower.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Known as “The Being of Willpower.” It sleeps at the bottom of a lake to keep the world in balance.",
+        "ja": "意思の神と　呼ばれている。 湖の　底で　眠り続け 世界の　バランスを　とっている。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "The dreaded Being of Willpower. Legends tell of this Pokémon manipulating the will of its adversaries and turning them into puppets of its own.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 483,
+    "name": "dialga",
+    "japaneseName": "ディアルガ",
+    "types": [
+      "steel",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It has the power to control time. It appears in Sinnoh-region myths as an ancient deity.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A legendary Pokémon of Sinnoh. It is said that time flows when Dialga’s heart beats.",
+        "ja": ""
+      },
+      "6": {
+        "en": "A Pokémon spoken of in legend. It is said that time began moving when Dialga was born.",
+        "ja": "ディアルガが　生まれたことで 時間が　動き出したという 伝説を　持つ　ポケモン。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "This Pokémon is revered as a deity in Hisuian legend. The birth of Dialga was what caused the vast river of time to begin flowing in our world.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 484,
+    "name": "palkia",
+    "japaneseName": "パルキア",
+    "types": [
+      "water",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It has the ability to distort space. It is described as a deity in Sinnoh-region mythology.",
+        "ja": ""
+      },
+      "5": {
+        "en": "A legendary Pokémon of Sinnoh. It is said that space becomes more stable with Palkia’s every breath.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It is said to live in a gap in the spatial dimension parallel to ours. It appears in mythology.",
+        "ja": "並行して　並ぶ　空間の　狭間に 住むと　言われている。 神話に　登場する　ポケモン。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "This Pokémon is feared as a deity in Hisuian legend. The birth of Palkia was what caused the walls of our world to disappear, creating a sky that spans for infinity.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 485,
+    "name": "heatran",
+    "japaneseName": "ヒードラン",
+    "types": [
+      "fire",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It dwells in volcanic caves. It digs in with its cross-shaped feet to crawl on ceilings and walls.",
+        "ja": ""
+      },
+      "5": {
+        "en": "Its body is made of rugged steel. However, it is partially melted in spots because of its own heat.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It dwells in volcanic caves. It digs in with its cross-shaped feet to crawl on ceilings and walls.",
+        "ja": "火山の　洞穴に　生息。 十字の　ツメを　食いこませて 壁や　天井を　はい回る。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Stories tell of this Pokémon being birthed from the boiling magma within Mount Coronet. Its molten-steel body holds many mysteries.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 486,
+    "name": "regigigas",
+    "japaneseName": "レジギガス",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "There is an enduring legend that states this Pokémon towed continents with ropes.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It is said to have made Pokémon that look like itself from a special ice mountain, rocks, and magma.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It is said to have made Pokémon that look like itself from a special ice mountain, rocks, and magma.",
+        "ja": "特殊な　氷山や　岩石　マグマから 自分の　姿に　似た　ポケモンを つくったと　言われる。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "All over the world, there are legends that tell of Regigigas creating other Pokémon in its own image.",
+        "ja": "自分の　姿に　似せて ポケモンを　作った　伝説が 世界中に　残されている。"
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 487,
+    "name": "giratina-altered",
+    "japaneseName": "ギラティナ",
+    "types": [
+      "ghost",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "A Pokémon that is said to live in a world on the reverse side of ours. It appears in an ancient cemetery.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It was banished for its violence. It silently gazed upon the old world from the Distortion World.",
+        "ja": ""
+      },
+      "6": {
+        "en": "This Pokémon is said to live in a world on the reverse side of ours, where common knowledge is distorted and strange.",
+        "ja": "常識の　通用しない この世の　裏側にあると　言われる 破れた世界に　生息する。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "There is one Hisuian verse that tells of a powerful light creating a deep shadow. I imagine that this deep shadow is Giratina.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 488,
+    "name": "cresselia",
+    "japaneseName": "クレセリア",
+    "types": [
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Shiny particles are released from its wings like a veil. It is said to represent the crescent moon.",
+        "ja": ""
+      },
+      "5": {
+        "en": "On nights around the quarter moon, the aurora from its tail extends and undulates beautifully.",
+        "ja": ""
+      },
+      "6": {
+        "en": "Shiny particles are released from its wings like a veil. It is said to represent the crescent moon.",
+        "ja": "飛行するときは　ベールのような 羽から　光る　粒子を　出す。 三日月の化身と　呼ばれている。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Cresselia is reminiscent of the crescent moon. It leaves a brilliant line of light in its wake as it flies across the night sky. I daresay it resembles the heavenly maiden who created the Milky Way.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 489,
+    "name": "phione",
+    "japaneseName": "フィオネ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "A Pokémon that lives in warm seas. It inflates the flotation sac on its head to drift and search for food.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It drifts in warm seas. It always returns to where it was born, no matter how far it may have drifted.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It drifts in warm seas. It always returns to where it was born, no matter how far it may have drifted.",
+        "ja": "海の　温度が　高くなると 頭の　浮き袋を　ふくらませて 海面を　集団で　漂う。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Can be seen floating offshore during seasons when the seas are warm. Its azure body blends in with the ocean waters—logic suggests this is a defense mechanism against natural predators.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 490,
+    "name": "manaphy",
+    "japaneseName": "マナフィ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "Born on a cold seafloor, it will swim great distances to return to its birthplace.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It is born with a wondrous power that lets it bond with any kind of Pokémon.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It is born with a wondrous power that lets it bond with any kind of Pokémon.",
+        "ja": "生まれたときから　備わっている 不思議な　力を　使うと　どんな ポケモンとも　心が　通い合う。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "Rumored to migrate across the oceans and visit Hisui's coastal waters only rarely. Although Manaphy resembles Phione, it is also quite different. The relation between the two is unclear.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 491,
+    "name": "darkrai",
+    "japaneseName": "ダークライ",
+    "types": [
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It can lull people to sleep and make them dream. It is active during nights of the new moon.",
+        "ja": ""
+      },
+      "5": {
+        "en": "To protect itself, it afflicts those around it with nightmares. However, it means no harm.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It chases people and Pokémon from its territory by causing them to experience deep, nightmarish slumbers.",
+        "ja": "深い　眠りに　誘う　力で 人や　ポケモンに　悪夢を　見せて 自分の　縄張りから　追い出す。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "On a moonless night, a strange incident occurred in which every one of a village's inhabitants suffered nightmares. The villagers attested that Darkrai appeared before them in these nightmares.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 492,
+    "name": "shaymin-land",
+    "japaneseName": "シェイミ",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It lives in flower patches and avoids detection by curling up to look like a flowering plant.",
+        "ja": ""
+      },
+      "5": {
+        "en": "The flowers all over its body burst into bloom if it is lovingly hugged and senses gratitude.",
+        "ja": ""
+      },
+      "6": {
+        "en": "It can dissolve toxins in the air to instantly transform ruined land into a lush field of flowers.",
+        "ja": "大気の　毒素を　分解して 荒れた　大地を　一瞬のうちに 花畑にする　力を　持つ。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "When the turning of seasons brings the cruel winter to its end and the joyous people give thanks to the heavens, Shaymin appears and covers the withered land with flowers.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 493,
+    "name": "arceus",
+    "japaneseName": "アルセウス",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "It is described in mythology as the Pokémon that shaped the universe with its 1,000 arms.",
+        "ja": ""
+      },
+      "5": {
+        "en": "It is said to have emerged from an egg in a place where there was nothing, then shaped the world.",
+        "ja": ""
+      },
+      "6": {
+        "en": "According to the legends of Sinnoh, this Pokémon emerged from an egg and shaped all there is in this world.",
+        "ja": "タマゴから　姿を　現して 世界の　すべてを　生み出したと シンオウ神話に　語られている。"
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "It is the heavenly fount from which pours the light that shines across Hisui. Its luminance guides and protects all Pokémon. Hisuian mythology states that Arceus is the creator of all things.",
+        "ja": ""
+      },
+      "9": {
+        "en": "",
+        "ja": ""
+      }
+    }
+  }
+]

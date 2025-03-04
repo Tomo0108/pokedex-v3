@@ -1,7 +1,7 @@
 import { SpriteStyles } from '@/types/pokemon';
 
-const SPRITES_BASE_URL = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon';
-const POKEAPI_URL = process.env.NEXT_PUBLIC_POKEAPI_URL;
+// ローカルの画像パス
+const LOCAL_SPRITES_BASE_URL = '/images/pokemon_sprites';
 // 画像が存在しない場合のフォールバック用のグレー画像URL
 const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
@@ -98,64 +98,15 @@ async function checkImageExists(url: string): Promise<boolean> {
   }
 }
 
-export async function createSpriteUrl(id: number, style: keyof typeof spriteStyles | '', shiny: boolean): Promise<string> {
-  const baseUrl = SPRITES_BASE_URL;
-  const spriteStyle = spriteStyles[style as keyof typeof spriteStyles];
-
-  // デフォルトのスプライトURL
-  const defaultUrl = shiny ? 
-    `${baseUrl}/shiny/${id}.png` :
-    `${baseUrl}/${id}.png`;
-
-  if (!spriteStyle || !style) {
-    // デフォルトスプライトが存在するか確認
-    if (await checkImageExists(defaultUrl)) {
-      return defaultUrl;
-    }
-    return FALLBACK_IMAGE_URL;
-  }
-
-  // アニメーション対応のブラック・ホワイトスプライト
-  if (style === 'black-white') {
-    const animatedUrl = `${baseUrl}${spriteStyle.path}/${shiny ? 'shiny/' : ''}${id}.gif`;
-    const staticUrl = `${baseUrl}/versions/generation-v/black-white/${shiny ? 'shiny/' : ''}${id}.png`;
-
-    // まずアニメーションGIFをチェック
-    if (await checkImageExists(animatedUrl)) {
-      return animatedUrl;
-    }
-
-    // 次に静的なBWスプライトをチェック
-    if (await checkImageExists(staticUrl)) {
-      return staticUrl;
-    }
-
-    // 最後にデフォルトスプライトをチェック
-    if (await checkImageExists(defaultUrl)) {
-      return defaultUrl;
-    }
-
-    // どの画像も存在しない場合はフォールバック画像を返す
-    console.warn(`No sprite found for Pokemon #${id}, using fallback image`);
-    return FALLBACK_IMAGE_URL;
-  }
-
-  // その他の世代のスプライト
-  const generationUrl = `${baseUrl}${spriteStyle.path}/${shiny ? 'shiny/' : ''}${id}.png`;
+export async function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): Promise<string> {
+  const styleInfo = spriteStyles[style];
+  const shinyPath = shiny ? '/shiny' : '';
   
-  // まず世代別スプライトをチェック
-  if (await checkImageExists(generationUrl)) {
-    return generationUrl;
-  }
+  // ローカルの画像パスを使用
+  const spriteUrl = `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}${shinyPath}/${pokemonId}.png`;
   
-  // 次にデフォルトスプライトをチェック
-  if (await checkImageExists(defaultUrl)) {
-    return defaultUrl;
-  }
-
-  // どの画像も存在しない場合はフォールバック画像を返す
-  console.warn(`No sprite found for Pokemon #${id}, using fallback image`);
-  return FALLBACK_IMAGE_URL;
+  // 画像の存在チェックは省略（ローカルファイルなので常に存在すると仮定）
+  return spriteUrl;
 }
 
 async function getLatestDescription(entries: any[], language: string, generation: number) {
@@ -213,61 +164,29 @@ export async function fetchPokemonData(generation: number) {
     9: [906, 1025],
   };
 
-  const [start, end] = ranges[generation as keyof typeof ranges] || [1, 151];
-  const ids = Array.from({ length: end - start + 1 }, (_, i) => start + i);
-
-  // Clear existing cache to fetch fresh data with new sprite URLs
-  const cache = await caches.open('pokemon-data');
-  await cache.delete(`/api/pokemon?gen=${generation}`);
-
-  const cacheKey = `/api/pokemon?gen=${generation}`;
-
-  const pokemonData = await Promise.all(ids.map(async id => {
-    try {
-      const [pokemonRes, speciesRes] = await Promise.all([
-        fetch(`${POKEAPI_URL}/pokemon/${id}`),
-        fetch(`${POKEAPI_URL}/pokemon-species/${id}`)
-      ]);
-
-      if (!pokemonRes.ok || !speciesRes.ok) {
-        throw new Error(`Failed to fetch Pokemon data for #${id}`);
-      }
-
-      const [pokemon, species] = await Promise.all([
-        pokemonRes.json(),
-        speciesRes.json()
-      ]);
-
-      const enDescription = await getLatestDescription(species.flavor_text_entries, 'en', generation);
-      const jaDescription = await getLatestDescription(species.flavor_text_entries, 'ja', generation);
-      const jaName = species.names.find((name: any) => name.language.name === 'ja')?.name || pokemon.name;
-
-      const style = getDefaultStyleForGeneration(generation);
-      const [spriteUrl, shinyUrl] = await Promise.all([
-        createSpriteUrl(pokemon.id, style, false),
-        createSpriteUrl(pokemon.id, style, true)
-      ]);
-
-      return {
-        id: pokemon.id,
-        name: pokemon.name,
-        japaneseName: jaName,
-        sprites: {
-          front_default: spriteUrl,
-          front_shiny: shinyUrl,
-        },
-        description: {
-          en: enDescription,
-          ja: jaDescription
-        }
-      };
-    } catch (error) {
-      console.error(`Error fetching Pokemon #${id}:`, error);
-      return null;
+  try {
+    // ローカルのJSONファイルからデータを読み込む
+    const response = await fetch(`/data/generation-${generation}.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to load Pokemon data for generation ${generation}`);
     }
-  }));
-
-  const filteredPokemonData = pokemonData.filter(data => data !== null);
-  cache.put(cacheKey, new Response(JSON.stringify(filteredPokemonData)));
-  return filteredPokemonData;
+    
+    const pokemonData = await response.json();
+    
+    // スプライトURLを追加
+    return pokemonData.map((pokemon: any) => {
+      const style = getDefaultStyleForGeneration(generation);
+      return {
+        ...pokemon,
+        sprites: {
+          front_default: createSpriteUrl(pokemon.id, style, false),
+          front_shiny: createSpriteUrl(pokemon.id, style, true),
+        },
+        description: pokemon.descriptions[generation] || { en: '', ja: '' }
+      };
+    });
+  } catch (error) {
+    console.error(`Error loading Pokemon data for generation ${generation}:`, error);
+    return [];
+  }
 }

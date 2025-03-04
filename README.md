@@ -236,3 +236,47 @@ S      : シャイニー切り替え
 - Time to Interactive: < 2.0s
 
 このアプリケーションは、懐かしさと最新技術の融合を目指して開発されました。ゲームボーイ時代の魅力を損なうことなく、現代のWeb技術の利点を最大限に活用しています。シームレスなオフライン対応とPWA機能により、まるでネイティブアプリのような使い心地を実現しています。
+
+## ローカルデータの使用方法
+
+このアプリケーションは、PokeAPIからデータを取得する代わりに、ローカルのJSONファイルからポケモンデータを読み込むように変更されています。
+
+### データの準備
+
+1. 以下のコマンドを実行して、PokeAPIからデータを取得し、JSONファイルとして保存します：
+
+```bash
+npm run fetch-data
+```
+
+このコマンドは、`public/data`ディレクトリに各世代のポケモンデータを保存します。
+
+### 画像データ
+
+ポケモンの画像データは、以下のディレクトリに保存されています：
+
+- スプライト画像: `public/images/pokemon_sprites`
+- アイコン画像: `public/images/pokemon_icons`
+
+### データ構造
+
+各世代のポケモンデータは、以下の構造で保存されています：
+
+```json
+[
+  {
+    "id": 1,
+    "name": "bulbasaur",
+    "japaneseName": "フシギダネ",
+    "types": ["grass", "poison"],
+    "descriptions": {
+      "1": {
+        "en": "A strange seed was planted on its back at birth. The plant sprouts and grows with this POKéMON.",
+        "ja": "うまれたときから せなかに しょくぶつの タネが あって すこしずつ おおきく そだつ。"
+      },
+      // 他の世代の説明文...
+    }
+  },
+  // 他のポケモンデータ...
+]
+```

@@ -1,0 +1,5599 @@
+[
+  {
+    "id": 906,
+    "name": "sprigatito",
+    "japaneseName": "ニャオハ",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Its fluffy fur is similar in composition to plants. This Pokémon frequently washes its face to keep it from drying out.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 907,
+    "name": "floragato",
+    "japaneseName": "ニャローテ",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Floragato deftly wields the vine hidden beneath its long fur, slamming the hard flower bud against its opponents.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 908,
+    "name": "meowscarada",
+    "japaneseName": "マスカーニャ",
+    "types": [
+      "grass",
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon uses the reflective fur lining its cape to camouflage the stem of its flower, creating the illusion that the flower is floating.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 909,
+    "name": "fuecoco",
+    "japaneseName": "ホゲータ",
+    "types": [
+      "fire"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It lies on warm rocks and uses the heat absorbed by its square-shaped scales to create fire energy.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 910,
+    "name": "crocalor",
+    "japaneseName": "アチゲータ",
+    "types": [
+      "fire"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The combination of Crocalor’s fire energy and overflowing vitality has caused an egg-shaped fireball to appear on the Pokémon’s head.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 911,
+    "name": "skeledirge",
+    "japaneseName": "ラウドボーン",
+    "types": [
+      "fire",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The fiery bird changes shape when Skeledirge sings. Rumor has it that the bird was born when the fireball on Skeledirge’s head gained a soul.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 912,
+    "name": "quaxly",
+    "japaneseName": "クワッス",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon migrated to Paldea from distant lands long ago. The gel secreted by its feathers repels water and grime.\"",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 913,
+    "name": "quaxwell",
+    "japaneseName": "ウェルカモ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "These Pokémon constantly run through shallow waters to train their legs, then compete with each other to see which of them kicks most gracefully.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 914,
+    "name": "quaquaval",
+    "japaneseName": "ウェーニバル",
+    "types": [
+      "water",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "A single kick from a Quaquaval can send a truck rolling. This Pokémon uses its powerful legs to perform striking dances from far-off lands.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 915,
+    "name": "lechonk",
+    "japaneseName": "グルトン",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It searches for food all day. It possesses a keen sense of smell but doesn’t use it for anything other than foraging.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 916,
+    "name": "oinkologne-male",
+    "japaneseName": "パフュートン",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Oinkologne is proud of its fine, glossy skin. It emits a concentrated scent from the tip of its tail.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 917,
+    "name": "tarountula",
+    "japaneseName": "タマンチュラ",
+    "types": [
+      "bug"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The ball of threads wrapped around its body is elastic enough to deflect the scythes of Scyther, this Pokémon’s natural enemy.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 918,
+    "name": "spidops",
+    "japaneseName": "ワナイダー",
+    "types": [
+      "bug"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It clings to branches and ceilings using its threads and moves without a sound. It takes out its prey before the prey even notices it.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 919,
+    "name": "nymble",
+    "japaneseName": "マメバッタ",
+    "types": [
+      "bug"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It has its third set of legs folded up. When it’s in a tough spot, this Pokémon jumps over 30 feet using the strength of its legs.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 920,
+    "name": "lokix",
+    "japaneseName": "エクスレッグ",
+    "types": [
+      "bug",
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "When it decides to fight all out, it stands on its previously folded legs to enter Showdown Mode. It neutralizes its enemies in short order.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 921,
+    "name": "pawmi",
+    "japaneseName": "パモ",
+    "types": [
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It has underdeveloped electric sacs on its cheeks. These sacs can produce electricity only if Pawmi rubs them furiously with the pads on its forepaws.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 922,
+    "name": "pawmo",
+    "japaneseName": "パモット",
+    "types": [
+      "electric",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "When its group is attacked, Pawmo is the first to leap into battle, defeating enemies with a fighting technique that utilizes electric shocks.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 923,
+    "name": "pawmot",
+    "japaneseName": "パーモット",
+    "types": [
+      "electric",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon normally is slow to react, but once it enters battle, it will strike down its enemies with lightning-fast movements.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 924,
+    "name": "tandemaus",
+    "japaneseName": "ワッカネズミ",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Exhibiting great teamwork, they use their incisors to cut pieces out of any material that might be useful for a nest, then make off with them.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 925,
+    "name": "maushold-family-of-four",
+    "japaneseName": "イッカネズミ",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The two little ones just appeared one day. The group might be a family of related Pokémon, but nobody knows for sure.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 926,
+    "name": "fidough",
+    "japaneseName": "パピモッチ",
+    "types": [
+      "fairy"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon is smooth and moist to the touch. Yeast in Fidough’s breath induces fermentation in the Pokémon’s vicinity.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 927,
+    "name": "dachsbun",
+    "japaneseName": "バウッツェル",
+    "types": [
+      "fairy"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The pleasant aroma that emanates from this Pokémon’s body helps wheat grow, so Dachsbun has been treasured by farming villages.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 928,
+    "name": "smoliv",
+    "japaneseName": "ミニーブ",
+    "types": [
+      "grass",
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It protects itself from enemies by emitting oil from the fruit on its head. This oil is bitter and astringent enough to make someone flinch.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 929,
+    "name": "dolliv",
+    "japaneseName": "オリーニョ",
+    "types": [
+      "grass",
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Dolliv shares its tasty, fresh-scented oil with others. This species has coexisted with humans since times long gone.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 930,
+    "name": "arboliva",
+    "japaneseName": "オリーヴァ",
+    "types": [
+      "grass",
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This calm Pokémon is very compassionate. It will share its delicious, nutrient-rich oil with weakened Pokémon.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 931,
+    "name": "squawkabilly-green-plumage",
+    "japaneseName": "イキリンコ",
+    "types": [
+      "normal",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "These Pokémon prefer to live in cities. They form flocks based on the color of their feathers, and they fight over territory.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 932,
+    "name": "nacli",
+    "japaneseName": "コジオ",
+    "types": [
+      "rock"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It was born in a layer of rock salt deep under the earth. This species was particularly treasured in the old days, as they would share precious salt.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 933,
+    "name": "naclstack",
+    "japaneseName": "ジオヅム",
+    "types": [
+      "rock"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon dry cures its prey by spraying salt over them. The curing process steals away the water in the prey’s body.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 934,
+    "name": "garganacl",
+    "japaneseName": "キョジオーン",
+    "types": [
+      "rock"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Garganacl will rub its fingertips together and sprinkle injured Pokémon with salt. Even severe wounds will promptly heal afterward.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 935,
+    "name": "charcadet",
+    "japaneseName": "カルボウ",
+    "types": [
+      "fire"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Burnt charcoal came to life and became a Pokémon. Possessing a fiery fighting spirit, Charcadet will battle even tough opponents.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 936,
+    "name": "armarouge",
+    "japaneseName": "グレンアルマ",
+    "types": [
+      "fire",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Armarouge evolved through the use of a set of armor that belonged to a distinguished warrior. This Pokémon is incredibly loyal.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 937,
+    "name": "ceruledge",
+    "japaneseName": "ソウブレイズ",
+    "types": [
+      "fire",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The fiery blades on its arms burn fiercely with the lingering resentment of a sword wielder who fell before accomplishing their goal.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 938,
+    "name": "tadbulb",
+    "japaneseName": "ズピカ",
+    "types": [
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Tadbulb shakes its tail to generate electricity. If it senses danger, it will make its head blink on and off to alert its allies.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 939,
+    "name": "bellibolt",
+    "japaneseName": "ハラバリー",
+    "types": [
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "When this Pokémon expands and contracts its wobbly body, the belly-button dynamo in its stomach produces a huge amount of electricity.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 940,
+    "name": "wattrel",
+    "japaneseName": "カイデン",
+    "types": [
+      "electric",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "When its wings catch the wind, the bones within produce electricity. This Pokémon dives into the ocean, catching prey by electrocuting them.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 941,
+    "name": "kilowattrel",
+    "japaneseName": "タイカイデン",
+    "types": [
+      "electric",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Kilowattrel inflates its throat sac to amplify its electricity. By riding the wind, this Pokémon can fly over 430 miles in a day.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 942,
+    "name": "maschiff",
+    "japaneseName": "オラチフ",
+    "types": [
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It always scowls in an attempt to make opponents take it seriously, but even crying children will burst into laughter when they see Maschiff’s face.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 943,
+    "name": "mabosstiff",
+    "japaneseName": "マフィティフ",
+    "types": [
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon can store energy in its large dewlap. Mabosstiff unleashes this energy all at once to blow away enemies.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 944,
+    "name": "shroodle",
+    "japaneseName": "シルシュルー",
+    "types": [
+      "poison",
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Though usually a mellow Pokémon, it will sink its sharp, poison-soaked front teeth into any that anger it, causing paralysis in the object of its ire.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 945,
+    "name": "grafaiai",
+    "japaneseName": "タギングル",
+    "types": [
+      "poison",
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The color of the poisonous saliva depends on what the Pokémon eats. Grafaiai covers its fingers in its saliva and draws patterns on trees in forests.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 946,
+    "name": "bramblin",
+    "japaneseName": "アノクサ",
+    "types": [
+      "grass",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "A soul unable to move on to the afterlife was blown around by the wind until it got tangled up with dried grass and became a Pokémon.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 947,
+    "name": "brambleghast",
+    "japaneseName": "アノホラグサ",
+    "types": [
+      "grass",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It will open the branches of its head to envelop its prey. Once it absorbs all the life energy it needs, it expels the prey and discards it.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 948,
+    "name": "toedscool",
+    "japaneseName": "ノノクラゲ",
+    "types": [
+      "ground",
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Toedscool lives in muggy forests. The flaps that fall from its body are chewy and very delicious.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 949,
+    "name": "toedscruel",
+    "japaneseName": "リククラゲ",
+    "types": [
+      "ground",
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "These Pokémon gather into groups and form colonies deep within forests. They absolutely hate it when strangers approach.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 950,
+    "name": "klawf",
+    "japaneseName": "ガケガニ",
+    "types": [
+      "rock"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Klawf hangs upside-down from cliffs, waiting for prey. But Klawf can’t remain in this position for long because its blood rushes to its head.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 951,
+    "name": "capsakid",
+    "japaneseName": "カプサイジ",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The more sunlight this Pokémon bathes in, the more spicy chemicals are produced by its body, and thus the spicier its moves become.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 952,
+    "name": "scovillain",
+    "japaneseName": "スコヴィラン",
+    "types": [
+      "grass",
+      "fire"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The red head converts spicy chemicals into fire energy and blasts the surrounding area with a super spicy stream of flame.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 953,
+    "name": "rellor",
+    "japaneseName": "シガロコ",
+    "types": [
+      "bug"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon creates a mud ball by mixing sand and dirt with psychic energy. It treasures its mud ball more than its own life.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 954,
+    "name": "rabsca",
+    "japaneseName": "ベラカス",
+    "types": [
+      "bug",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The body that supports the ball barely moves. Therefore, it is thought that the true body of this Pokémon is actually inside the ball.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 955,
+    "name": "flittle",
+    "japaneseName": "ヒラヒナ",
+    "types": [
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Flittle’s toes levitate about half an inch above the ground because of the psychic power emitted from the frills on the Pokémon’s belly.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 956,
+    "name": "espathra",
+    "japaneseName": "クエスパトラ",
+    "types": [
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It immobilizes opponents by bathing them in psychic power from its large eyes. Despite its appearance, it has a vicious temperament.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 957,
+    "name": "tinkatink",
+    "japaneseName": "カヌチャン",
+    "types": [
+      "fairy",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It swings its handmade hammer around to protect itself, but the hammer is often stolen by Pokémon that eat metal.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 958,
+    "name": "tinkatuff",
+    "japaneseName": "ナカヌチャン",
+    "types": [
+      "fairy",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon will attack groups of Pawniard and Bisharp, gathering metal from them in order to create a large and sturdy hammer.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 959,
+    "name": "tinkaton",
+    "japaneseName": "デカヌチャン",
+    "types": [
+      "fairy",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This intelligent Pokémon has a very daring disposition. It knocks rocks into the sky with its hammer, aiming for flying Corviknight.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 960,
+    "name": "wiglett",
+    "japaneseName": "ウミディグダ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon can pick up the scent of a Veluza just over 65 feet away and will hide itself in the sand.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 961,
+    "name": "wugtrio",
+    "japaneseName": "ウミトリオ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It has a vicious temperament, contrary to what its appearance may suggest. It wraps its long bodies around prey, then drags the prey into its den.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 962,
+    "name": "bombirdier",
+    "japaneseName": "オトシドリ",
+    "types": [
+      "flying",
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It gathers things up in an apron made from shed feathers added to the Pokémon’s chest feathers, then drops those things from high places for fun.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 963,
+    "name": "finizen",
+    "japaneseName": "ナミイルカ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It likes playing with others of its kind using the water ring on its tail. It uses ultrasonic waves to sense the emotions of other living creatures.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 964,
+    "name": "palafin-zero",
+    "japaneseName": "イルカマン",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon changes its appearance if it hears its allies calling for help. Palafin will never show anybody its moment of transformation.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 965,
+    "name": "varoom",
+    "japaneseName": "ブロロン",
+    "types": [
+      "steel",
+      "poison"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It is said that this Pokémon was born when an unknown poison Pokémon entered and inspirited an engine left at a scrap-processing factory.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 966,
+    "name": "revavroom",
+    "japaneseName": "ブロロローム",
+    "types": [
+      "steel",
+      "poison"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It creates a gas out of poison and minerals from rocks. It then detonates the gas in its cylinders—now numbering eight—to generate energy.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 967,
+    "name": "cyclizar",
+    "japaneseName": "モトトカゲ",
+    "types": [
+      "dragon",
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Apparently Cyclizar has been allowing people to ride on its back since ancient times. Depictions of this have been found in 10,000-year-old murals.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 968,
+    "name": "orthworm",
+    "japaneseName": "ミミズズ",
+    "types": [
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "When attacked, this Pokémon will wield the tendrils on its body like fists and pelt the opponent with a storm of punches.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 969,
+    "name": "glimmet",
+    "japaneseName": "キラーメ",
+    "types": [
+      "rock",
+      "poison"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It absorbs nutrients from cave walls. The petals it wears are made of crystallized poison.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 970,
+    "name": "glimmora",
+    "japaneseName": "キラフロル",
+    "types": [
+      "rock",
+      "poison"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "When this Pokémon detects danger, it will open up its crystalline petals and fire beams from its conical body.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 971,
+    "name": "greavard",
+    "japaneseName": "ボチ",
+    "types": [
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It is said that a dog Pokémon that died in the wild without ever interacting with a human was reborn as this Pokémon.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 972,
+    "name": "houndstone",
+    "japaneseName": "ハカドッグ",
+    "types": [
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Houndstone spends most of its time sleeping in graveyards. Among all the dog Pokémon, this one is most loyal to its master.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 973,
+    "name": "flamigo",
+    "japaneseName": "カラミンゴ",
+    "types": [
+      "flying",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon apparently ties the base of its neck into a knot so that energy stored in its belly does not escape from its beak.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 974,
+    "name": "cetoddle",
+    "japaneseName": "アルクジラ",
+    "types": [
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This species left the ocean and began living on land a very long time ago. It seems to be closely related to Wailmer.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 975,
+    "name": "cetitan",
+    "japaneseName": "ハルクジラ",
+    "types": [
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon wanders around snowy, icy areas. It protects its body with powerful muscles and a thick layer of fat under its skin.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 976,
+    "name": "veluza",
+    "japaneseName": "ミガルーサ",
+    "types": [
+      "water",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "When Veluza discards unnecessary flesh, its mind becomes honed and its psychic power increases. The spare flesh has a mild but delicious flavor.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 977,
+    "name": "dondozo",
+    "japaneseName": "ヘイラッシャ",
+    "types": [
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon is a glutton, but it’s bad at getting food. It teams up with a Tatsugiri to catch prey.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 978,
+    "name": "tatsugiri-curly",
+    "japaneseName": "シャリタツ",
+    "types": [
+      "dragon",
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This is a small dragon Pokémon. It lives inside the mouth of Dondozo to protect itself from enemies on the outside.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 979,
+    "name": "annihilape",
+    "japaneseName": "コノヨザル",
+    "types": [
+      "fighting",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "When its anger rose beyond a critical point, this Pokémon gained power that is unfettered by the limits of its physical body.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 980,
+    "name": "clodsire",
+    "japaneseName": "ドオー",
+    "types": [
+      "poison",
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "When attacked, this Pokémon will retaliate by sticking thick spines out from its body. It’s a risky move that puts everything on the line.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 981,
+    "name": "farigiraf",
+    "japaneseName": "リキキリン",
+    "types": [
+      "normal",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Now that the brain waves from the head and tail are synced up, the psychic power of this Pokémon is 10 times stronger than Girafarig’s.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 982,
+    "name": "dudunsparce-two-segment",
+    "japaneseName": "ノココッチ",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon uses its hard tail to make its nest by boring holes into bedrock deep underground. The nest can reach lengths of over six miles.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 983,
+    "name": "kingambit",
+    "japaneseName": "ドドゲザン",
+    "types": [
+      "dark",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Only a Bisharp that stands above all others in its vast army can evolve into Kingambit.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 984,
+    "name": "great-tusk",
+    "japaneseName": "イダイナキバ",
+    "types": [
+      "ground",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Sightings of this Pokémon have occurred in recent years. The name Great Tusk was taken from a creature listed in a certain book.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 985,
+    "name": "scream-tail",
+    "japaneseName": "サケブシッポ",
+    "types": [
+      "fairy",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "There has been only one reported sighting of this Pokémon. It resembles a mysterious creature depicted in an old expedition journal.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 986,
+    "name": "brute-bonnet",
+    "japaneseName": "アラブルタケ",
+    "types": [
+      "grass",
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It is possible that the creature listed as Brute Bonnet in a certain book could actually be this Pokémon.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 987,
+    "name": "flutter-mane",
+    "japaneseName": "ハバタクカミ",
+    "types": [
+      "ghost",
+      "fairy"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon has characteristics similar to those of Flutter Mane, a creature mentioned in a certain book.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 988,
+    "name": "slither-wing",
+    "japaneseName": "チヲハウハネ",
+    "types": [
+      "bug",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This mysterious Pokémon has some similarities to a creature that an old book introduced as Slither Wing.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 989,
+    "name": "sandy-shocks",
+    "japaneseName": "スナノケガワ",
+    "types": [
+      "electric",
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "No records exist of this Pokémon being caught. Data is lacking, but the Pokémon’s traits match up with a creature shown in an expedition journal.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 990,
+    "name": "iron-treads",
+    "japaneseName": "テツノワダチ",
+    "types": [
+      "ground",
+      "steel"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon closely resembles a scientific weapon that a paranormal magazine claimed was sent to this planet by aliens.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 991,
+    "name": "iron-bundle",
+    "japaneseName": "テツノツツミ",
+    "types": [
+      "ice",
+      "water"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Its shape is similar to a robot featured in a paranormal magazine article. The robot was said to have been created by an ancient civilization.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 992,
+    "name": "iron-hands",
+    "japaneseName": "テツノカイナ",
+    "types": [
+      "fighting",
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It is very similar to a cyborg covered exclusively by a paranormal magazine. The cyborg was said to be the modified form of a certain athlete.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 993,
+    "name": "iron-jugulis",
+    "japaneseName": "テツノコウベ",
+    "types": [
+      "dark",
+      "flying"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It resembles a certain Pokémon introduced in a paranormal magazine, described as the offspring of a Hydreigon that fell in love with a robot.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 994,
+    "name": "iron-moth",
+    "japaneseName": "テツノドクガ",
+    "types": [
+      "fire",
+      "poison"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon resembles an unknown object described in a paranormal magazine as a UFO sent to observe humanity.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 995,
+    "name": "iron-thorns",
+    "japaneseName": "テツノイバラ",
+    "types": [
+      "rock",
+      "electric"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It has some similarities to a Pokémon introduced in a dubious magazine as a Tyranitar from one billion years into the future.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 996,
+    "name": "frigibax",
+    "japaneseName": "セビエ",
+    "types": [
+      "dragon",
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Frigibax absorbs heat through its dorsal fin and converts the heat into ice energy. The higher the temperature, the more energy Frigibax stores.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 997,
+    "name": "arctibax",
+    "japaneseName": "セゴール",
+    "types": [
+      "dragon",
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Arctibax freezes the air around it, protecting its face with an ice mask and turning its dorsal fin into a blade of ice.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 998,
+    "name": "baxcalibur",
+    "japaneseName": "セグレイブ",
+    "types": [
+      "dragon",
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon blasts cryogenic air out from its mouth. This air can instantly freeze even liquid-hot lava.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 999,
+    "name": "gimmighoul",
+    "japaneseName": "コレクレー",
+    "types": [
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon was born inside a treasure chest about 1,500 years ago. It sucks the life-force out of scoundrels who try to steal the treasure.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1000,
+    "name": "gholdengo",
+    "japaneseName": "サーフゴー",
+    "types": [
+      "steel",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Its body seems to be made up of 1,000 coins. This Pokémon gets along well with others and is quick to make friends with anybody.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1001,
+    "name": "wo-chien",
+    "japaneseName": "チオンジェン",
+    "types": [
+      "dark",
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The grudge of a person punished for writing the king’s evil deeds upon wooden tablets has clad itself in dead leaves to become a Pokémon.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1002,
+    "name": "chien-pao",
+    "japaneseName": "パオジアン",
+    "types": [
+      "dark",
+      "ice"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon can control 100 tons of fallen snow. It plays around innocently by leaping in and out of avalanches it has caused.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1003,
+    "name": "ting-lu",
+    "japaneseName": "ディンルー",
+    "types": [
+      "dark",
+      "ground"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The fear poured into an ancient ritual vessel has clad itself in rocks and dirt to become a Pokémon.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1004,
+    "name": "chi-yu",
+    "japaneseName": "イーユイ",
+    "types": [
+      "dark",
+      "fire"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It controls flames burning at over 5,400 degrees Fahrenheit. It casually swims through the sea of lava it creates by melting rock and sand.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1005,
+    "name": "roaring-moon",
+    "japaneseName": "トドロクツキ",
+    "types": [
+      "dragon",
+      "dark"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It is possible that this is the creature listed as Roaring Moon in an expedition journal that still holds many mysteries.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1006,
+    "name": "iron-valiant",
+    "japaneseName": "テツノブジン",
+    "types": [
+      "fairy",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It has some similarities to a mad scientist’s invention covered in a paranormal magazine.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1007,
+    "name": "koraidon",
+    "japaneseName": "コライドン",
+    "types": [
+      "fighting",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This seems to be the Winged King mentioned in an old expedition journal. It was said to have split the land with its bare fists.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1008,
+    "name": "miraidon",
+    "japaneseName": "ミライドン",
+    "types": [
+      "electric",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Much remains unknown about this creature. It resembles Cyclizar, but it is far more ruthless and powerful.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1009,
+    "name": "walking-wake",
+    "japaneseName": "ウネルミナモ",
+    "types": [
+      "water",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This ferocious creature is shrouded in mystery. It's named after an aquatic monster mentioned in an old expedition journal.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1010,
+    "name": "iron-leaves",
+    "japaneseName": "テツノイサハ",
+    "types": [
+      "grass",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Many of its physical characteristics match those of a Virizion from the future that was covered in a paranormal magazine.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1011,
+    "name": "dipplin",
+    "japaneseName": "カミッチュ",
+    "types": [
+      "grass",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Dipplin is two creatures in one Pokémon. Its evolution was triggered by a special apple grown only in one place.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1012,
+    "name": "poltchageist",
+    "japaneseName": "チャデス",
+    "types": [
+      "grass",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Supposedly, the regrets of a tea ceremony master who died before perfecting his craft lingered in some matcha and became a Pokémon.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1013,
+    "name": "sinistcha",
+    "japaneseName": "ヤバソチャ",
+    "types": [
+      "grass",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It pretends to be tea, trying to fool people into drinking it so it can drain their life-force. Its ruse is generally unsuccessful.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1014,
+    "name": "okidogi",
+    "japaneseName": "イイネイヌ",
+    "types": [
+      "poison",
+      "fighting"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "After all its muscles were stimulated by the toxic chain around its neck, Okidogi transformed and gained a powerful physique.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1015,
+    "name": "munkidori",
+    "japaneseName": "マシマシラ",
+    "types": [
+      "poison",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "The chain is made from toxins that enhance capabilities. It stimulated Munkidori's brain and caused the Pokémon's psychic powers to bloom.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1016,
+    "name": "fezandipiti",
+    "japaneseName": "キチキギス",
+    "types": [
+      "poison",
+      "fairy"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Fezandipiti owes its beautiful looks and lovely voice to the toxic stimulants emanating from the chain wrapped around its body.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1017,
+    "name": "ogerpon",
+    "japaneseName": "オーガポン",
+    "types": [
+      "grass"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "This Pokémon's type changes based on which mask it's wearing. It confounds its enemies with nimble movements and kicks.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1018,
+    "name": "archaludon",
+    "japaneseName": "ブリジュラス",
+    "types": [
+      "steel",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It gathers static electricity from its surroundings. The beams it launches when down on all fours are tremendously powerful.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1019,
+    "name": "hydrapple",
+    "japaneseName": "カミツオロチ",
+    "types": [
+      "grass",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Seven syrpents live inside an apple made of syrup. The syrpent in the center is the commander.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1020,
+    "name": "gouging-fire",
+    "japaneseName": "ウガツホムラ",
+    "types": [
+      "fire",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "There are scant few reports of this creature being sighted. One short video shows it rampaging and spouting pillars of flame.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1021,
+    "name": "raging-bolt",
+    "japaneseName": "タケルライコ",
+    "types": [
+      "electric",
+      "dragon"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It's said to incinerate everything around it with lightning launched from its fur. Very little is known about this creature.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1022,
+    "name": "iron-boulder",
+    "japaneseName": "テツノイワオ",
+    "types": [
+      "rock",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It resembles a Pokémon described in a dubious magazine as a Terrakion that had been modified by an evil organization.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1023,
+    "name": "iron-crown",
+    "japaneseName": "テツノカシラ",
+    "types": [
+      "steel",
+      "psychic"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It resembles a mysterious object introduced in a paranormal magazine as a cutting-edge weapon shaped like a Cobalion.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1024,
+    "name": "terapagos",
+    "japaneseName": "テラパゴス",
+    "types": [
+      "normal"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "Terapagos protects itself using its power to transform energy into hard crystals. This Pokémon is the source of the Terastal phenomenon.",
+        "ja": ""
+      }
+    }
+  },
+  {
+    "id": 1025,
+    "name": "pecharunt",
+    "japaneseName": "モモワロウ",
+    "types": [
+      "poison",
+      "ghost"
+    ],
+    "descriptions": {
+      "1": {
+        "en": "",
+        "ja": ""
+      },
+      "2": {
+        "en": "",
+        "ja": ""
+      },
+      "3": {
+        "en": "",
+        "ja": ""
+      },
+      "4": {
+        "en": "",
+        "ja": ""
+      },
+      "5": {
+        "en": "",
+        "ja": ""
+      },
+      "6": {
+        "en": "",
+        "ja": ""
+      },
+      "7": {
+        "en": "",
+        "ja": ""
+      },
+      "8": {
+        "en": "",
+        "ja": ""
+      },
+      "9": {
+        "en": "It feeds others toxic mochi that draw out desires and capabilities. Those who eat the mochi fall under Pecharunt’s control, chained to its will.",
+        "ja": ""
+      }
+    }
+  }
+]
