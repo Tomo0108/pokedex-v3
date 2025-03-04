@@ -12,484 +12,422 @@
   --text-dark: #0f380f;
   --shadow-inset: inset -2px -2px 0 0 #000, inset 2px 2px 0 0 #404040;
   --shadow-inset-reverse: inset 2px 2px 0 0 #000, inset -2px -2px 0 0 #404040;
+  
+  /* モダンUIのための新しい変数 */
+  --primary-color: #e53935;
+  --secondary-color: #2196f3;
+  --accent-color: #ffc107;
+  --surface-color: #ffffff;
+  --background-color: #f5f5f5;
+  --error-color: #b00020;
+  --text-primary: #212121;
+  --text-secondary: #757575;
+  --border-radius: 12px;
+  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --transition-speed: 0.2s;
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 @layer base {
   body {
-    @apply m-0 min-h-screen text-white;
+    @apply m-0 min-h-screen text-[var(--text-primary)] bg-[var(--background-color)];
+    @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+
+  /* ピクセルアートのレンダリングを保持 */
+  .pixel-art {
     @apply [image-rendering:pixelated] [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
   }
 }
 
+/* モバイルファーストのコンテナ */
 .pokedex-container {
-  @apply min-h-[100dvh] w-full p-0 sm:p-5;
-  @apply flex justify-center items-start sm:items-center;
-  @apply overflow-y-auto overflow-x-hidden;
-}
-
-.pokedex {
-  @apply flex flex-col md:flex-row gap-2.5 w-full p-4 rounded-none sm:rounded-lg;
-  @apply bg-[var(--pokedex-color)] [image-rendering:pixelated];
-  @apply [box-shadow:var(--shadow-inset)];
-  @apply sm:max-w-[1000px];
-  @apply my-auto;
-}
-
-.pokedex-left,
-.pokedex-right {
-  @apply flex-1 p-4 rounded bg-[var(--pokedex-color)] [box-shadow:var(--shadow-inset)];
-}
-
-.pokedex-right {
+  @apply min-h-[100dvh] w-full p-0;
   @apply flex flex-col;
-  @apply h-full;
+  @apply overflow-hidden;
 }
 
-@media (max-width: 767px) {
-  .pokedex-right {
-    height: calc(100dvh - 520px);
-    min-height: 400px;
-  }
+/* モダンなポケデックスデザイン */
+.pokedex {
+  @apply flex flex-col w-full h-full;
+  @apply bg-[var(--surface-color)];
+  @apply overflow-hidden;
 }
 
-@media (min-width: 768px) {
-  .pokedex-right {
-    height: auto;
-    min-height: 600px;
-    max-height: 700px;
-  }
+/* ヘッダー部分 */
+.pokedex-header {
+  @apply sticky top-0 z-10;
+  @apply flex items-center justify-between;
+  @apply px-4 py-3;
+  @apply bg-[var(--primary-color)] text-white;
+  @apply shadow-md;
 }
 
-.loading-item {
-  @apply flex items-center gap-2 p-2 rounded bg-[var(--loading-color)];
+/* メインコンテンツエリア */
+.pokedex-content {
+  @apply flex-1 overflow-hidden;
+  @apply flex flex-col;
 }
 
-.loading-text {
-  @apply flex-1 h-3 rounded bg-[var(--bg-dark)] opacity-50;
+/* ポケモン表示エリア */
+.pokemon-display {
+  @apply flex-none;
+  @apply p-4;
+  @apply bg-[var(--surface-color)];
+  @apply flex flex-col items-center;
+  @apply border-b border-gray-200;
 }
 
-.top-controls {
-  @apply flex justify-between mb-4 items-start gap-4;
+/* ポケモンリストエリア */
+.pokemon-list-container {
+  @apply flex-1 overflow-y-auto;
+  @apply bg-[var(--surface-color)];
+  scroll-padding-bottom: calc(80px + var(--safe-area-inset-bottom));
 }
 
+/* 検索ボックス */
 .search-box {
-  @apply relative flex-1 max-w-sm;
+  @apply relative w-full max-w-md mx-auto mb-4;
 }
 
 .search-input {
-  @apply w-full h-[44px] px-3 py-2 text-sm;
-  @apply bg-[var(--bg-dark)] text-white;
-  @apply border-2 border-[var(--border-dark)] rounded;
-  @apply focus:outline-none focus:border-[var(--bg-screen)];
-  @apply [box-shadow:var(--shadow-inset)];
-  @apply transition-colors duration-200;
+  @apply w-full h-12 px-4 py-2;
+  @apply bg-white text-[var(--text-primary)];
+  @apply border border-gray-300 rounded-full;
+  @apply focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)] focus:border-transparent;
+  @apply shadow-sm;
+  @apply transition-all duration-[var(--transition-speed)];
+  @apply pl-10;
+}
+
+.search-icon {
+  @apply absolute left-3 top-1/2 transform -translate-y-1/2;
+  @apply text-gray-400;
 }
 
 .search-suggestions {
-  @apply absolute left-0 right-0 top-[44px] mt-1;
-  @apply bg-[var(--bg-dark)] rounded;
-  @apply border-2 border-[var(--border-dark)];
+  @apply absolute left-0 right-0 top-[48px] mt-1;
+  @apply bg-white rounded-[var(--border-radius)];
+  @apply border border-gray-200;
   @apply max-h-[300px] overflow-y-auto;
-  @apply [box-shadow:0_4px_8px_rgba(0,0,0,0.3)];
+  @apply shadow-lg;
+  @apply z-20;
 }
 
 .search-suggestion-item {
-  @apply flex items-center gap-2 px-3 py-2 cursor-pointer;
-  @apply text-sm text-white border-b border-[var(--border-dark)];
-  @apply hover:bg-[var(--border-dark)] transition-colors duration-200;
-  min-height: 44px;
+  @apply flex items-center gap-3 px-4 py-3;
+  @apply text-[var(--text-primary)] border-b border-gray-100;
+  @apply active:bg-gray-100;
+  min-height: 56px;
 }
 
 .search-suggestion-item:last-child {
   @apply border-b-0;
 }
 
-.menu-container {
-  @apply relative;
-  z-index: 20;
-}
-
-.menu-button-plain {
-  @apply p-2 cursor-pointer border-0 bg-transparent;
-  @apply touch-manipulation select-none;
-  min-height: 44px;
-  min-width: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.menu-button-plain:hover .poke-ball-icon {
-  transform: rotate(15deg) scale(1.1);
-}
-
-.menu-button-plain:active .poke-ball-icon {
-  transform: rotate(-15deg) scale(0.9);
-}
-
-.poke-ball-icon {
-  width: 32px;
-  height: 32px;
-  display: block;
-  image-rendering: pixelated;
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.retro-menu {
-  @apply absolute right-0 top-full mt-2;
-  @apply w-[300px] bg-[var(--bg-dark)];
-  @apply border-2 border-[var(--border-dark)] rounded;
+/* ポケモンカード */
+.pokemon-card {
+  @apply bg-white rounded-[var(--border-radius)];
+  @apply shadow-[var(--card-shadow)];
   @apply overflow-hidden;
-  @apply [box-shadow:0_4px_8px_rgba(0,0,0,0.3)];
-  @apply backdrop-blur-sm;
-  animation: menuAppear 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  @apply transition-transform duration-[var(--transition-speed)];
+  @apply transform scale-100 active:scale-98;
+  @apply mx-4 my-3;
 }
 
-@keyframes menuAppear {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.retro-menu-section {
-  @apply p-2 border-b border-[var(--border-dark)];
-}
-
-.retro-menu-section:last-child {
-  @apply border-b-0;
-}
-
-.retro-menu-header {
-  @apply px-2 py-1 text-xs font-bold text-[var(--bg-screen)] uppercase tracking-wider;
-}
-
-.retro-menu-content {
-  @apply p-2;
-}
-
-.retro-menu-item {
-  @apply w-full px-4 py-2 mb-2 last:mb-0;
-  @apply text-sm text-white bg-[var(--bg-darker)];
-  @apply border-2 border-[var(--border-dark)] rounded;
-  @apply flex items-center justify-between;
-  @apply cursor-pointer;
-  @apply hover:bg-[var(--border-dark)];
-  @apply transition-all duration-200;
-}
-
-.retro-menu-item:active {
-  @apply [box-shadow:var(--shadow-inset-reverse)];
-  transform: translateY(1px);
-}
-
-.generation-grid {
-  @apply grid gap-2 grid-cols-1;
-}
-
-.generation-button {
-  @apply w-full p-2 rounded;
-  @apply bg-[var(--bg-darker)] text-white;
-  @apply border-2 border-[var(--border-dark)];
-  @apply flex items-center gap-2;
-  @apply cursor-pointer;
-  @apply transition-all duration-200;
-  @apply hover:bg-[var(--border-dark)];
-}
-
-.generation-button.active {
-  @apply bg-[var(--border-dark)];
-  @apply [box-shadow:var(--shadow-inset-reverse)];
-}
-
-.generation-number {
-  @apply text-sm;
-  min-width: 1.5em;
-  text-align: center;
-  font-weight: normal;
-  font-size: 0.875em;
-  letter-spacing: 0;
-  transform: translateY(1px);
-}
-
-.starter-icons {
-  @apply flex items-center gap-1;
-  @apply ml-auto;
-}
-
-.starter-icon {
-  @apply w-8 h-8;
-  @apply [image-rendering:pixelated];
-  transition: transform 0.2s ease;
-}
-
-.generation-button:hover .starter-icon {
-  transform: scale(1.1);
-}
-
-.color-control-items {
-  @apply flex flex-wrap gap-2;
-}
-
-.color-control-item {
-  @apply flex items-center gap-2 p-2;
-  @apply bg-[var(--bg-darker)] rounded;
-  @apply border-2 border-[var(--border-dark)];
-}
-
-.color-control-item span {
-  @apply text-xs text-white;
-}
-
-.color-control-item input[type="color"] {
-  @apply w-12 h-8 cursor-pointer p-0;
-  @apply border-2 border-[var(--border-dark)] rounded;
-  @apply bg-[var(--bg-darker)];
-}
-
-/* 既存のスタイル */
-.control-button,
-.sprite-button {
-  @apply py-3 px-4 text-sm cursor-pointer text-white border-0;
-  @apply bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
-  @apply touch-manipulation select-none;
-  min-height: 44px;
-  min-width: 84px;
-}
-
-.control-button:is(:active, .active),
-.sprite-button:is(:active, .active) {
-  @apply bg-[var(--border-dark)] [box-shadow:var(--shadow-inset-reverse)];
-}
-
-.screen-container {
-  @apply rounded p-4 mb-4 border-8 border-[var(--border-dark)] bg-[var(--bg-darker)];
-  @apply [box-shadow:var(--shadow-inset)];
-}
-
-.screen {
-  @apply w-full max-w-[300px] aspect-square mx-auto;
-  @apply flex justify-center items-center rounded overflow-hidden;
-  @apply transition-colors duration-300 sm:w-full sm:max-w-none;
-  @apply bg-[var(--bg-screen)] [box-shadow:inset_0_0_10px_rgba(0,0,0,0.3)];
-}
-
-.loading-screen {
-  @apply fixed inset-0 flex items-center justify-center;
+.pokemon-sprite-container {
+  @apply w-full aspect-square;
+  @apply flex items-center justify-center;
   @apply bg-[var(--bg-screen)];
-  @apply [image-rendering:pixelated];
-  @apply [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
-  z-index: 9999;
-}
-
-.loading-screen::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-.loading-gif {
-  max-width: min(320px, 90vmin);
-  width: 100%;
-  aspect-ratio: 1/1;
-  pointer-events: none;
-  display: block;
-  object-fit: contain;
-  @apply [image-rendering:pixelated];
-}
-
-@keyframes loading-bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.loading-gif:not([src*="data:"]) {
-  animation: loading-bounce 1s ease-in-out infinite;
+  @apply relative;
 }
 
 .pokemon-sprite {
-  @apply max-w-full max-h-full scale-[2];
-  @apply [image-rendering:pixelated];
+  @apply w-auto h-auto max-w-full max-h-full;
+  @apply object-contain;
+  @apply pixel-art;
 }
 
-.sprite-controls {
-  @apply gap-3 p-3 rounded bg-[var(--bg-dark)];
-  @apply [box-shadow:var(--shadow-inset)];
+.pokemon-info {
+  @apply p-4;
+  @apply flex flex-col gap-2;
 }
 
-/* モバイル表示 */
-@media (max-width: 767px) {
-  /* スプライトコントロールのラッパー */
-  .sprite-controls-wrap {
-    @apply relative overflow-hidden;
-    @apply -mx-4;
-    background: var(--bg-dark);
-  }
-
-  /* スプライトコントロールのコンテナ */
-  .sprite-controls-inner {
-    @apply relative overflow-hidden px-4;
-  }
-
-  /* スプライトコントロールのレイアウト */
-  .sprite-controls {
-    @apply flex overflow-x-auto overflow-y-hidden;
-    @apply relative pb-6;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    width: 100vw;
-    margin: 0 -1rem;
-    padding: 0 1rem;
-  }
-
-  .sprite-controls::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* スプライトボタンのスタイル */
-  .sprite-button {
-    @apply flex-none justify-center items-center;
-    width: calc(100vw - 2rem);
-    flex: 0 0 calc(100vw - 2rem);
-    height: auto;
-    margin: 0;
-    padding: 0.75rem;
-    scroll-snap-align: center;
-    scroll-snap-stop: normal;
-    transform-origin: center;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .sprite-button.active {
-    @apply bg-[var(--border-dark)];
-    transform: scale(1.05);
-  }
-
-  .sprite-button:active {
-    transform: scale(0.95);
-  }
-
-  /* スプライトコントロールのインジケーター */
-  .sprite-dots {
-    @apply absolute bottom-2 left-0 right-0;
-    @apply flex justify-center items-center gap-2;
-  }
-
-  .sprite-dot {
-    @apply w-2 h-2 rounded-full bg-[var(--border-dark)];
-    @apply transition-all duration-300 ease-in-out;
-    transform-origin: center;
-  }
-
-  .sprite-dot.active {
-    @apply w-3 h-3 bg-[var(--bg-screen)];
-    transform: scale(1.25);
-  }
-
-  /* スプライトコントロールのグラデーション */
-  .sprite-controls-gradient {
-    @apply absolute top-0 bottom-0 w-8 z-10 pointer-events-none;
-    background: linear-gradient(90deg, var(--bg-dark) 0%, transparent 100%);
-  }
-
-  .sprite-controls-gradient.right {
-    @apply right-0;
-    transform: rotate(180deg);
-  }
+.pokemon-name {
+  @apply text-xl font-bold text-[var(--text-primary)];
+  @apply flex items-center justify-between;
 }
 
-/* デスクトップ表示 */
-@media (min-width: 768px) {
-  .sprite-controls {
-    @apply grid gap-3;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-  }
-
-  .sprite-button {
-    @apply w-full;
-    min-width: 0;
-  }
+.pokemon-id {
+  @apply text-sm font-medium text-[var(--text-secondary)];
 }
 
-.sprite-button {
-  @apply px-3 py-2 text-sm;
+.pokemon-types {
+  @apply flex gap-2 mt-1;
 }
 
-.pokemon-list {
-  @apply rounded p-4 overflow-y-auto bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
-  @apply w-full max-w-full flex-1;
-  @apply md:h-[400px];
-}
-
-.pokemon-list-item {
-  @apply p-3 flex items-center gap-3 text-sm cursor-pointer;
-  @apply border-b border-[var(--border-dark)];
-  min-height: 44px;
-  position: relative;
-  width: 100%;
-}
-
-.pokemon-list-item:last-child {
-  @apply border-b-0;
-}
-
-.pokemon-list-item.selected {
-  @apply text-white bg-[var(--border-dark)];
-}
-
-.pokemon-list-item:hover:not(.selected) {
-  @apply bg-[#303030];
-}
-
-.pokemon-icon {
-  @apply w-8 h-8 [image-rendering:pixelated];
-  flex-shrink: 0;
-}
-
-.pokemon-list-item span {
-  @apply truncate;
-  flex: 1;
-  min-width: 0;
-}
-
-.description-container {
-  @apply mt-4 p-2.5 rounded bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
-}
-
-.description-box {
-  @apply p-4 rounded min-h-[80px] text-sm leading-normal;
-  @apply bg-[var(--bg-screen)] transition-colors duration-300;
+.pokemon-type {
+  @apply px-3 py-1 text-xs font-medium text-white rounded-full;
 }
 
 .pokemon-description {
-  @apply m-0 text-[var(--text-dark)];
+  @apply mt-3 text-sm text-[var(--text-secondary)];
+  @apply line-clamp-3;
 }
 
-.pokemon-list-ul {
-  @apply list-none m-0 p-0;
+/* ポケモンリスト */
+.pokemon-list {
+  @apply pb-[calc(80px+var(--safe-area-inset-bottom))];
 }
 
-@layer utilities {
-  ::-webkit-scrollbar {
-    @apply w-2;
-  }
+.pokemon-list-item {
+  @apply flex items-center gap-3 px-4 py-3;
+  @apply border-b border-gray-100;
+  @apply active:bg-gray-100;
+  @apply transition-colors duration-[var(--transition-speed)];
+}
 
-  ::-webkit-scrollbar-track {
-    @apply bg-[var(--bg-darker)];
-  }
+.pokemon-list-item.selected {
+  @apply bg-gray-100;
+}
 
-  ::-webkit-scrollbar-thumb {
-    @apply bg-[var(--border-dark)] border-2 border-[var(--bg-darker)];
+.pokemon-icon {
+  @apply w-10 h-10 object-contain;
+  @apply pixel-art;
+}
+
+/* 下部ナビゲーションバー */
+.bottom-nav {
+  @apply fixed bottom-0 left-0 right-0;
+  @apply flex items-center justify-around;
+  @apply bg-white border-t border-gray-200;
+  @apply px-2 pt-2 pb-[calc(0.5rem+var(--safe-area-inset-bottom))];
+  @apply z-10;
+  @apply shadow-[0_-2px_10px_rgba(0,0,0,0.05)];
+}
+
+.nav-item {
+  @apply flex flex-col items-center;
+  @apply px-3 py-2;
+  @apply text-[var(--text-secondary)];
+  @apply transition-colors duration-[var(--transition-speed)];
+}
+
+.nav-item.active {
+  @apply text-[var(--primary-color)];
+}
+
+.nav-icon {
+  @apply text-2xl mb-1;
+}
+
+.nav-label {
+  @apply text-xs;
+}
+
+/* モーダル */
+.modal-overlay {
+  @apply fixed inset-0 z-50;
+  @apply bg-black bg-opacity-50;
+  @apply flex items-end justify-center sm:items-center;
+  @apply transition-opacity duration-300;
+}
+
+.modal-content {
+  @apply w-full sm:max-w-md;
+  @apply bg-white rounded-t-[var(--border-radius)] sm:rounded-[var(--border-radius)];
+  @apply shadow-xl;
+  @apply transform transition-transform duration-300;
+  @apply max-h-[80vh] overflow-y-auto;
+}
+
+.modal-header {
+  @apply sticky top-0 z-10;
+  @apply flex items-center justify-between;
+  @apply px-4 py-3;
+  @apply bg-white border-b border-gray-200;
+  @apply rounded-t-[var(--border-radius)];
+}
+
+.modal-body {
+  @apply p-4;
+}
+
+.modal-footer {
+  @apply sticky bottom-0;
+  @apply flex justify-end gap-2;
+  @apply px-4 py-3;
+  @apply bg-white border-t border-gray-200;
+}
+
+/* 設定項目 */
+.settings-group {
+  @apply mb-6;
+}
+
+.settings-title {
+  @apply text-sm font-medium text-[var(--text-secondary)];
+  @apply mb-2;
+}
+
+.settings-item {
+  @apply flex items-center justify-between;
+  @apply py-3 border-b border-gray-100;
+}
+
+.settings-item:last-child {
+  @apply border-b-0;
+}
+
+.settings-label {
+  @apply text-[var(--text-primary)];
+}
+
+/* スプライトコントロール */
+.sprite-controls {
+  @apply flex gap-2 mt-4 overflow-x-auto pb-2;
+  @apply snap-x snap-mandatory;
+  @apply scrollbar-hide;
+}
+
+.sprite-button {
+  @apply flex-none px-3 py-2;
+  @apply bg-gray-100 rounded-full;
+  @apply text-sm text-[var(--text-secondary)];
+  @apply transition-colors duration-[var(--transition-speed)];
+  @apply snap-center;
+}
+
+.sprite-button.active {
+  @apply bg-[var(--primary-color)] text-white;
+}
+
+/* 世代選択 */
+.generation-grid {
+  @apply grid grid-cols-3 gap-3;
+}
+
+.generation-button {
+  @apply flex flex-col items-center justify-center;
+  @apply p-3 rounded-[var(--border-radius)];
+  @apply bg-gray-100;
+  @apply transition-colors duration-[var(--transition-speed)];
+}
+
+.generation-button.active {
+  @apply bg-[var(--primary-color)] text-white;
+}
+
+.generation-number {
+  @apply text-lg font-bold mb-1;
+}
+
+.starter-icons {
+  @apply flex gap-1;
+}
+
+.starter-icon {
+  @apply w-6 h-6 object-contain;
+  @apply pixel-art;
+}
+
+/* カラーピッカー */
+.color-control-items {
+  @apply flex flex-col gap-4;
+}
+
+.color-control-item {
+  @apply flex items-center justify-between;
+}
+
+.color-control-item span {
+  @apply text-[var(--text-primary)];
+}
+
+.color-control-item input[type="color"] {
+  @apply w-10 h-10 rounded-full overflow-hidden;
+  @apply border-2 border-gray-200;
+  @apply cursor-pointer;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-in-out;
+}
+
+/* スクロールバー非表示 */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* タイプ色 */
+.type-normal { @apply bg-gray-400; }
+.type-fire { @apply bg-red-500; }
+.type-water { @apply bg-blue-500; }
+.type-electric { @apply bg-yellow-400; }
+.type-grass { @apply bg-green-500; }
+.type-ice { @apply bg-blue-300; }
+.type-fighting { @apply bg-red-700; }
+.type-poison { @apply bg-purple-500; }
+.type-ground { @apply bg-yellow-600; }
+.type-flying { @apply bg-indigo-300; }
+.type-psychic { @apply bg-pink-500; }
+.type-bug { @apply bg-green-600; }
+.type-rock { @apply bg-yellow-700; }
+.type-ghost { @apply bg-purple-700; }
+.type-dragon { @apply bg-indigo-600; }
+.type-dark { @apply bg-gray-700; }
+.type-steel { @apply bg-gray-500; }
+.type-fairy { @apply bg-pink-300; }
+
+/* レスポンシブデザイン - タブレット以上 */
+@media (min-width: 768px) {
+  .pokedex {
+    @apply flex-row max-w-6xl mx-auto;
+    @apply rounded-[var(--border-radius)] overflow-hidden;
+    @apply my-8 mx-4;
+    @apply shadow-[var(--card-shadow)];
+  }
+  
+  .pokedex-content {
+    @apply flex-row;
+  }
+  
+  .pokemon-display {
+    @apply w-1/2 border-b-0 border-r border-gray-200;
+    @apply h-[calc(100vh-120px)] max-h-[800px];
+  }
+  
+  .pokemon-list-container {
+    @apply w-1/2;
+  }
+  
+  .bottom-nav {
+    @apply hidden;
+  }
+  
+  .pokemon-list {
+    @apply pb-0;
   }
 }
