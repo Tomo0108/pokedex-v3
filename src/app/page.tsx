@@ -522,29 +522,6 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                     );
                   })}
                 </div>
-                <div className="sprite-dots">
-                  {Object.entries(spriteStyles).map(([style, { gens }]) => {
-                    if (!gens.includes(generation)) return null;
-                    return (
-                      <div 
-                        key={style}
-                        className={`sprite-dot ${spriteStyle === style ? 'active' : ''}`}
-                        onClick={() => {
-                          setSpriteStyle(style as keyof typeof spriteStyles);
-                          if (spriteControlsRef.current && isMobile) {
-                            const index = availableStyles.indexOf(style);
-                            if (index >= 0) {
-                              spriteControlsRef.current.scrollTo({
-                                left: index * spriteControlsRef.current.clientWidth,
-                                behavior: 'smooth'
-                              });
-                            }
-                          }
-                        }}
-                      />
-                    );
-                  })}
-                </div>
                 {isMobile && showSwipeHint && (
                   <div className="swipe-hint">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
@@ -556,18 +533,42 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
               </div>
             </div>
           )}
-          <div className="description-container">
-            <div className="description-box">
-              {selectedPokemon && (
-                <p 
-                  className="pokemon-description"
-                  lang={isJapanese ? 'ja' : 'en'}
+          <div className="pokemon-info">
+            <h2 className="pokemon-name">
+              {selectedPokemon ? (
+                <>
+                  <span className="pokemon-number">#{selectedPokemon.id}</span>{" "}
+                  {isJapanese ? selectedPokemon.japaneseName : selectedPokemon.name}
+                </>
+              ) : (
+                "Loading..."
+              )}
+            </h2>
+            
+            <div className="pokemon-types">
+              {selectedPokemon?.types.map((type) => (
+                <span
+                  key={type}
+                  className={`type-badge ${type.toLowerCase()}`}
                 >
-                  {isJapanese 
-                    ? (selectedPokemon.description.ja || 'データがありません。')
-                    : (selectedPokemon.description.en || 'No description available.')
-                  }
-                </p>
+                  {isJapanese ? typeTranslations[type as keyof typeof typeTranslations] || type : type}
+                </span>
+              ))}
+            </div>
+            
+            <div className="pokemon-description">
+              {selectedPokemon ? (
+                <>
+                  {isJapanese && selectedPokemon.description?.ja ? (
+                    <p lang="ja">{selectedPokemon.description.ja}</p>
+                  ) : selectedPokemon.description?.en ? (
+                    <p lang="en">{selectedPokemon.description.en}</p>
+                  ) : (
+                    <p lang={isJapanese ? "ja" : "en"}>{isJapanese ? "説明文がありません" : "No description available"}</p>
+                  )}
+                </>
+              ) : (
+                <p lang={isJapanese ? "ja" : "en"}>{isJapanese ? "読み込み中..." : "Loading..."}</p>
               )}
             </div>
           </div>

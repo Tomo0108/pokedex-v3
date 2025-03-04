@@ -417,25 +417,6 @@
     transition: 0s;
   }
 
-  /* スプライトコントロールのインジケーター */
-  .sprite-dots {
-    @apply absolute bottom-2 left-0 right-0;
-    @apply flex justify-center items-center gap-2;
-  }
-
-  .sprite-dot {
-    @apply w-2 h-2 rounded-full bg-[var(--border-dark)];
-    @apply transition-all duration-300 ease-in-out;
-    transform-origin: center;
-    cursor: pointer;
-  }
-
-  .sprite-dot.active {
-    @apply w-3 h-3 bg-[var(--bg-screen)];
-    transform: scale(1.25);
-    box-shadow: 0 0 0 2px var(--border-dark);
-  }
-
   /* スプライトコントロールのグラデーション */
   .sprite-controls-gradient {
     @apply absolute top-0 bottom-0 w-8 z-10 pointer-events-none;
@@ -502,9 +483,9 @@
 }
 
 .pokemon-list-item {
-  @apply p-3 flex items-center gap-3 text-sm cursor-pointer;
+  @apply px-4 py-3 flex items-center gap-4 text-sm cursor-pointer;
   @apply border-b border-[var(--border-dark)];
-  min-height: 44px;
+  min-height: 60px;
   position: relative;
   width: 100%;
 }
@@ -522,12 +503,12 @@
 }
 
 .pokemon-icon {
-  @apply w-8 h-8 [image-rendering:pixelated];
+  @apply w-12 h-12 [image-rendering:pixelated];
   flex-shrink: 0;
 }
 
 .pokemon-list-item span {
-  @apply truncate;
+  @apply truncate text-base;
   flex: 1;
   min-width: 0;
 }
@@ -547,6 +528,80 @@
 
 .pokemon-list-ul {
   @apply list-none m-0 p-0;
+}
+
+/* ポケモン情報表示エリア */
+.pokemon-info {
+  @apply flex flex-col gap-2 p-4 rounded-lg;
+  @apply bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+  max-width: 100%;
+}
+
+.pokemon-name {
+  @apply text-xl font-bold mb-1;
+  color: var(--text-light);
+}
+
+.pokemon-number {
+  @apply text-sm font-normal opacity-70;
+}
+
+.pokemon-types {
+  @apply flex flex-wrap gap-2 mb-3;
+}
+
+.type-badge {
+  @apply px-3 py-1 rounded-full text-sm font-medium;
+  @apply text-white shadow-sm;
+  background-color: #6B7280;
+}
+
+/* タイプ別の色 */
+.type-badge.normal { background-color: #A8A878; }
+.type-badge.fire { background-color: #F08030; }
+.type-badge.water { background-color: #6890F0; }
+.type-badge.electric { background-color: #F8D030; }
+.type-badge.grass { background-color: #78C850; }
+.type-badge.ice { background-color: #98D8D8; }
+.type-badge.fighting { background-color: #C03028; }
+.type-badge.poison { background-color: #A040A0; }
+.type-badge.ground { background-color: #E0C068; }
+.type-badge.flying { background-color: #A890F0; }
+.type-badge.psychic { background-color: #F85888; }
+.type-badge.bug { background-color: #A8B820; }
+.type-badge.rock { background-color: #B8A038; }
+.type-badge.ghost { background-color: #705898; }
+.type-badge.dragon { background-color: #7038F8; }
+.type-badge.dark { background-color: #705848; }
+.type-badge.steel { background-color: #B8B8D0; }
+.type-badge.fairy { background-color: #EE99AC; }
+
+.pokemon-description {
+  @apply text-sm leading-relaxed p-3 rounded;
+  @apply bg-[var(--bg-screen)] text-[var(--text-dark)];
+  max-height: 120px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-dark) transparent;
+}
+
+.pokemon-description::-webkit-scrollbar {
+  width: 4px;
+}
+
+.pokemon-description::-webkit-scrollbar-thumb {
+  background-color: var(--border-dark);
+  border-radius: 4px;
+}
+
+.pokemon-description::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* 日本語テキスト用のスタイル調整 */
+[lang="ja"] {
+  line-height: 1.7;
+  font-size: 0.95em;
 }
 
 @layer utilities {

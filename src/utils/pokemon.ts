@@ -187,13 +187,30 @@ export async function fetchPokemonData(generation: number) {
         // 世代番号の降順でソートされた配列を作成
         const genNumbers = Object.keys(descriptions)
           .map(Number)
-          .filter(gen => gen <= generation) // 現在の世代以下のみ
+          .filter(gen => gen <= 9) // 全世代対応
           .sort((a, b) => b - a); // 降順ソート
         
         // 最新の世代の説明を取得
         if (genNumbers.length > 0) {
+          // 日本語の説明がある世代を優先
+          for (const gen of genNumbers) {
+            const desc = descriptions[gen];
+            if (desc && desc.ja && desc.ja.trim() !== '') {
+              return {
+                en: desc.en || '',
+                ja: desc.ja || ''
+              };
+            }
+          }
+          
+          // 日本語がなければ最新の英語説明を使用
           const latestGen = genNumbers[0];
-          return descriptions[latestGen] || { en: '', ja: '' };
+          const description = descriptions[latestGen];
+          
+          return {
+            en: description?.en || '',
+            ja: description?.ja || ''
+          };
         }
         
         return { en: '', ja: '' };
