@@ -358,38 +358,35 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     };
   }, [menuVisible, closeMenu]);
 
-  // 9世代のアイコンを9世代のドットイラストに変更
+  // 御三家ポケモンの表示を修正
   const getGenerationStarters = (gen: number) => {
-    if (gen === 9) {
-      // 9世代はポケモンデータから取得
-      return [
-        { id: 906, name: 'Sprigatito' },
-        { id: 909, name: 'Fuecoco' },
-        { id: 912, name: 'Quaxly' }
-      ].map(starter => (
-        <img 
-          key={starter.id}
-          src={`/images/pokemon_icons/${starter.id}.png`}
-          alt={starter.name}
-          className="starter-icon"
-          style={{ width: '40px', height: '40px', objectFit: 'contain' }}
-          onError={(e) => {
-            e.currentTarget.src = `/images/no-sprite.png`;
-          }}
-        />
-      ));
-    }
+    // 各世代の御三家ポケモンの初期進化（ID）
+    const starterEvolutions = {
+      1: [2, 5, 8],     // フシギソウ、リザード、カメール
+      2: [153, 156, 159], // ベイリーフ、マグマラシ、アリゲイツ
+      3: [253, 256, 259], // ジュプトル、ワカシャモ、ヌマクロー
+      4: [388, 391, 394], // ハヤシガメ、モウカザル、ポッタイシ
+      5: [496, 499, 502], // ツタージャ、チャオブー、フタチマル
+      6: [651, 654, 657], // ハリボーグ、テールナー、ゲコガシラ
+      7: [723, 726, 729], // フクスロー、ニャヒート、オシャマリ
+      8: [811, 814, 817], // バータップ、ラビフット、ジメレオン
+      9: [907, 910, 913]  // モウカ、グワッス、クワッス
+    };
     
-    // 他の世代のスターター
-    return [
-      { id: gen === 1 ? 1 : (gen - 1) * 3 + 1, name: 'Grass' },
-      { id: gen === 1 ? 4 : (gen - 1) * 3 + 4, name: 'Fire' },
-      { id: gen === 1 ? 7 : (gen - 1) * 3 + 7, name: 'Water' }
-    ].map(starter => (
+    // 該当世代の御三家初期進化からランダムに1匹ずつ選択
+    const starters = starterEvolutions[gen as keyof typeof starterEvolutions];
+    
+    // 配列をシャッフル
+    const shuffled = [...starters].sort(() => 0.5 - Math.random());
+    
+    // 最初の3つを取得（または配列の長さが3未満の場合は全て）
+    const selectedStarters = shuffled.slice(0, 3);
+    
+    return selectedStarters.map(id => (
       <img 
-        key={starter.id}
-        src={`/images/pokemon_icons/${starter.id}.png`}
-        alt={starter.name}
+        key={id}
+        src={`/images/pokemon_icons/${id}.png`}
+        alt={`Starter ${id}`}
         className="starter-icon"
         style={{ width: '40px', height: '40px', objectFit: 'contain' }}
         onError={(e) => {

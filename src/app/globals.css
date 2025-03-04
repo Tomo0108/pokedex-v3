@@ -307,13 +307,13 @@
 
 .generation-button {
   @apply flex flex-col items-center justify-center p-2;
-  background-color: var(--bg-screen);
-  color: var(--text-dark);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-dark);
+  color: white;
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   @apply cursor-pointer;
   transition: all 0.2s ease;
-  border-radius: 8px;
+  border-radius: 4px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -321,13 +321,13 @@
 }
 
 .generation-button:hover {
-  @apply bg-gray-50;
+  background-color: #303030;
 }
 
 .generation-button.active {
-  background-color: #f0f9ff;
-  border-color: #3b82f6;
-  color: #2563eb;
+  background-color: #303030;
+  border-color: #505050;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .generation-number {
@@ -691,15 +691,15 @@
 /* スプライト選択ボタン */
 .sprite-select-button {
   @apply w-full py-3 px-4 text-sm;
-  background-color: var(--bg-screen);
-  color: var(--text-dark);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-dark);
+  color: white;
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   @apply flex items-center justify-between;
   @apply cursor-pointer;
   transition: all 0.2s ease;
   transform: translateY(0);
-  border-radius: 8px;
+  border-radius: 4px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 500;
@@ -707,22 +707,22 @@
 }
 
 .sprite-select-button:active {
-  background-color: rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: #303030;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
   transform: translateY(1px);
 }
 
 .arrow-down {
   font-size: 12px;
   margin-left: 8px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 /* スプライトモーダルオーバーレイ */
 .sprite-modal-overlay {
   @apply fixed inset-0 z-50;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(2px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -736,12 +736,12 @@
 
 /* スプライトモーダル */
 .sprite-modal {
-  @apply bg-white rounded-xl;
+  @apply bg-[var(--bg-darker)] rounded-md;
   @apply w-[90%] max-w-md max-h-[80vh];
   @apply flex flex-col;
   @apply overflow-hidden;
-  border: none;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   animation: slideUp 0.3s ease-out;
 }
 
@@ -753,28 +753,28 @@
 /* スプライトモーダルヘッダー */
 .sprite-modal-header {
   @apply flex items-center justify-between p-4;
-  @apply bg-white;
-  @apply border-b border-gray-100;
+  @apply bg-[var(--bg-dark)];
+  @apply border-b border-[var(--border-dark)];
 }
 
 .sprite-modal-header h3 {
   @apply text-base font-medium m-0;
   font-family: 'Inter', sans-serif;
-  color: #333;
+  color: white;
 }
 
 .close-button {
-  @apply bg-transparent border-0 text-gray-500;
+  @apply bg-transparent border-0 text-white;
   @apply w-8 h-8 flex items-center justify-center;
   @apply cursor-pointer rounded-full;
-  @apply hover:bg-gray-100;
+  @apply hover:bg-[#303030];
   font-size: 18px;
   transition: all 0.2s ease;
 }
 
 /* スプライトモーダルコンテンツ */
 .sprite-modal-content {
-  @apply p-3 overflow-y-auto;
+  @apply p-4 overflow-y-auto;
   @apply flex flex-col gap-2;
   max-height: 60vh;
 }
@@ -782,28 +782,27 @@
 /* スプライトモーダルボタン */
 .sprite-modal-button {
   @apply py-3 px-4 text-sm;
-  @apply bg-white text-gray-800;
-  @apply border border-gray-200;
+  @apply bg-[var(--bg-dark)] text-white;
+  @apply border border-[var(--border-dark)];
   @apply flex items-center justify-center;
   @apply cursor-pointer;
   transition: all 0.2s ease;
   transform: translateY(0);
-  border-radius: 8px;
+  border-radius: 4px;
   font-family: 'Inter', sans-serif;
   font-size: 14px;
   font-weight: 400;
-  min-height: 48px;
+  min-height: 44px;
 }
 
 .sprite-modal-button.active {
-  background-color: #f0f9ff;
-  border-color: #3b82f6;
-  color: #2563eb;
-  font-weight: 500;
+  background-color: #303030;
+  border-color: #505050;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .sprite-modal-button:active {
-  background-color: #f0f9ff;
+  background-color: #303030;
   transform: translateY(1px);
 }
 
