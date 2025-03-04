@@ -361,7 +361,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
   // 9世代のアイコンを9世代のドットイラストに変更
   const getGenerationStarters = (gen: number) => {
     if (gen === 9) {
-      // 9世代は9世代のドットイラストを使用
+      // 9世代はポケモンデータから取得
       return [
         { id: 906, name: 'Sprigatito' },
         { id: 909, name: 'Fuecoco' },
@@ -369,10 +369,10 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       ].map(starter => (
         <img 
           key={starter.id}
-          src={`/sprites/pokemon/versions/generation-ix/${starter.id}.png`}
+          src={`/images/pokemon_icons/${starter.id}.png`}
           alt={starter.name}
           className="starter-icon"
-          style={{ width: '32px', height: '32px', objectFit: 'contain' }}
+          style={{ width: '40px', height: '40px', objectFit: 'contain' }}
           onError={(e) => {
             e.currentTarget.src = `/images/no-sprite.png`;
           }}
@@ -380,26 +380,18 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       ));
     }
     
-    // 他の世代は既存のコード
-    const starters = [
-      [], // 0番目は使用しない
-      [1, 4, 7], // 第1世代
-      [152, 155, 158], // 第2世代
-      [252, 255, 258], // 第3世代
-      [387, 390, 393], // 第4世代
-      [495, 498, 501], // 第5世代
-      [650, 653, 656], // 第6世代
-      [722, 725, 728], // 第7世代
-      [810, 813, 816], // 第8世代
-      [906, 909, 912], // 第9世代
-    ][gen];
-    
-    return starters.map(id => (
+    // 他の世代のスターター
+    return [
+      { id: gen === 1 ? 1 : (gen - 1) * 3 + 1, name: 'Grass' },
+      { id: gen === 1 ? 4 : (gen - 1) * 3 + 4, name: 'Fire' },
+      { id: gen === 1 ? 7 : (gen - 1) * 3 + 7, name: 'Water' }
+    ].map(starter => (
       <img 
-        key={id}
-        src={`/images/pokemon_icons/${id}.png`}
-        alt={`Starter ${id}`}
+        key={starter.id}
+        src={`/images/pokemon_icons/${starter.id}.png`}
+        alt={starter.name}
         className="starter-icon"
+        style={{ width: '40px', height: '40px', objectFit: 'contain' }}
         onError={(e) => {
           e.currentTarget.src = `/images/no-sprite.png`;
         }}
@@ -626,16 +618,18 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
               )}
             </div>
             <div className="sprite-controls-container">
-              <button 
-                className="sprite-select-button"
-                onClick={openSpriteModal}
-                aria-label={isJapanese ? "ポケモンの見た目を変更" : "Change Pokémon Style"}
-              >
-                {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
-              </button>
+              {generation <= 5 && (
+                <button 
+                  className="sprite-select-button"
+                  onClick={openSpriteModal}
+                  aria-label={isJapanese ? "ポケモンの見た目を変更" : "Change Pokémon Style"}
+                >
+                  {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
+                </button>
+              )}
               
               {/* スプライトスタイル選択モーダル */}
-              {spriteModalOpen && (
+              {spriteModalOpen && generation <= 5 && (
                 <div className="sprite-modal-overlay" onClick={closeSpriteModal}>
                   <div className="sprite-modal" onClick={(e) => e.stopPropagation()}>
                     <div className="sprite-modal-header">
