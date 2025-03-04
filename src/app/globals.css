@@ -9,24 +9,26 @@
   --bg-dark: #202020;
   --bg-darker: #181818;
   --bg-screen: #9bbc0f;
+  --bg-screen-dark: #0f380f;
+  --bg-screen-light: #8bac0f;
   --text-dark: #0f380f;
   --shadow-inset: inset -2px -2px 0 0 #000, inset 2px 2px 0 0 #404040;
   --shadow-inset-reverse: inset 2px 2px 0 0 #000, inset -2px -2px 0 0 #404040;
   --app-height: 100vh;
+  --gameboy-border: 4px solid #0f380f;
+  --gameboy-shadow: 0 4px 0 #306230;
 }
 
 @layer base {
   html {
-    @apply h-[var(--app-height)] overflow-hidden;
-    position: fixed;
-    width: 100%;
+    @apply h-[var(--app-height)];
     overscroll-behavior: none;
   }
   
   body {
     @apply m-0 h-[var(--app-height)] text-white;
     @apply [image-rendering:pixelated] [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
-    @apply overflow-hidden;
+    @apply overflow-auto;
     overscroll-behavior: none;
     -webkit-overflow-scrolling: touch;
     background-color: var(--bg-darker);
@@ -212,17 +214,21 @@
 
 .retro-menu-item {
   @apply w-full px-4 py-2 mb-2 last:mb-0;
-  @apply text-sm text-white bg-[var(--bg-darker)];
-  @apply border-2 border-[var(--border-dark)] rounded;
+  @apply text-sm bg-[var(--bg-screen)];
+  color: var(--text-dark);
+  border: var(--gameboy-border);
+  box-shadow: var(--gameboy-shadow);
   @apply flex items-center justify-between;
   @apply cursor-pointer;
-  @apply hover:bg-[var(--border-dark)];
-  @apply transition-all duration-200;
+  transition: transform 0.1s, box-shadow 0.1s;
+  transform: translateY(0);
+  border-radius: 0;
 }
 
 .retro-menu-item:active {
-  @apply [box-shadow:var(--shadow-inset-reverse)];
-  transform: translateY(1px);
+  background-color: var(--bg-screen);
+  box-shadow: 0 2px 0 #306230;
+  transform: translateY(2px);
 }
 
 .generation-grid {
@@ -230,18 +236,27 @@
 }
 
 .generation-button {
-  @apply w-full p-2 rounded;
-  @apply bg-[var(--bg-darker)] text-white;
-  @apply border-2 border-[var(--border-dark)];
+  @apply w-full p-2;
+  @apply bg-[var(--bg-screen)] text-[var(--text-dark)];
+  border: var(--gameboy-border);
+  box-shadow: var(--gameboy-shadow);
   @apply flex items-center gap-2;
   @apply cursor-pointer;
-  @apply transition-all duration-200;
-  @apply hover:bg-[var(--border-dark)];
+  transition: transform 0.1s, box-shadow 0.1s;
+  transform: translateY(0);
+  border-radius: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.generation-button:hover {
+  background-color: var(--bg-screen);
 }
 
 .generation-button.active {
-  @apply bg-[var(--border-dark)];
-  @apply [box-shadow:var(--shadow-inset-reverse)];
+  background-color: var(--bg-screen);
+  box-shadow: 0 2px 0 #306230;
+  transform: translateY(2px);
 }
 
 .generation-number {
@@ -257,11 +272,14 @@
 .starter-icons {
   @apply flex items-center gap-1;
   @apply ml-auto;
+  position: relative;
+  z-index: 2;
 }
 
 .starter-icon {
   @apply w-12 h-12;
   @apply [image-rendering:pixelated];
+  display: block;
 }
 
 .generation-button:hover .starter-icon {
@@ -288,19 +306,30 @@
   @apply bg-[var(--bg-darker)];
 }
 
-/* 既存のスタイル */
+/* ゲームボーイスタイルのボタン */
 .control-button,
 .sprite-button {
-  @apply py-3 px-4 text-sm cursor-pointer text-white border-0;
-  @apply bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+  @apply py-3 px-4 text-sm cursor-pointer border-0;
+  background-color: var(--bg-screen);
+  color: var(--text-dark);
+  border: var(--gameboy-border);
+  box-shadow: var(--gameboy-shadow);
+  border-radius: 0;
+  font-family: 'Press Start 2P', monospace;
+  text-transform: uppercase;
   @apply touch-manipulation select-none;
   min-height: 44px;
   min-width: 84px;
+  position: relative;
+  transition: transform 0.1s, box-shadow 0.1s;
+  transform: translateY(0);
 }
 
 .control-button:is(:active, .active),
 .sprite-button:is(:active, .active) {
-  @apply bg-[var(--border-dark)] [box-shadow:var(--shadow-inset-reverse)];
+  background-color: var(--bg-screen);
+  box-shadow: 0 2px 0 #306230;
+  transform: translateY(2px);
 }
 
 .screen-container {
@@ -357,13 +386,17 @@
   @apply [image-rendering:pixelated];
 }
 
+/* スプライトコントロールのスタイル */
 .sprite-controls {
-  @apply flex items-center gap-2 py-2 px-0 overflow-x-auto;
+  @apply flex items-center gap-4 py-4 px-0 overflow-x-auto;
   @apply touch-manipulation select-none;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   cursor: grab;
+  background-color: var(--bg-darker);
+  padding: 16px;
+  border-radius: 8px;
 }
 
 .sprite-controls.grabbing {
@@ -375,21 +408,33 @@
 }
 
 .sprite-button {
-  @apply py-3 px-4 text-sm text-white border-0;
-  @apply bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+  @apply py-3 px-4 text-sm border-0;
+  background-color: var(--bg-screen);
+  color: var(--text-dark);
+  border: var(--gameboy-border);
+  box-shadow: var(--gameboy-shadow);
   @apply touch-manipulation select-none;
   min-height: 44px;
   min-width: 84px;
   scroll-snap-align: center;
-  transition: none;
+  transition: transform 0.1s, box-shadow 0.1s;
+  transform: translateY(0);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
 }
 
 .sprite-button.active {
-  @apply bg-[var(--border-dark)] [box-shadow:var(--shadow-inset-reverse)];
+  background-color: var(--bg-screen);
+  box-shadow: 0 2px 0 #306230;
+  transform: translateY(2px);
 }
 
 .sprite-button:active {
-  @apply bg-[var(--border-dark)] [box-shadow:var(--shadow-inset-reverse)];
+  background-color: var(--bg-screen);
+  box-shadow: 0 2px 0 #306230;
+  transform: translateY(2px);
 }
 
 /* モバイル表示 */
@@ -398,7 +443,8 @@
   .sprite-controls-wrap {
     @apply relative overflow-hidden;
     @apply -mx-4;
-    background: var(--bg-dark);
+    background: var(--bg-darker);
+    padding: 8px 0;
   }
 
   /* スプライトコントロールのコンテナ */
@@ -423,14 +469,7 @@
     cursor: grab;
     /* スクロールイベントの競合を防止 */
     overscroll-behavior-x: contain;
-  }
-
-  .sprite-controls.grabbing {
-    cursor: grabbing;
-  }
-
-  .sprite-controls::-webkit-scrollbar {
-    display: none;
+    background-color: transparent;
   }
 
   /* スプライトボタンのスタイル */
@@ -443,39 +482,23 @@
     padding: 0.75rem;
     scroll-snap-align: center;
     scroll-snap-stop: always;
-    transform-origin: center;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    border-radius: 0.5rem;
+    border-radius: 0;
     /* タッチ操作の競合を防止 */
     touch-action: manipulation;
   }
   
   .sprite-button.active {
-    @apply bg-[var(--border-dark)];
-    transform: scale(1.05);
-    box-shadow: 0 0 0 2px var(--bg-screen);
+    background-color: var(--bg-screen);
+    box-shadow: 0 2px 0 #306230;
+    transform: translateY(2px);
   }
 
   .sprite-button:active {
-    transform: scale(0.95);
-  }
-
-  /* スプライトコントロールのグラデーション */
-  .sprite-controls-gradient {
-    @apply absolute top-0 bottom-0 w-8 z-10 pointer-events-none;
-    background: linear-gradient(90deg, var(--bg-dark) 0%, transparent 100%);
-  }
-
-  .sprite-controls-gradient.right {
-    @apply right-0;
-    transform: rotate(180deg);
-  }
-
-  /* スワイプヒント表示 */
-  .swipe-hint {
-    display: none;
+    background-color: var(--bg-screen);
+    box-shadow: 0 2px 0 #306230;
+    transform: translateY(2px);
   }
 }
 
@@ -640,8 +663,8 @@
 
 /* スプライトボタンのホバーエフェクト無効化 */
 .sprite-button:hover {
-  background-color: var(--bg-dark);
-  transform: none;
+  background-color: var(--bg-screen);
+  transform: translateY(0);
 }
 
 .sprite-button::after {

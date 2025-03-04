@@ -142,28 +142,35 @@ export default function HomePage() {
     };
 
     const handleTouchStart = (e: TouchEvent) => {
-      isDragging = true;
-      startX = e.touches[0].pageX;
-      startScrollLeft = container.scrollLeft;
-      container.classList.add('grabbing');
-      setShowSwipeHint(false);
+      // スプライトコントロール内のタッチイベントのみを処理
+      if (e.currentTarget === container) {
+        isDragging = true;
+        startX = e.touches[0].pageX;
+        startScrollLeft = container.scrollLeft;
+        container.classList.add('grabbing');
+        setShowSwipeHint(false);
+      }
     };
 
     const handleTouchMove = (e: TouchEvent) => {
       if (!isDragging) return;
-      const x = e.touches[0].pageX;
-      const walk = (x - startX) * 1.5;
-      container.scrollLeft = startScrollLeft - walk;
       
-      // スクロール位置に基づいてスプライトスタイルを更新
-      const width = container.clientWidth;
-      const index = Math.round(container.scrollLeft / width);
-      if (availableStyles[index] && availableStyles[index] !== spriteStyle) {
-        setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
+      // スプライトコントロール内のタッチイベントのみを処理
+      if (e.currentTarget === container) {
+        const x = e.touches[0].pageX;
+        const walk = (x - startX) * 1.5;
+        container.scrollLeft = startScrollLeft - walk;
+        
+        // スクロール位置に基づいてスプライトスタイルを更新
+        const width = container.clientWidth;
+        const index = Math.round(container.scrollLeft / width);
+        if (availableStyles[index] && availableStyles[index] !== spriteStyle) {
+          setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
+        }
+        
+        // スプライトコントロール内のスクロールのみを防止
+        e.preventDefault();
       }
-      
-      // タッチ移動中はデフォルトのスクロール動作を防止
-      e.preventDefault();
     };
 
     const handleTouchEnd = () => {
@@ -361,9 +368,12 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
       ].map(starter => (
         <img 
           key={starter.id}
-          src={`/sprites/pokemon/versions/generation-viii/icons/${starter.id}.png`}
+          src={`/images/pokemon_icons/${starter.id}.png`}
           alt={starter.name}
           className="starter-icon"
+          onError={(e) => {
+            e.currentTarget.src = `/images/no-sprite.png`;
+          }}
         />
       ));
     }
@@ -385,7 +395,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     return starters.map(id => (
       <img 
         key={id}
-        src={`/sprites/pokemon/versions/generation-viii/icons/${id}.png`}
+        src={`/images/pokemon_icons/${id}.png`}
         alt={`Starter ${id}`}
         className="starter-icon"
         onError={(e) => {
@@ -584,8 +594,6 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
           {generation < 6 && (
             <div className="sprite-controls-wrap">
               <div className="sprite-controls-inner">
-                <div className="sprite-controls-gradient" />
-                <div className="sprite-controls-gradient right" />
                 <div className="sprite-controls" ref={spriteControlsRef}>
                   {Object.entries(spriteStyles).map(([style, { gens }]) => {
                     if (!gens.includes(generation)) return null;
@@ -600,14 +608,6 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                     );
                   })}
                 </div>
-                {isMobile && showSwipeHint && (
-                  <div className="swipe-hint">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                      <path d="M14 5l-5 5 5 5V5z"/>
-                      <path d="M10 5l-5 5 5 5V5z"/>
-                    </svg>
-                  </div>
-                )}
               </div>
             </div>
           )}
