@@ -99,17 +99,28 @@ async function checkImageExists(url: string): Promise<boolean> {
 }
 
 export async function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): Promise<string> {
-  // 9世代のポケモンの場合は特別なパスを使用
-  if (pokemonId > 905) {
-    return `/sprites/pokemon/versions/generation-ix/${pokemonId}${shiny ? '-shiny' : ''}.png`;
+  // ポケモンIDから世代を判定
+  const generation = 
+    pokemonId <= 151 ? 1 :
+    pokemonId <= 251 ? 2 :
+    pokemonId <= 386 ? 3 :
+    pokemonId <= 493 ? 4 :
+    pokemonId <= 649 ? 5 :
+    pokemonId <= 721 ? 6 :
+    pokemonId <= 809 ? 7 :
+    pokemonId <= 905 ? 8 :
+    pokemonId <= 1025 ? 9 : 9; // 9世代は906~1025
+  
+  // 9世代以降のポケモンの場合
+  if (generation === 9) {
+    return `/images/generation-ix/${pokemonId}${shiny ? '-shiny' : ''}.png`;
   }
 
   const styleInfo = spriteStyles[style];
-  const generation = Math.ceil(pokemonId / 151);
   
   // スタイルが対応していない世代の場合
   if (!styleInfo.gens.includes(generation)) {
-    return `/icons/substitute.png`;
+    return `/images/no-sprite.png`;
   }
   
   const shinyPath = shiny ? '/shiny' : '';
@@ -120,7 +131,6 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
   // ローカルの画像パスを使用
   const spriteUrl = `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}${shinyPath}/${pokemonId}${extension}`;
   
-  // 画像の存在チェックは省略（ローカルファイルなので常に存在すると仮定）
   return spriteUrl;
 }
 

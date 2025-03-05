@@ -487,7 +487,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     
     // 9世代の場合は特別なパスを使用
     const imagePath = gen === 9 
-      ? `/sprites/pokemon/versions/generation-ix/${pokemonId}.png`
+      ? `/images/generation-ix/${pokemonId}.png`
       : `/images/pokemon_icons/${pokemonId}.png`;
     
     return (
@@ -497,7 +497,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         alt={`Starter ${pokemonId}`}
         className="starter-icon"
         onError={(e) => {
-          e.currentTarget.src = `/icons/substitute.png`;
+          e.currentTarget.src = `/images/no-sprite.png`;
         }}
       />
     );
@@ -578,13 +578,13 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                       }}
                     >
                       <img
-                        src={pokemon.id > 905 
-                          ? `/sprites/pokemon/versions/generation-ix/${pokemon.id}.png` 
+                        src={pokemon.id >= 906 && pokemon.id <= 1025
+                          ? `/images/generation-ix/${pokemon.id}.png` 
                           : `/images/pokemon_icons/${pokemon.id}.png`}
                         alt={isJapanese ? pokemon.japaneseName : pokemon.name}
                         className="pokemon-icon"
                         onError={(e) => {
-                          e.currentTarget.src = `/icons/substitute.png`;
+                          e.currentTarget.src = `/images/no-sprite.png`;
                         }}
                       />
                       <span>
@@ -803,13 +803,13 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   }}
                 >
                   <img
-                    src={pokemon.id > 905 
-                      ? `/sprites/pokemon/versions/generation-ix/${pokemon.id}.png` 
+                    src={pokemon.id >= 906 && pokemon.id <= 1025
+                      ? `/images/generation-ix/${pokemon.id}.png` 
                       : `/images/pokemon_icons/${pokemon.id}.png`}
                     alt={isJapanese ? pokemon.japaneseName : pokemon.name}
                     className="pokemon-icon"
                     onError={(e) => {
-                      e.currentTarget.src = `/icons/substitute.png`;
+                      e.currentTarget.src = `/images/no-sprite.png`;
                     }}
                   />
                   <span>
