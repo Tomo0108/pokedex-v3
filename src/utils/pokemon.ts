@@ -101,7 +101,7 @@ async function checkImageExists(url: string): Promise<boolean> {
 export async function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): Promise<string> {
   // 9世代のポケモンの場合は特別なパスを使用
   if (pokemonId > 905) {
-    return `/sprites/pokemon/versions/generation-ix/${pokemonId}${shiny ? '-shiny' : ''}.png`;
+    return `/images/generation-ix/${pokemonId}${shiny ? '/shiny/' : ''}${pokemonId}.png`;
   }
 
   const styleInfo = spriteStyles[style];

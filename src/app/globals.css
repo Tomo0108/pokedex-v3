@@ -300,13 +300,14 @@
 
 /* スターターアイコン */
 .starter-icons {
-  @apply flex justify-center gap-1;
+  @apply flex justify-center gap-1 w-full;
 }
 
 .starter-icon {
   width: 40px;
   height: 40px;
   object-fit: contain;
+  @apply mx-auto;
 }
 
 .generation-grid {
@@ -401,8 +402,14 @@
 }
 
 .pokemon-sprite {
+  @apply w-full h-full flex justify-center items-center;
+  @apply [image-rendering:pixelated];
+}
+
+.pokemon-sprite img {
   @apply max-w-full max-h-full scale-[2];
   @apply [image-rendering:pixelated];
+  @apply mx-auto;
 }
 
 /* スプライトコントロールのスタイル */

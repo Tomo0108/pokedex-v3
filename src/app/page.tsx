@@ -400,7 +400,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     
     // 9世代の場合は特別なパスを使用
     const imagePath = gen === 9 
-      ? `/sprites/pokemon/versions/generation-ix/${selectedStarter}.png`
+      ? `/images/generation-ix/${selectedStarter}.png`
       : `/images/pokemon_icons/${selectedStarter}.png`;
     
     return (
@@ -409,7 +409,6 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
         src={imagePath}
         alt={`Starter ${selectedStarter}`}
         className="starter-icon"
-        style={{ width: '40px', height: '40px', objectFit: 'contain' }}
         onError={(e) => {
           e.currentTarget.src = `/icons/substitute.png`;
         }}
@@ -632,11 +631,6 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   <img
                     src={spriteUrl || '/icons/substitute.png'}
                     alt={isJapanese ? selectedPokemon.japaneseName : selectedPokemon.name}
-                    style={{ 
-                      maxWidth: '100%', 
-                      maxHeight: '100%',
-                      imageRendering: 'pixelated'
-                    }}
                     onError={(e) => {
                       // 画像が見つからない場合は代替画像を表示
                       e.currentTarget.src = `/icons/substitute.png`;
