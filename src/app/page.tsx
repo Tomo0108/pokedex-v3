@@ -578,7 +578,9 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                       }}
                     >
                       <img
-                        src={`/images/pokemon_icons/${pokemon.id}.png`}
+                        src={pokemon.id > 905 
+                          ? `/sprites/pokemon/versions/generation-ix/${pokemon.id}.png` 
+                          : `/images/pokemon_icons/${pokemon.id}.png`}
                         alt={isJapanese ? pokemon.japaneseName : pokemon.name}
                         className="pokemon-icon"
                         onError={(e) => {
@@ -801,7 +803,9 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   }}
                 >
                   <img
-                    src={`/images/pokemon_icons/${pokemon.id}.png`}
+                    src={pokemon.id > 905 
+                      ? `/sprites/pokemon/versions/generation-ix/${pokemon.id}.png` 
+                      : `/images/pokemon_icons/${pokemon.id}.png`}
                     alt={isJapanese ? pokemon.japaneseName : pokemon.name}
                     className="pokemon-icon"
                     onError={(e) => {
