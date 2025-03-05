@@ -1,4 +1,4 @@
-import { SpriteStyles } from '@/types/pokemon';
+import { SpriteStyles, Pokemon } from '@/types/pokemon';
 
 // ローカルの画像パス
 const LOCAL_SPRITES_BASE_URL = '/images';
@@ -6,71 +6,11 @@ const LOCAL_SPRITES_BASE_URL = '/images';
 const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
 export const spriteStyles: SpriteStyles = {
-  'red-blue': {
-    path: '/generation-i/red-blue',
-    gens: [1],
-    animated: false,
-    displayName: { ja: 'Red・Blue', en: 'Red-Blue' }
-  },
-  'yellow': {
-    path: '/generation-i/yellow',
-    gens: [1],
-    animated: false,
-    displayName: { ja: 'イエロー', en: 'Yellow' }
-  },
-  'crystal': {
-    path: '/generation-ii/crystal',
-    gens: [2],
-    animated: false,
-    displayName: { ja: 'クリスタル', en: 'Crystal' }
-  },
-  'gold': {
-    path: '/generation-ii/gold',
-    gens: [2],
-    animated: false,
-    displayName: { ja: 'ゴールド', en: 'Gold' }
-  },
-  'silver': {
-    path: '/generation-ii/silver',
-    gens: [2],
-    animated: false,
-    displayName: { ja: 'シルバー', en: 'Silver' }
-  },
   'emerald': {
     path: '/generation-iii/emerald',
-    gens: [3],
+    gens: [1, 2, 3, 4],
     animated: false,
     displayName: { ja: 'エメラルド', en: 'Emerald' }
-  },
-  'firered-leafgreen': {
-    path: '/generation-iii/firered-leafgreen',
-    gens: [3],
-    animated: false,
-    displayName: { ja: 'FR・LG', en: 'FR-LG' }
-  },
-  'ruby-sapphire': {
-    path: '/generation-iii/ruby-sapphire',
-    gens: [3],
-    animated: false,
-    displayName: { ja: 'ルビー・サファイア', en: 'Ruby-Sapphire' }
-  },
-  'diamond-pearl': {
-    path: '/generation-iv/diamond-pearl',
-    gens: [4],
-    animated: false,
-    displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
-  },
-  'heartgold-soulsilver': {
-    path: '/generation-iv/heartgold-soulsilver',
-    gens: [4],
-    animated: false,
-    displayName: { ja: 'HG・SS', en: 'HG-SS' }
-  },
-  'platinum': {
-    path: '/generation-iv/platinum',
-    gens: [4],
-    animated: false,
-    displayName: { ja: 'プラチナ', en: 'Platinum' }
   },
   'black-white': {
     path: '/generation-v/black-white',
@@ -105,28 +45,16 @@ export const spriteStyles: SpriteStyles = {
 };
 
 export function getDefaultStyleForGeneration(generation: number): keyof typeof spriteStyles {
-  if (generation === 1) return 'red-blue';
-  if (generation === 2) return 'crystal';
-  if (generation === 3) return 'ruby-sapphire';
-  if (generation === 4) return 'platinum';
+  if (generation <= 4) return 'emerald';
   if (generation === 5) return 'black-white';
   if (generation === 6) return 'x-y';
   if (generation === 7) return 'sun-moon';
   if (generation === 8) return 'sword-shield';
   if (generation === 9) return 'scarlet-violet';
-  return 'black-white';
+  return 'emerald';
 }
 
-async function checkImageExists(url: string): Promise<boolean> {
-  return new Promise((resolve) => {
-    const img = new Image();
-    img.onload = () => resolve(true);
-    img.onerror = () => resolve(false);
-    img.src = url;
-  });
-}
-
-export async function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): Promise<string> {
+export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): string {
   // ポケモンIDから世代を判定
   const generation = 
     pokemonId <= 151 ? 1 :
@@ -156,21 +84,23 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
     ? `/images${styleInfo.path}/shiny/${pokemonId}${ext}`
     : `/images${styleInfo.path}/${pokemonId}${ext}`;
   
-  // 画像が存在するか確認
-  const exists = await checkImageExists(imagePath);
-  if (!exists) {
-    // shiny画像が存在しない場合は通常の画像を試す
-    if (shiny) {
-      const normalPath = `/images${styleInfo.path}/${pokemonId}.png`;
-      const normalExists = await checkImageExists(normalPath);
-      if (normalExists) {
-        return normalPath;
-      }
-    }
-    return FALLBACK_IMAGE_URL;
-  }
-  
   return imagePath;
+}
+
+function getLatestDescription(descriptions: { [key: number]: { en: string; ja: string }}, currentGen: number): { en: string; ja: string } {
+  // 世代の配列を取得し、現在の世代から降順でソート
+  const generations = Object.keys(descriptions)
+    .map(Number)
+    .filter(gen => gen <= currentGen)
+    .sort((a, b) => b - a);
+
+  if (generations.length > 0) {
+    // 最新の世代の説明を返す
+    const latestGen = generations[0];
+    return descriptions[latestGen];
+  }
+
+  return { en: '', ja: '' };
 }
 
 export async function fetchPokemonData(generation: number) {
@@ -193,40 +123,21 @@ export async function fetchPokemonData(generation: number) {
       throw new Error(`Failed to load Pokemon data for generation ${generation}`);
     }
     
-    const pokemonData = await response.json();
+    const pokemonData: Pokemon[] = await response.json();
+    const style = getDefaultStyleForGeneration(generation);
     
     // スプライトURLを追加
-    const result = [];
-    for (const pokemon of pokemonData) {
-      const style = getDefaultStyleForGeneration(generation);
-      
-      // 説明文を取得
-      const description = pokemon.descriptions ? {
-        en: pokemon.descriptions.en || '',
-        ja: pokemon.descriptions.ja || ''
-      } : { en: '', ja: '' };
-      
-      let front_default, front_shiny;
-      
-      if (generation >= 6) {
-        front_default = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
-        front_shiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`;
-      } else {
-        front_default = await createSpriteUrl(pokemon.id, style, false);
-        front_shiny = await createSpriteUrl(pokemon.id, style, true);
-      }
-      
-      result.push({
-        ...pokemon,
-        sprites: {
-          front_default,
-          front_shiny,
-        },
-        description
-      });
-    }
+    return pokemonData.map((pokemon: Pokemon) => ({
+      ...pokemon,
+      sprites: {
+        front_default: createSpriteUrl(pokemon.id, style, false),
+        front_shiny: createSpriteUrl(pokemon.id, style, true),
+      },
+      description: pokemon.descriptions 
+        ? getLatestDescription(pokemon.descriptions, generation)
+        : { en: '', ja: '' }
+    }));
     
-    return result;
   } catch (error) {
     console.error(`Error loading Pokemon data for generation ${generation}:`, error);
     return [];
