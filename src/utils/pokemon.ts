@@ -111,8 +111,29 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
     pokemonId <= 905 ? 8 :
     pokemonId <= 1025 ? 9 : 9; // 9世代は906~1025
   
-  // 9世代以降のポケモンの場合
-  if (generation === 9) {
+  // 各世代ごとに適切なパスを設定
+  if (generation === 1) {
+    // 1世代のポケモン
+    return shiny 
+      ? `/images/generation-i/red-blue/shiny/${pokemonId}.png`
+      : `/images/generation-i/red-blue/${pokemonId}.png`;
+  } else if (generation === 6) {
+    // 6世代のポケモン
+    return shiny 
+      ? `/images/generation-vi/x-y/shiny/${pokemonId}.png`
+      : `/images/generation-vi/x-y/${pokemonId}.png`;
+  } else if (generation === 7) {
+    // 7世代のポケモン
+    return shiny 
+      ? `/images/generation-vii/sun-moon/shiny/${pokemonId}.png`
+      : `/images/generation-vii/sun-moon/${pokemonId}.png`;
+  } else if (generation === 8) {
+    // 8世代のポケモン
+    return shiny 
+      ? `/images/generation-viii/sword-shield/shiny/${pokemonId}.png`
+      : `/images/generation-viii/sword-shield/${pokemonId}.png`;
+  } else if (generation === 9) {
+    // 9世代のポケモン
     return shiny 
       ? `/images/generation-ix/shiny/${pokemonId}.png`
       : `/images/generation-ix/${pokemonId}.png`;

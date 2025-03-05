@@ -732,7 +732,6 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   <div className="sprite-modal" onClick={(e) => e.stopPropagation()} style={{ backgroundColor: skinColor }}>
                     <div className="sprite-modal-header">
                       <h3>{isJapanese ? "シリーズ" : "SERIES"}</h3>
-                      <button className="close-button" onClick={closeSpriteModal}>×</button>
                     </div>
                     <div className="sprite-modal-content">
                       {availableStyles.map((style) => (
