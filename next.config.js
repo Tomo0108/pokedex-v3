@@ -25,6 +25,50 @@ const withPWAConfig = {
           maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
         }
       }
+    },
+    {
+      urlPattern: /\.(png|jpg|jpeg|svg|gif|webp)$/i,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'static-images',
+        expiration: {
+          maxEntries: 1000,
+          maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+        }
+      }
+    },
+    {
+      urlPattern: /\/images\/.*/i,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'local-images',
+        expiration: {
+          maxEntries: 1000,
+          maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+        }
+      }
+    },
+    {
+      urlPattern: /\/sprites\/.*/i,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'sprite-images',
+        expiration: {
+          maxEntries: 1000,
+          maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+        }
+      }
+    },
+    {
+      urlPattern: /\/icons\/.*/i,
+      handler: 'CacheFirst',
+      options: {
+        cacheName: 'icon-images',
+        expiration: {
+          maxEntries: 100,
+          maxAgeSeconds: 30 * 24 * 60 * 60 // 30 days
+        }
+      }
     }
   ]
 };

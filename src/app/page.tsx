@@ -279,9 +279,15 @@ export default function HomePage() {
         if (data.length > 0) {
           setSelectedPokemon(data[0]);
         }
+        
         prefetchAllGenerations(fetchPokemonData);
+        
+        // PWAインストール時に画像をプリロード
+        if ('serviceWorker' in navigator && window.matchMedia('(display-mode: standalone)').matches) {
+          preloadImages();
+        }
       } catch (error) {
-        console.error('Failed to load data:', error);
+        console.error('Failed to initialize app:', error);
       } finally {
         setIsLoading(false);
       }
@@ -289,6 +295,51 @@ export default function HomePage() {
 
     initializeApp();
   }, [generation]);
+
+  // 画像をプリロードする関数
+  const preloadImages = async () => {
+    console.log('プリロード開始...');
+    try {
+      // 9世代のポケモン画像をプリロード
+      const gen9Ids = Array.from({ length: 120 }, (_, i) => 906 + i);
+      const imagePromises = gen9Ids.map(id => {
+        const img = new Image();
+        img.src = `/images/generation-ix/${id}.png`;
+        return new Promise((resolve) => {
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+        });
+      });
+
+      // シャイニー画像もプリロード
+      const shinyImagePromises = gen9Ids.map(id => {
+        const img = new Image();
+        img.src = `/images/generation-ix/shiny/${id}.png`;
+        return new Promise((resolve) => {
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+        });
+      });
+
+      // アイコン画像をプリロード
+      const iconPromises = [
+        '/icons/substitute.png',
+        '/icons/poke-doll.png'
+      ].map(path => {
+        const img = new Image();
+        img.src = path;
+        return new Promise((resolve) => {
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+        });
+      });
+
+      await Promise.all([...imagePromises, ...shinyImagePromises, ...iconPromises]);
+      console.log('プリロード完了');
+    } catch (error) {
+      console.error('画像プリロード中にエラーが発生しました:', error);
+    }
+  };
 
   const updateLocalStorage = useCallback(() => {
     storage.setItem('pokedex-generation', generation);
@@ -376,38 +427,74 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
   // 御三家ポケモンの表示を修正
   const getGenerationStarters = (gen: number) => {
-    // 各世代の御三家ポケモンの初期進化（ID）
+    // 各世代の御三家ポケモンの初期・進化形（ID）
     const starterEvolutions = {
-      1: [2, 5, 8],     // フシギソウ、リザード、カメール
-      2: [153, 156, 159], // ベイリーフ、マグマラシ、アリゲイツ
-      3: [253, 256, 259], // ジュプトル、ワカシャモ、ヌマクロー
-      4: [388, 391, 394], // ハヤシガメ、モウカザル、ポッタイシ
-      5: [496, 499, 502], // ツタージャ、チャオブー、フタチマル
-      6: [651, 654, 657], // ハリボーグ、テールナー、ゲコガシラ
-      7: [723, 726, 729], // フクスロー、ニャヒート、オシャマリ
-      8: [811, 814, 817], // バータップ、ラビフット、ジメレオン
-      9: [907, 910, 913]  // モウカ、グワッス、クワッス
+      1: [
+        [1, 2, 3],     // フシギダネ、フシギソウ、フシギバナ
+        [4, 5, 6],     // ヒトカゲ、リザード、リザードン
+        [7, 8, 9]      // ゼニガメ、カメール、カメックス
+      ],
+      2: [
+        [152, 153, 154], // チコリータ、ベイリーフ、メガニウム
+        [155, 156, 157], // ヒノアラシ、マグマラシ、バクフーン
+        [158, 159, 160]  // ワニノコ、アリゲイツ、オーダイル
+      ],
+      3: [
+        [252, 253, 254], // キモリ、ジュプトル、ジュカイン
+        [255, 256, 257], // アチャモ、ワカシャモ、バシャーモ
+        [258, 259, 260]  // ミズゴロウ、ヌマクロー、ラグラージ
+      ],
+      4: [
+        [387, 388, 389], // ナエトル、ハヤシガメ、ドダイトス
+        [390, 391, 392], // ヒコザル、モウカザル、ゴウカザル
+        [393, 394, 395]  // ポッチャマ、ポッタイシ、エンペルト
+      ],
+      5: [
+        [495, 496, 497], // ツタージャ、ジャノビー、ジャローダ
+        [498, 499, 500], // ポカブ、チャオブー、エンブオー
+        [501, 502, 503]  // ミジュマル、フタチマル、ダイケンキ
+      ],
+      6: [
+        [650, 651, 652], // ハリマロン、ハリボーグ、ブリガロン
+        [653, 654, 655], // フォッコ、テールナー、マフォクシー
+        [656, 657, 658]  // ケロマツ、ゲコガシラ、ゲッコウガ
+      ],
+      7: [
+        [722, 723, 724], // モクロー、フクスロー、ジュナイパー
+        [725, 726, 727], // ニャビー、ニャヒート、ガオガエン
+        [728, 729, 730]  // アシマリ、オシャマリ、アシレーヌ
+      ],
+      8: [
+        [810, 811, 812], // サルノリ、バータップ、ゴリランダー
+        [813, 814, 815], // ヒバニー、ラビフット、エースバーン
+        [816, 817, 818]  // メッソン、ジメレオン、インテレオン
+      ],
+      9: [
+        [906, 907, 908], // ニャオハ、モウカ、マスカーニャ
+        [909, 910, 911], // ホゲータ、グワッス、ラウドボーン
+        [912, 913, 914]  // クワッス、ウェルカモ、ウェーニバル
+      ]
     };
     
-    // 該当世代の御三家初期進化からランダムに1匹選択
+    // 該当世代の御三家をランダムに1つ選択
     const starters = starterEvolutions[gen as keyof typeof starterEvolutions];
+    const randomStarterIndex = Math.floor(Math.random() * starters.length);
+    const selectedStarter = starters[randomStarterIndex];
     
-    // 配列をシャッフル
-    const shuffled = [...starters].sort(() => 0.5 - Math.random());
-    
-    // 最初の1つを取得
-    const selectedStarter = shuffled[0];
+    // 選択した御三家の進化段階をランダムに選択
+    const randomEvoIndex = Math.floor(Math.random() * selectedStarter.length);
+    const pokemonId = selectedStarter[randomEvoIndex];
     
     // 9世代の場合は特別なパスを使用
     const imagePath = gen === 9 
-      ? `/images/generation-ix/${selectedStarter}.png`
-      : `/images/pokemon_icons/${selectedStarter}.png`;
+      ? `/sprites/pokemon/versions/generation-ix/${pokemonId}.png`
+      : `/images/pokemon_icons/${pokemonId}.png`;
     
     return (
       <img 
-        key={selectedStarter}
+        key={pokemonId}
         src={imagePath}
-        alt={`Starter ${selectedStarter}`}
+        alt={`Starter ${pokemonId}`}
         className="starter-icon"
         onError={(e) => {
           e.currentTarget.src = `/icons/substitute.png`;
@@ -602,16 +689,6 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                               setMenuVisible(false);
                             }}
                           >
-                            <span className={`generation-number ${styles.pressStart}`}>{
-                              gen === 1 ? 'Ⅰ' :
-                              gen === 2 ? 'Ⅱ' :
-                              gen === 3 ? 'Ⅲ' :
-                              gen === 4 ? 'Ⅳ' :
-                              gen === 5 ? 'Ⅴ' :
-                              gen === 6 ? 'Ⅵ' :
-                              gen === 7 ? 'Ⅶ' :
-                              gen === 8 ? 'Ⅷ' : 'Ⅸ'
-                            }</span>
                             <div className="starter-icons">
                               {getGenerationStarters(gen)}
                             </div>
@@ -640,12 +717,9 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
               )}
             </div>
             <div className="sprite-controls-container">
+              {/* スプライトスタイル選択ボタン */}
               {generation <= 5 && (
-                <button 
-                  className="sprite-select-button"
-                  onClick={openSpriteModal}
-                  aria-label={isJapanese ? "ポケモンの見た目を変更" : "Change Pokémon Style"}
-                >
+                <button className="sprite-select-button" onClick={openSpriteModal}>
                   {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
                 </button>
               )}
@@ -653,9 +727,9 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
               {/* スプライトスタイル選択モーダル */}
               {spriteModalOpen && generation <= 5 && (
                 <div className="sprite-modal-overlay" onClick={closeSpriteModal}>
-                  <div className="sprite-modal" onClick={(e) => e.stopPropagation()}>
+                  <div className="sprite-modal" onClick={(e) => e.stopPropagation()} style={{ backgroundColor: skinColor }}>
                     <div className="sprite-modal-header">
-                      <h3>{isJapanese ? "ポケモンの見た目を選択" : "Select Pokémon Style"}</h3>
+                      <h3>{isJapanese ? "シリーズ" : "SERIES"}</h3>
                       <button className="close-button" onClick={closeSpriteModal}>×</button>
                     </div>
                     <div className="sprite-modal-content">
