@@ -113,10 +113,28 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
   
   // 各世代ごとに適切なパスを設定
   if (generation === 1) {
-    // 1世代のポケモン
+    // 1世代のポケモン - shinyディレクトリが存在しないため、通常のスプライトを使用
+    return `/images/generation-i/red-blue/${pokemonId}.png`;
+  } else if (generation === 2) {
+    // 2世代のポケモン - crystalを使用
     return shiny 
-      ? `/images/generation-i/red-blue/shiny/${pokemonId}.png`
-      : `/images/generation-i/red-blue/${pokemonId}.png`;
+      ? `/images/generation-ii/crystal/shiny/${pokemonId}.png`
+      : `/images/generation-ii/crystal/${pokemonId}.png`;
+  } else if (generation === 3) {
+    // 3世代のポケモン - emeraldを使用
+    return shiny 
+      ? `/images/generation-iii/emerald/shiny/${pokemonId}.png`
+      : `/images/generation-iii/emerald/${pokemonId}.png`;
+  } else if (generation === 4) {
+    // 4世代のポケモン - heartgold-soulsilverを使用
+    return shiny 
+      ? `/images/generation-iv/heartgold-soulsilver/shiny/${pokemonId}.png`
+      : `/images/generation-iv/heartgold-soulsilver/${pokemonId}.png`;
+  } else if (generation === 5) {
+    // 5世代のポケモン - black-whiteを使用
+    return shiny 
+      ? `/images/generation-v/black-white/shiny/${pokemonId}.gif`
+      : `/images/generation-v/black-white/${pokemonId}.gif`;
   } else if (generation === 6) {
     // 6世代のポケモン
     return shiny 
