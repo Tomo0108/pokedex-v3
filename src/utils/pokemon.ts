@@ -113,7 +113,9 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
   
   // 9世代以降のポケモンの場合
   if (generation === 9) {
-    return `/images/generation-ix/${pokemonId}${shiny ? '-shiny' : ''}.png`;
+    return shiny 
+      ? `/images/generation-ix/shiny/${pokemonId}.png`
+      : `/images/generation-ix/${pokemonId}.png`;
   }
 
   const styleInfo = spriteStyles[style];
@@ -123,13 +125,13 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
     return `/images/no-sprite.png`;
   }
   
-  const shinyPath = shiny ? '/shiny' : '';
-  
   // black-whiteスタイルの場合はGIF拡張子を使用
   const extension = style === 'black-white' ? '.gif' : '.png';
   
   // ローカルの画像パスを使用
-  const spriteUrl = `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}${shinyPath}/${pokemonId}${extension}`;
+  const spriteUrl = shiny
+    ? `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}/shiny/${pokemonId}${extension}`
+    : `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}/${pokemonId}${extension}`;
   
   return spriteUrl;
 }

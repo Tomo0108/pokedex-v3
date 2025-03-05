@@ -714,7 +714,7 @@
 
 /* スプライト選択ボタン */
 .sprite-select-button {
-  @apply w-full py-3 px-4 text-sm;
+  @apply w-full py-3 px-4;
   background-color: #000000;
   color: white;
   border: 2px solid var(--border-dark);
@@ -725,7 +725,7 @@
   transform: translateY(0);
   border-radius: 4px;
   font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
   min-height: 44px;
@@ -784,11 +784,11 @@
 }
 
 .sprite-modal-header h3 {
-  @apply text-base font-medium m-0;
+  @apply font-medium m-0;
   font-family: 'Press Start 2P', monospace;
   color: white;
   text-transform: uppercase;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 1px;
 }
 
@@ -810,7 +810,7 @@
 
 /* スプライトモーダルボタン */
 .sprite-modal-button {
-  @apply w-full py-3 px-4 text-sm mb-2;
+  @apply w-full py-3 px-4 mb-2;
   background-color: #000000;
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -821,7 +821,7 @@
   transform: translateY(0);
   border-radius: 4px;
   font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
+  font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
   min-height: 44px;

@@ -246,7 +246,7 @@ export default function HomePage() {
           setSpriteUrl(url);
         } catch (error) {
           console.error('Failed to load sprite URL:', error);
-          setSpriteUrl('/icons/substitute.png');
+          setSpriteUrl('/images/no-sprite.png');
         }
       };
       
@@ -262,7 +262,7 @@ export default function HomePage() {
           setSpriteUrl(url);
         } catch (error) {
           console.error('Failed to update sprite URL:', error);
-          setSpriteUrl('/icons/substitute.png');
+          setSpriteUrl('/images/no-sprite.png');
         }
       };
       
@@ -712,7 +712,7 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                     alt={isJapanese ? selectedPokemon.japaneseName : selectedPokemon.name}
                     onError={(e) => {
                       // 画像が見つからない場合は代替画像を表示
-                      e.currentTarget.src = `/icons/substitute.png`;
+                      e.currentTarget.src = `/images/no-sprite.png`;
                     }}
                   />
                 </div>
