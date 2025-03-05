@@ -69,12 +69,12 @@ export function getDefaultStyleForGeneration(generation: number): keyof typeof s
 }
 
 async function checkImageExists(url: string): Promise<boolean> {
-  try {
-    const response = await fetch(url, { method: 'HEAD' });
-    return response.ok;
-  } catch (error) {
-    return false;
-  }
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = url;
+  });
 }
 
 export async function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): Promise<string> {
@@ -259,7 +259,8 @@ export async function fetchPokemonData(generation: number) {
     const pokemonData = await response.json();
     
     // スプライトURLを追加
-    return pokemonData.map((pokemon: any) => {
+    const result = [];
+    for (const pokemon of pokemonData) {
       const style = getDefaultStyleForGeneration(generation);
       
       // 最新の説明文を取得
@@ -298,19 +299,27 @@ export async function fetchPokemonData(generation: number) {
         return { en: '', ja: '' };
       };
       
-      return {
+      let front_default, front_shiny;
+      
+      if (generation >= 6) {
+        front_default = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`;
+        front_shiny = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`;
+      } else {
+        front_default = await createSpriteUrl(pokemon.id, style, false);
+        front_shiny = await createSpriteUrl(pokemon.id, style, true);
+      }
+      
+      result.push({
         ...pokemon,
         sprites: {
-          front_default: generation >= 6 
-            ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`
-            : createSpriteUrl(pokemon.id, style, false),
-          front_shiny: generation >= 6
-            ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`
-            : createSpriteUrl(pokemon.id, style, true),
+          front_default,
+          front_shiny,
         },
         description: getLatestDescription(pokemon.descriptions)
-      };
-    });
+      });
+    }
+    
+    return result;
   } catch (error) {
     console.error(`Error loading Pokemon data for generation ${generation}:`, error);
     return [];
