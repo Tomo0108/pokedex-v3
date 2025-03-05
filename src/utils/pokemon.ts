@@ -6,53 +6,11 @@ const LOCAL_SPRITES_BASE_URL = '/images';
 const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
 export const spriteStyles: SpriteStyles = {
-  'red-blue': {
-    path: '/generation-i/red-blue',
-    gens: [1],
-    animated: false,
-    displayName: { ja: '赤・緑', en: 'Red-Blue' }
-  },
-  'yellow': {
-    path: '/generation-i/yellow',
-    gens: [1],
-    animated: false,
-    displayName: { ja: 'ピカチュウ', en: 'Yellow' }
-  },
-  'gold': {
-    path: '/generation-ii/gold',
-    gens: [2],
-    animated: false,
-    displayName: { ja: '金', en: 'Gold' }
-  },
-  'silver': {
-    path: '/generation-ii/silver',
-    gens: [2],
-    animated: false,
-    displayName: { ja: '銀', en: 'Silver' }
-  },
-  'crystal': {
-    path: '/generation-ii/crystal',
-    gens: [1, 2],
-    animated: true,
-    displayName: { ja: 'クリスタル', en: 'Crystal' }
-  },
   'emerald': {
     path: '/generation-iii/emerald',
-    gens: [1, 2, 3],
-    animated: true,
-    displayName: { ja: 'エメラルド', en: 'Emerald' }
-  },
-  'platinum': {
-    path: '/generation-iv/platinum',
-    gens: [3, 4],
-    animated: true,
-    displayName: { ja: 'プラチナ', en: 'Platinum' }
-  },
-  'heartgold-soulsilver': {
-    path: '/generation-iv/heartgold-soulsilver',
-    gens: [3, 4],
+    gens: [1, 2, 3, 4],
     animated: false,
-    displayName: { ja: 'ハートゴールド・ソウルシルバー', en: 'HeartGold-SoulSilver' }
+    displayName: { ja: 'エメラルド', en: 'Emerald' }
   },
   'black-white': {
     path: '/generation-v/black-white',
@@ -87,28 +45,13 @@ export const spriteStyles: SpriteStyles = {
 };
 
 export function getDefaultStyleForGeneration(generation: number): keyof typeof spriteStyles {
-  switch (generation) {
-    case 1:
-      return 'crystal'; // 第1世代：crystal (アニメーション対応を優先)
-    case 2:
-      return 'crystal'; // 第2世代：crystal
-    case 3:
-      return 'emerald'; // 第3世代：emerald
-    case 4:
-      return 'platinum'; // 第4世代：platinum
-    case 5:
-      return 'black-white'; // 第5世代：black-white
-    case 6:
-      return 'x-y'; // 第6世代：x-y
-    case 7:
-      return 'sun-moon'; // 第7世代：sun-moon
-    case 8:
-      return 'sword-shield'; // 第8世代：sword-shield
-    case 9:
-      return 'scarlet-violet'; // 第9世代：scarlet-violet
-    default:
-      return 'crystal';
-  }
+  if (generation <= 4) return 'emerald';
+  if (generation === 5) return 'black-white';
+  if (generation === 6) return 'x-y';
+  if (generation === 7) return 'sun-moon';
+  if (generation === 8) return 'sword-shield';
+  if (generation === 9) return 'scarlet-violet';
+  return 'emerald';
 }
 
 export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): string {
@@ -133,15 +76,8 @@ export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteSty
     return createSpriteUrl(pokemonId, defaultStyle, shiny);
   }
   
-  // 画像の拡張子を決定
-  let ext = '.png'; // デフォルトの拡張子
-
-  // スタイルに基づいて拡張子を設定
-  if (styleInfo.animated) {
-    ext = '.gif';  // アニメーション対応のスタイル（crystal, emerald, platinum, black-white）
-  } else if (generation >= 7 || ['sun-moon', 'sword-shield', 'scarlet-violet'].includes(style as string)) {
-    ext = '.webp'; // 第7世代以降はWebP
-  }
+  // 拡張子を設定（black-whiteスタイルの場合はgif、それ以外はwebp）
+  const ext = style === 'black-white' ? '.gif' : '.webp';
   
   // 画像パスを生成
   const imagePath = shiny 
