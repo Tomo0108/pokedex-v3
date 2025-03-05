@@ -6,6 +6,12 @@ const LOCAL_SPRITES_BASE_URL = '/images';
 const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
 export const spriteStyles: SpriteStyles = {
+  'red-blue': {
+    path: '/generation-i/red-blue',
+    gens: [1],
+    animated: false,
+    displayName: { ja: '赤・緑', en: 'Red-Blue' }
+  },
   'emerald': {
     path: '/generation-iii/emerald',
     gens: [1, 2, 3, 4],
@@ -45,7 +51,8 @@ export const spriteStyles: SpriteStyles = {
 };
 
 export function getDefaultStyleForGeneration(generation: number): keyof typeof spriteStyles {
-  if (generation <= 4) return 'emerald';
+  if (generation === 1) return 'red-blue';
+  if (generation > 1 && generation <= 4) return 'emerald';
   if (generation === 5) return 'black-white';
   if (generation === 6) return 'x-y';
   if (generation === 7) return 'sun-moon';
