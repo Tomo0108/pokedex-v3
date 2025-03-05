@@ -18,12 +18,6 @@ export const spriteStyles: SpriteStyles = {
     animated: false,
     displayName: { ja: 'ピカチュウ', en: 'Yellow' }
   },
-  'crystal': {
-    path: '/generation-ii/crystal',
-    gens: [1, 2],
-    animated: false,
-    displayName: { ja: 'クリスタル', en: 'Crystal' }
-  },
   'gold': {
     path: '/generation-ii/gold',
     gens: [1, 2],
@@ -36,16 +30,40 @@ export const spriteStyles: SpriteStyles = {
     animated: false,
     displayName: { ja: '銀', en: 'Silver' }
   },
+  'crystal': {
+    path: '/generation-ii/crystal',
+    gens: [1, 2],
+    animated: true,
+    displayName: { ja: 'クリスタル', en: 'Crystal' }
+  },
+  'ruby-sapphire': {
+    path: '/generation-iii/ruby-sapphire',
+    gens: [1, 2, 3],
+    animated: false,
+    displayName: { ja: 'ルビー・サファイア', en: 'Ruby-Sapphire' }
+  },
   'emerald': {
     path: '/generation-iii/emerald',
     gens: [1, 2, 3],
-    animated: false,
+    animated: true,
     displayName: { ja: 'エメラルド', en: 'Emerald' }
+  },
+  'firered-leafgreen': {
+    path: '/generation-iii/firered-leafgreen',
+    gens: [1, 2, 3],
+    animated: false,
+    displayName: { ja: 'ファイアレッド・リーフグリーン', en: 'FireRed-LeafGreen' }
+  },
+  'diamond-pearl': {
+    path: '/generation-iv/diamond-pearl',
+    gens: [1, 2, 3, 4],
+    animated: false,
+    displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
   },
   'platinum': {
     path: '/generation-iv/platinum',
     gens: [3, 4],
-    animated: false,
+    animated: true,
     displayName: { ja: 'プラチナ', en: 'Platinum' }
   },
   'heartgold-soulsilver': {
@@ -89,9 +107,11 @@ export const spriteStyles: SpriteStyles = {
 export function getDefaultStyleForGeneration(generation: number): keyof typeof spriteStyles {
   switch (generation) {
     case 1:
-      return 'red-blue';
+      // 第1世代はfirered-leafgreenをデフォルトに
+      return 'firered-leafgreen';
     case 2:
-      return 'crystal';
+      // 第2世代はheartgold-soulsilverをデフォルトに
+      return 'heartgold-soulsilver';
     case 3:
       return 'emerald';
     case 4:
@@ -107,7 +127,7 @@ export function getDefaultStyleForGeneration(generation: number): keyof typeof s
     case 9:
       return 'scarlet-violet';
     default:
-      return 'red-blue';
+      return 'firered-leafgreen';
   }
 }
 
@@ -133,8 +153,16 @@ export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteSty
     return createSpriteUrl(pokemonId, defaultStyle, shiny);
   }
   
-  // 拡張子を設定（black-whiteスタイルの場合はgif、それ以外はpng）
-  const ext = style === 'black-white' ? '.gif' : '.png';
+  // 画像の拡張子を決定
+  let ext = '.png'; // デフォルトの拡張子
+
+  if (styleInfo.animated) {
+    ext = '.gif';  // アニメーション対応のスタイル
+  } else if (generation === 9 || style === 'scarlet-violet') {
+    ext = '.webp'; // 第9世代のポケモン
+  } else if (style === 'sword-shield' || style === 'sun-moon') {
+    ext = '.webp'; // 第7世代以降のスタイル
+  }
   
   // 画像パスを生成
   const imagePath = shiny 
