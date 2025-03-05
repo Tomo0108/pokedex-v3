@@ -720,16 +720,14 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
             </div>
             <div className="sprite-controls-container">
               {/* スプライトスタイル選択ボタン */}
-              {generation <= 5 && (
-                <button className="sprite-select-button" onClick={openSpriteModal}>
-                  {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
-                </button>
-              )}
+              <button className="sprite-select-button" onClick={openSpriteModal}>
+                {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
+              </button>
               
               {/* スプライトスタイル選択モーダル */}
-              {spriteModalOpen && generation <= 5 && (
+              {spriteModalOpen && (
                 <div className="sprite-modal-overlay" onClick={closeSpriteModal}>
-                  <div className="sprite-modal" onClick={(e) => e.stopPropagation()} style={{ backgroundColor: skinColor }}>
+                  <div className="sprite-modal" onClick={(e) => e.stopPropagation()}>
                     <div className="sprite-modal-header">
                       <h3>{isJapanese ? "シリーズ" : "SERIES"}</h3>
                     </div>

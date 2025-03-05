@@ -77,6 +77,30 @@ export const spriteStyles: SpriteStyles = {
     gens: [1, 2, 3, 4, 5],
     animated: true,
     displayName: { ja: 'ブラック・ホワイト', en: 'Black-White' }
+  },
+  'x-y': {
+    path: '/generation-vi/x-y',
+    gens: [1, 2, 3, 4, 5, 6],
+    animated: false,
+    displayName: { ja: 'X・Y', en: 'X-Y' }
+  },
+  'sun-moon': {
+    path: '/generation-vii/sun-moon',
+    gens: [1, 2, 3, 4, 5, 6, 7],
+    animated: false,
+    displayName: { ja: 'サン・ムーン', en: 'Sun-Moon' }
+  },
+  'sword-shield': {
+    path: '/generation-viii/sword-shield',
+    gens: [1, 2, 3, 4, 5, 6, 7, 8],
+    animated: false,
+    displayName: { ja: 'ソード・シールド', en: 'Sword-Shield' }
+  },
+  'scarlet-violet': {
+    path: '/generation-ix',
+    gens: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    animated: false,
+    displayName: { ja: 'スカーレット・バイオレット', en: 'Scarlet-Violet' }
   }
 };
 
@@ -84,8 +108,12 @@ export function getDefaultStyleForGeneration(generation: number): keyof typeof s
   if (generation === 1) return 'red-blue';
   if (generation === 2) return 'crystal';
   if (generation === 3) return 'emerald';
-  if (generation === 4) return 'diamond-pearl';
+  if (generation === 4) return 'heartgold-soulsilver';
   if (generation === 5) return 'black-white';
+  if (generation === 6) return 'x-y';
+  if (generation === 7) return 'sun-moon';
+  if (generation === 8) return 'sword-shield';
+  if (generation === 9) return 'scarlet-violet';
   return 'black-white';
 }
 
@@ -111,68 +139,41 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
     pokemonId <= 905 ? 8 :
     pokemonId <= 1025 ? 9 : 9; // 9世代は906~1025
   
-  // 各世代ごとに適切なパスを設定
-  if (generation === 1) {
-    // 1世代のポケモン - shinyディレクトリが存在しないため、通常のスプライトを使用
-    return `/images/generation-i/red-blue/${pokemonId}.png`;
-  } else if (generation === 2) {
-    // 2世代のポケモン - crystalを使用
-    return shiny 
-      ? `/images/generation-ii/crystal/shiny/${pokemonId}.png`
-      : `/images/generation-ii/crystal/${pokemonId}.png`;
-  } else if (generation === 3) {
-    // 3世代のポケモン - emeraldを使用
-    return shiny 
-      ? `/images/generation-iii/emerald/shiny/${pokemonId}.png`
-      : `/images/generation-iii/emerald/${pokemonId}.png`;
-  } else if (generation === 4) {
-    // 4世代のポケモン - heartgold-soulsilverを使用
-    return shiny 
-      ? `/images/generation-iv/heartgold-soulsilver/shiny/${pokemonId}.png`
-      : `/images/generation-iv/heartgold-soulsilver/${pokemonId}.png`;
-  } else if (generation === 5) {
-    // 5世代のポケモン - black-whiteを使用
-    return shiny 
-      ? `/images/generation-v/black-white/shiny/${pokemonId}.gif`
-      : `/images/generation-v/black-white/${pokemonId}.gif`;
-  } else if (generation === 6) {
-    // 6世代のポケモン
-    return shiny 
-      ? `/images/generation-vi/x-y/shiny/${pokemonId}.png`
-      : `/images/generation-vi/x-y/${pokemonId}.png`;
-  } else if (generation === 7) {
-    // 7世代のポケモン
-    return shiny 
-      ? `/images/generation-vii/sun-moon/shiny/${pokemonId}.png`
-      : `/images/generation-vii/sun-moon/${pokemonId}.png`;
-  } else if (generation === 8) {
-    // 8世代のポケモン
-    return shiny 
-      ? `/images/generation-viii/sword-shield/shiny/${pokemonId}.png`
-      : `/images/generation-viii/sword-shield/${pokemonId}.png`;
-  } else if (generation === 9) {
-    // 9世代のポケモン
-    return shiny 
-      ? `/images/generation-ix/shiny/${pokemonId}.png`
-      : `/images/generation-ix/${pokemonId}.png`;
-  }
-
+  // スタイル情報を取得
   const styleInfo = spriteStyles[style];
   
   // スタイルが対応していない世代の場合
   if (!styleInfo.gens.includes(generation)) {
-    return `/images/no-sprite.png`;
+    // 世代に合ったデフォルトスタイルを使用
+    const defaultStyle = getDefaultStyleForGeneration(generation);
+    const defaultStyleInfo = spriteStyles[defaultStyle];
+    
+    // black-whiteスタイルの場合はGIF拡張子を使用
+    const extension = defaultStyle === 'black-white' ? '.gif' : '.png';
+    
+    // 第1世代はshinyが存在しないため、通常のスプライトを使用
+    if (generation === 1 && shiny) {
+      return `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}/${pokemonId}${extension}`;
+    }
+    
+    // ローカルの画像パスを使用
+    return shiny
+      ? `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}/shiny/${pokemonId}${extension}`
+      : `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}/${pokemonId}${extension}`;
   }
   
   // black-whiteスタイルの場合はGIF拡張子を使用
   const extension = style === 'black-white' ? '.gif' : '.png';
   
+  // 第1世代はshinyが存在しないため、通常のスプライトを使用
+  if (generation === 1 && shiny) {
+    return `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}/${pokemonId}${extension}`;
+  }
+  
   // ローカルの画像パスを使用
-  const spriteUrl = shiny
+  return shiny
     ? `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}/shiny/${pokemonId}${extension}`
     : `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}/${pokemonId}${extension}`;
-  
-  return spriteUrl;
 }
 
 async function getLatestDescription(entries: any[], language: string, generation: number) {

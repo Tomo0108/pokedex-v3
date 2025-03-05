@@ -713,27 +713,27 @@
 
 /* スプライト選択ボタン */
 .sprite-select-button {
-  @apply w-full py-3 px-4;
-  background-color: #000000;
+  @apply w-full px-4 py-2 mb-2 last:mb-0;
+  @apply text-sm bg-[var(--bg-dark)];
   color: white;
-  border: 2px solid var(--border-dark);
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   @apply flex items-center justify-between;
   @apply cursor-pointer;
-  transition: all 0.1s ease;
+  transition: transform 0.1s, box-shadow 0.1s;
   transform: translateY(0);
   border-radius: 4px;
-  font-family: 'DotGothic16', monospace;
-  font-size: 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
   min-height: 44px;
 }
 
 .sprite-select-button:active {
-  background-color: #000000;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-  transform: translateY(3px);
+  background-color: var(--bg-darker);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transform: translateY(2px);
 }
 
 .arrow-down {
@@ -760,83 +760,61 @@
 
 /* スプライトモーダル */
 .sprite-modal {
-  background-color: var(--pokedex-color);
-  @apply rounded-md;
-  @apply w-[90%] max-w-md max-h-[80vh];
-  @apply flex flex-col;
+  @apply w-[300px] bg-[var(--bg-dark)];
+  @apply border-2 border-[var(--border-dark)] rounded;
   @apply overflow-hidden;
-  border: 2px solid rgba(0, 0, 0, 0.5);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  animation: slideUp 0.3s ease-out;
-}
-
-@keyframes slideUp {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  @apply [box-shadow:0_4px_8px_rgba(0,0,0,0.3)];
+  @apply backdrop-blur-sm;
+  animation: menuAppear 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 80vh;
 }
 
 /* スプライトモーダルヘッダー */
 .sprite-modal-header {
-  @apply flex items-center justify-between p-4;
-  background-color: rgba(0, 0, 0, 0.3);
-  @apply border-b-2 border-[rgba(0,0,0,0.5)];
+  @apply p-2 border-b border-[var(--border-dark)];
 }
 
 .sprite-modal-header h3 {
-  @apply font-medium m-0;
-  font-family: 'DotGothic16', monospace;
-  color: white;
-  text-transform: uppercase;
-  font-size: 14px;
-  letter-spacing: 1px;
-}
-
-.close-button {
-  @apply bg-black border-2 border-white text-white;
-  @apply w-8 h-8 flex items-center justify-center;
-  @apply cursor-pointer rounded-full;
-  @apply hover:bg-[#303030];
-  font-size: 18px;
-  transition: all 0.2s ease;
+  @apply px-2 py-1 text-xs font-bold text-[var(--bg-screen)] uppercase tracking-wider;
+  font-family: 'Press Start 2P', monospace;
+  margin: 0;
 }
 
 /* スプライトモーダルコンテンツ */
 .sprite-modal-content {
-  @apply p-4 overflow-y-auto;
-  @apply flex flex-col gap-3;
+  @apply p-2 overflow-y-auto;
   max-height: 60vh;
 }
 
 /* スプライトモーダルボタン */
 .sprite-modal-button {
-  @apply w-full py-3 px-4 mb-2;
-  background-color: #000000;
+  @apply w-full px-4 py-2 mb-2 last:mb-0;
+  @apply text-sm bg-[var(--bg-dark)];
   color: white;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   @apply flex items-center justify-between;
   @apply cursor-pointer;
-  transition: all 0.1s ease;
+  transition: transform 0.1s, box-shadow 0.1s;
   transform: translateY(0);
   border-radius: 4px;
-  font-family: 'DotGothic16', monospace;
-  font-size: 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
   letter-spacing: 1px;
   text-transform: uppercase;
   min-height: 44px;
 }
 
 .sprite-modal-button.active {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-  transform: translateY(3px);
+  background-color: var(--pokedex-color);
+  border-color: #505050;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }
 
 .sprite-modal-button:active {
-  background-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
-  transform: translateY(3px);
+  background-color: var(--bg-darker);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transform: translateY(2px);
 }
 
 /* 世代ボタングリッド */
