@@ -6,53 +6,11 @@ const LOCAL_SPRITES_BASE_URL = '/images';
 const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
 export const spriteStyles: SpriteStyles = {
-  'red-blue': { 
-    path: '/generation-i/red-blue',
-    gens: [1],
-    animated: false,
-    displayName: { ja: '赤・青', en: 'Red-Blue' }
-  },
-  'yellow': {
-    path: '/generation-i/yellow',
-    gens: [1],
-    animated: false,
-    displayName: { ja: 'ピカチュウ', en: 'Yellow' }
-  },
-  'gold': {
-    path: '/generation-ii/gold',
-    gens: [1, 2],
-    animated: false,
-    displayName: { ja: '金', en: 'Gold' }
-  },
-  'silver': {
-    path: '/generation-ii/silver',
-    gens: [1, 2],
-    animated: false,
-    displayName: { ja: '銀', en: 'Silver' }
-  },
-  'crystal': { 
-    path: '/generation-ii/crystal',
-    gens: [1, 2],
-    animated: false,
-    displayName: { ja: 'クリスタル', en: 'Crystal' }
-  },
   'ruby-sapphire': {
     path: '/generation-iii/ruby-sapphire',
     gens: [1, 2, 3],
     animated: false,
     displayName: { ja: 'ルビー・サファイア', en: 'Ruby-Sapphire' }
-  },
-  'emerald': { 
-    path: '/generation-iii/emerald',
-    gens: [1, 2, 3],
-    animated: false,
-    displayName: { ja: 'エメラルド', en: 'Emerald' }
-  },
-  'firered-leafgreen': {
-    path: '/generation-iii/firered-leafgreen',
-    gens: [1, 2, 3],
-    animated: false,
-    displayName: { ja: 'FR・LG', en: 'FR-LG' }
   },
   'diamond-pearl': { 
     path: '/generation-iv/diamond-pearl',
@@ -86,15 +44,9 @@ export const spriteStyles: SpriteStyles = {
   },
   'sun-moon': {
     path: '/generation-vii/sun-moon',
-    gens: [1, 2, 3, 4, 5, 6, 7],
-    animated: false,
-    displayName: { ja: 'サン・ムーン', en: 'Sun-Moon' }
-  },
-  'sword-shield': {
-    path: '/generation-viii/sword-shield',
     gens: [1, 2, 3, 4, 5, 6, 7, 8],
     animated: false,
-    displayName: { ja: 'ソード・シールド', en: 'Sword-Shield' }
+    displayName: { ja: 'サン・ムーン', en: 'Sun-Moon' }
   },
   'scarlet-violet': {
     path: '/generation-ix',
@@ -105,14 +57,13 @@ export const spriteStyles: SpriteStyles = {
 };
 
 export function getDefaultStyleForGeneration(generation: number): keyof typeof spriteStyles {
-  if (generation === 1) return 'red-blue';
-  if (generation === 2) return 'crystal';
-  if (generation === 3) return 'emerald';
+  if (generation <= 2) return 'ruby-sapphire'; // 第1-2世代は第3世代のruby-sapphireを使用
+  if (generation === 3) return 'ruby-sapphire';
   if (generation === 4) return 'heartgold-soulsilver';
   if (generation === 5) return 'black-white';
   if (generation === 6) return 'x-y';
   if (generation === 7) return 'sun-moon';
-  if (generation === 8) return 'sword-shield';
+  if (generation === 8) return 'sun-moon'; // 第8世代は第7世代のsun-moonを使用
   if (generation === 9) return 'scarlet-violet';
   return 'black-white';
 }
@@ -139,41 +90,108 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
     pokemonId <= 905 ? 8 :
     pokemonId <= 1025 ? 9 : 9; // 9世代は906~1025
   
+  // 実際に存在するディレクトリに基づいて処理
+  // 第1世代と第2世代のディレクトリが存在しない場合は、第3世代のruby-sapphireを使用
+  if (generation <= 2) {
+    const imagePath = shiny 
+      ? `/images/generation-iii/ruby-sapphire/shiny/${pokemonId}.png`
+      : `/images/generation-iii/ruby-sapphire/${pokemonId}.png`;
+    
+    // 画像が存在するか確認
+    const exists = await checkImageExists(imagePath);
+    if (!exists) {
+      // shiny画像が存在しない場合は通常の画像を試す
+      if (shiny) {
+        const normalPath = `/images/generation-iii/ruby-sapphire/${pokemonId}.png`;
+        const normalExists = await checkImageExists(normalPath);
+        if (normalExists) {
+          return normalPath;
+        }
+      }
+      return FALLBACK_IMAGE_URL;
+    }
+    
+    return imagePath;
+  }
+  
+  // 第3世代のfirered-leafgreenディレクトリが存在しない場合は、ruby-sapphireを使用
+  if (generation === 3 && style === 'firered-leafgreen') {
+    const imagePath = shiny 
+      ? `/images/generation-iii/ruby-sapphire/shiny/${pokemonId}.png`
+      : `/images/generation-iii/ruby-sapphire/${pokemonId}.png`;
+    
+    // 画像が存在するか確認
+    const exists = await checkImageExists(imagePath);
+    if (!exists) {
+      // shiny画像が存在しない場合は通常の画像を試す
+      if (shiny) {
+        const normalPath = `/images/generation-iii/ruby-sapphire/${pokemonId}.png`;
+        const normalExists = await checkImageExists(normalPath);
+        if (normalExists) {
+          return normalPath;
+        }
+      }
+      return FALLBACK_IMAGE_URL;
+    }
+    
+    return imagePath;
+  }
+  
+  // 第8世代のsword-shieldディレクトリが存在しない場合は、第7世代のsun-moonを使用
+  if (generation === 8) {
+    const imagePath = shiny 
+      ? `/images/generation-vii/sun-moon/shiny/${pokemonId}.png`
+      : `/images/generation-vii/sun-moon/${pokemonId}.png`;
+    
+    // 画像が存在するか確認
+    const exists = await checkImageExists(imagePath);
+    if (!exists) {
+      // shiny画像が存在しない場合は通常の画像を試す
+      if (shiny) {
+        const normalPath = `/images/generation-vii/sun-moon/${pokemonId}.png`;
+        const normalExists = await checkImageExists(normalPath);
+        if (normalExists) {
+          return normalPath;
+        }
+      }
+      return FALLBACK_IMAGE_URL;
+    }
+    
+    return imagePath;
+  }
+  
   // スタイル情報を取得
   const styleInfo = spriteStyles[style];
   
-  // スタイルが対応していない世代の場合
-  if (!styleInfo.gens.includes(generation)) {
-    // 世代に合ったデフォルトスタイルを使用
+  // スタイルがサポートされていない場合は、世代に基づいてデフォルトのスタイルを使用
+  if (!styleInfo || !styleInfo.gens.includes(generation)) {
     const defaultStyle = getDefaultStyleForGeneration(generation);
-    const defaultStyleInfo = spriteStyles[defaultStyle];
-    
-    // black-whiteスタイルの場合はGIF拡張子を使用
-    const extension = defaultStyle === 'black-white' ? '.gif' : '.png';
-    
-    // 第1世代はshinyが存在しないため、通常のスプライトを使用
-    if (generation === 1 && shiny) {
-      return `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}/${pokemonId}${extension}`;
+    return createSpriteUrl(pokemonId, defaultStyle, shiny);
+  }
+  
+  // ファイル拡張子を設定（black-whiteスタイルの場合はgif、それ以外はpng）
+  const ext = style === 'black-white' ? '.gif' : '.png';
+  
+  // 画像パスを生成
+  const imagePath = shiny 
+    ? `/images${styleInfo.path}/shiny/${pokemonId}${ext}`
+    : `/images${styleInfo.path}/${pokemonId}${ext}`;
+  
+  // 画像が存在するか確認
+  const exists = await checkImageExists(imagePath);
+  if (!exists) {
+    // shiny画像が存在しない場合は通常の画像を試す
+    if (shiny) {
+      const normalPath = `/images${styleInfo.path}/${pokemonId}${ext}`;
+      const normalExists = await checkImageExists(normalPath);
+      if (normalExists) {
+        return normalPath;
+      }
     }
-    
-    // ローカルの画像パスを使用
-    return shiny
-      ? `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}/shiny/${pokemonId}${extension}`
-      : `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}/${pokemonId}${extension}`;
+    return FALLBACK_IMAGE_URL;
   }
   
-  // black-whiteスタイルの場合はGIF拡張子を使用
-  const extension = style === 'black-white' ? '.gif' : '.png';
-  
-  // 第1世代はshinyが存在しないため、通常のスプライトを使用
-  if (generation === 1 && shiny) {
-    return `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}/${pokemonId}${extension}`;
-  }
-  
-  // ローカルの画像パスを使用
-  return shiny
-    ? `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}/shiny/${pokemonId}${extension}`
-    : `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}/${pokemonId}${extension}`;
+  return imagePath;
 }
 
 async function getLatestDescription(entries: any[], language: string, generation: number) {
