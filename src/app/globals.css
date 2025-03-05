@@ -276,7 +276,7 @@
   transition: all 0.2s ease;
   transform: translateY(0);
   border-radius: 8px;
-  font-family: var(--font-kurokane-eb), 'Inter', sans-serif;
+  font-family: 'DotGothic16', sans-serif;
   font-size: 14px;
   font-weight: 500;
   min-height: 44px;
@@ -723,7 +723,7 @@
   transition: all 0.1s ease;
   transform: translateY(0);
   border-radius: 4px;
-  font-family: 'Press Start 2P', monospace;
+  font-family: 'DotGothic16', monospace;
   font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -784,7 +784,7 @@
 
 .sprite-modal-header h3 {
   @apply font-medium m-0;
-  font-family: var(--font-kurokane-eb), 'Press Start 2P', monospace;
+  font-family: 'DotGothic16', monospace;
   color: white;
   text-transform: uppercase;
   font-size: 14px;
@@ -819,7 +819,7 @@
   transition: all 0.1s ease;
   transform: translateY(0);
   border-radius: 4px;
-  font-family: var(--font-kurokane-eb), 'Press Start 2P', monospace;
+  font-family: 'DotGothic16', monospace;
   font-size: 14px;
   letter-spacing: 1px;
   text-transform: uppercase;

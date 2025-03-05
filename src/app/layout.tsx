@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { DotGothic16, Press_Start_2P } from 'next/font/google';
 import './globals.css';
-import localFont from 'next/font/local';
 
 const dotGothic = DotGothic16({ 
   weight: '400',
@@ -16,13 +15,6 @@ const pressStart2P = Press_Start_2P({
   preload: true,
   display: 'swap',
   variable: '--font-press-start',
-});
-
-// くろかねEBフォントを追加
-const kurokaneEB = localFont({
-  src: '../fonts/kurokane-eb.woff2',
-  display: 'swap',
-  variable: '--font-kurokane-eb',
 });
 
 export const viewport = {
@@ -65,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${pressStart2P.variable} ${kurokaneEB.variable}`}>
+    <html lang="en" className={pressStart2P.variable}>
       <head>
         <link rel="icon" href="/icons/poke-doll.png" />
         <link rel="apple-touch-icon" href="/icons/poke-doll.png" />
