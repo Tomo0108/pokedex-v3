@@ -112,9 +112,13 @@
   @apply flex justify-between mb-4 items-start gap-4;
 }
 
-.search-box {
-  @apply relative flex-1 max-w-sm;
-}
+  .search-box {
+    @apply relative flex items-center gap-2 flex-1 max-w-sm;
+  }
+
+  .search-input {
+    @apply flex-1;
+  }
 
 .search-input {
   @apply w-full h-[44px] px-3 py-2 text-sm;
@@ -706,10 +710,19 @@
 }
 
 /* スプライトコントロールのコンテナ */
-.sprite-controls-container {
-  @apply relative mt-2 mb-4;
-  width: 100%;
-}
+  .sprite-controls-container {
+    @apply relative mt-2 mb-4 flex flex-col gap-2;
+    width: 100%;
+  }
+
+  .sprite-select-button {
+    @apply w-full px-4 py-2 flex items-center justify-between;
+    @apply bg-[var(--bg-screen)] text-[var(--text-dark)];
+    @apply border border-[var(--border-dark)] rounded;
+    @apply hover:bg-[var(--bg-screen-light)];
+    min-height: 44px;
+    transition: all 0.2s ease;
+  }
 
 /* スプライト選択ボタン */
 .sprite-select-button {
@@ -743,10 +756,10 @@
 }
 
 /* スプライトモーダルオーバーレイ */
-.sprite-modal-overlay {
-  @apply fixed inset-0 z-50;
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(2px);
+  .sprite-modal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
   display: flex;
   justify-content: center;
   align-items: center;

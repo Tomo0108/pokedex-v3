@@ -46,7 +46,7 @@ export default function HomePage() {
     storage.getBoolean('pokedex-shiny', false)
   );
   const [spriteStyle, setSpriteStyle] = useState<keyof typeof spriteStyles>(() => {
-    const style = storage.getString('pokedex-sprite-style', 'red-blue');
+    const style = storage.getString('pokedex-sprite-style', 'emerald');
     return style as keyof typeof spriteStyles;
   });
   const [skinColor, setSkinColor] = useState(() => 
@@ -62,6 +62,13 @@ export default function HomePage() {
   const [spriteModalOpen, setSpriteModalOpen] = useState(false);
   const [loadingGif, setLoadingGif] = useState<string | null>(null);
   const [loadingGifError, setLoadingGifError] = useState(false);
+
+  const availableStyles = useMemo(() => 
+    Object.entries(spriteStyles)
+      .filter(([_, { gens }]) => gens.includes(generation))
+      .map(([style]) => style),
+    [generation]
+  );
 
   useEffect(() => {
     const loadGif = async () => {
@@ -149,6 +156,22 @@ export default function HomePage() {
   }, [generation]);
 
   useEffect(() => {
+    if (selectedPokemon) {
+      const loadSpriteUrl = async () => {
+        try {
+          const url = await createSpriteUrl(selectedPokemon.id, spriteStyle, isShiny);
+          setSpriteUrl(url);
+        } catch (error) {
+          console.error('Failed to load sprite URL:', error);
+          setSpriteUrl('/images/no-sprite.png');
+        }
+      };
+      
+      loadSpriteUrl();
+    }
+  }, [selectedPokemon, spriteStyle, isShiny]);
+
+  useEffect(() => {
     updateLocalStorage();
   }, [generation, isJapanese, isShiny, spriteStyle, skinColor, screenColor]);
 
@@ -165,22 +188,6 @@ export default function HomePage() {
       document.documentElement.style.setProperty('--bg-screen', screenColor);
     }
   }, [generation, isJapanese, isShiny, spriteStyle, skinColor, screenColor]);
-
-  useEffect(() => {
-    if (selectedPokemon) {
-      const loadSpriteUrl = async () => {
-        try {
-          const url = await createSpriteUrl(selectedPokemon.id, spriteStyle, isShiny);
-          setSpriteUrl(url);
-        } catch (error) {
-          console.error('Failed to load sprite URL:', error);
-          setSpriteUrl('/images/no-sprite.png');
-        }
-      };
-      
-      loadSpriteUrl();
-    }
-  }, [selectedPokemon, spriteStyle, isShiny]);
 
   const searchResults = useMemo(() => {
     if (!searchTerm || searchTerm.length < 3) return [];
@@ -225,7 +232,7 @@ export default function HomePage() {
 
       const iconPromises = [
         '/icons/substitute.png',
-        '/icons/poke-doll.png'
+        '/icons/poke-ball.png'
       ].map(path => {
         const img = new Image();
         img.src = path;
@@ -250,25 +257,6 @@ export default function HomePage() {
         console.error('バイブレーション機能が利用できません:', e);
       }
     }
-  };
-
-  const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    vibrate(15);
-    const gen = parseInt(e.target.value, 10);
-    const defaultStyle = getDefaultStyleForGeneration(gen);
-    setGeneration(gen);
-    setSpriteStyle(defaultStyle);
-    storage.setItem('pokedex-sprite-style', defaultStyle);
-  };
-
-  const handleSkinColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    vibrate(15);
-    setSkinColor(e.target.value);
-  };
-
-  const handleScreenColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    vibrate(15);
-    setScreenColor(e.target.value);
   };
 
   if (isLoading) {
@@ -301,6 +289,95 @@ export default function HomePage() {
                 placeholder="Search..."
                 className="search-input"
               />
+              <div className="menu-container">
+                <button 
+                  className="menu-button-plain"
+                  onClick={() => setMenuVisible(!menuVisible)}
+                  aria-expanded={menuVisible}
+                  aria-label="Menu"
+                >
+                  <img 
+                    src="/icons/poke-ball.png" 
+                    alt="Menu"
+                    className="poke-ball-icon"
+                    width={32}
+                    height={32}
+                    style={{ transform: menuVisible ? 'rotate(-15deg) scale(0.9)' : 'none' }}
+                  />
+                </button>
+                {menuVisible && (
+                  <div className="retro-menu">
+                    <div className="retro-menu-section">
+                      <button 
+                        className="retro-menu-item" 
+                        onClick={() => setIsJapanese(!isJapanese)}
+                      >
+                        <span>LANGUAGE</span>
+                        <span>{isJapanese ? 'JPN' : 'ENG'}</span>
+                      </button>
+                      <button 
+                        className="retro-menu-item" 
+                        onClick={() => setIsShiny(!isShiny)}
+                      >
+                        <span>SPRITE</span>
+                        <span>{isShiny ? 'SHINY' : 'NORMAL'}</span>
+                      </button>
+                    </div>
+                    <div className="retro-menu-section">
+                      <div className="retro-menu-header">COLOR</div>
+                      <div className="retro-menu-content">
+                        <div className="color-control-items">
+                          <div className="color-control-item">
+                            <span>SKIN</span>
+                            <input
+                              type="color"
+                              id="skin-color"
+                              value={skinColor}
+                              onChange={(e) => setSkinColor(e.target.value)}
+                            />
+                          </div>
+                          <div className="color-control-item">
+                            <span>SCREEN</span>
+                            <input
+                              type="color"
+                              id="screen-color"
+                              value={screenColor}
+                              onChange={(e) => setScreenColor(e.target.value)}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="retro-menu-section">
+                      <div className="retro-menu-header">GENERATION</div>
+                      <div className="retro-menu-content">
+                        <div className="generation-grid">
+                          {[
+                            { gen: 1 }, { gen: 2 }, { gen: 3 },
+                            { gen: 4 }, { gen: 5 }, { gen: 6 },
+                            { gen: 7 }, { gen: 8 }, { gen: 9 }
+                          ].map(({ gen }) => (
+                            <button
+                              key={gen}
+                              className={`generation-button ${generation === gen ? 'active' : ''}`}
+                              onClick={() => {
+                                const defaultStyle = getDefaultStyleForGeneration(gen);
+                                setGeneration(gen);
+                                setSpriteStyle(defaultStyle);
+                                storage.setItem('pokedex-generation', gen);
+                                storage.setItem('pokedex-sprite-style', defaultStyle);
+                                setMenuVisible(false);
+                              }}
+                            >
+                              <span className="generation-number">{gen}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
               {searchTerm.length > 0 && searchResults.length > 0 && (
                 <div className="search-suggestions">
                   {searchResults.map(pokemon => (
@@ -313,9 +390,7 @@ export default function HomePage() {
                       }}
                     >
                       <img
-                        src={pokemon.id >= 906 && pokemon.id <= 1025
-                          ? `/images/generation-ix/${pokemon.id}.webp` 
-                          : `/images/pokemon_icons/${pokemon.id}.webp`}
+                        src={`/images/pokemon_icons/${pokemon.id}.webp`}
                         alt={isJapanese ? pokemon.japaneseName : pokemon.name}
                         className="pokemon-icon"
                         onError={(e) => {
@@ -332,115 +407,6 @@ export default function HomePage() {
               )}
             </div>
           </div>
-          <div className="menu-container">
-            <button 
-              className="menu-button-plain"
-              onClick={() => setMenuVisible(!menuVisible)}
-              aria-expanded={menuVisible}
-              aria-label="Menu"
-            >
-              <img 
-                src="/icons/poke-ball.png" 
-                alt="Menu"
-                className="poke-ball-icon"
-                width={32}
-                height={32}
-                style={{ transform: menuVisible ? 'rotate(-15deg) scale(0.9)' : 'none' }}
-              />
-            </button>
-            {menuVisible && (
-              <div className="retro-menu">
-                <div className="retro-menu-section">
-                  <button 
-                    className="retro-menu-item" 
-                    onClick={() => setIsJapanese(!isJapanese)}
-                  >
-                    <span>LANGUAGE</span>
-                    <span>{isJapanese ? 'JPN' : 'ENG'}</span>
-                  </button>
-                  <button 
-                    className="retro-menu-item" 
-                    onClick={() => setIsShiny(!isShiny)}
-                  >
-                    <span>SPRITE</span>
-                    <span>{isShiny ? 'SHINY' : 'NORMAL'}</span>
-                  </button>
-                </div>
-                <div className="retro-menu-section">
-                  <div className="retro-menu-header">COLOR</div>
-                  <div className="retro-menu-content">
-                    <div className="color-control-items">
-                      <div className="color-control-item">
-                        <span>SKIN</span>
-                        <input
-                          type="color"
-                          id="skin-color"
-                          value={skinColor}
-                          onChange={handleSkinColorChange}
-                        />
-                      </div>
-                      <div className="color-control-item">
-                        <span>SCREEN</span>
-                        <input
-                          type="color"
-                          id="screen-color"
-                          value={screenColor}
-                          onChange={handleScreenColorChange}
-                        />
-                    </div>
-                  </div>
-                </div>
-                <div className="retro-menu-section">
-                  <div className="retro-menu-header">GENERATION</div>
-                  <div className="retro-menu-content">
-                    <div className="generation-grid">
-                      {[
-                        { gen: 1, starters: [1] },
-                        { gen: 2, starters: [152] },
-                        { gen: 3, starters: [252] },
-                        { gen: 4, starters: [387] },
-                        { gen: 5, starters: [495] },
-                        { gen: 6, starters: [650] },
-                        { gen: 7, starters: [722] },
-                        { gen: 8, starters: [810] },
-                        { gen: 9, starters: [906] },
-                      ].map(({ gen }) => (
-                        <button
-                          key={gen}
-                          className={`generation-button ${generation === gen ? 'active' : ''}`}
-                          onClick={() => {
-                            let defaultStyle = getDefaultStyleForGeneration(gen);
-                            if (!defaultStyle) {
-                              defaultStyle = 'emerald';
-                            }
-                            setGeneration(gen);
-                            setSpriteStyle(defaultStyle);
-                            storage.setItem('pokedex-generation', gen);
-                            storage.setItem('pokedex-sprite-style', defaultStyle);
-                            setMenuVisible(false);
-                          }}
-                        >
-                          <div className="starter-icons">
-                            <img
-                              src={gen === 9
-                                ? `/images/generation-ix/${gen * 100 + 6}.webp`
-                                : `/images/pokemon_icons/${gen * 100 + 6}.webp`}
-                              alt={`Generation ${gen}`}
-                              className="starter-icon"
-                              onError={(e) => {
-                                e.currentTarget.src = `/images/no-sprite.png`;
-                              }}
-                            />
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              </div>
-            )}
-          </div>
           <div className="screen-container">
             <div className="screen">
               {selectedPokemon && (
@@ -455,7 +421,34 @@ export default function HomePage() {
                 </div>
               )}
             </div>
+            <button className="sprite-select-button" onClick={() => setSpriteModalOpen(true)}>
+              {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
+            </button>
           </div>
+          {spriteModalOpen && (
+            <div className="sprite-modal-overlay" onClick={() => setSpriteModalOpen(false)}>
+              <div className="sprite-modal" onClick={e => e.stopPropagation()}>
+                <div className="sprite-modal-header">
+                  <h3>{isJapanese ? "シリーズ" : "SERIES"}</h3>
+                </div>
+                <div className="sprite-modal-content">
+                  {availableStyles.map((style) => (
+                    <button
+                      key={style}
+                      className={`sprite-modal-button ${style === spriteStyle ? 'active' : ''}`}
+                      onClick={() => {
+                        vibrate([10, 30, 10]);
+                        setSpriteStyle(style as keyof typeof spriteStyles);
+                        setSpriteModalOpen(false);
+                      }}
+                    >
+                      {spriteStyles[style as keyof typeof spriteStyles].displayName[isJapanese ? 'ja' : 'en']}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
           <div className="pokemon-info">
             <h2 className="pokemon-name">
               {selectedPokemon ? (
@@ -489,9 +482,7 @@ export default function HomePage() {
                   }}
                 >
                   <img
-                    src={pokemon.id >= 906 && pokemon.id <= 1025
-                      ? `/images/generation-ix/${pokemon.id}.webp` 
-                      : `/images/pokemon_icons/${pokemon.id}.webp`}
+                    src={`/images/pokemon_icons/${pokemon.id}.webp`}
                     alt={isJapanese ? pokemon.japaneseName : pokemon.name}
                     className="pokemon-icon"
                     onError={(e) => {
