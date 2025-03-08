@@ -20,73 +20,73 @@ export const spriteStyles: SpriteStyles = {
   },
   'gold': {
     path: '/generation-ii/gold',
-    gens: [2],
+    gens: [1, 2],
     animated: false,
     displayName: { ja: 'ゴールド', en: 'Gold' }
   },
   'silver': {
     path: '/generation-ii/silver',
-    gens: [2],
+    gens: [1, 2],
     animated: false,
     displayName: { ja: 'シルバー', en: 'Silver' }
   },
   'crystal': {
     path: '/generation-ii/crystal',
-    gens: [2],
+    gens: [1, 2],
     animated: true,
     displayName: { ja: 'クリスタル', en: 'Crystal' }
   },
   'emerald': {
     path: '/generation-iii/emerald',
-    gens: [3],
+    gens: [1, 2, 3],
     animated: false,
     displayName: { ja: 'エメラルド', en: 'Emerald' }
   },
   'diamond-pearl': {
     path: '/generation-iv/diamond-pearl',
-    gens: [4],
+    gens: [1, 2, 3, 4],
     animated: false,
     displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
   },
   'platinum': {
     path: '/generation-iv/platinum',
-    gens: [4],
+    gens: [1, 2, 3, 4],
     animated: false,
     displayName: { ja: 'プラチナ', en: 'Platinum' }
   },
   'heartgold-soulsilver': {
     path: '/generation-iv/heartgold-soulsilver',
-    gens: [4],
+    gens: [1, 2, 3, 4],
     animated: false,
     displayName: { ja: 'ハートゴールド・ソウルシルバー', en: 'HeartGold-SoulSilver' }
   },
   'black-white': {
     path: '/generation-v/black-white',
-    gens: [5],
+    gens: [1, 2, 3, 4, 5],
     animated: true,
     displayName: { ja: 'ブラック・ホワイト', en: 'Black-White' }
   },
   'x-y': {
     path: '/generation-vi/x-y',
-    gens: [6],
+    gens: [1, 2, 3, 4, 5, 6],
     animated: false,
     displayName: { ja: 'X・Y', en: 'X-Y' }
   },
   'sun-moon': {
     path: '/generation-vii/sun-moon',
-    gens: [7],
+    gens: [1, 2, 3, 4, 5, 6, 7],
     animated: false,
     displayName: { ja: 'サン・ムーン', en: 'Sun-Moon' }
   },
   'sword-shield': {
     path: '/generation-viii/sword-shield',
-    gens: [8],
+    gens: [1, 2, 3, 4, 5, 6, 7, 8],
     animated: false,
     displayName: { ja: 'ソード・シールド', en: 'Sword-Shield' }
   },
   'scarlet-violet': {
     path: '/generation-ix/scarlet-violet',
-    gens: [9],
+    gens: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     animated: false,
     displayName: { ja: 'スカーレット・バイオレット', en: 'Scarlet-Violet' }
   }
@@ -117,7 +117,7 @@ export function getDefaultStyleForGeneration(generation: number): keyof typeof s
   }
 }
 
-export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): string {
+export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false, form?: string): string {
   // ポケモンIDから世代を判定
   const generation = 
     pokemonId <= 151 ? 1 :
@@ -136,16 +136,19 @@ export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteSty
   // スタイルが指定の世代をサポートしていない場合は、世代に基づいてデフォルトのスタイルを使用
   if (!styleInfo || !styleInfo.gens.includes(generation)) {
     const defaultStyle = getDefaultStyleForGeneration(generation);
-    return createSpriteUrl(pokemonId, defaultStyle, shiny);
+    return createSpriteUrl(pokemonId, defaultStyle, shiny, form);
   }
   
   // 拡張子を設定（black-whiteスタイルの場合はgif、それ以外はwebp）
   const ext = style === 'black-white' ? '.gif' : '.webp';
   
+  // フォルムが指定されている場合はファイル名に追加
+  const fileName = form ? `${pokemonId}-${form}` : `${pokemonId}`;
+  
   // 画像パスを生成
   const imagePath = shiny 
-    ? `/images${styleInfo.path}/shiny/${pokemonId}${ext}`
-    : `/images${styleInfo.path}/${pokemonId}${ext}`;
+    ? `/images${styleInfo.path}/shiny/${fileName}${ext}`
+    : `/images${styleInfo.path}/${fileName}${ext}`;
   
   return imagePath;
 }
@@ -193,8 +196,8 @@ export async function fetchPokemonData(generation: number) {
     return pokemonData.map((pokemon: Pokemon) => ({
       ...pokemon,
       sprites: {
-        front_default: createSpriteUrl(pokemon.id, style, false),
-        front_shiny: createSpriteUrl(pokemon.id, style, true),
+        front_default: createSpriteUrl(pokemon.id, style, false, pokemon.form),
+        front_shiny: createSpriteUrl(pokemon.id, style, true, pokemon.form),
       },
       description: pokemon.descriptions 
         ? getLatestDescription(pokemon.descriptions, generation)
