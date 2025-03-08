@@ -1,282 +1,508 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { Pokemon, TypeTranslations, TypeColors, PokemonType, SpriteStyles } from '@/types/pokemon';
-import { fetchPokemonData } from '@/utils/pokemon';
-import { useStorage } from '@/utils/storage';
-import Image from 'next/image';
+import React, { useEffect, useState, useCallback, useMemo, useRef } from 'react';
+import { Pokemon } from '@/types/pokemon';
+import { fetchPokemonData, spriteStyles, createSpriteUrl, getDefaultStyleForGeneration } from '@/utils/pokemon';
+import { prefetchAllGenerations } from '@/utils/cache';
+import { storage } from '@/utils/storage';
+import { isPartialMatch } from '@/utils/kana';
+import { createLoadingGif } from '@/utils/createLoadingGif';
 
-// スケルトンUIコンポーネント
-const PokemonSkeleton = () => (
-  <div className="border rounded-lg p-4 flex flex-col items-center animate-pulse">
-    <div className="bg-gray-200 h-6 w-16 mb-2 rounded"></div>
-    <div className="bg-gray-200 h-32 w-32 rounded"></div>
-    <div className="bg-gray-200 h-6 w-32 mt-2 rounded"></div>
-    <div className="flex gap-2 mt-2">
-      <div className="bg-gray-200 h-6 w-16 rounded"></div>
-      <div className="bg-gray-200 h-6 w-16 rounded"></div>
-    </div>
-    <div className="bg-gray-200 h-20 w-full mt-2 rounded"></div>
-  </div>
-);
-
-// 世代の定義
-const generations = [
-  { id: 1, name: '第1世代', years: '1996-1999' },
-  { id: 2, name: '第2世代', years: '1999-2002' },
-  { id: 3, name: '第3世代', years: '2002-2006' },
-  { id: 4, name: '第4世代', years: '2006-2010' },
-  { id: 5, name: '第5世代', years: '2010-2013' },
-  { id: 6, name: 'XY', years: '2013-2016' },
-  { id: 7, name: 'サンムーン', years: '2016-2019' },
-  { id: 8, name: 'ソードシールド', years: '2019-2022' },
-  { id: 9, name: 'スカーレット・バイオレット', years: '2022-' }
-] as const;
-
-// タイプの翻訳とカラー定義に型を適用
-const typeTranslations: TypeTranslations = {
-  normal: 'ノーマル',
-  fire: 'ほのお',
-  water: 'みず',
-  electric: 'でんき',
-  grass: 'くさ',
-  ice: 'こおり',
-  fighting: 'かくとう',
-  poison: 'どく',
-  ground: 'じめん',
-  flying: 'ひこう',
-  psychic: 'エスパー',
-  bug: 'むし',
-  rock: 'いわ',
-  ghost: 'ゴースト',
-  dragon: 'ドラゴン',
-  dark: 'あく',
-  steel: 'はがね',
-  fairy: 'フェアリー'
+// ポケモンタイプの日本語訳
+const typeTranslations = {
+  Normal: 'ノーマル',
+  Fire: 'ほのお',
+  Water: 'みず',
+  Electric: 'でんき',
+  Grass: 'くさ',
+  Ice: 'こおり',
+  Fighting: 'かくとう',
+  Poison: 'どく',
+  Ground: 'じめん',
+  Flying: 'ひこう',
+  Psychic: 'エスパー',
+  Bug: 'むし',
+  Rock: 'いわ',
+  Ghost: 'ゴースト',
+  Dragon: 'ドラゴン',
+  Dark: 'あく',
+  Steel: 'はがね',
+  Fairy: 'フェアリー'
 };
 
-const typeColors: TypeColors = {
-  normal: 'bg-gray-400',
-  fire: 'bg-red-500',
-  water: 'bg-blue-500',
-  electric: 'bg-yellow-400',
-  grass: 'bg-green-500',
-  ice: 'bg-blue-200',
-  fighting: 'bg-red-700',
-  poison: 'bg-purple-500',
-  ground: 'bg-yellow-600',
-  flying: 'bg-indigo-400',
-  psychic: 'bg-pink-500',
-  bug: 'bg-green-600',
-  rock: 'bg-yellow-800',
-  ghost: 'bg-purple-700',
-  dragon: 'bg-indigo-600',
-  dark: 'bg-gray-800',
-  steel: 'bg-gray-500',
-  fairy: 'bg-pink-300'
-};
+export default function HomePage() {
+  const [pokemonData, setPokemonData] = useState<Pokemon[]>([]);
+  const [allPokemonData, setAllPokemonData] = useState<Pokemon[]>([]);
+  const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const [showSwipeHint, setShowSwipeHint] = useState(true);
+  const [generation, setGeneration] = useState<number>(() => 
+    storage.getNumber('pokedex-generation', 1)
+  );
+  const [isJapanese, setIsJapanese] = useState<boolean>(() => 
+    storage.getBoolean('pokedex-language', false)
+  );
+  const [isShiny, setIsShiny] = useState<boolean>(() => 
+    storage.getBoolean('pokedex-shiny', false)
+  );
+  const [spriteStyle, setSpriteStyle] = useState<keyof typeof spriteStyles>(() => {
+    const style = storage.getString('pokedex-sprite-style', 'emerald');
+    return style as keyof typeof spriteStyles;
+  });
+  const [skinColor, setSkinColor] = useState(() => 
+    storage.getString('pokedex-skin-color', '#8b0000')
+  );
+  const [screenColor, setScreenColor] = useState(() => 
+    storage.getString('pokedex-screen-color', '#9bbc0f')
+  );
+  const [isLoading, setIsLoading] = useState(true);
+  const [spriteUrl, setSpriteUrl] = useState<string>('');
+  const [searchTerm, setSearchTerm] = useState('');
+  const [menuVisible, setMenuVisible] = useState(false);
+  const [spriteModalOpen, setSpriteModalOpen] = useState(false);
+  const [loadingGif, setLoadingGif] = useState<string | null>(null);
+  const [loadingGifError, setLoadingGifError] = useState(false);
 
-// スプライトスタイルの定義
-const spriteStyles: SpriteStyles = {
-  'red-blue': {
-    path: '/generation-i/red-blue',
-    gens: [1],
-    animated: false,
-    displayName: { ja: 'レッド・ブルー', en: 'Red-Blue' }
-  },
-  'crystal': {
-    path: '/generation-ii/crystal',
-    gens: [1, 2],
-    animated: true,
-    displayName: { ja: 'クリスタル', en: 'Crystal' }
-  },
-  'firered-leafgreen': {
-    path: '/generation-iii/firered-leafgreen',
-    gens: [1],
-    animated: false,
-    displayName: { ja: 'ファイアレッド・リーフグリーン', en: 'FireRed-LeafGreen' }
-  },
-  'emerald': {
-    path: '/generation-iii/emerald',
-    gens: [1, 2, 3],
-    animated: false,
-    displayName: { ja: 'エメラルド', en: 'Emerald' }
-  },
-  'diamond-pearl': {
-    path: '/generation-iv/diamond-pearl',
-    gens: [1, 2, 3, 4],
-    animated: false,
-    displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
-  },
-  'black-white': {
-    path: '/generation-v/black-white',
-    gens: [1, 2, 3, 4, 5],
-    animated: true,
-    displayName: { ja: 'ブラック・ホワイト', en: 'Black-White' }
-  },
-  'x-y': {
-    path: '/generation-vi/x-y',
-    gens: [6],
-    animated: false,
-    displayName: { ja: 'X・Y', en: 'X-Y' }
-  },
-  'sun-moon': {
-    path: '/generation-vii/sun-moon',
-    gens: [7],
-    animated: false,
-    displayName: { ja: 'サン・ムーン', en: 'Sun-Moon' }
-  },
-  'sword-shield': {
-    path: '/generation-viii/sword-shield',
-    gens: [8],
-    animated: false,
-    displayName: { ja: 'ソード・シールド', en: 'Sword-Shield' }
-  },
-  'scarlet-violet': {
-    path: '/generation-ix/scarlet-violet',
-    gens: [9],
-    animated: false,
-    displayName: { ja: 'スカーレット・バイオレット', en: 'Scarlet-Violet' }
-  }
-};
+  const availableStyles = useMemo(() => 
+    Object.entries(spriteStyles)
+      .filter(([_, { gens }]) => gens.includes(generation))
+      .map(([style]) => style),
+    [generation]
+  );
 
-export default function Home() {
-  const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
-  const [generation, setGeneration] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const { getSpriteStyle, setSpriteStyle, getShiny, setShiny } = useStorage();
-  const [selectedStyle, setSelectedStyle] = useState(getSpriteStyle());
-  const [isShiny, setIsShiny] = useState(getShiny());
-  
   useEffect(() => {
-    const loadPokemon = async () => {
+    const loadGif = async () => {
+      if (typeof window === 'undefined') return;
+
       try {
-        setError(null);
-        setLoading(true);
-        const data = await fetchPokemonData(generation);
-        setPokemonList(data);
-      } catch (e) {
-        setError(e instanceof Error ? e.message : 'データの読み込みに失敗しました');
-      } finally {
-        setLoading(false);
+        const loadingImage = new Image();
+        loadingImage.src = '/icons/substitute.png';
+        await new Promise<void>((resolve) => {
+          loadingImage.onload = () => resolve();
+        });
+        
+        const gif = await createLoadingGif();
+        setLoadingGif(gif);
+      } catch (error) {
+        console.error('Failed to create loading GIF:', error);
+        setLoadingGifError(true);
       }
     };
-    loadPokemon();
+
+    loadGif();
+  }, []);
+
+  useEffect(() => {
+    const setAppHeight = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`);
+    };
+
+    setAppHeight();
+    window.addEventListener('resize', setAppHeight);
+    window.addEventListener('orientationchange', setAppHeight);
+
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    
+    return () => {
+      window.removeEventListener('resize', checkIfMobile);
+      window.removeEventListener('resize', setAppHeight);
+      window.removeEventListener('orientationchange', setAppHeight);
+    };
+  }, []);
+
+  useEffect(() => {
+    loadAllPokemonData();
+  }, []);
+
+  const loadAllPokemonData = useCallback(async () => {
+    if (allPokemonData.length > 0) return;
+    
+    const generations = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    const allData = await Promise.all(
+      generations.map(gen => fetchPokemonData(gen))
+    );
+    setAllPokemonData(allData.flat());
+  }, [allPokemonData.length]);
+
+  useEffect(() => {
+    const initializeApp = async () => {
+      setIsLoading(true);
+      try {
+        const data = await fetchPokemonData(generation);
+        setPokemonData(data);
+        if (data.length > 0) {
+          setSelectedPokemon(data[0]);
+        }
+        
+        prefetchAllGenerations(fetchPokemonData);
+        
+        if ('serviceWorker' in navigator && window.matchMedia('(display-mode: standalone)').matches) {
+          preloadImages();
+        }
+      } catch (error) {
+        console.error('Failed to initialize app:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    initializeApp();
   }, [generation]);
 
   useEffect(() => {
-    setSpriteStyle(selectedStyle);
-  }, [selectedStyle]);
+    if (selectedPokemon) {
+      const loadSpriteUrl = async () => {
+        try {
+          const url = await createSpriteUrl(selectedPokemon.id, spriteStyle, isShiny);
+          setSpriteUrl(url);
+        } catch (error) {
+          console.error('Failed to load sprite URL:', error);
+          setSpriteUrl('/images/no-sprite.png');
+        }
+      };
+      
+      loadSpriteUrl();
+    }
+  }, [selectedPokemon, spriteStyle, isShiny]);
 
   useEffect(() => {
-    setShiny(isShiny);
-  }, [isShiny]);
+    updateLocalStorage();
+  }, [generation, isJapanese, isShiny, spriteStyle, skinColor, screenColor]);
 
-  // 現在の世代で利用可能なスプライトスタイルを取得
-  const availableStyles = Object.entries(spriteStyles)
-    .filter(([_, style]) => style.gens.includes(generation))
-    .reduce((acc, [key, style]) => {
-      acc[key] = style;
-      return acc;
-    }, {} as SpriteStyles);
+  const updateLocalStorage = useCallback(() => {
+    storage.setItem('pokedex-generation', generation);
+    storage.setItem('pokedex-language', isJapanese);
+    storage.setItem('pokedex-shiny', isShiny);
+    storage.setItem('pokedex-sprite-style', spriteStyle);
+    storage.setItem('pokedex-skin-color', skinColor);
+    storage.setItem('pokedex-screen-color', screenColor);
 
-  if (error) {
+    if (typeof window !== 'undefined') {
+      document.documentElement.style.setProperty('--pokedex-color', skinColor);
+      document.documentElement.style.setProperty('--bg-screen', screenColor);
+    }
+  }, [generation, isJapanese, isShiny, spriteStyle, skinColor, screenColor]);
+
+  const searchResults = useMemo(() => {
+    if (!searchTerm || searchTerm.length < 3) return [];
+    
+    return allPokemonData.filter(pokemon => 
+      isPartialMatch(searchTerm, pokemon.name) || 
+      isPartialMatch(searchTerm, pokemon.japaneseName) ||
+      pokemon.id.toString().includes(searchTerm)
+    ).slice(0, 10);
+  }, [allPokemonData, searchTerm]);
+
+  const filteredPokemonData = useMemo(() => {
+    if (!searchTerm) return pokemonData;
+    return pokemonData.filter(pokemon => 
+      isPartialMatch(searchTerm, pokemon.name) || 
+      isPartialMatch(searchTerm, pokemon.japaneseName) ||
+      pokemon.id.toString().includes(searchTerm)
+    );
+  }, [pokemonData, searchTerm]);
+
+  const preloadImages = async () => {
+    console.log('プリロード開始...');
+    try {
+      const gen9Ids = Array.from({ length: 120 }, (_, i) => 906 + i);
+      const imagePromises = gen9Ids.map(id => {
+        const img = new Image();
+        img.src = `/images/generation-ix/${id}.webp`;
+        return new Promise((resolve) => {
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+        });
+      });
+
+      const shinyImagePromises = gen9Ids.map(id => {
+        const img = new Image();
+        img.src = `/images/generation-ix/shiny/${id}.webp`;
+        return new Promise((resolve) => {
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+        });
+      });
+
+      const iconPromises = [
+        '/icons/substitute.png',
+        '/icons/poke-ball.png'
+      ].map(path => {
+        const img = new Image();
+        img.src = path;
+        return new Promise((resolve) => {
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+        });
+      });
+
+      await Promise.all([...imagePromises, ...shinyImagePromises, ...iconPromises]);
+      console.log('プリロード完了');
+    } catch (error) {
+      console.error('画像プリロード中にエラーが発生しました:', error);
+    }
+  };
+
+  const vibrate = (pattern: number | number[]) => {
+    if ('vibrate' in navigator) {
+      try {
+        navigator.vibrate(pattern);
+      } catch (e) {
+        console.error('バイブレーション機能が利用できません:', e);
+      }
+    }
+  };
+
+  if (isLoading) {
     return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="text-red-500 text-lg">
-          <p>エラーが発生しました</p>
-          <p className="text-sm mt-2">{error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          >
-            再読み込み
-          </button>
-        </div>
+      <div className="loading-screen">
+        {loadingGif ? (
+          <img src={loadingGif} alt="Loading..." className="loading-gif" />
+        ) : (
+          <img 
+            src="/icons/substitute.png" 
+            alt="Loading..." 
+            className="loading-gif"
+            style={{ transform: loadingGifError ? 'none' : 'scale(0.5)' }}
+          />
+        )}
       </div>
     );
   }
 
   return (
-    <main className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">ポケモン図鑑</h1>
-      <div className="mb-4">
-        <h2 className="text-xl mb-2">世代選択</h2>
-        <div className="flex flex-wrap gap-2 mb-4">
-          {generations.map((gen) => (
-            <button
-              key={gen.id}
-              onClick={() => setGeneration(gen.id)}
-              className={`px-4 py-2 rounded ${
-                generation === gen.id ? 'bg-blue-500 text-white' : 'bg-gray-200'
-              } hover:bg-blue-400 hover:text-white transition-colors`}
-              title={gen.years}
-            >
-              {gen.name}
-            </button>
-          ))}
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {Object.keys(availableStyles).length > 1 && (
-            <select
-              value={selectedStyle}
-              onChange={(e) => setSelectedStyle(e.target.value)}
-              className="px-4 py-2 rounded bg-gray-200"
-            >
-              {Object.entries(availableStyles).map(([key, style]) => (
-                <option key={key} value={key}>
-                  {style.displayName.ja}
-                </option>
-              ))}
-            </select>
-          )}
-          <label className="flex items-center gap-2">
-            <input
-              type="checkbox"
-              checked={isShiny}
-              onChange={(e) => setIsShiny(e.target.checked)}
-            />
-            色違い
-          </label>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {loading ? (
-          Array.from({ length: 12 }).map((_, index) => (
-            <PokemonSkeleton key={index} />
-          ))
-        ) : (
-          pokemonList.map((pokemon) => (
-            <div key={pokemon.id} className="border rounded-lg p-4 flex flex-col items-center">
-              <div className="text-gray-500">#{String(pokemon.id).padStart(3, '0')}</div>
-              <div className="relative w-32 h-32">
-                <Image
-                  src={isShiny ? pokemon.sprites!.front_shiny : pokemon.sprites!.front_default}
-                  alt={pokemon.name}
-                  fill
-                  className="object-contain"
-                  sizes="128px"
-                  priority={pokemon.id <= 12}
-                />
+    <main className="flex flex-col min-h-screen">
+      <div className="pokedex">
+        <div className="pokedex-left">
+          <div className="top-controls">
+            <div className="search-box">
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                placeholder="Search..."
+                className="search-input"
+              />
+              <div className="menu-container">
+                <button 
+                  className="menu-button-plain"
+                  onClick={() => setMenuVisible(!menuVisible)}
+                  aria-expanded={menuVisible}
+                  aria-label="Menu"
+                >
+                  <img 
+                    src="/icons/poke-ball.png" 
+                    alt="Menu"
+                    className="poke-ball-icon"
+                    width={32}
+                    height={32}
+                    style={{ transform: menuVisible ? 'rotate(-15deg) scale(0.9)' : 'none' }}
+                  />
+                </button>
+                {menuVisible && (
+                  <div className="retro-menu">
+                    <div className="retro-menu-section">
+                      <button 
+                        className="retro-menu-item" 
+                        onClick={() => setIsJapanese(!isJapanese)}
+                      >
+                        <span>LANGUAGE</span>
+                        <span>{isJapanese ? 'JPN' : 'ENG'}</span>
+                      </button>
+                      <button 
+                        className="retro-menu-item" 
+                        onClick={() => setIsShiny(!isShiny)}
+                      >
+                        <span>SPRITE</span>
+                        <span>{isShiny ? 'SHINY' : 'NORMAL'}</span>
+                      </button>
+                    </div>
+                    <div className="retro-menu-section">
+                      <div className="retro-menu-header">COLOR</div>
+                      <div className="retro-menu-content">
+                        <div className="color-control-items">
+                          <div className="color-control-item">
+                            <span>SKIN</span>
+                            <input
+                              type="color"
+                              id="skin-color"
+                              value={skinColor}
+                              onChange={(e) => setSkinColor(e.target.value)}
+                            />
+                          </div>
+                          <div className="color-control-item">
+                            <span>SCREEN</span>
+                            <input
+                              type="color"
+                              id="screen-color"
+                              value={screenColor}
+                              onChange={(e) => setScreenColor(e.target.value)}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="retro-menu-section">
+                      <div className="retro-menu-header">GENERATION</div>
+                      <div className="retro-menu-content">
+                        <div className="generation-grid">
+                          {[
+                            { gen: 1 }, { gen: 2 }, { gen: 3 },
+                            { gen: 4 }, { gen: 5 }, { gen: 6 },
+                            { gen: 7 }, { gen: 8 }, { gen: 9 }
+                          ].map(({ gen }) => (
+                            <button
+                              key={gen}
+                              className={`generation-button ${generation === gen ? 'active' : ''}`}
+                              onClick={() => {
+                                const defaultStyle = getDefaultStyleForGeneration(gen);
+                                setGeneration(gen);
+                                setSpriteStyle(defaultStyle);
+                                storage.setItem('pokedex-generation', gen);
+                                storage.setItem('pokedex-sprite-style', defaultStyle);
+                                setMenuVisible(false);
+                              }}
+                            >
+                              <span className="generation-number">{gen}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-              <h2 className="text-xl font-bold mt-2">{pokemon.japaneseName}</h2>
-              <div className="flex gap-2 mt-2">
-                {pokemon.types.map((type) => (
-                  <span
-                    key={type}
-                    className={`px-2 py-1 rounded text-sm text-white ${typeColors[type]}`}
-                  >
-                    {typeTranslations[type]}
-                  </span>
-                ))}
-              </div>
-              <p className="mt-2 text-sm text-gray-600">
-                {pokemon.description?.ja || '説明文がありません'}
-              </p>
+              {searchTerm.length > 0 && searchResults.length > 0 && (
+                <div className="search-suggestions">
+                  {searchResults.map(pokemon => (
+                    <div
+                      key={pokemon.id}
+                      className="search-suggestion-item"
+                      onClick={() => {
+                        setSelectedPokemon(pokemon);
+                        setSearchTerm('');
+                      }}
+                    >
+                      <img
+                        src={`/images/pokemon_icons/${pokemon.id}.webp`}
+                        alt={isJapanese ? pokemon.japaneseName : pokemon.name}
+                        className="pokemon-icon"
+                        onError={(e) => {
+                          e.currentTarget.src = `/images/no-sprite.png`;
+                        }}
+                      />
+                      <span>
+                        #{pokemon.id.toString().padStart(4, '0')}{' '}
+                        {isJapanese ? pokemon.japaneseName : pokemon.name}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          ))
-        )}
+          </div>
+          <div className="screen-container">
+            <div className="screen">
+              {selectedPokemon && (
+                <div className="pokemon-sprite">
+                  <img
+                    src={spriteUrl || '/icons/substitute.png'}
+                    alt={isJapanese ? selectedPokemon.japaneseName : selectedPokemon.name}
+                    onError={(e) => {
+                      e.currentTarget.src = `/images/no-sprite.png`;
+                    }}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+          <button className="sprite-select-button" onClick={() => setSpriteModalOpen(true)}>
+            {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
+          </button>
+          {spriteModalOpen && (
+            <div className="sprite-modal-overlay" onClick={() => setSpriteModalOpen(false)}>
+              <div className="sprite-modal" onClick={e => e.stopPropagation()}>
+                <div className="sprite-modal-header">
+                  <h3>{isJapanese ? "シリーズ" : "SERIES"}</h3>
+                </div>
+                <div className="sprite-modal-content">
+                  {availableStyles.map((style) => (
+                    <button
+                      key={style}
+                      className={`sprite-modal-button ${style === spriteStyle ? 'active' : ''}`}
+                      onClick={() => {
+                        vibrate([10, 30, 10]);
+                        setSpriteStyle(style as keyof typeof spriteStyles);
+                        setSpriteModalOpen(false);
+                      }}
+                    >
+                      {spriteStyles[style as keyof typeof spriteStyles].displayName[isJapanese ? 'ja' : 'en']}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+          <div className="pokemon-info">
+            <h2 className="pokemon-name">
+              {selectedPokemon ? (
+                <>
+                  <span className="pokemon-number">#{selectedPokemon.id}</span>{" "}
+                  {isJapanese ? selectedPokemon.japaneseName : selectedPokemon.name}
+                </>
+              ) : (
+                "Loading..."
+              )}
+            </h2>
+            <div className="pokemon-types">
+              {selectedPokemon?.types.map((type) => (
+                <span key={type} className={`type-badge ${type.toLowerCase()}`}>
+                  {isJapanese ? typeTranslations[type as keyof typeof typeTranslations] || type : type}
+                </span>
+              ))}
+            </div>
+            <div className="pokemon-description">
+              {selectedPokemon?.description && (
+                <p>{isJapanese ? selectedPokemon.description.ja : selectedPokemon.description.en}</p>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="pokedex-right">
+          <div className="pokemon-list">
+            <ul className="pokemon-list-ul">
+              {filteredPokemonData.map((pokemon) => (
+                <li
+                  key={pokemon.id}
+                  className={`pokemon-list-item ${selectedPokemon?.id === pokemon.id ? 'selected' : ''}`}
+                  onClick={() => {
+                    vibrate(20);
+                    setSelectedPokemon(pokemon);
+                  }}
+                >
+                  <img
+                    src={`/images/pokemon_icons/${pokemon.id}.webp`}
+                    alt={isJapanese ? pokemon.japaneseName : pokemon.name}
+                    className="pokemon-icon"
+                    onError={(e) => {
+                      e.currentTarget.src = `/images/no-sprite.png`;
+                    }}
+                  />
+                  <span>
+                    #{pokemon.id.toString().padStart(4, '0')}{' '}
+                    {isJapanese ? pokemon.japaneseName : pokemon.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </main>
   );

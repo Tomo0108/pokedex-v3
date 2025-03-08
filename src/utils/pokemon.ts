@@ -1,112 +1,243 @@
-import { Pokemon, PokemonType } from '@/types/pokemon';
+import { SpriteStyles, Pokemon } from '@/types/pokemon';
 
-/**
- * 指定された世代のポケモンデータをJSONファイルから取得する
- * @param generation 取得したい世代番号（1-9）
- * @returns ポケモンデータの配列
- */
-export const fetchPokemonData = async (generation: number): Promise<Pokemon[]> => {
-  try {
-    // 世代番号のバリデーション
-    if (generation < 1 || generation > 9) {
-      console.error(`Invalid generation number: ${generation}. Must be between 1 and 9.`);
-      return [];
-    }
+// ローカルの画像パス
+const LOCAL_SPRITES_BASE_URL = '/images';
+// 画像が存在しない場合のフォールバック用のグレー画像URL
+const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
-    // JSONファイルからデータを取得
-    const response = await fetch(`/data/generation-${generation}.json`);
-    
-    if (!response.ok) {
-      throw new Error(`Failed to fetch data for generation ${generation}: ${response.statusText}`);
-    }
-    
-    const data: Pokemon[] = await response.json();
-    
-    // 各ポケモンにspritesとdescriptionプロパティを追加
-    return data.map(pokemon => {
-      // ポケモンIDに基づいてスプライト画像のパスを設定
-      const sprites = {
-        front_default: `/sprites/pokemon/${pokemon.id}.png`,
-        front_shiny: `/sprites/pokemon/shiny/${pokemon.id}.png`
-      };
-      
-      // 説明文を取得（getPokemonDescription関数を使用）
-      const description = getPokemonDescription(pokemon);
-      
-      return {
-        ...pokemon,
-        sprites,
-        description
-      };
-    });
-  } catch (error) {
-    console.error(`Error fetching Pokémon data for generation ${generation}:`, error);
-    return [];
+// 各スタイルで利用可能なポケモンIDの範囲
+type PokemonRange = { min: number; max: number; };
+type AvailablePokemon = {
+  ranges: PokemonRange[];
+  exceptions?: number[]; // 範囲外でも利用可能なID
+};
+
+// 各スタイルで実際に利用可能なポケモンを定義
+const availablePokemon: { [key: string]: AvailablePokemon } = {
+  'red-blue': {
+    ranges: [{ min: 1, max: 151 }]
+  },
+  'crystal': {
+    ranges: [{ min: 1, max: 251 }]
+  },
+  'firered-leafgreen': {
+    ranges: [{ min: 1, max: 151 }]
+  },
+  'emerald': {
+    ranges: [{ min: 1, max: 386 }]
+  },
+  'diamond-pearl': {
+    ranges: [{ min: 1, max: 493 }]
+  },
+  'black-white': {
+    ranges: [{ min: 1, max: 649 }]
+  },
+  'x-y': {
+    ranges: [{ min: 1, max: 721 }]
+  },
+  'sun-moon': {
+    ranges: [{ min: 1, max: 809 }]
+  },
+  'sword-shield': {
+    ranges: [{ min: 1, max: 905 }]
+  },
+  'scarlet-violet': {
+    ranges: [{ min: 1, max: 1025 }]
   }
 };
 
-/**
- * 特定のポケモンのデータを取得する
- * @param id ポケモンのID
- * @param generation 世代番号（指定しない場合は全世代から検索）
- * @returns ポケモンデータまたはnull
- */
-export const fetchPokemonById = async (id: number, generation?: number): Promise<Pokemon | null> => {
-  try {
-    // 特定の世代が指定されている場合
-    if (generation) {
-      const pokemonList = await fetchPokemonData(generation);
-      return pokemonList.find(pokemon => pokemon.id === id) || null;
-    }
-    
-    // 世代が指定されていない場合、全世代から検索
-    for (let gen = 1; gen <= 9; gen++) {
-      const pokemonList = await fetchPokemonData(gen);
-      const pokemon = pokemonList.find(pokemon => pokemon.id === id);
-      if (pokemon) {
-        return pokemon;
-      }
-    }
-    
-    return null;
-  } catch (error) {
-    console.error(`Error fetching Pokémon with ID ${id}:`, error);
-    return null;
+export const spriteStyles: SpriteStyles = {
+  'red-blue': {
+    path: '/generation-i/red-blue',
+    gens: [1],
+    animated: false,
+    displayName: { ja: 'レッド・ブルー', en: 'Red-Blue' }
+  },
+  'crystal': {
+    path: '/generation-ii/crystal',
+    gens: [1, 2],
+    animated: true,
+    displayName: { ja: 'クリスタル', en: 'Crystal' }
+  },
+  'firered-leafgreen': {
+    path: '/generation-iii/firered-leafgreen',
+    gens: [1],
+    animated: false,
+    displayName: { ja: 'ファイアレッド・リーフグリーン', en: 'FireRed-LeafGreen' }
+  },
+  'emerald': {
+    path: '/generation-iii/emerald',
+    gens: [1, 2, 3],
+    animated: false,
+    displayName: { ja: 'エメラルド', en: 'Emerald' }
+  },
+  'diamond-pearl': {
+    path: '/generation-iv/diamond-pearl',
+    gens: [1, 2, 3, 4],
+    animated: false,
+    displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
+  },
+  'black-white': {
+    path: '/generation-v/black-white',
+    gens: [1, 2, 3, 4, 5],
+    animated: true,
+    displayName: { ja: 'ブラック・ホワイト', en: 'Black-White' }
+  },
+  'x-y': {
+    path: '/generation-vi/x-y',
+    gens: [1, 2, 3, 4, 5, 6],
+    animated: false,
+    displayName: { ja: 'X・Y', en: 'X-Y' }
+  },
+  'sun-moon': {
+    path: '/generation-vii/sun-moon',
+    gens: [1, 2, 3, 4, 5, 6, 7],
+    animated: false,
+    displayName: { ja: 'サン・ムーン', en: 'Sun-Moon' }
+  },
+  'sword-shield': {
+    path: '/generation-viii/sword-shield',
+    gens: [1, 2, 3, 4, 5, 6, 7, 8],
+    animated: false,
+    displayName: { ja: 'ソード・シールド', en: 'Sword-Shield' }
+  },
+  'scarlet-violet': {
+    path: '/generation-ix/scarlet-violet',
+    gens: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    animated: false,
+    displayName: { ja: 'スカーレット・バイオレット', en: 'Scarlet-Violet' }
   }
 };
 
-/**
- * ポケモンの説明文を取得する
- * @param pokemon ポケモンデータ
- * @param version 取得したいバージョン番号（指定しない場合は最新）
- * @returns 説明文オブジェクト
- */
-export const getPokemonDescription = (pokemon: Pokemon, version?: number): { en: string; ja: string } => {
-  // バージョンが指定されていない場合、利用可能な最新バージョンを使用
-  if (!version) {
-    const versions = Object.keys(pokemon.descriptions)
-      .map(Number)
-      .sort((a, b) => b - a);
-    
-    // 日本語と英語の両方が存在するバージョンを探す
-    for (const ver of versions) {
-      const desc = pokemon.descriptions[ver];
-      if (desc.en && desc.ja) {
-        return desc;
-      }
-    }
-    
-    // 両方が揃っているバージョンがない場合は、最新のものを返す
-    if (versions.length > 0) {
-      return pokemon.descriptions[versions[0]];
-    }
-  } else {
-    // 指定されたバージョンの説明文が存在する場合
-    if (pokemon.descriptions[version]) {
-      return pokemon.descriptions[version];
-    }
+export function getDefaultStyleForGeneration(generation: number): keyof typeof spriteStyles {
+  switch (generation) {
+    case 1:
+      return 'red-blue';
+    case 2:
+      return 'crystal';
+    case 3:
+      return 'emerald';
+    case 4:
+      return 'diamond-pearl';
+    case 5:
+      return 'black-white';
+    case 6:
+      return 'x-y';
+    case 7:
+      return 'sun-moon';
+    case 8:
+      return 'sword-shield';
+    case 9:
+      return 'scarlet-violet';
+    default:
+      return 'red-blue';
+  }
+}
+
+// 指定されたIDのポケモンがスタイルで利用可能かチェック
+function isPokemonAvailableInStyle(pokemonId: number, style: keyof typeof spriteStyles): boolean {
+  const available = availablePokemon[style];
+  if (!available) return false;
+
+  // 例外リストにある場合は利用可能
+  if (available.exceptions?.includes(pokemonId)) return true;
+
+  // 範囲内にある場合は利用可能
+  return available.ranges.some(range => 
+    pokemonId >= range.min && pokemonId <= range.max
+  );
+}
+
+export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false, form?: string): string {
+  // ポケモンIDから世代を判定
+  const generation = 
+    pokemonId <= 151 ? 1 :
+    pokemonId <= 251 ? 2 :
+    pokemonId <= 386 ? 3 :
+    pokemonId <= 493 ? 4 :
+    pokemonId <= 649 ? 5 :
+    pokemonId <= 721 ? 6 :
+    pokemonId <= 809 ? 7 :
+    pokemonId <= 905 ? 8 :
+    pokemonId <= 1025 ? 9 : 9; // 9世代は906~1025
+  
+  // スタイル情報を取得
+  const styleInfo = spriteStyles[style];
+  
+  // スタイルが指定の世代をサポートしていないか、ポケモンが利用できない場合は
+  // 世代に基づいてデフォルトのスタイルを使用
+  if (!styleInfo || !styleInfo.gens.includes(generation) || !isPokemonAvailableInStyle(pokemonId, style)) {
+    const defaultStyle = getDefaultStyleForGeneration(generation);
+    return createSpriteUrl(pokemonId, defaultStyle, shiny, form);
   }
   
-  // 該当する説明文がない場合は空の説明文を返す
+  // 拡張子を設定（black-whiteスタイルの場合はgif、それ以外はwebp）
+  const ext = style === 'black-white' ? '.gif' : '.webp';
+  
+  // フォルムが指定されている場合はファイル名に追加
+  const fileName = form ? `${pokemonId}-${form}` : `${pokemonId}`;
+  
+  // 画像パスを生成
+  const imagePath = shiny 
+    ? `/images${styleInfo.path}/shiny/${fileName}${ext}`
+    : `/images${styleInfo.path}/${fileName}${ext}`;
+  
+  return imagePath;
+}
+
+function getLatestDescription(descriptions: { [key: number]: { en: string; ja: string }}, currentGen: number): { en: string; ja: string } {
+  // 世代の配列を取得し、現在の世代から降順でソート
+  const generations = Object.keys(descriptions)
+    .map(Number)
+    .filter(gen => gen <= currentGen)
+    .sort((a, b) => b - a);
+
+  if (generations.length > 0) {
+    // 最新の世代の説明を返す
+    const latestGen = generations[0];
+    return descriptions[latestGen];
+  }
+
   return { en: '', ja: '' };
-};
+}
+
+export async function fetchPokemonData(generation: number) {
+  const ranges = {
+    1: [1, 151],
+    2: [152, 251],
+    3: [252, 386],
+    4: [387, 493],
+    5: [494, 649],
+    6: [650, 721],
+    7: [722, 809],
+    8: [810, 905],
+    9: [906, 1025],
+  };
+
+  try {
+    // ローカルのJSONファイルからデータを読み込む
+    const response = await fetch(`/data/generation-${generation}.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to load Pokemon data for generation ${generation}`);
+    }
+    
+    const pokemonData: Pokemon[] = await response.json();
+    const style = getDefaultStyleForGeneration(generation);
+    
+    // スプライトURLを追加
+    return pokemonData.map((pokemon: Pokemon) => ({
+      ...pokemon,
+      sprites: {
+        front_default: createSpriteUrl(pokemon.id, style, false, pokemon.form),
+        front_shiny: createSpriteUrl(pokemon.id, style, true, pokemon.form),
+      },
+      description: pokemon.descriptions 
+        ? getLatestDescription(pokemon.descriptions, generation)
+        : { en: '', ja: '' }
+    }));
+    
+  } catch (error) {
+    console.error(`Error loading Pokemon data for generation ${generation}:`, error);
+    return [];
+  }
+}
