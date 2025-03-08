@@ -6,11 +6,59 @@ const LOCAL_SPRITES_BASE_URL = '/images';
 const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
 export const spriteStyles: SpriteStyles = {
+  'red-blue': {
+    path: '/generation-i/red-blue',
+    gens: [1],
+    animated: false,
+    displayName: { ja: 'レッド・ブルー', en: 'Red-Blue' }
+  },
+  'yellow': {
+    path: '/generation-i/yellow',
+    gens: [1],
+    animated: false,
+    displayName: { ja: 'イエロー', en: 'Yellow' }
+  },
+  'gold': {
+    path: '/generation-ii/gold',
+    gens: [2],
+    animated: false,
+    displayName: { ja: 'ゴールド', en: 'Gold' }
+  },
+  'silver': {
+    path: '/generation-ii/silver',
+    gens: [2],
+    animated: false,
+    displayName: { ja: 'シルバー', en: 'Silver' }
+  },
+  'crystal': {
+    path: '/generation-ii/crystal',
+    gens: [2],
+    animated: true,
+    displayName: { ja: 'クリスタル', en: 'Crystal' }
+  },
   'emerald': {
     path: '/generation-iii/emerald',
-    gens: [1, 2, 3, 4],
+    gens: [3],
     animated: false,
     displayName: { ja: 'エメラルド', en: 'Emerald' }
+  },
+  'diamond-pearl': {
+    path: '/generation-iv/diamond-pearl',
+    gens: [4],
+    animated: false,
+    displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
+  },
+  'platinum': {
+    path: '/generation-iv/platinum',
+    gens: [4],
+    animated: false,
+    displayName: { ja: 'プラチナ', en: 'Platinum' }
+  },
+  'heartgold-soulsilver': {
+    path: '/generation-iv/heartgold-soulsilver',
+    gens: [4],
+    animated: false,
+    displayName: { ja: 'ハートゴールド・ソウルシルバー', en: 'HeartGold-SoulSilver' }
   },
   'black-white': {
     path: '/generation-v/black-white',
@@ -45,13 +93,28 @@ export const spriteStyles: SpriteStyles = {
 };
 
 export function getDefaultStyleForGeneration(generation: number): keyof typeof spriteStyles {
-  if (generation <= 4) return 'emerald';
-  if (generation === 5) return 'black-white';
-  if (generation === 6) return 'x-y';
-  if (generation === 7) return 'sun-moon';
-  if (generation === 8) return 'sword-shield';
-  if (generation === 9) return 'scarlet-violet';
-  return 'emerald';
+  switch (generation) {
+    case 1:
+      return 'red-blue';
+    case 2:
+      return 'crystal';
+    case 3:
+      return 'emerald';
+    case 4:
+      return 'diamond-pearl';
+    case 5:
+      return 'black-white';
+    case 6:
+      return 'x-y';
+    case 7:
+      return 'sun-moon';
+    case 8:
+      return 'sword-shield';
+    case 9:
+      return 'scarlet-violet';
+    default:
+      return 'red-blue';
+  }
 }
 
 export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): string {

@@ -421,10 +421,10 @@ export default function HomePage() {
                 </div>
               )}
             </div>
-            <button className="sprite-select-button" onClick={() => setSpriteModalOpen(true)}>
-              {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
-            </button>
           </div>
+          <button className="sprite-select-button" onClick={() => setSpriteModalOpen(true)}>
+            {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']} <span className="arrow-down">▼</span>
+          </button>
           {spriteModalOpen && (
             <div className="sprite-modal-overlay" onClick={() => setSpriteModalOpen(false)}>
               <div className="sprite-modal" onClick={e => e.stopPropagation()}>

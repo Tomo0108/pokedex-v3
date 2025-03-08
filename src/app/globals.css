@@ -725,23 +725,26 @@
   }
 
 /* スプライト選択ボタン */
-.sprite-select-button {
-  @apply w-full px-4 py-2 mb-2 last:mb-0;
-  @apply text-sm bg-[var(--bg-dark)];
-  color: white;
-  border: 1px solid var(--border-dark);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  @apply flex items-center justify-between;
-  @apply cursor-pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
-  transform: translateY(0);
-  border-radius: 4px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  min-height: 44px;
-}
+  .sprite-select-button {
+    @apply w-full px-4 py-2 mb-4;
+    @apply text-sm bg-[var(--bg-screen)] text-[var(--text-dark)];
+    @apply border-2 border-[var(--border-dark)] rounded;
+    @apply flex items-center justify-between;
+    @apply cursor-pointer;
+    box-shadow: var(--shadow-inset);
+    transition: all 0.2s ease;
+    transform: translateY(0);
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    min-height: 44px;
+  }
+
+  .sprite-select-button:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-inset-reverse);
+  }
 
 .sprite-select-button:active {
   background-color: var(--bg-darker);
