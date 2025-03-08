@@ -727,10 +727,10 @@
 /* スプライト選択ボタン */
   .sprite-select-button {
     @apply w-full px-4 py-2 mb-4 text-sm;
-    background-color: var(--bg-screen);
-    color: var(--text-dark);
-    border: var(--gameboy-border);
-    box-shadow: var(--gameboy-shadow);
+    background-color: var(--bg-dark);
+    color: white;
+    border: 1px solid var(--border-dark);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     @apply flex items-center justify-between;
     @apply cursor-pointer;
     transition: all 0.2s ease;
@@ -740,11 +740,18 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     min-height: 44px;
+    border-radius: 4px;
   }
 
   .sprite-select-button:active {
     transform: translateY(2px);
-    box-shadow: 0 2px 0 #306230;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    background-color: var(--bg-darker);
+  }
+
+  .sprite-select-button:hover {
+    background-color: #303030;
+    border-color: #505050;
   }
 
 .arrow-down {
@@ -771,40 +778,41 @@
 
 .sprite-modal {
   @apply w-[300px];
-  background-color: var(--bg-screen);
-  border: var(--gameboy-border);
-  box-shadow: var(--gameboy-shadow);
-  @apply overflow-hidden;
+  background-color: var(--bg-dark);
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  @apply overflow-hidden rounded-lg;
   animation: menuAppear 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   max-height: 80vh;
 }
 
 .sprite-modal-header {
-  @apply p-2 border-b-2;
-  border-color: var(--bg-screen-dark);
+  @apply p-2 border-b;
+  border-color: var(--border-dark);
+  background-color: var(--bg-darker);
 }
 
 .sprite-modal-header h3 {
   @apply px-2 py-1 text-xs font-bold uppercase tracking-wider;
   font-family: 'Press Start 2P', monospace;
   margin: 0;
-  color: var(--text-dark);
+  color: white;
 }
 
 .sprite-modal-content {
   @apply p-2 overflow-y-auto;
   max-height: 60vh;
-  background-color: var(--bg-screen-light);
+  background-color: var(--bg-dark);
 }
 
 .sprite-modal-button {
   @apply w-full px-4 py-2 mb-2 last:mb-0 text-sm;
-  background-color: var(--bg-screen);
-  color: var(--text-dark);
-  border: var(--gameboy-border);
-  box-shadow: var(--gameboy-shadow);
+  background-color: var(--bg-dark);
+  color: white;
+  border: 1px solid var(--border-dark);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   @apply flex items-center justify-between;
-  @apply cursor-pointer;
+  @apply cursor-pointer rounded;
   font-family: 'Press Start 2P', monospace;
   font-size: 10px;
   letter-spacing: 1px;
@@ -814,14 +822,20 @@
 }
 
 .sprite-modal-button.active {
-  background-color: var(--bg-screen-light);
-  box-shadow: 0 2px 0 #306230;
-  transform: translateY(2px);
+  background-color: var(--pokedex-color);
+  border-color: #505050;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.sprite-modal-button:hover {
+  background-color: #303030;
+  border-color: #505050;
 }
 
 .sprite-modal-button:active {
-  box-shadow: 0 2px 0 #306230;
-  transform: translateY(2px);
+  background-color: var(--bg-darker);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  transform: translateY(1px);
 }
 
 /* 世代ボタングリッド */
