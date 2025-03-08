@@ -21,7 +21,24 @@ export const fetchPokemonData = async (generation: number): Promise<Pokemon[]> =
     }
     
     const data: Pokemon[] = await response.json();
-    return data;
+    
+    // 各ポケモンにspritesとdescriptionプロパティを追加
+    return data.map(pokemon => {
+      // ポケモンIDに基づいてスプライト画像のパスを設定
+      const sprites = {
+        front_default: `/sprites/pokemon/${pokemon.id}.png`,
+        front_shiny: `/sprites/pokemon/shiny/${pokemon.id}.png`
+      };
+      
+      // 説明文を取得（getPokemonDescription関数を使用）
+      const description = getPokemonDescription(pokemon);
+      
+      return {
+        ...pokemon,
+        sprites,
+        description
+      };
+    });
   } catch (error) {
     console.error(`Error fetching Pokémon data for generation ${generation}:`, error);
     return [];
