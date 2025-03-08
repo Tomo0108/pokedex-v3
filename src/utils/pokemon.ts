@@ -17,47 +17,32 @@ const availablePokemon: { [key: string]: AvailablePokemon } = {
   'red-blue': {
     ranges: [{ min: 1, max: 151 }]
   },
-  'yellow': {
-    ranges: [{ min: 1, max: 151 }]
-  },
-  'gold': {
-    ranges: [{ min: 1, max: 251 }]
-  },
-  'silver': {
-    ranges: [{ min: 1, max: 251 }]
-  },
   'crystal': {
     ranges: [{ min: 1, max: 251 }]
+  },
+  'firered-leafgreen': {
+    ranges: [{ min: 1, max: 151 }]
   },
   'emerald': {
     ranges: [{ min: 1, max: 386 }]
   },
-  'firered-leafgreen': {
-    ranges: [{ min: 1, max: 386 }]
-  },
   'diamond-pearl': {
-    ranges: [{ min: 1, max: 493 }]
-  },
-  'platinum': {
-    ranges: [{ min: 1, max: 493 }]
-  },
-  'heartgold-soulsilver': {
     ranges: [{ min: 1, max: 493 }]
   },
   'black-white': {
     ranges: [{ min: 1, max: 649 }]
   },
   'x-y': {
-    ranges: [{ min: 650, max: 721 }]
+    ranges: [{ min: 1, max: 721 }]
   },
   'sun-moon': {
-    ranges: [{ min: 722, max: 809 }]
+    ranges: [{ min: 1, max: 809 }]
   },
   'sword-shield': {
-    ranges: [{ min: 810, max: 905 }]
+    ranges: [{ min: 1, max: 905 }]
   },
   'scarlet-violet': {
-    ranges: [{ min: 906, max: 1025 }]
+    ranges: [{ min: 1, max: 1025 }]
   }
 };
 
@@ -68,29 +53,17 @@ export const spriteStyles: SpriteStyles = {
     animated: false,
     displayName: { ja: 'レッド・ブルー', en: 'Red-Blue' }
   },
-  'yellow': {
-    path: '/generation-i/yellow',
-    gens: [1],
-    animated: false,
-    displayName: { ja: 'イエロー', en: 'Yellow' }
-  },
-  'gold': {
-    path: '/generation-ii/gold',
-    gens: [1, 2],
-    animated: false,
-    displayName: { ja: 'ゴールド', en: 'Gold' }
-  },
-  'silver': {
-    path: '/generation-ii/silver',
-    gens: [1, 2],
-    animated: false,
-    displayName: { ja: 'シルバー', en: 'Silver' }
-  },
   'crystal': {
     path: '/generation-ii/crystal',
     gens: [1, 2],
     animated: true,
     displayName: { ja: 'クリスタル', en: 'Crystal' }
+  },
+  'firered-leafgreen': {
+    path: '/generation-iii/firered-leafgreen',
+    gens: [1],
+    animated: false,
+    displayName: { ja: 'ファイアレッド・リーフグリーン', en: 'FireRed-LeafGreen' }
   },
   'emerald': {
     path: '/generation-iii/emerald',
@@ -98,29 +71,11 @@ export const spriteStyles: SpriteStyles = {
     animated: false,
     displayName: { ja: 'エメラルド', en: 'Emerald' }
   },
-  'firered-leafgreen': {
-    path: '/generation-iii/firered-leafgreen',
-    gens: [1, 2, 3],
-    animated: false,
-    displayName: { ja: 'ファイアレッド・リーフグリーン', en: 'FireRed-LeafGreen' }
-  },
   'diamond-pearl': {
     path: '/generation-iv/diamond-pearl',
     gens: [1, 2, 3, 4],
     animated: false,
     displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
-  },
-  'platinum': {
-    path: '/generation-iv/platinum',
-    gens: [1, 2, 3, 4],
-    animated: false,
-    displayName: { ja: 'プラチナ', en: 'Platinum' }
-  },
-  'heartgold-soulsilver': {
-    path: '/generation-iv/heartgold-soulsilver',
-    gens: [1, 2, 3, 4],
-    animated: false,
-    displayName: { ja: 'ハートゴールド・ソウルシルバー', en: 'HeartGold-SoulSilver' }
   },
   'black-white': {
     path: '/generation-v/black-white',
