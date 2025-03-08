@@ -467,6 +467,11 @@ export default function HomePage() {
                 </span>
               ))}
             </div>
+            <div className="pokemon-description">
+              {selectedPokemon?.description && (
+                <p>{isJapanese ? selectedPokemon.description.ja : selectedPokemon.description.en}</p>
+              )}
+            </div>
           </div>
         </div>
         <div className="pokedex-right">
