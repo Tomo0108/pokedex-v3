@@ -1,36 +1,47 @@
-export interface Pokemon {
+export type PokemonType = 
+  | 'normal' | 'fire' | 'water' | 'electric' | 'grass' | 'ice'
+  | 'fighting' | 'poison' | 'ground' | 'flying' | 'psychic'
+  | 'bug' | 'rock' | 'ghost' | 'dragon' | 'dark' | 'steel' | 'fairy';
+
+export type PokemonDescription = {
+  en: string;
+  ja: string;
+};
+
+export type Pokemon = {
   id: number;
   name: string;
   japaneseName: string;
-  types: string[];
-  form?: string;
-  sprites: {
+  types: PokemonType[];
+  descriptions: {
+    [key: number]: PokemonDescription;
+  };
+  sprites?: {
     front_default: string;
     front_shiny: string;
   };
-  description: {
-    en: string;
-    ja: string;
-  };
-  descriptions?: {
-    [key: number]: {
-      en: string;
-      ja: string;
-    }
-  };
-}
+  description?: PokemonDescription;
+  form?: string;
+};
 
-export interface SpriteStyle {
+export type SpriteStyle = {
   path: string;
   gens: number[];
-  shiny?: boolean;
-  animated?: boolean;
+  animated: boolean;
   displayName: {
     ja: string;
     en: string;
   };
-}
+};
 
-export interface SpriteStyles {
+export type SpriteStyles = {
   [key: string]: SpriteStyle;
-}
+};
+
+export type TypeTranslations = {
+  [key in PokemonType]: string;
+};
+
+export type TypeColors = {
+  [key in PokemonType]: string;
+};

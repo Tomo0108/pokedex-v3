@@ -1,40 +1,31 @@
-export type StorageValue = string | number | boolean;
+const SPRITE_STYLE_KEY = 'sprite-style';
+const SHINY_KEY = 'shiny';
 
-export const storage = {
-  setItem(key: string, value: StorageValue): void {
+export function useStorage() {
+  const getSpriteStyle = (): string => {
+    if (typeof window === 'undefined') return 'black-white';
+    return localStorage.getItem(SPRITE_STYLE_KEY) || 'black-white';
+  };
+
+  const setSpriteStyle = (style: string): void => {
     if (typeof window === 'undefined') return;
-    try {
-      localStorage.setItem(key, String(value));
-    } catch (error) {
-      console.error('Failed to save to localStorage:', error);
-    }
-  },
+    localStorage.setItem(SPRITE_STYLE_KEY, style);
+  };
 
-  getRawItem(key: string, defaultValue: StorageValue): string {
-    if (typeof window === 'undefined') return String(defaultValue);
-    try {
-      const value = localStorage.getItem(key);
-      return value !== null ? value : String(defaultValue);
-    } catch (error) {
-      console.error('Failed to read from localStorage:', error);
-      return String(defaultValue);
-    }
-  },
+  const getShiny = (): boolean => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem(SHINY_KEY) === 'true';
+  };
 
-  getString(key: string, defaultValue: string): string {
-    return this.getRawItem(key, defaultValue);
-  },
+  const setShiny = (isShiny: boolean): void => {
+    if (typeof window === 'undefined') return;
+    localStorage.setItem(SHINY_KEY, isShiny.toString());
+  };
 
-  getNumber(key: string, defaultValue: number): number {
-    const stringValue = this.getRawItem(key, defaultValue);
-    const value = parseInt(stringValue, 10);
-    return isNaN(value) ? defaultValue : value;
-  },
-
-  getBoolean(key: string, defaultValue: boolean): boolean {
-    const stringValue = this.getRawItem(key, defaultValue);
-    if (stringValue === 'true') return true;
-    if (stringValue === 'false') return false;
-    return defaultValue;
-  }
-} as const;
+  return {
+    getSpriteStyle,
+    setSpriteStyle,
+    getShiny,
+    setShiny,
+  };
+}
