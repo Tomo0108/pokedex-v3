@@ -1,4 +1,5 @@
 import { SpriteStyles, Pokemon } from '@/types/pokemon';
+import axios from 'axios';
 
 // ローカルの画像パス
 const LOCAL_SPRITES_BASE_URL = '/images';
@@ -215,27 +216,51 @@ export async function fetchPokemonData(generation: number) {
   };
 
   try {
-    // ローカルのJSONファイルからデータを読み込む
-    const response = await fetch(`/data/generation-${generation}.json`);
-    if (!response.ok) {
-      throw new Error(`Failed to load Pokemon data for generation ${generation}`);
-    }
-    
-    const pokemonData: Pokemon[] = await response.json();
+    const [start, end] = ranges[generation as keyof typeof ranges];
     const style = getDefaultStyleForGeneration(generation);
-    
-    // スプライトURLを追加
-    return pokemonData.map((pokemon: Pokemon) => ({
-      ...pokemon,
-      sprites: {
-        front_default: createSpriteUrl(pokemon.id, style, false, pokemon.form),
-        front_shiny: createSpriteUrl(pokemon.id, style, true, pokemon.form),
-      },
-      description: pokemon.descriptions 
-        ? getLatestDescription(pokemon.descriptions, generation)
-        : { en: '', ja: '' }
-    }));
-    
+    const pokemonList: Pokemon[] = [];
+
+    for (let id = start; id <= end; id++) {
+      // PokeAPIからポケモンの基本データを取得
+      const pokemonResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+      const speciesResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
+      
+      // 日本語の名前を取得
+      const japaneseName = speciesResponse.data.names.find(
+        (name: any) => name.language.name === 'ja'
+      )?.name || '';
+
+      // タイプを取得
+      const types = pokemonResponse.data.types.map((type: any) => type.type.name);
+
+      // 説明文を取得
+      const descriptions = speciesResponse.data.flavor_text_entries;
+      const enDescription = descriptions.find(
+        (desc: any) => desc.language.name === 'en'
+      )?.flavor_text || '';
+      const jaDescription = descriptions.find(
+        (desc: any) => desc.language.name === 'ja'
+      )?.flavor_text || '';
+
+      const pokemon: Pokemon = {
+        id,
+        name: pokemonResponse.data.name,
+        japaneseName,
+        types,
+        sprites: {
+          front_default: createSpriteUrl(id, style, false),
+          front_shiny: createSpriteUrl(id, style, true),
+        },
+        description: {
+          en: enDescription.replace(/\f/g, ' '),
+          ja: jaDescription.replace(/\f/g, ' '),
+        }
+      };
+
+      pokemonList.push(pokemon);
+    }
+
+    return pokemonList;
   } catch (error) {
     console.error(`Error loading Pokemon data for generation ${generation}:`, error);
     return [];
