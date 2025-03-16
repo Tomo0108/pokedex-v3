@@ -22,8 +22,8 @@ export interface Pokemon {
 export interface SpriteStyle {
   path: string;
   gens: number[];
-  shiny?: boolean;
   animated?: boolean;
+  hasShiny?: boolean;
   displayName: {
     ja: string;
     en: string;

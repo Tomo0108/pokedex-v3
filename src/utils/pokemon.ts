@@ -10,72 +10,84 @@ export const spriteStyles: SpriteStyles = {
     path: '/generation-i/red-blue',
     gens: [1],
     animated: false,
+    hasShiny: false,
     displayName: { ja: '赤・青', en: 'Red-Blue' }
   },
   'yellow': {
     path: '/generation-i/yellow',
     gens: [1],
     animated: false,
+    hasShiny: false,
     displayName: { ja: 'ピカチュウ', en: 'Yellow' }
   },
   'gold': {
     path: '/generation-ii/gold',
     gens: [1, 2],
     animated: false,
+    hasShiny: false,
     displayName: { ja: '金', en: 'Gold' }
   },
   'silver': {
     path: '/generation-ii/silver',
     gens: [1, 2],
     animated: false,
+    hasShiny: false,
     displayName: { ja: '銀', en: 'Silver' }
   },
   'crystal': { 
     path: '/generation-ii/crystal',
     gens: [1, 2],
     animated: false,
+    hasShiny: true,
     displayName: { ja: 'クリスタル', en: 'Crystal' }
   },
   'ruby-sapphire': {
     path: '/generation-iii/ruby-sapphire',
     gens: [1, 2, 3],
     animated: false,
+    hasShiny: true,
     displayName: { ja: 'ルビー・サファイア', en: 'Ruby-Sapphire' }
   },
   'emerald': { 
     path: '/generation-iii/emerald',
     gens: [1, 2, 3],
     animated: false,
+    hasShiny: true,
     displayName: { ja: 'エメラルド', en: 'Emerald' }
   },
   'firered-leafgreen': {
     path: '/generation-iii/firered-leafgreen',
     gens: [1],
     animated: false,
+    hasShiny: true,
     displayName: { ja: 'FR・LG', en: 'FR-LG' }
   },
   'diamond-pearl': { 
     path: '/generation-iv/diamond-pearl',
     gens: [1, 2, 3, 4],
     animated: false,
+    hasShiny: true,
     displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
   },
   'platinum': {
     path: '/generation-iv/platinum',
     gens: [1, 2, 3, 4],
     animated: false,
+    hasShiny: true,
     displayName: { ja: 'プラチナ', en: 'Platinum' }
   },
   'heartgold-soulsilver': {
     path: '/generation-iv/heartgold-soulsilver',
     gens: [1, 2, 3, 4],
     animated: false,
+    hasShiny: true,
     displayName: { ja: 'HG・SS', en: 'HG-SS' }
   },
   'black-white': {
     path: '/generation-v/black-white',
     gens: [1, 2, 3, 4, 5],
     animated: true,
+    hasShiny: true,
     displayName: { ja: 'ブラック・ホワイト', en: 'Black-White' }
   }
 };
@@ -106,6 +118,15 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
   const extension = style === 'black-white' ? '.gif' : '.png';
   
   // ローカルの画像パスを使用
+  // 色違いが非対応の場合はデフォルトスタイルを使用
+  if (shiny && styleInfo.hasShiny === false) {
+    const defaultStyle = getDefaultStyleForGeneration(
+      styleInfo.gens[styleInfo.gens.length - 1]
+    );
+    const defaultStyleInfo = spriteStyles[defaultStyle];
+    return `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}${shinyPath}/${pokemonId}${extension}`;
+  }
+
   // FireRed・LeafGreenの場合は1-151のみ有効
   if (style === 'firered-leafgreen' && pokemonId > 151) {
     // デフォルトのスタイルに切り替え
@@ -114,8 +135,8 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
     return `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}${shinyPath}/${pokemonId}${extension}`;
   }
 
-  const spriteUrl = `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}${shinyPath}/${pokemonId}${extension}`;
-  return spriteUrl;
+  // 通常のスプライトURL生成
+  return `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}${shinyPath}/${pokemonId}${extension}`;
 }
 
 async function getLatestDescription(entries: any[], language: string, generation: number) {
