@@ -182,19 +182,10 @@ export async function fetchPokemonData(generation: number) {
       const style = getDefaultStyleForGeneration(generation);
       
       // 説明文の取得
-      const descriptions = await (async (entries: any) => {
-        if (!entries) return { en: '', ja: '' };
-        
-        const [jaDesc, enDesc] = await Promise.all([
-          getLatestDescription(entries, 'ja', generation),
-          getLatestDescription(entries, 'en', generation)
-        ]);
-        
-        return {
-          ja: jaDesc || '', // 日本語の説明がない場合は空文字
-          en: enDesc || ''  // 英語の説明がない場合は空文字
-        };
-      })(pokemon.flavor_text_entries);
+      const descriptions = {
+        en: pokemon.descriptions[generation]?.en || '',
+        ja: pokemon.descriptions[generation]?.ja || ''
+      };
       
       return {
         ...pokemon,
@@ -210,7 +201,7 @@ export async function fetchPokemonData(generation: number) {
               ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`
               : createSpriteUrl(pokemon.id, style, true),
         },
-        description: descriptions
+        description: descriptions,
       };
     });
 
