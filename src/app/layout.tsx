@@ -24,8 +24,7 @@ export const viewport = {
   userScalable: false,
   minimumScale: 1,
   maximumScale: 1,
-  themeColor: '#8b0000',
-  interactiveWidget: 'resizes-visual'
+  themeColor: '#8b0000'
 };
 
 export const metadata: Metadata = {
@@ -35,19 +34,6 @@ export const metadata: Metadata = {
   icons: {
     icon: '/icons/poke-doll.png',
     apple: '/icons/poke-doll.png',
-  },
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'black-translucent',
-    title: 'Retro Pokedex'
-  },
-  other: {
-    'apple-mobile-web-app-capable': 'yes',
-    'mobile-web-app-capable': 'yes',
-    'application-name': 'Retro Pokedex',
-    'msapplication-TileColor': '#8b0000',
-    'msapplication-tap-highlight': 'no',
-    'theme-color': '#8b0000'
   }
 };
 

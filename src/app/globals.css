@@ -9,62 +9,22 @@
   --bg-dark: #202020;
   --bg-darker: #181818;
   --bg-screen: #9bbc0f;
-  --bg-screen-dark: #0f380f;
-  --bg-screen-light: #8bac0f;
   --text-dark: #0f380f;
   --shadow-inset: inset -2px -2px 0 0 #000, inset 2px 2px 0 0 #404040;
   --shadow-inset-reverse: inset 2px 2px 0 0 #000, inset -2px -2px 0 0 #404040;
-  --app-height: 100vh;
-  --gameboy-border: 4px solid #0f380f;
-  --gameboy-shadow: 0 4px 0 #306230;
 }
 
 @layer base {
-  html {
-    @apply h-[var(--app-height)];
-    overscroll-behavior: none;
-  }
-  
   body {
-    @apply m-0 h-[var(--app-height)] text-white;
+    @apply m-0 min-h-screen text-white;
     @apply [image-rendering:pixelated] [-webkit-font-smoothing:none] [-moz-osx-font-smoothing:none];
-    @apply overflow-auto;
-    overscroll-behavior: none;
-    -webkit-overflow-scrolling: touch;
-    background-color: var(--bg-darker);
-  }
-  
-  /* スクロールバーのスタイル */
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
-  }
-  
-  /* モバイルでのスクロールバーを非表示 */
-  @media (max-width: 767px) {
-    ::-webkit-scrollbar {
-      width: 0;
-      height: 0;
-      display: none;
-    }
   }
 }
 
 .pokedex-container {
-  @apply h-[var(--app-height)] w-full p-0 sm:p-5;
+  @apply min-h-[100dvh] w-full p-0 sm:p-5;
   @apply flex justify-center items-start sm:items-center;
   @apply overflow-y-auto overflow-x-hidden;
-  overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
 }
 
 .pokedex {
@@ -112,13 +72,9 @@
   @apply flex justify-between mb-4 items-start gap-4;
 }
 
-  .search-box {
-    @apply relative flex items-center gap-2 flex-1 max-w-sm;
-  }
-
-  .search-input {
-    @apply flex-1;
-  }
+.search-box {
+  @apply relative flex-1 max-w-sm;
+}
 
 .search-input {
   @apply w-full h-[44px] px-3 py-2 text-sm;
@@ -148,13 +104,11 @@
   @apply border-b-0;
 }
 
-/* メニューコンテナ */
 .menu-container {
   @apply relative;
   z-index: 20;
 }
 
-/* メニューボタン */
 .menu-button-plain {
   @apply p-2 cursor-pointer border-0 bg-transparent;
   @apply touch-manipulation select-none;
@@ -181,7 +135,6 @@
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* レトロメニュー */
 .retro-menu {
   @apply absolute right-0 top-full mt-2;
   @apply w-[300px] bg-[var(--bg-dark)];
@@ -221,25 +174,61 @@
 
 .retro-menu-item {
   @apply w-full px-4 py-2 mb-2 last:mb-0;
-  @apply text-sm bg-[var(--bg-dark)];
-  color: white;
-  border: 1px solid var(--border-dark);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  @apply text-sm text-white bg-[var(--bg-darker)];
+  @apply border-2 border-[var(--border-dark)] rounded;
   @apply flex items-center justify-between;
   @apply cursor-pointer;
-  transition: transform 0.1s, box-shadow 0.1s;
-  transform: translateY(0);
-  border-radius: 4px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  @apply hover:bg-[var(--border-dark)];
+  @apply transition-all duration-200;
 }
 
 .retro-menu-item:active {
-  background-color: var(--bg-darker);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-  transform: translateY(2px);
+  @apply [box-shadow:var(--shadow-inset-reverse)];
+  transform: translateY(1px);
+}
+
+.generation-grid {
+  @apply grid gap-2 grid-cols-1;
+}
+
+.generation-button {
+  @apply w-full p-2 rounded;
+  @apply bg-[var(--bg-darker)] text-white;
+  @apply border-2 border-[var(--border-dark)];
+  @apply flex items-center gap-2;
+  @apply cursor-pointer;
+  @apply transition-all duration-200;
+  @apply hover:bg-[var(--border-dark)];
+}
+
+.generation-button.active {
+  @apply bg-[var(--border-dark)];
+  @apply [box-shadow:var(--shadow-inset-reverse)];
+}
+
+.generation-number {
+  @apply text-sm;
+  min-width: 1.5em;
+  text-align: center;
+  font-weight: normal;
+  font-size: 0.875em;
+  letter-spacing: 0;
+  transform: translateY(1px);
+}
+
+.starter-icons {
+  @apply flex items-center gap-1;
+  @apply ml-auto;
+}
+
+.starter-icon {
+  @apply w-8 h-8;
+  @apply [image-rendering:pixelated];
+  transition: transform 0.2s ease;
+}
+
+.generation-button:hover .starter-icon {
+  transform: scale(1.1);
 }
 
 .color-control-items {
@@ -254,10 +243,6 @@
 
 .color-control-item span {
   @apply text-xs text-white;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 8px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
 }
 
 .color-control-item input[type="color"] {
@@ -266,100 +251,19 @@
   @apply bg-[var(--bg-darker)];
 }
 
-/* ボタンスタイルの統一 */
-.sprite-select-button,
-.sprite-modal-button,
-.generation-button {
-  @apply w-full py-3 px-4 text-sm;
-  background-color: var(--bg-screen);
-  color: var(--text-dark);
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  @apply flex items-center justify-between;
-  @apply cursor-pointer;
-  transition: all 0.2s ease;
-  transform: translateY(0);
-  border-radius: 8px;
-  font-family: 'DotGothic16', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+/* 既存のスタイル */
+.control-button,
+.sprite-button {
+  @apply py-3 px-4 text-sm cursor-pointer text-white border-0;
+  @apply bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
+  @apply touch-manipulation select-none;
   min-height: 44px;
+  min-width: 84px;
 }
 
-.sprite-select-button:active,
-.sprite-modal-button:active,
-.generation-button:active {
-  background-color: rgba(0, 0, 0, 0.05);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  transform: translateY(1px);
-}
-
-.sprite-modal-button.active,
-.generation-button.active {
-  background-color: #f0f9ff;
-  border-color: #3b82f6;
-  font-weight: 500;
-}
-
-/* スターターアイコン */
-.starter-icons {
-  @apply flex justify-center items-center w-full h-full;
-}
-
-.starter-icon {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  @apply mx-auto;
-  image-rendering: pixelated;
-  transition: transform 0.2s ease;
-}
-
-.generation-button:hover .starter-icon {
-  transform: scale(1.1);
-}
-
-.generation-grid {
-  @apply grid grid-cols-3 gap-2 mt-2;
-}
-
-.generation-button {
-  @apply flex items-center justify-center;
-  background-color: var(--bg-dark);
-  color: white;
-  border: 1px solid var(--border-dark);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  @apply cursor-pointer;
-  transition: all 0.2s ease;
-  border-radius: 4px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  letter-spacing: 1px;
-  aspect-ratio: 1 / 1;
-  padding: 4px;
-}
-
-.generation-button:hover {
-  background-color: #303030;
-  border-color: #505050;
-}
-
-.generation-button.active {
-  background-color: var(--pokedex-color);
-  border-color: #505050;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
-}
-
-.generation-number {
-  @apply text-sm;
-  min-width: 1.5em;
-  text-align: center;
-  font-weight: normal;
-  font-size: 1em;
-  letter-spacing: 0;
-  transform: translateY(1px);
-  flex-shrink: 0;
-  margin-bottom: 8px;
+.control-button:is(:active, .active),
+.sprite-button:is(:active, .active) {
+  @apply bg-[var(--border-dark)] [box-shadow:var(--shadow-inset-reverse)];
 }
 
 .screen-container {
@@ -412,63 +316,13 @@
 }
 
 .pokemon-sprite {
-  @apply w-full h-full flex justify-center items-center;
-  @apply [image-rendering:pixelated];
-}
-
-.pokemon-sprite img {
   @apply max-w-full max-h-full scale-[2];
   @apply [image-rendering:pixelated];
-  @apply mx-auto;
 }
 
-/* スプライトコントロールのスタイル */
 .sprite-controls {
-  @apply flex items-center gap-4 py-4 px-0 overflow-x-auto;
-  @apply touch-manipulation select-none;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  cursor: grab;
-  background-color: var(--bg-darker);
-  padding: 16px;
-  border-radius: 8px;
-  position: relative;
-  width: 100%;
-}
-
-.sprite-controls.grabbing {
-  cursor: grabbing;
-}
-
-.sprite-controls::-webkit-scrollbar {
-  display: none;
-}
-
-.sprite-button {
-  @apply py-3 px-4 text-sm border-0;
-  background-color: var(--bg-screen);
-  color: var(--text-dark);
-  border: var(--gameboy-border);
-  box-shadow: var(--gameboy-shadow);
-  @apply touch-manipulation select-none;
-  min-height: 44px;
-  min-width: 84px;
-  scroll-snap-align: center;
-  transition: transform 0.1s, box-shadow 0.1s;
-  flex-shrink: 0;
-}
-
-.sprite-button.active {
-  background-color: var(--bg-screen);
-  box-shadow: 0 2px 0 #306230;
-  transform: translateY(2px);
-}
-
-.sprite-button:active {
-  background-color: var(--bg-screen);
-  box-shadow: 0 2px 0 #306230;
-  transform: translateY(2px);
+  @apply gap-3 p-3 rounded bg-[var(--bg-dark)];
+  @apply [box-shadow:var(--shadow-inset)];
 }
 
 /* モバイル表示 */
@@ -477,8 +331,7 @@
   .sprite-controls-wrap {
     @apply relative overflow-hidden;
     @apply -mx-4;
-    background: var(--bg-darker);
-    padding: 8px 0;
+    background: var(--bg-dark);
   }
 
   /* スプライトコントロールのコンテナ */
@@ -503,7 +356,14 @@
     cursor: grab;
     /* スクロールイベントの競合を防止 */
     overscroll-behavior-x: contain;
-    background-color: transparent;
+  }
+
+  .sprite-controls.grabbing {
+    cursor: grabbing;
+  }
+
+  .sprite-controls::-webkit-scrollbar {
+    display: none;
   }
 
   /* スプライトボタンのスタイル */
@@ -516,23 +376,105 @@
     padding: 0.75rem;
     scroll-snap-align: center;
     scroll-snap-stop: always;
+    transform-origin: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
-    border-radius: 0;
+    border-radius: 0.5rem;
     /* タッチ操作の競合を防止 */
     touch-action: manipulation;
   }
   
   .sprite-button.active {
-    background-color: var(--bg-screen);
-    box-shadow: 0 2px 0 #306230;
-    transform: translateY(2px);
+    @apply bg-[var(--border-dark)];
+    transform: scale(1.05);
+    box-shadow: 0 0 0 2px var(--bg-screen);
   }
 
   .sprite-button:active {
-    background-color: var(--bg-screen);
-    box-shadow: 0 2px 0 #306230;
-    transform: translateY(2px);
+    transform: scale(0.95);
+  }
+
+  /* スプライトボタンのリップル効果 */
+  .sprite-button::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: inherit;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+    pointer-events: none;
+  }
+
+  .sprite-button:active::after {
+    transform: scale(1);
+    opacity: 1;
+    transition: 0s;
+  }
+
+  /* スプライトコントロールのインジケーター */
+  .sprite-dots {
+    @apply absolute bottom-2 left-0 right-0;
+    @apply flex justify-center items-center gap-2;
+  }
+
+  .sprite-dot {
+    @apply w-2 h-2 rounded-full bg-[var(--border-dark)];
+    @apply transition-all duration-300 ease-in-out;
+    transform-origin: center;
+    cursor: pointer;
+  }
+
+  .sprite-dot.active {
+    @apply w-3 h-3 bg-[var(--bg-screen)];
+    transform: scale(1.25);
+    box-shadow: 0 0 0 2px var(--border-dark);
+  }
+
+  /* スプライトコントロールのグラデーション */
+  .sprite-controls-gradient {
+    @apply absolute top-0 bottom-0 w-8 z-10 pointer-events-none;
+    background: linear-gradient(90deg, var(--bg-dark) 0%, transparent 100%);
+  }
+
+  .sprite-controls-gradient.right {
+    @apply right-0;
+    transform: rotate(180deg);
+  }
+
+  /* スワイプヒント表示 */
+  .swipe-hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 40px;
+    opacity: 0.7;
+    pointer-events: none;
+    animation: swipeHint 2s infinite;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .swipe-hint svg {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+  }
+
+  @keyframes swipeHint {
+    0% { transform: translateX(-80%); opacity: 0; }
+    20% { opacity: 0.7; }
+    80% { opacity: 0.7; }
+    100% { transform: translateX(-20%); opacity: 0; }
   }
 }
 
@@ -560,9 +502,9 @@
 }
 
 .pokemon-list-item {
-  @apply px-4 py-3 flex items-center gap-4 text-sm cursor-pointer;
+  @apply p-3 flex items-center gap-3 text-sm cursor-pointer;
   @apply border-b border-[var(--border-dark)];
-  min-height: 60px;
+  min-height: 44px;
   position: relative;
   width: 100%;
 }
@@ -580,12 +522,12 @@
 }
 
 .pokemon-icon {
-  @apply w-12 h-12 mr-2;
-  @apply [image-rendering:pixelated];
+  @apply w-8 h-8 [image-rendering:pixelated];
+  flex-shrink: 0;
 }
 
 .pokemon-list-item span {
-  @apply truncate text-base;
+  @apply truncate;
   flex: 1;
   min-width: 0;
 }
@@ -607,80 +549,6 @@
   @apply list-none m-0 p-0;
 }
 
-/* ポケモン情報表示エリア */
-.pokemon-info {
-  @apply flex flex-col gap-2 p-4 rounded-lg;
-  @apply bg-[var(--bg-dark)] [box-shadow:var(--shadow-inset)];
-  max-width: 100%;
-}
-
-.pokemon-name {
-  @apply text-xl font-bold mb-1;
-  color: var(--text-light);
-}
-
-.pokemon-number {
-  @apply text-sm font-normal opacity-70;
-}
-
-.pokemon-types {
-  @apply flex flex-wrap gap-2 mb-3;
-}
-
-.type-badge {
-  @apply px-3 py-1 rounded-full text-sm font-medium;
-  @apply text-white shadow-sm;
-  background-color: #6B7280;
-}
-
-/* タイプ別の色 */
-.type-badge.normal { background-color: #A8A878; }
-.type-badge.fire { background-color: #F08030; }
-.type-badge.water { background-color: #6890F0; }
-.type-badge.electric { background-color: #F8D030; }
-.type-badge.grass { background-color: #78C850; }
-.type-badge.ice { background-color: #98D8D8; }
-.type-badge.fighting { background-color: #C03028; }
-.type-badge.poison { background-color: #A040A0; }
-.type-badge.ground { background-color: #E0C068; }
-.type-badge.flying { background-color: #A890F0; }
-.type-badge.psychic { background-color: #F85888; }
-.type-badge.bug { background-color: #A8B820; }
-.type-badge.rock { background-color: #B8A038; }
-.type-badge.ghost { background-color: #705898; }
-.type-badge.dragon { background-color: #7038F8; }
-.type-badge.dark { background-color: #705848; }
-.type-badge.steel { background-color: #B8B8D0; }
-.type-badge.fairy { background-color: #EE99AC; }
-
-.pokemon-description {
-  @apply text-sm leading-relaxed p-3 rounded;
-  @apply bg-[var(--bg-screen)] text-[var(--text-dark)];
-  max-height: 120px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--border-dark) transparent;
-}
-
-.pokemon-description::-webkit-scrollbar {
-  width: 4px;
-}
-
-.pokemon-description::-webkit-scrollbar-thumb {
-  background-color: var(--border-dark);
-  border-radius: 4px;
-}
-
-.pokemon-description::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-/* 日本語テキスト用のスタイル調整 */
-[lang="ja"] {
-  line-height: 1.7;
-  font-size: 0.95em;
-}
-
 @layer utilities {
   ::-webkit-scrollbar {
     @apply w-2;
@@ -693,179 +561,4 @@
   ::-webkit-scrollbar-thumb {
     @apply bg-[var(--border-dark)] border-2 border-[var(--bg-darker)];
   }
-}
-
-/* スプライトボタンのホバーエフェクト無効化 */
-.sprite-button:hover {
-  background-color: var(--bg-screen);
-  transform: translateY(0);
-}
-
-.sprite-button::after {
-  display: none;
-}
-
-.sprite-button:active::after {
-  display: none;
-}
-
-/* スプライトコントロールのコンテナ */
-  .sprite-controls-container {
-    @apply relative mt-2 mb-4 flex flex-col gap-2;
-    width: 100%;
-  }
-
-  .sprite-select-button {
-    @apply w-full px-4 py-2 flex items-center justify-between;
-    @apply bg-[var(--bg-screen)] text-[var(--text-dark)];
-    @apply border border-[var(--border-dark)] rounded;
-    @apply hover:bg-[var(--bg-screen-light)];
-    min-height: 44px;
-    transition: all 0.2s ease;
-  }
-
-/* スプライト選択ボタン */
-  .sprite-select-button {
-    @apply w-full px-4 py-2 mb-4 text-sm;
-    background-color: var(--bg-dark);
-    color: white;
-    border: 1px solid var(--border-dark);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    @apply flex items-center justify-between;
-    @apply cursor-pointer;
-    transition: all 0.2s ease;
-    transform: translateY(0);
-    font-family: 'Press Start 2P', monospace;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    min-height: 44px;
-    border-radius: 4px;
-  }
-
-  .sprite-select-button:active {
-    transform: translateY(2px);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-    background-color: var(--bg-darker);
-  }
-
-  .sprite-select-button:hover {
-    background-color: #303030;
-    border-color: #505050;
-  }
-
-.arrow-down {
-  font-size: 12px;
-  margin-left: 8px;
-  opacity: 0.7;
-}
-
-/* スプライトモーダル関連 */
-.sprite-modal-overlay {
-  @apply fixed inset-0 z-50;
-  background-color: rgba(15, 56, 15, 0.8);
-  backdrop-filter: blur(2px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeIn 0.2s ease-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.sprite-modal {
-  @apply w-[300px];
-  background-color: var(--bg-dark);
-  border: 1px solid var(--border-dark);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  @apply overflow-hidden rounded-lg;
-  animation: menuAppear 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  max-height: 80vh;
-}
-
-.sprite-modal-header {
-  @apply p-2 border-b;
-  border-color: var(--border-dark);
-  background-color: var(--bg-darker);
-}
-
-.sprite-modal-header h3 {
-  @apply px-2 py-1 text-xs font-bold uppercase tracking-wider;
-  font-family: 'Press Start 2P', monospace;
-  margin: 0;
-  color: white;
-}
-
-.sprite-modal-content {
-  @apply p-2 overflow-y-auto;
-  max-height: 60vh;
-  background-color: var(--bg-dark);
-}
-
-.sprite-modal-button {
-  @apply w-full px-4 py-2 mb-2 last:mb-0 text-sm;
-  background-color: var(--bg-dark);
-  color: white;
-  border: 1px solid var(--border-dark);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  @apply flex items-center justify-between;
-  @apply cursor-pointer rounded;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  min-height: 44px;
-  transition: all 0.2s ease;
-}
-
-.sprite-modal-button.active {
-  background-color: var(--pokedex-color);
-  border-color: #505050;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
-}
-
-.sprite-modal-button:hover {
-  background-color: #303030;
-  border-color: #505050;
-}
-
-.sprite-modal-button:active {
-  background-color: var(--bg-darker);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  transform: translateY(1px);
-}
-
-/* 世代ボタングリッド */
-.generation-grid {
-  @apply grid grid-cols-3 gap-2 mt-2;
-}
-
-.generation-button {
-  @apply flex items-center justify-center;
-  background-color: var(--bg-dark);
-  color: white;
-  border: 1px solid var(--border-dark);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  @apply cursor-pointer;
-  transition: all 0.2s ease;
-  border-radius: 4px;
-  font-family: 'Press Start 2P', monospace;
-  font-size: 10px;
-  letter-spacing: 1px;
-  aspect-ratio: 1 / 1;
-  padding: 4px;
-}
-
-.generation-button:hover {
-  background-color: #303030;
-  border-color: #505050;
-}
-
-.generation-button.active {
-  background-color: var(--pokedex-color);
-  border-color: #505050;
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
 }

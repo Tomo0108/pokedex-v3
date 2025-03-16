@@ -1,205 +1,157 @@
-import { SpriteStyles, Pokemon } from '@/types/pokemon';
-import axios from 'axios';
+import { SpriteStyles } from '@/types/pokemon';
 
 // ローカルの画像パス
 const LOCAL_SPRITES_BASE_URL = '/images';
 // 画像が存在しない場合のフォールバック用のグレー画像URL
 const FALLBACK_IMAGE_URL = '/images/no-sprite.png';
 
-// 各スタイルで利用可能なポケモンIDの範囲
-type PokemonRange = { min: number; max: number; };
-type AvailablePokemon = {
-  ranges: PokemonRange[];
-  exceptions?: number[]; // 範囲外でも利用可能なID
-};
-
-// 各スタイルで実際に利用可能なポケモンを定義
-const availablePokemon: { [key: string]: AvailablePokemon } = {
-  'red-blue': {
-    ranges: [{ min: 1, max: 151 }]
-  },
-  'crystal': {
-    ranges: [{ min: 1, max: 251 }]
-  },
-  'firered-leafgreen': {
-    ranges: [{ min: 1, max: 151 }]
-  },
-  'emerald': {
-    ranges: [{ min: 1, max: 386 }]
-  },
-  'diamond-pearl': {
-    ranges: [{ min: 1, max: 493 }]
-  },
-  'black-white': {
-    ranges: [{ min: 1, max: 649 }]
-  },
-  'x-y': {
-    ranges: [{ min: 1, max: 721 }]
-  },
-  'sun-moon': {
-    ranges: [{ min: 1, max: 809 }]
-  },
-  'sword-shield': {
-    ranges: [{ min: 1, max: 905 }]
-  },
-  'scarlet-violet': {
-    ranges: [{ min: 1, max: 1025 }]
-  }
-};
-
 export const spriteStyles: SpriteStyles = {
-  'red-blue': {
+  'red-blue': { 
     path: '/generation-i/red-blue',
     gens: [1],
     animated: false,
-    displayName: { ja: 'レッド・ブルー', en: 'Red-Blue' }
+    displayName: { ja: '赤・青', en: 'Red-Blue' }
   },
-  'crystal': {
-    path: '/generation-ii/crystal',
-    gens: [1, 2],
-    animated: true,
-    displayName: { ja: 'クリスタル', en: 'Crystal' }
-  },
-  'firered-leafgreen': {
-    path: '/generation-iii/firered-leafgreen',
+  'yellow': {
+    path: '/generation-i/yellow',
     gens: [1],
     animated: false,
-    displayName: { ja: 'ファイアレッド・リーフグリーン', en: 'FireRed-LeafGreen' }
+    displayName: { ja: 'ピカチュウ', en: 'Yellow' }
   },
-  'emerald': {
+  'gold': {
+    path: '/generation-ii/gold',
+    gens: [1, 2],
+    animated: false,
+    displayName: { ja: '金', en: 'Gold' }
+  },
+  'silver': {
+    path: '/generation-ii/silver',
+    gens: [1, 2],
+    animated: false,
+    displayName: { ja: '銀', en: 'Silver' }
+  },
+  'crystal': { 
+    path: '/generation-ii/crystal',
+    gens: [1, 2],
+    animated: false,
+    displayName: { ja: 'クリスタル', en: 'Crystal' }
+  },
+  'ruby-sapphire': {
+    path: '/generation-iii/ruby-sapphire',
+    gens: [1, 2, 3],
+    animated: false,
+    displayName: { ja: 'ルビー・サファイア', en: 'Ruby-Sapphire' }
+  },
+  'emerald': { 
     path: '/generation-iii/emerald',
     gens: [1, 2, 3],
     animated: false,
     displayName: { ja: 'エメラルド', en: 'Emerald' }
   },
-  'diamond-pearl': {
+  'firered-leafgreen': {
+    path: '/generation-iii/firered-leafgreen',
+    gens: [1, 2, 3],
+    animated: false,
+    displayName: { ja: 'FR・LG', en: 'FR-LG' }
+  },
+  'diamond-pearl': { 
     path: '/generation-iv/diamond-pearl',
     gens: [1, 2, 3, 4],
     animated: false,
     displayName: { ja: 'ダイヤモンド・パール', en: 'Diamond-Pearl' }
+  },
+  'platinum': {
+    path: '/generation-iv/platinum',
+    gens: [1, 2, 3, 4],
+    animated: false,
+    displayName: { ja: 'プラチナ', en: 'Platinum' }
+  },
+  'heartgold-soulsilver': {
+    path: '/generation-iv/heartgold-soulsilver',
+    gens: [1, 2, 3, 4],
+    animated: false,
+    displayName: { ja: 'HG・SS', en: 'HG-SS' }
   },
   'black-white': {
     path: '/generation-v/black-white',
     gens: [1, 2, 3, 4, 5],
     animated: true,
     displayName: { ja: 'ブラック・ホワイト', en: 'Black-White' }
-  },
-  'x-y': {
-    path: '/generation-vi/x-y',
-    gens: [1, 2, 3, 4, 5, 6],
-    animated: false,
-    displayName: { ja: 'X・Y', en: 'X-Y' }
-  },
-  'sun-moon': {
-    path: '/generation-vii/sun-moon',
-    gens: [1, 2, 3, 4, 5, 6, 7],
-    animated: false,
-    displayName: { ja: 'サン・ムーン', en: 'Sun-Moon' }
-  },
-  'sword-shield': {
-    path: '/generation-viii/sword-shield',
-    gens: [1, 2, 3, 4, 5, 6, 7, 8],
-    animated: false,
-    displayName: { ja: 'ソード・シールド', en: 'Sword-Shield' }
-  },
-  'scarlet-violet': {
-    path: '/generation-ix/scarlet-violet',
-    gens: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    animated: false,
-    displayName: { ja: 'スカーレット・バイオレット', en: 'Scarlet-Violet' }
   }
 };
 
 export function getDefaultStyleForGeneration(generation: number): keyof typeof spriteStyles {
-  switch (generation) {
-    case 1:
-      return 'red-blue';
-    case 2:
-      return 'crystal';
-    case 3:
-      return 'emerald';
-    case 4:
-      return 'diamond-pearl';
-    case 5:
-      return 'black-white';
-    case 6:
-      return 'x-y';
-    case 7:
-      return 'sun-moon';
-    case 8:
-      return 'sword-shield';
-    case 9:
-      return 'scarlet-violet';
-    default:
-      return 'red-blue';
+  if (generation === 1) return 'red-blue';
+  if (generation === 2) return 'crystal';
+  if (generation === 3) return 'emerald';
+  if (generation === 4) return 'diamond-pearl';
+  if (generation === 5) return 'black-white';
+  return 'black-white';
+}
+
+async function checkImageExists(url: string): Promise<boolean> {
+  try {
+    const response = await fetch(url, { method: 'HEAD' });
+    return response.ok;
+  } catch (error) {
+    return false;
   }
 }
 
-// 指定されたIDのポケモンがスタイルで利用可能かチェック
-function isPokemonAvailableInStyle(pokemonId: number, style: keyof typeof spriteStyles): boolean {
-  const available = availablePokemon[style];
-  if (!available) return false;
-
-  // 例外リストにある場合は利用可能
-  if (available.exceptions?.includes(pokemonId)) return true;
-
-  // 範囲内にある場合は利用可能
-  return available.ranges.some(range => 
-    pokemonId >= range.min && pokemonId <= range.max
-  );
-}
-
-export function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false, form?: string): string {
-  // ポケモンIDから世代を判定
-  const generation = 
-    pokemonId <= 151 ? 1 :
-    pokemonId <= 251 ? 2 :
-    pokemonId <= 386 ? 3 :
-    pokemonId <= 493 ? 4 :
-    pokemonId <= 649 ? 5 :
-    pokemonId <= 721 ? 6 :
-    pokemonId <= 809 ? 7 :
-    pokemonId <= 905 ? 8 :
-    pokemonId <= 1025 ? 9 : 9; // 9世代は906~1025
-  
-  // スタイル情報を取得
+export async function createSpriteUrl(pokemonId: number, style: keyof typeof spriteStyles, shiny: boolean = false): Promise<string> {
   const styleInfo = spriteStyles[style];
+  const shinyPath = shiny ? '/shiny' : '';
   
-  // スタイルが指定の世代をサポートしていないか、ポケモンが利用できない場合は
-  // 世代に基づいてデフォルトのスタイルを使用
-  if (!styleInfo || !styleInfo.gens.includes(generation) || !isPokemonAvailableInStyle(pokemonId, style)) {
-    const defaultStyle = getDefaultStyleForGeneration(generation);
-    return createSpriteUrl(pokemonId, defaultStyle, shiny, form);
-  }
+  // black-whiteスタイルの場合はGIF拡張子を使用
+  const extension = style === 'black-white' ? '.gif' : '.png';
   
-  // 拡張子を設定（black-whiteスタイルの場合はgif、それ以外はwebp）
-  const ext = style === 'black-white' ? '.gif' : '.webp';
+  // ローカルの画像パスを使用
+  const spriteUrl = `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}${shinyPath}/${pokemonId}${extension}`;
   
-  // フォルムが指定されている場合はファイル名に追加
-  const fileName = form ? `${pokemonId}-${form}` : `${pokemonId}`;
-  
-  // 画像パスを生成
-  const imagePath = shiny 
-    ? `/images${styleInfo.path}/shiny/${fileName}${ext}`
-    : `/images${styleInfo.path}/${fileName}${ext}`;
-  
-  return imagePath;
+  // 画像の存在チェックは省略（ローカルファイルなので常に存在すると仮定）
+  return spriteUrl;
 }
 
-function getLatestDescription(descriptions: { [key: number]: { en: string; ja: string }}, currentGen: number): { en: string; ja: string } {
-  // 世代の配列を取得し、現在の世代から降順でソート
-  const generations = Object.keys(descriptions)
-    .map(Number)
-    .filter(gen => gen <= currentGen)
-    .sort((a, b) => b - a);
+async function getLatestDescription(entries: any[], language: string, generation: number) {
+  // 9世代のバージョンID
+  const gen9VersionIds = [33, 34]; // scarlet: 33, violet: 34
 
-  if (generations.length > 0) {
-    // 最新の世代の説明を返す
-    const latestGen = generations[0];
-    return descriptions[latestGen];
+  const filterAndSortEntries = (entries: any[], lang: string) => 
+    entries
+      .filter(entry => entry.language.name === lang && entry.version)
+      .sort((a, b) => {
+        const versionA = parseInt(a.version.url.split('/')[6]);
+        const versionB = parseInt(b.version.url.split('/')[6]);
+        return versionB - versionA;
+      });
+
+  const validEntries = filterAndSortEntries(entries, language);
+  const englishEntries = filterAndSortEntries(entries, 'en');
+
+  // 9世代の場合は特別な処理
+  if (generation === 9) {
+    const gen9Entry = validEntries.find(entry => {
+      const versionId = parseInt(entry.version.url.split('/')[6]);
+      return gen9VersionIds.includes(versionId);
+    });
+
+    // 日本語の説明がない場合は英語の説明を使用
+    if (language === 'ja' && !gen9Entry) {
+      const englishGen9Entry = englishEntries.find(entry => {
+        const versionId = parseInt(entry.version.url.split('/')[6]);
+        return gen9VersionIds.includes(versionId);
+      });
+      if (englishGen9Entry) {
+        return englishGen9Entry.flavor_text.replace(/[\n\f]/g, ' ');
+      }
+    }
+
+    if (gen9Entry) {
+      return gen9Entry.flavor_text.replace(/[\n\f]/g, ' ');
+    }
   }
 
-  return { en: '', ja: '' };
+  return validEntries[0]?.flavor_text.replace(/[\n\f]/g, ' ') || englishEntries[0]?.flavor_text.replace(/[\n\f]/g, ' ') || '';
 }
 
 export async function fetchPokemonData(generation: number) {
@@ -216,51 +168,50 @@ export async function fetchPokemonData(generation: number) {
   };
 
   try {
-    const [start, end] = ranges[generation as keyof typeof ranges];
-    const style = getDefaultStyleForGeneration(generation);
-    const pokemonList: Pokemon[] = [];
-
-    for (let id = start; id <= end; id++) {
-      // PokeAPIからポケモンの基本データを取得
-      const pokemonResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      const speciesResponse = await axios.get(`https://pokeapi.co/api/v2/pokemon-species/${id}`);
-      
-      // 日本語の名前を取得
-      const japaneseName = speciesResponse.data.names.find(
-        (name: any) => name.language.name === 'ja'
-      )?.name || '';
-
-      // タイプを取得
-      const types = pokemonResponse.data.types.map((type: any) => type.type.name);
-
-      // 説明文を取得
-      const descriptions = speciesResponse.data.flavor_text_entries;
-      const enDescription = descriptions.find(
-        (desc: any) => desc.language.name === 'en'
-      )?.flavor_text || '';
-      const jaDescription = descriptions.find(
-        (desc: any) => desc.language.name === 'ja'
-      )?.flavor_text || '';
-
-      const pokemon: Pokemon = {
-        id,
-        name: pokemonResponse.data.name,
-        japaneseName,
-        types,
-        sprites: {
-          front_default: createSpriteUrl(id, style, false),
-          front_shiny: createSpriteUrl(id, style, true),
-        },
-        description: {
-          en: enDescription.replace(/\f/g, ' '),
-          ja: jaDescription.replace(/\f/g, ' '),
-        }
-      };
-
-      pokemonList.push(pokemon);
+    // ローカルのJSONファイルからデータを読み込む
+    const response = await fetch(`/data/generation-${generation}.json`);
+    if (!response.ok) {
+      throw new Error(`Failed to load Pokemon data for generation ${generation}`);
     }
-
-    return pokemonList;
+    
+    const pokemonData = await response.json();
+    
+    // スプライトURLを追加
+    return pokemonData.map((pokemon: any) => {
+      const style = getDefaultStyleForGeneration(generation);
+      
+      // 最新の説明文を取得
+      const getLatestDescription = (descriptions: any) => {
+        if (!descriptions) return { en: '', ja: '' };
+        
+        // 世代番号の降順でソートされた配列を作成
+        const genNumbers = Object.keys(descriptions)
+          .map(Number)
+          .filter(gen => gen <= generation) // 現在の世代以下のみ
+          .sort((a, b) => b - a); // 降順ソート
+        
+        // 最新の世代の説明を取得
+        if (genNumbers.length > 0) {
+          const latestGen = genNumbers[0];
+          return descriptions[latestGen] || { en: '', ja: '' };
+        }
+        
+        return { en: '', ja: '' };
+      };
+      
+      return {
+        ...pokemon,
+        sprites: {
+          front_default: generation >= 6 
+            ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`
+            : createSpriteUrl(pokemon.id, style, false),
+          front_shiny: generation >= 6
+            ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`
+            : createSpriteUrl(pokemon.id, style, true),
+        },
+        description: getLatestDescription(pokemon.descriptions)
+      };
+    });
   } catch (error) {
     console.error(`Error loading Pokemon data for generation ${generation}:`, error);
     return [];

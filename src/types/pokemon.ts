@@ -3,7 +3,6 @@ export interface Pokemon {
   name: string;
   japaneseName: string;
   types: string[];
-  form?: string;
   sprites: {
     front_default: string;
     front_shiny: string;
