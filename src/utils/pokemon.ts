@@ -182,26 +182,38 @@ export async function fetchPokemonData(generation: number) {
       const style = getDefaultStyleForGeneration(generation);
       
       // 説明文の取得
-      const descriptions = {
-        en: pokemon.descriptions[generation]?.en || '',
-        ja: pokemon.descriptions[generation]?.ja || ''
-      };
+      const descriptions = await (async (entries: any) => {
+        if (!entries) return { en: '', ja: '' };
+        
+        const [jaDesc, enDesc] = await Promise.all([
+          getLatestDescription(entries, 'ja', generation),
+          getLatestDescription(entries, 'en', generation)
+        ]);
+        
+        return {
+          ja: jaDesc || '', // 日本語の説明がない場合は空文字
+          en: enDesc || ''  // 英語の説明がない場合は空文字
+        };
+      })(pokemon.flavor_text_entries);
+
+      // 9世代のポケモンかどうかを判定
+      const isGen9Pokemon = pokemon.id >= 906 && pokemon.id <= 1025;
       
       return {
         ...pokemon,
         sprites: {
-          front_default: generation === 9
+          front_default: isGen9Pokemon
             ? `/images/generation-ix/${pokemon.id}.png`
             : generation >= 6 
               ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`
               : createSpriteUrl(pokemon.id, style, false),
-          front_shiny: generation === 9
+          front_shiny: isGen9Pokemon
             ? `/images/generation-ix/shiny/${pokemon.id}.png`
             : generation >= 6
               ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/${pokemon.id}.png`
               : createSpriteUrl(pokemon.id, style, true),
         },
-        description: descriptions,
+        description: descriptions
       };
     });
 
