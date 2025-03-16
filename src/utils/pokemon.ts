@@ -50,7 +50,7 @@ export const spriteStyles: SpriteStyles = {
   },
   'firered-leafgreen': {
     path: '/generation-iii/firered-leafgreen',
-    gens: [1, 2, 3],
+    gens: [1],
     animated: false,
     displayName: { ja: 'FR・LG', en: 'FR-LG' }
   },
@@ -106,9 +106,15 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
   const extension = style === 'black-white' ? '.gif' : '.png';
   
   // ローカルの画像パスを使用
+  // FireRed・LeafGreenの場合は1-151のみ有効
+  if (style === 'firered-leafgreen' && pokemonId > 151) {
+    // デフォルトのスタイルに切り替え
+    const defaultStyle = getDefaultStyleForGeneration(3); // 3世代のデフォルトスタイル
+    const defaultStyleInfo = spriteStyles[defaultStyle];
+    return `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}${shinyPath}/${pokemonId}${extension}`;
+  }
+
   const spriteUrl = `${LOCAL_SPRITES_BASE_URL}${styleInfo.path}${shinyPath}/${pokemonId}${extension}`;
-  
-  // 画像の存在チェックは省略（ローカルファイルなので常に存在すると仮定）
   return spriteUrl;
 }
 
