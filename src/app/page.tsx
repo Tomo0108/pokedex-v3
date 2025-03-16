@@ -349,7 +349,10 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                       }}
                     >
                       <img
-                        src={`/images/pokemon_icons/${pokemon.id}.png`}
+                        src={pokemon.id >= 906 && pokemon.id <= 1025
+                          ? `/images/generation-ix/${pokemon.id}.png`
+                          : `/images/pokemon_icons/${pokemon.id}.png`
+                        }
                         alt={pokemon.name}
                         className="pokemon-icon"
                         onError={(e) => {
@@ -474,7 +477,10 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                               {starters.map(id => (
                                 <img
                                   key={id}
-                                  src={`/images/pokemon_icons/${id}.png`}
+                                  src={id >= 906 && id <= 1025
+                                    ? `/images/generation-ix/${id}.png`
+                                    : `/images/pokemon_icons/${id}.png`
+                                  }
                                   alt={`Starter ${id}`}
                                   className="starter-icon"
                                   onError={(e) => {
@@ -584,7 +590,10 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
                   onClick={() => setSelectedPokemon(pokemon)}
                 >
                   <img
-                    src={`/images/pokemon_icons/${pokemon.id}.png`}
+                    src={pokemon.id >= 906 && pokemon.id <= 1025
+                      ? `/images/generation-ix/${pokemon.id}.png`
+                      : `/images/pokemon_icons/${pokemon.id}.png`
+                    }
                     alt={pokemon.name}
                     className="pokemon-icon"
                     onError={(e) => {
