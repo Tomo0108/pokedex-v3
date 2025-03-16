@@ -180,24 +180,26 @@ export async function fetchPokemonData(generation: number) {
     // 非同期処理を含むマッピング
     const pokemonPromises = pokemonData.map(async (pokemon: any) => {
       const style = getDefaultStyleForGeneration(generation);
-      
-      // 説明文の取得
-      const descriptions = await (async (entries: any) => {
-        if (!entries) return { en: '', ja: '' };
-        
-        const [jaDesc, enDesc] = await Promise.all([
-          getLatestDescription(entries, 'ja', generation),
-          getLatestDescription(entries, 'en', generation)
-        ]);
-        
-        return {
-          ja: jaDesc || '', // 日本語の説明がない場合は空文字
-          en: enDesc || ''  // 英語の説明がない場合は空文字
-        };
-      })(pokemon.flavor_text_entries);
-
-      // 9世代のポケモンかどうかを判定
       const isGen9Pokemon = pokemon.id >= 906 && pokemon.id <= 1025;
+
+      // 説明文の取得
+      let descriptions;
+      try {
+        // すべての世代をPokeAPIから取得
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemon.id}`);
+        const speciesData = await response.json();
+        const [jaDesc, enDesc] = await Promise.all([
+          getLatestDescription(speciesData.flavor_text_entries, 'ja', generation),
+          getLatestDescription(speciesData.flavor_text_entries, 'en', generation)
+        ]);
+        descriptions = {
+          ja: jaDesc || '',
+          en: enDesc || ''
+        };
+      } catch (error) {
+        console.error(`Error fetching description for Pokemon #${pokemon.id}:`, error);
+        descriptions = { en: '', ja: '' };
+      }
       
       return {
         ...pokemon,
