@@ -57,16 +57,18 @@ export default function HomePage() {
   
   const [spriteStyle, setSpriteStyle] = useState<keyof typeof spriteStyles>(() => {
     const style = storage.getString('pokedex-sprite-style', 'red-blue');
-    return style as keyof typeof spriteStyles;
+    return (typeof style === 'string' ? style : 'red-blue') as keyof typeof spriteStyles;
   });
 
-  const [skinColor, setSkinColor] = useState(() => 
-    storage.getString('pokedex-skin-color', '#8b0000')
-  );
+  const [skinColor, setSkinColor] = useState(() => {
+    const color = storage.getString('pokedex-skin-color', '#8b0000');
+    return typeof color === 'string' ? color : '#8b0000';
+  });
   
-  const [screenColor, setScreenColor] = useState(() => 
-    storage.getString('pokedex-screen-color', '#9bbc0f')
-  );
+  const [screenColor, setScreenColor] = useState(() => {
+    const color = storage.getString('pokedex-screen-color', '#9bbc0f');
+    return typeof color === 'string' ? color : '#9bbc0f';
+  });
 
   const availableStyles = useMemo(() => 
     Object.entries(spriteStyles)
@@ -77,92 +79,19 @@ export default function HomePage() {
 
   const spriteControlsRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!spriteControlsRef.current || !isMobile) return;
+  // スプライトスタイルを前後に切り替える関数
+  const handleSpriteStyleChange = (direction: 'prev' | 'next') => {
+    const currentIndex = availableStyles.indexOf(spriteStyle);
+    let newIndex = currentIndex;
 
-    const container = spriteControlsRef.current;
-    let rafId: number;
-    let startX: number;
-    let startScrollLeft: number;
-    let isDragging = false;
-    let lastScrollLeft = container.scrollLeft;
-
-    const handleScroll = () => {
-      if (rafId) return;
-
-      rafId = requestAnimationFrame(() => {
-        const currentScrollLeft = container.scrollLeft;
-        if (Math.abs(currentScrollLeft - lastScrollLeft) > 5) {
-          setShowSwipeHint(false);
-          const width = container.clientWidth;
-          const index = Math.round(currentScrollLeft / width);
-
-          if (availableStyles[index] && availableStyles[index] !== spriteStyle) {
-            setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
-          }
-          lastScrollLeft = currentScrollLeft;
-        }
-        rafId = 0;
-      });
-    };
-
-    const handleTouchStart = (e: TouchEvent) => {
-      isDragging = true;
-      startX = e.touches[0].pageX;
-      startScrollLeft = container.scrollLeft;
-      container.classList.add('grabbing');
-      setShowSwipeHint(false);
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (!isDragging) return;
-      const x = e.touches[0].pageX;
-      const walk = (x - startX) * 1.5;
-      container.scrollLeft = startScrollLeft - walk;
-      // タッチ移動中はデフォルトのスクロール動作を防止
-      e.preventDefault();
-    };
-
-    const handleTouchEnd = () => {
-      isDragging = false;
-      container.classList.remove('grabbing');
-      
-      // スナップ位置に合わせる
-      const width = container.clientWidth;
-      const index = Math.round(container.scrollLeft / width);
-      container.scrollTo({
-        left: index * width,
-        behavior: 'smooth'
-      });
-      
-      if (availableStyles[index]) {
-        setSpriteStyle(availableStyles[index] as keyof typeof spriteStyles);
-      }
-    };
-
-    container.addEventListener('scroll', handleScroll, { passive: true });
-    container.addEventListener('touchstart', handleTouchStart, { passive: true });
-    container.addEventListener('touchmove', handleTouchMove, { passive: false });
-    container.addEventListener('touchend', handleTouchEnd);
-    
-    return () => {
-      container.removeEventListener('scroll', handleScroll);
-      container.removeEventListener('touchstart', handleTouchStart);
-      container.removeEventListener('touchmove', handleTouchMove);
-      container.removeEventListener('touchend', handleTouchEnd);
-      if (rafId) {
-        cancelAnimationFrame(rafId);
-      }
-    };
-  }, [availableStyles, setSpriteStyle, spriteStyle, isMobile]);
-
-  useEffect(() => {
-    if (!spriteControlsRef.current || !isMobile) return;
-    const index = availableStyles.indexOf(spriteStyle as string);
-    if (index >= 0) {
-      spriteControlsRef.current.scrollLeft = index * spriteControlsRef.current.clientWidth;
+    if (direction === 'prev') {
+      newIndex = currentIndex > 0 ? currentIndex - 1 : availableStyles.length - 1;
+    } else {
+      newIndex = currentIndex < availableStyles.length - 1 ? currentIndex + 1 : 0;
     }
-  }, [generation, spriteStyle, availableStyles, isMobile]);
+
+    setSpriteStyle(availableStyles[newIndex] as keyof typeof spriteStyles);
+  };
   
   const [isLoading, setIsLoading] = useState(true);
   const [spriteUrl, setSpriteUrl] = useState<string | null>(null);
@@ -512,53 +441,23 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
           {generation < 6 && (
             <div className="sprite-controls-wrap">
               <div className="sprite-controls-inner">
-                <div className="sprite-controls-gradient" />
-                <div className="sprite-controls-gradient right" />
-                <div className="sprite-controls" ref={spriteControlsRef}>
-                  {Object.entries(spriteStyles).map(([style, { gens }]) => {
-                    if (!gens.includes(generation)) return null;
-                    return (
-                      <button
-                        key={style}
-                        className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
-                        onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
-                      >
-                        {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
-                      </button>
-                    );
-                  })}
+                <button
+                  className="sprite-nav-button prev"
+                  onClick={() => handleSpriteStyleChange('prev')}
+                  aria-label="Previous sprite style"
+                >
+                  ◀
+                </button>
+                <div className="sprite-style-display">
+                  {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']}
                 </div>
-                <div className="sprite-dots">
-                  {Object.entries(spriteStyles).map(([style, { gens }]) => {
-                    if (!gens.includes(generation)) return null;
-                    return (
-                      <div 
-                        key={style}
-                        className={`sprite-dot ${spriteStyle === style ? 'active' : ''}`}
-                        onClick={() => {
-                          setSpriteStyle(style as keyof typeof spriteStyles);
-                          if (spriteControlsRef.current && isMobile) {
-                            const index = availableStyles.indexOf(style);
-                            if (index >= 0) {
-                              spriteControlsRef.current.scrollTo({
-                                left: index * spriteControlsRef.current.clientWidth,
-                                behavior: 'smooth'
-                              });
-                            }
-                          }
-                        }}
-                      />
-                    );
-                  })}
-                </div>
-                {isMobile && showSwipeHint && (
-                  <div className="swipe-hint">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
-                      <path d="M14 5l-5 5 5 5V5z"/>
-                      <path d="M10 5l-5 5 5 5V5z"/>
-                    </svg>
-                  </div>
-                )}
+                <button
+                  className="sprite-nav-button next"
+                  onClick={() => handleSpriteStyleChange('next')}
+                  aria-label="Next sprite style"
+                >
+                  ▶
+                </button>
               </div>
             </div>
           )}
