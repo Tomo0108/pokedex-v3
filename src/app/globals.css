@@ -325,9 +325,47 @@
   @apply [box-shadow:var(--shadow-inset)];
 }
 
+.sprite-controls-container {
+  @apply mt-4;
+}
+
+.sprite-controls-toggle {
+  @apply w-full px-4 py-2 mb-2 rounded;
+  @apply bg-[var(--bg-dark)] text-white;
+  @apply border-2 border-[var(--border-dark)];
+  @apply flex items-center justify-between;
+  @apply transition-all duration-200;
+  @apply [box-shadow:var(--shadow-inset)];
+  min-height: 44px;
+}
+
+.sprite-controls-toggle:hover {
+  @apply bg-[var(--border-dark)];
+}
+
+.toggle-icon {
+  @apply transition-transform duration-200;
+}
+
+.toggle-icon.open {
+  transform: rotate(180deg);
+}
+
 .sprite-controls {
-  @apply grid gap-3 mt-4;
+  @apply grid gap-3;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  animation: slideDown 0.2s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .sprite-button {

@@ -117,14 +117,9 @@ export async function createSpriteUrl(pokemonId: number, style: keyof typeof spr
   // black-whiteスタイルの場合はGIF拡張子を使用
   const extension = style === 'black-white' ? '.gif' : '.png';
   
-  // ローカルの画像パスを使用
-  // 色違いが非対応の場合はデフォルトスタイルを使用
+  // 色違いが非対応の場合はno-sprite.pngを返す
   if (shiny && styleInfo.hasShiny === false) {
-    const defaultStyle = getDefaultStyleForGeneration(
-      styleInfo.gens[styleInfo.gens.length - 1]
-    );
-    const defaultStyleInfo = spriteStyles[defaultStyle];
-    return `${LOCAL_SPRITES_BASE_URL}${defaultStyleInfo.path}${shinyPath}/${pokemonId}${extension}`;
+    return FALLBACK_IMAGE_URL;
   }
 
   // FireRed・LeafGreenの場合は1-151のみ有効

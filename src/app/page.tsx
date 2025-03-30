@@ -14,7 +14,7 @@ export default function HomePage() {
   const [allPokemonData, setAllPokemonData] = useState<Pokemon[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [showSwipeHint, setShowSwipeHint] = useState(true);
+  const [showSpriteControls, setShowSpriteControls] = useState(true);
 
   useEffect(() => {
     const checkIfMobile = () => {
@@ -423,19 +423,31 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
             </div>
           </div>
           {generation < 6 && (
-            <div className="sprite-controls">
-              {Object.entries(spriteStyles).map(([style, { gens }]) => {
-                if (!gens.includes(generation)) return null;
-                return (
-                  <button
-                    key={style}
-                    className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
-                    onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
-                  >
-                    {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
-                  </button>
-                );
-              })}
+            <div className="sprite-controls-container">
+              <button
+                className="sprite-controls-toggle"
+                onClick={() => setShowSpriteControls(!showSpriteControls)}
+                aria-expanded={showSpriteControls}
+              >
+                <span>{isJapanese ? 'スプライト切り替え' : 'Change Sprite'}</span>
+                <span className={`toggle-icon ${showSpriteControls ? 'open' : ''}`}>▼</span>
+              </button>
+              {showSpriteControls && (
+                <div className="sprite-controls">
+                  {Object.entries(spriteStyles).map(([style, { gens }]) => {
+                    if (!gens.includes(generation)) return null;
+                    return (
+                      <button
+                        key={style}
+                        className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
+                        onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
+                      >
+                        {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           )}
           <div className="description-container">
