@@ -81,7 +81,7 @@ export default function HomePage() {
 
   // スプライトスタイルを前後に切り替える関数
   const handleSpriteStyleChange = (direction: 'prev' | 'next') => {
-    const currentIndex = availableStyles.indexOf(spriteStyle);
+    const currentIndex = availableStyles.indexOf(spriteStyle as string);
     let newIndex = currentIndex;
 
     if (direction === 'prev') {
