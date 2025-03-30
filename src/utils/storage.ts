@@ -22,8 +22,7 @@ export const storage = {
   },
 
   getString(key: string, defaultValue: string): string {
-    const value = this.getRawItem(key, defaultValue);
-    return String(value);
+    return this.getRawItem(key, defaultValue);
   },
 
   getNumber(key: string, defaultValue: number): number {
