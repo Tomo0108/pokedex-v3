@@ -45,31 +45,50 @@
   @apply h-full;
 }
 
-@media (max-width: 767px) {
-  .pokedex-right {
-    height: calc(100dvh - 520px);
-    min-height: 400px;
-  }
+/* スプライトコントロールのスタイル */
+.sprite-controls-wrap {
+  @apply relative bg-[var(--bg-dark)] p-4 rounded;
+  @apply [box-shadow:var(--shadow-inset)];
+  @apply -mx-0;
+}
+
+.sprite-controls-inner {
+  @apply flex items-center justify-between gap-4;
+}
+
+.sprite-style-display {
+  @apply flex-1 text-center text-white py-2;
+  @apply text-xs sm:text-sm;
+  @apply px-2;
+  @apply border-2 border-[var(--border-dark)] rounded;
+  @apply bg-[var(--bg-darker)];
+}
+
+.sprite-nav-button {
+  @apply text-white bg-[var(--bg-darker)];
+  @apply border-2 border-[var(--border-dark)] rounded;
+  @apply transition-all duration-200;
+  @apply hover:bg-[var(--border-dark)];
+  @apply flex items-center justify-center;
+  @apply touch-manipulation select-none;
+  min-width: 40px;
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.sprite-nav-button:active {
+  @apply [box-shadow:var(--shadow-inset-reverse)];
+  transform: translateY(1px);
 }
 
 @media (min-width: 768px) {
-  .pokedex-right {
-    height: auto;
-    min-height: 600px;
-    max-height: 700px;
+  .sprite-nav-button {
+    min-width: 44px;
+    min-height: 44px;
+    width: 44px;
+    height: 44px;
   }
-}
-
-.loading-item {
-  @apply flex items-center gap-2 p-2 rounded bg-[var(--loading-color)];
-}
-
-.loading-text {
-  @apply flex-1 h-3 rounded bg-[var(--bg-dark)] opacity-50;
-}
-
-.top-controls {
-  @apply flex justify-between mb-4 items-start gap-4;
 }
 
 .search-box {
@@ -276,32 +295,6 @@
   @apply bg-[var(--bg-screen)] [box-shadow:inset_0_0_10px_rgba(0,0,0,0.3)];
 }
 
-.sprite-controls-wrap {
-  @apply relative bg-[var(--bg-dark)] p-4 rounded;
-  @apply [box-shadow:var(--shadow-inset)];
-}
-
-.sprite-controls-inner {
-  @apply flex items-center justify-between gap-4;
-}
-
-.sprite-nav-button {
-  @apply px-4 py-2 text-white bg-[var(--bg-darker)];
-  @apply border-2 border-[var(--border-dark)] rounded;
-  @apply transition-all duration-200;
-  @apply hover:bg-[var(--border-dark)];
-  min-width: 44px;
-  min-height: 44px;
-}
-
-.sprite-nav-button:active {
-  @apply [box-shadow:var(--shadow-inset-reverse)];
-  transform: translateY(1px);
-}
-
-.sprite-style-display {
-  @apply flex-1 text-center text-white text-sm py-2;
-}
 
 .loading-screen {
   @apply fixed inset-0 flex items-center justify-center;
