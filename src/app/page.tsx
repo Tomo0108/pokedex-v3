@@ -75,66 +75,7 @@ export default function HomePage() {
     [generation]
   );
 
-  const spriteControlsRef = useRef<HTMLDivElement>(null);
-
-  const [showSpriteMenu, setShowSpriteMenu] = useState(false);
-  const longPressTimeoutRef = useRef<NodeJS.Timeout>();
-  const currentStyleIndexRef = useRef(0);
-
-  useEffect(() => {
-    const index = availableStyles.indexOf(spriteStyle as string);
-    currentStyleIndexRef.current = index >= 0 ? index : 0;
-  }, [availableStyles, spriteStyle]);
-
-  const handlePrevStyle = () => {
-    const newIndex = Math.max(0, currentStyleIndexRef.current - 1);
-    if (availableStyles[newIndex]) {
-      currentStyleIndexRef.current = newIndex;
-      setSpriteStyle(availableStyles[newIndex] as keyof typeof spriteStyles);
-    }
-  };
-
-  const handleNextStyle = () => {
-    const newIndex = Math.min(availableStyles.length - 1, currentStyleIndexRef.current + 1);
-    if (availableStyles[newIndex]) {
-      currentStyleIndexRef.current = newIndex;
-      setSpriteStyle(availableStyles[newIndex] as keyof typeof spriteStyles);
-    }
-  };
-
-  const handleTouchStart = () => {
-    longPressTimeoutRef.current = setTimeout(() => {
-      setShowSpriteMenu(true);
-    }, 500); // 500ms長押しでメニュー表示
-  };
-
-  const handleTouchEnd = () => {
-    if (longPressTimeoutRef.current) {
-      clearTimeout(longPressTimeoutRef.current);
-    }
-  };
-
-  const handleSelectStyle = (style: string) => {
-    setSpriteStyle(style as keyof typeof spriteStyles);
-    setShowSpriteMenu(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (!target.closest('.sprite-menu') && !target.closest('.current-sprite-style')) {
-        setShowSpriteMenu(false);
-      }
-    };
-
-    if (showSpriteMenu) {
-      document.addEventListener('click', handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener('click', handleClickOutside);
-    };
-  }, [showSpriteMenu]);
+  // スプライトコントロール関連のコードを削除
   
   const [isLoading, setIsLoading] = useState(true);
   const [spriteUrl, setSpriteUrl] = useState<string | null>(null);
@@ -481,52 +422,20 @@ const handleGenerationChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
               )}
             </div>
           </div>
-          {generation < 6 && isMobile && (
-            <div className="sprite-controls-wrap">
-              <div className="sprite-controls-inner">
-                <button 
-                  className="sprite-nav-button" 
-                  onClick={handlePrevStyle}
-                  disabled={currentStyleIndexRef.current === 0}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
-                  </svg>
-                </button>
-                <button
-                  className="current-sprite-style"
-                  onTouchStart={handleTouchStart}
-                  onTouchEnd={handleTouchEnd}
-                  onClick={() => setShowSpriteMenu(true)}
-                >
-                  {spriteStyles[spriteStyle].displayName[isJapanese ? 'ja' : 'en']}
-                </button>
-                <button 
-                  className="sprite-nav-button"
-                  onClick={handleNextStyle}
-                  disabled={currentStyleIndexRef.current === availableStyles.length - 1}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M10.59 6L12 7.41 7.83 12 12 16.59 10.59 18l-6-6z"/>
-                  </svg>
-                </button>
-                {showSpriteMenu && (
-                  <div className="sprite-menu">
-                    {Object.entries(spriteStyles).map(([style, { gens, displayName }]) => {
-                      if (!gens.includes(generation)) return null;
-                      return (
-                        <button
-                          key={style}
-                          className={`sprite-menu-button ${spriteStyle === style ? 'active' : ''}`}
-                          onClick={() => handleSelectStyle(style)}
-                        >
-                          {displayName[isJapanese ? 'ja' : 'en']}
-                        </button>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
+          {generation < 6 && (
+            <div className="sprite-controls">
+              {Object.entries(spriteStyles).map(([style, { gens }]) => {
+                if (!gens.includes(generation)) return null;
+                return (
+                  <button
+                    key={style}
+                    className={`sprite-button ${spriteStyle === style ? 'active' : ''}`}
+                    onClick={() => setSpriteStyle(style as keyof typeof spriteStyles)}
+                  >
+                    {spriteStyles[style].displayName[isJapanese ? 'ja' : 'en']}
+                  </button>
+                );
+              })}
             </div>
           )}
           <div className="description-container">
